@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
             // TODO: this is added for debugging now, remove later
             (new CreateAccount()).Show();
             (new MainForm()).Show();
+            (new AddStock()).Show();
         }
 
         private void loginBttn_Click(object sender, EventArgs e)
