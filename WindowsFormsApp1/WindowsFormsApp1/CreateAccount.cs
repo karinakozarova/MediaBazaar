@@ -10,15 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class CreateAccount : Form
     {
-        public Form1()
+        public CreateAccount()
         {
             InitializeComponent();
-            mediaBazarLogoLogin.BorderStyle = BorderStyle.None;
-
-            // TODO: this is added for debugging now, remove later
-            (new CreateAccount()).Show();
         }
     }
 }
