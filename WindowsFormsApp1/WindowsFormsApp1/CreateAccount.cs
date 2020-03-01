@@ -16,5 +16,10 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
