@@ -21,6 +21,8 @@ namespace WindowsFormsApp1
             (new CreateAccount()).Show();
             (new MainForm()).Show();
             (new AddStock()).Show();
+            (new MainForm()).Show();
+            (new ShelfRestockRequests()).Show();
         }
 
         private void loginBttn_Click(object sender, EventArgs e)
