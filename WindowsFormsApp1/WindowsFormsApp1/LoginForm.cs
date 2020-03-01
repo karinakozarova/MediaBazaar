@@ -23,6 +23,8 @@ namespace WindowsFormsApp1
             (new AddStock()).Show();
             (new MainForm()).Show();
             (new ShelfRestockRequests()).Show();
+            (new RemoveEmployee()).Show();
+            (new SearchForEmployee()).Show();
         }
 
         private void loginBttn_Click(object sender, EventArgs e)
