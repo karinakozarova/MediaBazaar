@@ -18,13 +18,13 @@ namespace WindowsFormsApp1
             mediaBazarLogoLogin.BorderStyle = BorderStyle.None;
 
             // TODO: this is added for debugging now, remove later
-            (new CreateAccount()).Show();
-            (new MainForm()).Show();
+            
             (new AddStock()).Show();
-            (new MainForm()).Show();
-            (new ShelfRestockRequests()).Show();
-            (new RemoveEmployee()).Show();
             (new SearchForEmployee()).Show();
+            (new RemoveEmployee()).Show();
+            (new ShelfRestockRequests()).Show();
+            (new MainForm()).Show();
+            (new CreateAccount()).Show();
         }
 
         private void loginBttn_Click(object sender, EventArgs e)
