@@ -64,6 +64,18 @@
     <Compile Include="CreateAccount.Designer.cs">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="DepartmentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DepartmentUserControl.Designer.cs">
+      <DependentUpon>DepartmentUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditDepartmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDepartmentForm.Designer.cs">
+      <DependentUpon>EditDepartmentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +116,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentUserControl.resx">
+      <DependentUpon>DepartmentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDepartmentForm.resx">
+      <DependentUpon>EditDepartmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
