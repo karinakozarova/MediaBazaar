@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
             // TODO: this is added for debugging now, remove later
             
             (new AddStock()).Show();
-            (new SearchForEmployee()).Show();
+            (new SearchForWorker()).Show();
             (new RemoveEmployee()).Show();
             (new ShelfRestockRequests()).Show();
             (new MainForm()).Show();

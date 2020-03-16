@@ -96,17 +96,35 @@
     <Compile Include="RemoveEmployee.Designer.cs">
       <DependentUpon>RemoveEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="SearchForEmployee.cs">
+    <Compile Include="RemoveManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SearchForEmployee.Designer.cs">
-      <DependentUpon>SearchForEmployee.cs</DependentUpon>
+    <Compile Include="RemoveManager.Designer.cs">
+      <DependentUpon>RemoveManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchForWorker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchForWorker.Designer.cs">
+      <DependentUpon>SearchForWorker.cs</DependentUpon>
     </Compile>
     <Compile Include="ShelfRestockRequests.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ShelfRestockRequests.Designer.cs">
       <DependentUpon>ShelfRestockRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockEdit.Designer.cs">
+      <DependentUpon>StockEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockView.Designer.cs">
+      <DependentUpon>StockView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AddDepartment.resx">
       <DependentUpon>AddDepartment.cs</DependentUpon>
@@ -142,11 +160,20 @@
     <EmbeddedResource Include="RemoveEmployee.resx">
       <DependentUpon>RemoveEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SearchForEmployee.resx">
-      <DependentUpon>SearchForEmployee.cs</DependentUpon>
+    <EmbeddedResource Include="RemoveManager.resx">
+      <DependentUpon>RemoveManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchForWorker.resx">
+      <DependentUpon>SearchForWorker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShelfRestockRequests.resx">
       <DependentUpon>ShelfRestockRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockEdit.resx">
+      <DependentUpon>StockEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockView.resx">
+      <DependentUpon>StockView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
