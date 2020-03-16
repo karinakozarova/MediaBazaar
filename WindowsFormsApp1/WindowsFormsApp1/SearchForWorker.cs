@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class SearchForWorker : Form
+    public partial class SearchForEmployee : Form
     {
-        public SearchForWorker()
+        public SearchForEmployee()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class SearchForWorker
+    partial class SearchForEmployee
     {
         /// <summary>
         /// Required designer variable.
@@ -308,7 +308,7 @@
             this.checkBox10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.checkBox10.UseVisualStyleBackColor = true;
             // 
-            // SearchForWorker
+            // SearchForEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -335,8 +335,8 @@
             this.Controls.Add(this.loginBttn);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "SearchForWorker";
-            this.Text = "Search For Worker";
+            this.Name = "SearchForEmployee";
+            this.Text = "Search For Employee";
             this.ResumeLayout(false);
             this.PerformLayout();
 
