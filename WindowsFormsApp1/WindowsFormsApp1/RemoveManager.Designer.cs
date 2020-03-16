@@ -107,6 +107,7 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+
             this.Name = "RemoveManager";
             this.Text = "RemoveManager";
             this.ResumeLayout(false);
