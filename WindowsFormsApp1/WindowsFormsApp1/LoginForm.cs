@@ -20,12 +20,11 @@ namespace WindowsFormsApp1
             // TODO: this is added for debugging now, remove later
             (new AdministratorShiftsOverview()).Show();
 
-            (new AddStock()).Show();
             (new SearchForEmployee()).Show();
-            (new RemoveEmployee()).Show();
-            (new ShelfRestockRequests()).Show();
-            (new MainForm()).Show();
-            (new CreateAccount()).Show();
+            (new RemoveManager()).Show();
+            (new StockEdit()).Show();
+            (new StockView()).Show();
+
         }
 
         private void loginBttn_Click(object sender, EventArgs e)
