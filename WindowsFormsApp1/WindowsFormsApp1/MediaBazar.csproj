@@ -58,6 +58,18 @@
     <Compile Include="AddStock.Designer.cs">
       <DependentUpon>AddStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdministratorShiftsOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministratorShiftsOverview.Designer.cs">
+      <DependentUpon>AdministratorShiftsOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApproveManagerRequests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApproveManagerRequests.Designer.cs">
+      <DependentUpon>ApproveManagerRequests.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +88,12 @@
     <Compile Include="EditDepartmentForm.Designer.cs">
       <DependentUpon>EditDepartmentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FiringRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FiringRequest.Designer.cs">
+      <DependentUpon>FiringRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +105,24 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagerStatistics.Designer.cs">
+      <DependentUpon>ManagerStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerStatisticsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManagerStatisticsControl.Designer.cs">
+      <DependentUpon>ManagerStatisticsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyEmployee.Designer.cs">
+      <DependentUpon>ModifyEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,6 +137,18 @@
     </Compile>
     <Compile Include="RemoveManager.Designer.cs">
       <DependentUpon>RemoveManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RequestControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RequestControl.Designer.cs">
+      <DependentUpon>RequestControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RequestStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestStock.Designer.cs">
+      <DependentUpon>RequestStock.cs</DependentUpon>
     </Compile>
     <Compile Include="SearchForWorker.cs">
       <SubType>Form</SubType>
@@ -132,6 +180,12 @@
     <EmbeddedResource Include="AddStock.resx">
       <DependentUpon>AddStock.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdministratorShiftsOverview.resx">
+      <DependentUpon>AdministratorShiftsOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ApproveManagerRequests.resx">
+      <DependentUpon>ApproveManagerRequests.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,11 +195,23 @@
     <EmbeddedResource Include="EditDepartmentForm.resx">
       <DependentUpon>EditDepartmentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FiringRequest.resx">
+      <DependentUpon>FiringRequest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagerStatistics.resx">
+      <DependentUpon>ManagerStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagerStatisticsControl.resx">
+      <DependentUpon>ManagerStatisticsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyEmployee.resx">
+      <DependentUpon>ModifyEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -165,6 +231,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SearchForWorker.resx">
       <DependentUpon>SearchForWorker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestControl.resx">
+      <DependentUpon>RequestControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestStock.resx">
+      <DependentUpon>RequestStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShelfRestockRequests.resx">
       <DependentUpon>ShelfRestockRequests.cs</DependentUpon>
