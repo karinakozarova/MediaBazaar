@@ -52,11 +52,11 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox6.Location = new System.Drawing.Point(245, 254);
+            this.checkBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox6.Location = new System.Drawing.Point(439, 318);
             this.checkBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(140, 33);
+            this.checkBox6.Size = new System.Drawing.Size(144, 36);
             this.checkBox6.TabIndex = 102;
             this.checkBox6.Text = "Morning";
             this.checkBox6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -66,11 +66,11 @@
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
-            this.checkBox7.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox7.Location = new System.Drawing.Point(245, 305);
+            this.checkBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox7.Location = new System.Drawing.Point(439, 381);
             this.checkBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(161, 33);
+            this.checkBox7.Size = new System.Drawing.Size(165, 36);
             this.checkBox7.TabIndex = 101;
             this.checkBox7.Text = "Afternoon";
             this.checkBox7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -81,20 +81,20 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(239, 202);
+            this.label9.Location = new System.Drawing.Point(432, 252);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(135, 29);
+            this.label9.Size = new System.Drawing.Size(159, 32);
             this.label9.TabIndex = 100;
             this.label9.Text = "Work shift:";
             // 
             // checkBox13
             // 
             this.checkBox13.AutoSize = true;
-            this.checkBox13.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox13.Location = new System.Drawing.Point(244, 350);
+            this.checkBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox13.Location = new System.Drawing.Point(437, 438);
             this.checkBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox13.Name = "checkBox13";
-            this.checkBox13.Size = new System.Drawing.Size(135, 33);
+            this.checkBox13.Size = new System.Drawing.Size(145, 36);
             this.checkBox13.TabIndex = 99;
             this.checkBox13.Text = "Evening";
             this.checkBox13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -105,9 +105,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(155, 28);
+            this.label3.Location = new System.Drawing.Point(337, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(179, 25);
+            this.label3.Size = new System.Drawing.Size(216, 29);
             this.label3.TabIndex = 98;
             this.label3.Text = "Select employee:";
             // 
@@ -115,20 +115,20 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(-118, 199);
+            this.label2.Location = new System.Drawing.Point(30, 249);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(212, 31);
+            this.label2.Size = new System.Drawing.Size(246, 37);
             this.label2.TabIndex = 97;
             this.label2.Text = "Available days:";
             // 
             // checkBox12
             // 
             this.checkBox12.AutoSize = true;
-            this.checkBox12.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox12.Location = new System.Drawing.Point(67, 276);
+            this.checkBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox12.Location = new System.Drawing.Point(238, 345);
             this.checkBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(126, 33);
+            this.checkBox12.Size = new System.Drawing.Size(138, 36);
             this.checkBox12.TabIndex = 96;
             this.checkBox12.Text = "Sunday";
             this.checkBox12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -138,11 +138,11 @@
             // checkBox11
             // 
             this.checkBox11.AutoSize = true;
-            this.checkBox11.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox11.Location = new System.Drawing.Point(67, 237);
+            this.checkBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox11.Location = new System.Drawing.Point(238, 296);
             this.checkBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(144, 33);
+            this.checkBox11.Size = new System.Drawing.Size(155, 36);
             this.checkBox11.TabIndex = 95;
             this.checkBox11.Text = "Saturday";
             this.checkBox11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -152,11 +152,11 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox5.Location = new System.Drawing.Point(-111, 312);
+            this.checkBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox5.Location = new System.Drawing.Point(38, 390);
             this.checkBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(178, 33);
+            this.checkBox5.Size = new System.Drawing.Size(191, 36);
             this.checkBox5.TabIndex = 93;
             this.checkBox5.Text = "Wednesday";
             this.checkBox5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -166,11 +166,11 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox4.Location = new System.Drawing.Point(-111, 390);
+            this.checkBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox4.Location = new System.Drawing.Point(38, 488);
             this.checkBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(110, 33);
+            this.checkBox4.Size = new System.Drawing.Size(120, 36);
             this.checkBox4.TabIndex = 94;
             this.checkBox4.Text = "Friday";
             this.checkBox4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -180,11 +180,11 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(-110, 350);
+            this.checkBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox3.Location = new System.Drawing.Point(39, 438);
             this.checkBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(147, 33);
+            this.checkBox3.Size = new System.Drawing.Size(159, 36);
             this.checkBox3.TabIndex = 92;
             this.checkBox3.Text = "Thursday";
             this.checkBox3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -194,11 +194,11 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(-111, 273);
+            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Location = new System.Drawing.Point(38, 341);
             this.checkBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(135, 33);
+            this.checkBox2.Size = new System.Drawing.Size(150, 36);
             this.checkBox2.TabIndex = 91;
             this.checkBox2.Text = "Tuesday";
             this.checkBox2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -208,11 +208,11 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(-111, 237);
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(38, 296);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(135, 33);
+            this.checkBox1.Size = new System.Drawing.Size(142, 36);
             this.checkBox1.TabIndex = 90;
             this.checkBox1.Text = "Monday";
             this.checkBox1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -221,21 +221,21 @@
             // 
             // textBox2
             // 
-            this.textBox2.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(159, 127);
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(342, 159);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(228, 40);
+            this.textBox2.Size = new System.Drawing.Size(256, 44);
             this.textBox2.TabIndex = 89;
             this.textBox2.Text = "Last name";
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(157, 71);
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(340, 89);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(228, 40);
+            this.textBox1.Size = new System.Drawing.Size(256, 44);
             this.textBox1.TabIndex = 88;
             this.textBox1.Text = "First name";
             // 
@@ -243,48 +243,49 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(416, 28);
+            this.label1.Location = new System.Drawing.Point(631, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 29);
+            this.label1.Size = new System.Drawing.Size(179, 32);
             this.label1.TabIndex = 87;
             this.label1.Text = "Work Shifts:";
             // 
             // listBox1
             // 
-            this.listBox1.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(421, 71);
+            this.listBox1.ItemHeight = 25;
+            this.listBox1.Location = new System.Drawing.Point(637, 89);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(497, 324);
+            this.listBox1.Size = new System.Drawing.Size(559, 404);
             this.listBox1.TabIndex = 86;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(-115, 28);
+            this.label6.Location = new System.Drawing.Point(34, 35);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(194, 25);
+            this.label6.Size = new System.Drawing.Size(233, 29);
             this.label6.TabIndex = 85;
             this.label6.Text = "Select department:";
             // 
             // comboBox1
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(-111, 71);
+            this.comboBox1.Location = new System.Drawing.Point(38, 89);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(228, 41);
+            this.comboBox1.Size = new System.Drawing.Size(256, 45);
             this.comboBox1.TabIndex = 84;
             this.comboBox1.Text = "Department";
             // 
             // AdministratorShiftsOverview
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(940, 450);
+            this.ClientSize = new System.Drawing.Size(1232, 562);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox7);
             this.Controls.Add(this.label9);
@@ -304,6 +305,7 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AdministratorShiftsOverview";
             this.Text = "AdministratorShiftsOverview";
             this.ResumeLayout(false);

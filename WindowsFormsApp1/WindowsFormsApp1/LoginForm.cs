@@ -18,7 +18,8 @@ namespace WindowsFormsApp1
             mediaBazarLogoLogin.BorderStyle = BorderStyle.None;
 
             // TODO: this is added for debugging now, remove later
-            
+            (new AdministratorShiftsOverview()).Show();
+
             (new AddStock()).Show();
             (new SearchForEmployee()).Show();
             (new RemoveEmployee()).Show();
