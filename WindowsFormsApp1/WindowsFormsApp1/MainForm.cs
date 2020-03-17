@@ -46,5 +46,10 @@ namespace WindowsFormsApp1
         {
             (new AddStock()).Show();
         }
+
+        private void viewUpcomingShelfRestocksBttn_Click(object sender, EventArgs e)
+        {
+            (new ShelfRestockRequests()).Show();
+        }
     }
 }

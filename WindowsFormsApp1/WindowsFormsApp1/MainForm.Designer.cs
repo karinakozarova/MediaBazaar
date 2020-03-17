@@ -35,7 +35,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.stocksTab = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
+            this.viewUpcomingShelfRestocksBttn = new System.Windows.Forms.Button();
             this.createStockBttn = new System.Windows.Forms.Button();
             this.departmentsTab = new System.Windows.Forms.TabPage();
             this.flpDepartments = new System.Windows.Forms.FlowLayoutPanel();
@@ -119,7 +119,7 @@
             // 
             // stocksTab
             // 
-            this.stocksTab.Controls.Add(this.button3);
+            this.stocksTab.Controls.Add(this.viewUpcomingShelfRestocksBttn);
             this.stocksTab.Controls.Add(this.createStockBttn);
             this.stocksTab.Location = new System.Drawing.Point(4, 29);
             this.stocksTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -130,17 +130,17 @@
             this.stocksTab.Text = "Stocks";
             this.stocksTab.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // viewUpcomingShelfRestocksBttn
             // 
-            this.button3.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(46, 136);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(1151, 65);
-            this.button3.TabIndex = 28;
-            this.button3.Text = "View upcoming shelf requests";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.viewUpcomingShelfRestocksBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewUpcomingShelfRestocksBttn.Location = new System.Drawing.Point(46, 136);
+            this.viewUpcomingShelfRestocksBttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.viewUpcomingShelfRestocksBttn.Name = "viewUpcomingShelfRestocksBttn";
+            this.viewUpcomingShelfRestocksBttn.Size = new System.Drawing.Size(1151, 65);
+            this.viewUpcomingShelfRestocksBttn.TabIndex = 28;
+            this.viewUpcomingShelfRestocksBttn.Text = "View upcoming shelf requests";
+            this.viewUpcomingShelfRestocksBttn.UseVisualStyleBackColor = true;
+            this.viewUpcomingShelfRestocksBttn.Click += new System.EventHandler(this.viewUpcomingShelfRestocksBttn_Click);
             // 
             // createStockBttn
             // 
@@ -212,7 +212,7 @@
         private System.Windows.Forms.TabPage departmentsTab;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button viewUpcomingShelfRestocksBttn;
         private System.Windows.Forms.Button createStockBttn;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;

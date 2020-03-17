@@ -12,6 +12,11 @@ namespace WindowsFormsApp1
             get;
             private set;
         }
+        public string Description
+        {
+            get;
+            private set;
+        }
 
         public int QuantityInDepot
         {
@@ -37,9 +42,10 @@ namespace WindowsFormsApp1
             private set;
         }
 
-        public Stock(string name, int quantityInDepot, int quantityInStore, decimal price, int departmentId)
+        public Stock(string name, string description, int quantityInDepot, int quantityInStore, decimal price, int departmentId)
         {
             this.Name = name;
+            this.Description = description;
             this.QuantityInDepot = quantityInDepot;
             this.QuantityInStore = quantityInStore;
             this.Price = price;
@@ -52,9 +58,10 @@ namespace WindowsFormsApp1
             MySqlConnection conn = Utils.GetConnection();
             try
             {
-                string sql = "INSERT INTO stock(name, department_id, quantity_in_depo, quantity_in_store, price, currency_id) VALUES (@name, @department_id, @depo, @store, @price, 1);";
+                string sql = "INSERT INTO stock(name, description, department_id, quantity_in_depo, quantity_in_store, price, currency_id) VALUES (@name, @description, @department_id, @depo, @store, @price, 1);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@name", Name);
+                cmd.Parameters.AddWithValue("@description", Description);
                 cmd.Parameters.AddWithValue("@department_id", DepartmentId);
                 cmd.Parameters.AddWithValue("@depo", QuantityInDepot);
                 cmd.Parameters.AddWithValue("@store", QuantityInStore);

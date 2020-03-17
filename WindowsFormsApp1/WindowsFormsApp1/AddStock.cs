@@ -41,12 +41,13 @@ namespace WindowsFormsApp1
             }
 
             string name = addStockNameTbx.Text;
+            string description = descriptionTbx.Text;
             int inDepo = (int)indepoQuantityInput.Value;
             int inStore = (int)inStoreQuantityInput.Value;
             decimal price = pricePerItemTbx.Value;
 
             int departmentId = ((DepartmentComboBoxItem)departmentsCmbbxAddingStock.SelectedItem).Id;
-            Stock stock = new Stock(name, inDepo, inStore, price, departmentId);
+            Stock stock = new Stock(name, description, inDepo, inStore, price, departmentId);
             this.Hide();
         }
     }

@@ -38,6 +38,8 @@
             this.pricePerItemTbx = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.descriptionTbx = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.indepoQuantityInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inStoreQuantityInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pricePerItemTbx)).BeginInit();
@@ -56,7 +58,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(32, 275);
+            this.label1.Location = new System.Drawing.Point(32, 475);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 44);
             this.label1.TabIndex = 2;
@@ -66,7 +68,7 @@
             // 
             this.indepoQuantityInput.CausesValidation = false;
             this.indepoQuantityInput.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.indepoQuantityInput.Location = new System.Drawing.Point(40, 332);
+            this.indepoQuantityInput.Location = new System.Drawing.Point(40, 532);
             this.indepoQuantityInput.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -79,10 +81,10 @@
             // addStockBttn
             // 
             this.addStockBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addStockBttn.Location = new System.Drawing.Point(40, 527);
+            this.addStockBttn.Location = new System.Drawing.Point(40, 727);
             this.addStockBttn.Name = "addStockBttn";
             this.addStockBttn.Size = new System.Drawing.Size(453, 65);
-            this.addStockBttn.TabIndex = 4;
+            this.addStockBttn.TabIndex = 6;
             this.addStockBttn.Text = "Add Stock";
             this.addStockBttn.UseVisualStyleBackColor = true;
             this.addStockBttn.Click += new System.EventHandler(this.addStockBttn_Click);
@@ -91,7 +93,7 @@
             // 
             this.departmentsCmbbxAddingStock.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.departmentsCmbbxAddingStock.FormattingEnabled = true;
-            this.departmentsCmbbxAddingStock.Location = new System.Drawing.Point(40, 435);
+            this.departmentsCmbbxAddingStock.Location = new System.Drawing.Point(40, 635);
             this.departmentsCmbbxAddingStock.Name = "departmentsCmbbxAddingStock";
             this.departmentsCmbbxAddingStock.Size = new System.Drawing.Size(453, 52);
             this.departmentsCmbbxAddingStock.TabIndex = 5;
@@ -100,7 +102,7 @@
             // inStoreQuantityInput
             // 
             this.inStoreQuantityInput.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inStoreQuantityInput.Location = new System.Drawing.Point(298, 332);
+            this.inStoreQuantityInput.Location = new System.Drawing.Point(298, 532);
             this.inStoreQuantityInput.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -108,13 +110,13 @@
             0});
             this.inStoreQuantityInput.Name = "inStoreQuantityInput";
             this.inStoreQuantityInput.Size = new System.Drawing.Size(195, 47);
-            this.inStoreQuantityInput.TabIndex = 6;
+            this.inStoreQuantityInput.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(280, 275);
+            this.label2.Location = new System.Drawing.Point(280, 475);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(147, 44);
             this.label2.TabIndex = 7;
@@ -123,7 +125,7 @@
             // pricePerItemTbx
             // 
             this.pricePerItemTbx.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pricePerItemTbx.Location = new System.Drawing.Point(40, 191);
+            this.pricePerItemTbx.Location = new System.Drawing.Point(40, 391);
             this.pricePerItemTbx.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -131,13 +133,13 @@
             0});
             this.pricePerItemTbx.Name = "pricePerItemTbx";
             this.pricePerItemTbx.Size = new System.Drawing.Size(453, 47);
-            this.pricePerItemTbx.TabIndex = 8;
+            this.pricePerItemTbx.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 144);
+            this.label3.Location = new System.Drawing.Point(32, 344);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(252, 44);
             this.label3.TabIndex = 9;
@@ -153,11 +155,32 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Name:";
             // 
+            // descriptionTbx
+            // 
+            this.descriptionTbx.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionTbx.Location = new System.Drawing.Point(40, 200);
+            this.descriptionTbx.Name = "descriptionTbx";
+            this.descriptionTbx.Size = new System.Drawing.Size(453, 107);
+            this.descriptionTbx.TabIndex = 1;
+            this.descriptionTbx.Text = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(32, 142);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(214, 44);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Description:";
+            // 
             // AddStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 617);
+            this.ClientSize = new System.Drawing.Size(539, 808);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.descriptionTbx);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pricePerItemTbx);
@@ -190,5 +213,7 @@
         private System.Windows.Forms.NumericUpDown pricePerItemTbx;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RichTextBox descriptionTbx;
+        private System.Windows.Forms.Label label5;
     }
 }
