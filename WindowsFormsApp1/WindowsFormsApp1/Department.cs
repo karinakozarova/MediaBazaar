@@ -7,7 +7,11 @@ namespace WindowsFormsApp1
     public class Department
     {
         private const string tableName = "departments";
-        private int departmentId;
+        public int DepartmentId
+        {
+            get;
+            private set;
+        }
 
         public string Name { get; set; }
         public string Description { get; set; }
@@ -19,6 +23,14 @@ namespace WindowsFormsApp1
             this.Description = description;
             this.NeededPeople = neededPeople;
         }
+        public Department(string name, string description, int neededPeople, int id)
+        {
+            this.Name = name;
+            this.Description = description;
+            this.NeededPeople = neededPeople;
+            this.DepartmentId = id;
+        }
+
         public Department(string name, int neededPeople)
         {
             this.Name = name;
@@ -74,14 +86,14 @@ namespace WindowsFormsApp1
             List<Department> departments = new List<Department>();
             try
             {
-                string sql = "SELECT name, description, needed_people FROM " + tableName; 
+                string sql = "SELECT name, description, needed_people, id FROM " + tableName; 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();
                 MySqlDataReader row = cmd.ExecuteReader();
 
-                List<Department> users = new List<Department>(); while (row.Read())
+                while (row.Read())
                 {
-                    departments.Add(new Department(row[0].ToString(), row[1].ToString(), Convert.ToInt32(row[2])));
+                    departments.Add(new Department(row[0].ToString(), row[1].ToString(), Convert.ToInt32(row[2]), Convert.ToInt32(row[3])));
                 }
             }
             catch (Exception)
@@ -93,6 +105,11 @@ namespace WindowsFormsApp1
                 conn.Close();
             }
             return departments;
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
     }
 }

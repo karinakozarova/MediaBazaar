@@ -41,5 +41,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void createStockBttn_Click(object sender, EventArgs e)
+        {
+            (new AddStock()).Show();
+        }
     }
 }

@@ -101,6 +101,7 @@
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="Department.cs" />
+    <Compile Include="DepartmentComboBoxItem.cs" />
     <Compile Include="DepartmentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
