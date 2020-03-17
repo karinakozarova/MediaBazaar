@@ -38,22 +38,10 @@ namespace WindowsFormsApp1
                 {
                     ShelfRequests request = new ShelfRequests(row[0].ToString(),row[1].ToString(), Convert.ToInt32(row[2].ToString()), Convert.ToInt32(row[3]), Convert.ToInt32(row[4]), Convert.ToInt32(row[5]), Convert.ToInt32(row[6]));
                     requests.Add(request);
-                    /*
-                    int stock_id = Convert.ToInt32(row[5]);
-                    string stockSql = "SELECT SUM(needed_quantity) FROM stockrequests where stock_id=@stock_id;";
-                    MySqlCommand stockCmd = new MySqlCommand(stockSql, conn);
-                    cmd.Parameters.AddWithValue("@stock_id", stock_id);
-
-                    int quantity = 0;
-                    MySqlDataReader result = stockCmd.ExecuteReader();
-                    if (result != null) { quantity = Convert.ToInt32(result); }
-
-                    requests.Add(new ShelfRequests(stock, quantity));*/ 
                 }
             }
             catch (Exception e)
             {
-                String edx = e.Message;
                 // TODO: add it to error log in the future
             }
             finally
