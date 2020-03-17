@@ -16,13 +16,18 @@ namespace WindowsFormsApp1
         public MainForm(string username)
         {
             InitializeComponent();
-            DepartmentUserControl newDepartment = new DepartmentUserControl("Electric", "Every electronic on the world!");
-            DepartmentUserControl newDepartment1 = new DepartmentUserControl("Kitchen", "Kitchen supplies");
-            DepartmentUserControl newDepartment2 = new DepartmentUserControl("Bathroom", "Bathroom supplies");
+            List<DepartmentUserControl> controls = new List<DepartmentUserControl>();
+            List<Department> departments = Department.GetAllDepartments();
 
-            flpDepartments.Controls.Add(newDepartment);
-            flpDepartments.Controls.Add(newDepartment1);
-            flpDepartments.Controls.Add(newDepartment2);
+            foreach(Department d in departments)
+            {
+                controls.Add(new DepartmentUserControl(d.Name, d.Description));
+            }
+
+            foreach (DepartmentUserControl department in controls)
+            {
+                flpDepartments.Controls.Add(department);
+            }
 
             this.username = username;
         }

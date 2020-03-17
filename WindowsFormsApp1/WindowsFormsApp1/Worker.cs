@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class Worker
+    public class Worker
     {
         public enum ProfileRoles
         {
