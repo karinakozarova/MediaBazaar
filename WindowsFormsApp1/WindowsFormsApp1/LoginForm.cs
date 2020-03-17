@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,24 +13,39 @@ namespace WindowsFormsApp1
 {
     public partial class LoginForm : Form
     {
+        Worker worker;
         public LoginForm()
         {
             InitializeComponent();
             mediaBazarLogoLogin.BorderStyle = BorderStyle.None;
-
-            // TODO: this is added for debugging now, remove later
-            (new AdministratorShiftsOverview()).Show();
-
-            (new SearchForEmployee()).Show();
-            (new RemoveManager()).Show();
-            (new StockEdit()).Show();
-            (new StockView()).Show();
-
+            worker = new Worker();
         }
 
         private void loginBttn_Click(object sender, EventArgs e)
         {
+            
+            if(String.IsNullOrWhiteSpace(usernameLoginInput.Text))
+            {
+                MessageBox.Show("Enter username");
+                return;
+            }
+            
+            if(String.IsNullOrWhiteSpace(passwordLoginInput.Text))
+            {
+                MessageBox.Show("enter password");
+                return;
+            }
 
+            string username = usernameLoginInput.Text;
+            string psswd = passwordLoginInput.Text;
+            bool isLoggedIn = worker.Login(username,psswd);
+            if (!isLoggedIn)
+            {
+                MessageBox.Show("Wrong credentials");
+                return;
+            }
+            (new MainForm(username)).Show();
+            this.Hide();
         }
     }
 }
