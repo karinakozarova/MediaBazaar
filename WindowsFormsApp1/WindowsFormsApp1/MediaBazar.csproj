@@ -178,11 +178,11 @@
     <Compile Include="RequestStock.Designer.cs">
       <DependentUpon>RequestStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="SearchForEmployee.cs">
+    <Compile Include="SearchForWorker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SearchForEmployee.Designer.cs">
-      <DependentUpon>SearchForEmployee.cs</DependentUpon>
+    <Compile Include="SearchForWorker.Designer.cs">
+      <DependentUpon>SearchForWorker.cs</DependentUpon>
     </Compile>
     <Compile Include="ShelfRestockRequests.cs">
       <SubType>Form</SubType>
@@ -194,6 +194,18 @@
     <Compile Include="StockRequest.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Worker.cs" />
+    <Compile Include="StockEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockEdit.Designer.cs">
+      <DependentUpon>StockEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockView.Designer.cs">
+      <DependentUpon>StockView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddDepartment.resx">
       <DependentUpon>AddDepartment.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,19 +261,25 @@
     <EmbeddedResource Include="RemoveManager.resx">
       <DependentUpon>RemoveManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SearchForWorker.resx">
+      <DependentUpon>SearchForWorker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RequestControl.resx">
       <DependentUpon>RequestControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RequestStock.resx">
       <DependentUpon>RequestStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SearchForEmployee.resx">
-      <DependentUpon>SearchForEmployee.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ShelfRestockRequests.resx">
       <DependentUpon>ShelfRestockRequests.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <EmbeddedResource Include="StockEdit.resx">
+      <DependentUpon>StockEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockView.resx">
+      <DependentUpon>StockView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
