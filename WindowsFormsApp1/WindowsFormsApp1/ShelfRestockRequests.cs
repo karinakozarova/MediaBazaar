@@ -15,9 +15,9 @@ namespace WindowsFormsApp1
         public ShelfRestockRequests()
         {
             InitializeComponent();
-            List<ShelfRequests> requests = ShelfRequests.GetAllShelfRestockRequests();
+            List<StockRequest> requests = StockRequest.GetAllShelfRestockRequests();
 
-            foreach(ShelfRequests request in requests)
+            foreach(StockRequest request in requests)
             {
                 shelfRestockView.Items.Add(new ListViewItem(new[] { "[WIP, in later phase]", request.Name, request.Description, request.Quantity.ToString()}));
             }

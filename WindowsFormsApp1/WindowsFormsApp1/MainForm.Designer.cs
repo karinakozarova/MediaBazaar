@@ -35,13 +35,13 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.stocksTab = new System.Windows.Forms.TabPage();
+            this.requestStockBttn = new System.Windows.Forms.Button();
+            this.viewStocksBttn = new System.Windows.Forms.Button();
             this.viewUpcomingShelfRestocksBttn = new System.Windows.Forms.Button();
             this.createStockBttn = new System.Windows.Forms.Button();
             this.departmentsTab = new System.Windows.Forms.TabPage();
             this.flpDepartments = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
-            this.viewStocksBttn = new System.Windows.Forms.Button();
-            this.requestStockBttn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.employeesTab.SuspendLayout();
             this.stocksTab.SuspendLayout();
@@ -134,6 +134,29 @@
             this.stocksTab.Text = "Stocks";
             this.stocksTab.UseVisualStyleBackColor = true;
             // 
+            // requestStockBttn
+            // 
+            this.requestStockBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.requestStockBttn.Location = new System.Drawing.Point(46, 237);
+            this.requestStockBttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.requestStockBttn.Name = "requestStockBttn";
+            this.requestStockBttn.Size = new System.Drawing.Size(1151, 65);
+            this.requestStockBttn.TabIndex = 30;
+            this.requestStockBttn.Text = "Request Stock";
+            this.requestStockBttn.UseVisualStyleBackColor = true;
+            this.requestStockBttn.Click += new System.EventHandler(this.requestStockBttn_Click);
+            // 
+            // viewStocksBttn
+            // 
+            this.viewStocksBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewStocksBttn.Location = new System.Drawing.Point(46, 133);
+            this.viewStocksBttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.viewStocksBttn.Name = "viewStocksBttn";
+            this.viewStocksBttn.Size = new System.Drawing.Size(1151, 65);
+            this.viewStocksBttn.TabIndex = 29;
+            this.viewStocksBttn.Text = "View Stocks";
+            this.viewStocksBttn.UseVisualStyleBackColor = true;
+            // 
             // viewUpcomingShelfRestocksBttn
             // 
             this.viewUpcomingShelfRestocksBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -189,28 +212,6 @@
             this.label4.Size = new System.Drawing.Size(221, 37);
             this.label4.TabIndex = 12;
             this.label4.Text = "Departments:";
-            // 
-            // viewStocksBttn
-            // 
-            this.viewStocksBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewStocksBttn.Location = new System.Drawing.Point(46, 133);
-            this.viewStocksBttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.viewStocksBttn.Name = "viewStocksBttn";
-            this.viewStocksBttn.Size = new System.Drawing.Size(1151, 65);
-            this.viewStocksBttn.TabIndex = 29;
-            this.viewStocksBttn.Text = "View Stocks";
-            this.viewStocksBttn.UseVisualStyleBackColor = true;
-            // 
-            // requestStockBttn
-            // 
-            this.requestStockBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.requestStockBttn.Location = new System.Drawing.Point(46, 237);
-            this.requestStockBttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.requestStockBttn.Name = "requestStockBttn";
-            this.requestStockBttn.Size = new System.Drawing.Size(1151, 65);
-            this.requestStockBttn.TabIndex = 30;
-            this.requestStockBttn.Text = "Request Stock";
-            this.requestStockBttn.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
