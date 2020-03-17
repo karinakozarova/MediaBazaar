@@ -9,12 +9,25 @@ namespace WindowsFormsApp1
 {
     class Worker
     {
-        private decimal hourlyWage;
+        public enum ProfileRoles
+        {
+            Administratior,
+            Manager,
+            Employee
+        }
+
+        private decimal hourlyWage = 0;
+        private string username;
 
         public bool IsLoggedIn
         {
             get;
             private set;
+        }
+
+        public decimal GetWage()
+        {
+            return this.hourlyWage;
         }
 
         public double TotalHoursWorked()
@@ -24,28 +37,56 @@ namespace WindowsFormsApp1
 
         public bool Login(string username, string password)
         {
+            MySqlConnection conn = Utils.GetConnection();
+            int count = -1;
+
             try
             {
-                MySqlConnection conn = new MySqlConnection("Server=studmysql01.fhict.local;Uid=dbi425113;Database=dbi425113;Pwd=bropro12;");
+                string sql = "SELECT count(id) FROM user where username=@username and password=@password;";
 
-                string sql = "SELECT count(id) FROM user;";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
                 conn.Open();
 
-                // Send the query to the database and do something awesome with it
-
                 Object result = cmd.ExecuteScalar();
-                int count = -1; if (result != null) { count = Convert.ToInt32(result); }
+                if (result != null) { count = Convert.ToInt32(result); }
+                if (count == 1)
+                {
+                    IsLoggedIn = true;
+                    this.username = username;
 
-                conn.Close();
-                IsLoggedIn = true;
-            }   
+                    string userIdQuery = "SELECT id FROM user where username=@username";
+                    MySqlCommand userIdCmd = new MySqlCommand(userIdQuery, conn);
+                    userIdCmd.Parameters.AddWithValue("@username", username);
+                    Object userIdResult = userIdCmd.ExecuteScalar();
+                    int user_id = 0;
+                    if (userIdResult != null) { user_id = Convert.ToInt32(userIdResult); }
+
+                    string wageQuery = "SELECT hourly_wage FROM employee_details where person_id=@user_id";
+
+                    MySqlCommand wageCmd = new MySqlCommand(wageQuery, conn);
+                    wageCmd.Parameters.AddWithValue("@user_id", user_id);
+
+                    Object wageResult = wageCmd.ExecuteScalar();
+                    decimal wage = 0;
+                    if (wageResult != null) { wage = Convert.ToDecimal(wageResult); }
+                    this.hourlyWage = wage;
+                }
+            }
             catch (Exception)
             {
                 IsLoggedIn = false;
             }
+            finally
+            {
+                conn.Close();
+            }
             return IsLoggedIn;
         }
-
+        public override string ToString()
+        {
+            return "Worker";
+        }
     }
 }

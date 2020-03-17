@@ -13,18 +13,12 @@ namespace WindowsFormsApp1
 {
     public partial class LoginForm : Form
     {
+        Worker worker;
         public LoginForm()
         {
             InitializeComponent();
             mediaBazarLogoLogin.BorderStyle = BorderStyle.None;
-
-            // TODO: this is added for debugging now, remove later
-            (new AddStock()).Show();
-            (new SearchForEmployee()).Show();
-            (new RemoveEmployee()).Show();
-            (new ShelfRestockRequests()).Show();
-            (new MainForm()).Show();
-            (new CreateAccount()).Show();
+            worker = new Worker();
         }
 
         private void loginBttn_Click(object sender, EventArgs e)
@@ -32,7 +26,7 @@ namespace WindowsFormsApp1
             
             if(String.IsNullOrWhiteSpace(usernameLoginInput.Text))
             {
-                MessageBox.Show("enter username");
+                MessageBox.Show("Enter username");
                 return;
             }
             
@@ -44,8 +38,14 @@ namespace WindowsFormsApp1
 
             string username = usernameLoginInput.Text;
             string psswd = passwordLoginInput.Text;
-           
-            
+            bool isLoggedIn = worker.Login(username,psswd);
+            if (!isLoggedIn)
+            {
+                MessageBox.Show("Wrong credentials");
+                return;
+            }
+            (new MainForm(username)).Show();
+            this.Hide();
         }
     }
 }

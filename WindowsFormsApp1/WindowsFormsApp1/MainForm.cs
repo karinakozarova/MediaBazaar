@@ -12,15 +12,19 @@ namespace WindowsFormsApp1
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        private string username;
+        public MainForm(string username)
         {
             InitializeComponent();
             DepartmentUserControl newDepartment = new DepartmentUserControl("Electric", "Every electronic on the world!");
             DepartmentUserControl newDepartment1 = new DepartmentUserControl("Kitchen", "Kitchen supplies");
             DepartmentUserControl newDepartment2 = new DepartmentUserControl("Bathroom", "Bathroom supplies");
+
             flpDepartments.Controls.Add(newDepartment);
             flpDepartments.Controls.Add(newDepartment1);
             flpDepartments.Controls.Add(newDepartment2);
+
+            this.username = username;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

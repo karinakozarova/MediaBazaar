@@ -80,12 +80,14 @@
     <Compile Include="AddStock.Designer.cs">
       <DependentUpon>AddStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrator.cs" />
     <Compile Include="AdministratorShiftsOverview.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdministratorShiftsOverview.Designer.cs">
       <DependentUpon>AdministratorShiftsOverview.cs</DependentUpon>
     </Compile>
+    <Compile Include="Announcement.cs" />
     <Compile Include="ApproveManagerRequests.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +100,7 @@
     <Compile Include="CreateAccount.Designer.cs">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Department.cs" />
     <Compile Include="DepartmentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,6 +113,7 @@
     <Compile Include="EditDepartmentForm.Designer.cs">
       <DependentUpon>EditDepartmentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Employee.cs" />
     <Compile Include="FiringRequest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +132,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manager.cs" />
     <Compile Include="ManagerStatistics.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +151,7 @@
     <Compile Include="ModifyEmployee.Designer.cs">
       <DependentUpon>ModifyEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoveEmployee.cs">
@@ -184,6 +190,9 @@
     <Compile Include="ShelfRestockRequests.Designer.cs">
       <DependentUpon>ShelfRestockRequests.cs</DependentUpon>
     </Compile>
+    <Compile Include="Stock.cs" />
+    <Compile Include="StockRequest.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="Worker.cs" />
     <EmbeddedResource Include="AddDepartment.resx">
       <DependentUpon>AddDepartment.cs</DependentUpon>
