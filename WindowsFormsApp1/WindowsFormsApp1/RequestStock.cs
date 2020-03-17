@@ -15,6 +15,27 @@ namespace WindowsFormsApp1
         public RequestStock()
         {
             InitializeComponent();
+
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+
+            List<Stock> stocks = Stock.GetAllStocks();
+            foreach (Stock s in stocks) requestStockStocksCmbbx.Items.Add(new StocksComboBoxItem(s));
+        }
+
+        private void requestStockBttn_Click(object sender, EventArgs e)
+        {
+            if (requestStockQtty.Value < 1)
+            {
+                MessageBox.Show("Enter quantity");
+                return;
+            }
+
+            int quantity = (int)requestStockQtty.Value;
+            int stock_id = ((StocksComboBoxItem)requestStockStocksCmbbx.SelectedItem).Id;
+            StockRequest.CreateStockRequest(stock_id, quantity);
+            this.Hide();
         }
     }
 }

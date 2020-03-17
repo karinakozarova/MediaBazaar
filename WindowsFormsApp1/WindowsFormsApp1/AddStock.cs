@@ -9,6 +9,9 @@ namespace WindowsFormsApp1
         public AddStock()
         {
             InitializeComponent();
+
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             List<Department> departments = Department.GetAllDepartments();
             foreach (Department d in departments) departmentsCmbbxAddingStock.Items.Add(new DepartmentComboBoxItem(d));
         }
