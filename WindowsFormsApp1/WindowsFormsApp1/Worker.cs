@@ -9,12 +9,6 @@ namespace WindowsFormsApp1
 {
     public class Worker
     {
-        public enum ProfileRoles
-        {
-            Administratior,
-            Manager,
-            Employee
-        }
 
         private decimal hourlyWage = 0;
         private string username;
@@ -24,7 +18,6 @@ namespace WindowsFormsApp1
             get;
             private set;
         }
-
         public decimal GetWage()
         {
             return this.hourlyWage;
