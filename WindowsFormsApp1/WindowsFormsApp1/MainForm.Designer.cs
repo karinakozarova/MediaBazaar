@@ -156,6 +156,7 @@
             this.viewStocksBttn.TabIndex = 29;
             this.viewStocksBttn.Text = "View Stocks";
             this.viewStocksBttn.UseVisualStyleBackColor = true;
+            this.viewStocksBttn.Click += new System.EventHandler(this.viewStocksBttn_Click);
             // 
             // viewUpcomingShelfRestocksBttn
             // 

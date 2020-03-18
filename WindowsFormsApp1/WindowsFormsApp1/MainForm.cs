@@ -56,5 +56,10 @@ namespace WindowsFormsApp1
         {
             (new RequestStock()).Show();
         }
+
+        private void viewStocksBttn_Click(object sender, EventArgs e)
+        {
+             (new StockView()).Show();
+        }
     }
 }

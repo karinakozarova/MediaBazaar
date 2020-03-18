@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace WindowsFormsApp1
 {
@@ -59,7 +60,7 @@ namespace WindowsFormsApp1
         }
 
         private void AddStock()
-        {
+        { 
             MySqlConnection conn = Utils.GetConnection();
             try
             {
@@ -75,8 +76,10 @@ namespace WindowsFormsApp1
                 int effectedRows = cmd.ExecuteNonQuery();
                 Id = (int)cmd.LastInsertedId;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Debug.WriteLine(e);
+
                 // TODO: add it to error log in the future
             }
             finally
@@ -99,7 +102,13 @@ namespace WindowsFormsApp1
 
                 while (row.Read())
                 {
-                    Stock s = new Stock(row[0].ToString(), row[1].ToString(), Convert.ToInt32(row[2]), Convert.ToInt32(row[3]), Convert.ToInt32(row[4]), Convert.ToInt32(row[5]));
+                    string name = !String.IsNullOrWhiteSpace(row[0].ToString()) ? row[0].ToString() : "-";
+                    string descr = !String.IsNullOrWhiteSpace(row[1].ToString()) ? row[1].ToString() : "-";
+                    int depo = Convert.ToInt32(row[2]);
+                    int store = Convert.ToInt32(row[3]);
+                    int price = Convert.ToInt32(row[4]);
+                    int department = Convert.ToInt32(row[5]);
+                    Stock s = new Stock(name, descr, depo, store, price, department);
                     s.Id = Convert.ToInt32(row[5]);
                     stocks.Add(s);
                 }
