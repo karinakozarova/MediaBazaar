@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace WindowsFormsApp1
 {
@@ -69,7 +68,7 @@ namespace WindowsFormsApp1
         }
 
         private void AddStock()
-        { 
+        {
             MySqlConnection conn = Utils.GetConnection();
             try
             {
@@ -85,10 +84,8 @@ namespace WindowsFormsApp1
                 int effectedRows = cmd.ExecuteNonQuery();
                 Id = (int)cmd.LastInsertedId;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Debug.WriteLine(e);
-
                 // TODO: add it to error log in the future
             }
             finally
@@ -135,13 +132,14 @@ namespace WindowsFormsApp1
 
         private static string BuildFilterQuery(int departmentId = -1, string productName = null)
         {
-            string fields = "name, description,quantity_in_depo,quantity_in_store, price,department_id,id";
+            string fields = "name, description, quantity_in_depo, quantity_in_store, price, department_id, id";
             string whereClause = "";
 
             if (departmentId != -1 || productName != null)
             {
                 int count = 0;
                 whereClause = "WHERE ";
+                // TODO: this is not secure, find a way to fix it later
                 if (departmentId != -1)
                 {
                     count++;
@@ -151,11 +149,9 @@ namespace WindowsFormsApp1
                 {
                     if (count != 0) whereClause += " AND ";
                     whereClause += "name LIKE '%" + productName + "%'";
-                    // TODO: this is not secure, find a way to fix it later
                 }
             }
-            string sql = "SELECT " + fields + " FROM stock " + whereClause + ';';
-            return sql;
+            return "SELECT " + fields + " FROM stock " + whereClause + ';';
         }
         public static List<Stock> FilterStocks(int departmentId = -1, string productName = null)
         {
@@ -177,14 +173,14 @@ namespace WindowsFormsApp1
                     int store = Convert.ToInt32(row[3]);
                     int price = Convert.ToInt32(row[4]);
                     int department = Convert.ToInt32(row[5]);
+
                     Stock s = new Stock(true, name, descr, depo, store, price, department);
                     s.Id = Convert.ToInt32(row[6]);
                     stocks.Add(s);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                String e = ex.Message;
                 // TODO: add it to error log in the future
             }
             finally
