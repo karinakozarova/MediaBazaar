@@ -194,6 +194,7 @@
     </Compile>
     <Compile Include="Stock.cs" />
     <Compile Include="StockRequest.cs" />
+    <Compile Include="StocksComboBoxItem.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Worker.cs" />
     <Compile Include="StockEdit.cs">
