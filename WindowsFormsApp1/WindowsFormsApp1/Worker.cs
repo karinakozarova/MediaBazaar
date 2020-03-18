@@ -9,13 +9,6 @@ namespace WindowsFormsApp1
 {
     public class Worker
     {
-        public enum ProfileRoles
-        {
-            Administratior,
-            Manager,
-            Employee
-        }
-
         private decimal hourlyWage = 0;
         private string username;
 
@@ -28,6 +21,12 @@ namespace WindowsFormsApp1
         public decimal GetWage()
         {
             return this.hourlyWage;
+        }
+
+        public int WorkerRole
+        {
+            get;
+            private set;
         }
 
         public double TotalHoursWorked()
@@ -72,6 +71,14 @@ namespace WindowsFormsApp1
                     decimal wage = 0;
                     if (wageResult != null) { wage = Convert.ToDecimal(wageResult); }
                     this.hourlyWage = wage;
+
+                    string userTypeQuery = "SELECT account_type FROM user where username=@username";
+                    MySqlCommand userTypeCmd = new MySqlCommand(userTypeQuery, conn);
+                    userTypeCmd.Parameters.AddWithValue("@username", username);
+                    Object userTypeResult = userTypeCmd.ExecuteScalar();
+                    int userType = 0;
+                    if (userTypeResult != null) { userType = Convert.ToInt32(userTypeResult); }
+                    WorkerRole = userType;
                 }
             }
             catch (Exception)

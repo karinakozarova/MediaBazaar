@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
     public partial class MainForm : Form
     {
         private string username;
-        public MainForm(string username)
+        public MainForm(string username, int workerRole)
         {
             InitializeComponent();
             List<DepartmentUserControl> controls = new List<DepartmentUserControl>();
@@ -30,6 +30,22 @@ namespace WindowsFormsApp1
             }
 
             this.username = username;
+
+            if(workerRole == (int)ProfileRoles.ADMINISTRATOR)
+            {
+                btnFireEmployeeRequest.Visible = false;
+                btnHireEmployeeRequest.Visible = false;
+            }
+            else if(workerRole == (int)ProfileRoles.MANAGER)
+            {
+                btnFireManager.Visible = false;
+                btnCreateAdminManager.Visible = false;
+            }
+            else if(workerRole == (int)ProfileRoles.EMPLOYEE)
+            {
+                employeesTab.Hide();
+                tabControl1.TabPages.Remove(employeesTab);
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
