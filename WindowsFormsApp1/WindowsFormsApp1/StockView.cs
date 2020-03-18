@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
             List<Department> departments = Department.GetAllDepartments();
             foreach (Department d in departments) departmentsCmbbxStockView.Items.Add(new DepartmentComboBoxItem(d));
 
-            // populateStocks(Stock.GetAllStocks());
+            populateStocks(Stock.GetAllStocks());
         }
 
         private void populateStocks(List<Stock> stocks)
@@ -26,19 +26,28 @@ namespace WindowsFormsApp1
             stocksViewLbx.Items.Clear();
             foreach (Stock s in stocks)
             {
-                stocksViewLbx.Items.Add(s.Name);
+                stocksViewLbx.Items.Add(new ListViewItem(new[] { s.Name, s.Description, s.QuantityInStore.ToString(), s.QuantityInDepot.ToString(), s.Price.ToString() }));
             }
         }
+
         private void removeStockBttn_Click(object sender, EventArgs e)
         {
-            List<Stock> stocks = Stock.GetAllStocks();
-            foreach (Stock s in stocks) stocksViewLbx.Items.Add(new StocksComboBoxItem(s));
-            //populateStocks();
+
         }
 
         private void editStockBttn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void filterStocksBttn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stocksViewLbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // TODO: on change
         }
     }
 }
