@@ -11,14 +11,13 @@ namespace WindowsFormsApp1
             InitializeComponent();
 
             this.StartPosition = FormStartPosition.CenterScreen;
-
+            departmentsCmbbxAddingStock.Items.Clear();
             List<Department> departments = Department.GetAllDepartments();
             foreach (Department d in departments) departmentsCmbbxAddingStock.Items.Add(new DepartmentComboBoxItem(d));
         }
 
         private void addStockBttn_Click(object sender, EventArgs e)
         {
-
             if (String.IsNullOrWhiteSpace(addStockNameTbx.Text))
             {
                 MessageBox.Show("Enter Stock name");
