@@ -16,11 +16,16 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             List<StockRequest> requests = StockRequest.GetAllShelfRestockRequests();
-
-            foreach(StockRequest request in requests)
+            shelfRestockView.Items.Clear();
+            foreach (StockRequest request in requests)
             {
                 shelfRestockView.Items.Add(new ListViewItem(new[] { "[WIP, in later phase]", request.Name, request.Description, request.Quantity.ToString()}));
             }
+        }
+
+        private void exportToExcelBttn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

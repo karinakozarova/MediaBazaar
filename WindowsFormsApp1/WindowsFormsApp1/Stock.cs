@@ -58,6 +58,15 @@ namespace WindowsFormsApp1
             this.DepartmentId = departmentId;
             AddStock();
         }
+        public Stock(bool skipDb, string name, string description, int quantityInDepot, int quantityInStore, decimal price, int departmentId)
+        {
+            this.Name = name;
+            this.Description = description;
+            this.QuantityInDepot = quantityInDepot;
+            this.QuantityInStore = quantityInStore;
+            this.Price = price;
+            this.DepartmentId = departmentId;
+        }
 
         private void AddStock()
         { 
@@ -108,8 +117,8 @@ namespace WindowsFormsApp1
                     int store = Convert.ToInt32(row[3]);
                     int price = Convert.ToInt32(row[4]);
                     int department = Convert.ToInt32(row[5]);
-                    Stock s = new Stock(name, descr, depo, store, price, department);
-                    s.Id = Convert.ToInt32(row[5]);
+                    Stock s = new Stock(true, name, descr, depo, store, price, department);
+                    s.Id = Convert.ToInt32(row[6]);
                     stocks.Add(s);
                 }
             }

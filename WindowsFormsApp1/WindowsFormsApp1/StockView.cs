@@ -23,15 +23,16 @@ namespace WindowsFormsApp1
 
         private void populateStocks(List<Stock> stocks)
         {
-            stocksLbx.Items.Clear();
+            stocksViewLbx.Items.Clear();
             foreach (Stock s in stocks)
             {
-                stocksLbx.Items.Add(s.Name);
+                stocksViewLbx.Items.Add(s.Name);
             }
         }
         private void removeStockBttn_Click(object sender, EventArgs e)
         {
-            List<Stock> stocks =  Stock.GetAllStocks();
+            List<Stock> stocks = Stock.GetAllStocks();
+            foreach (Stock s in stocks) stocksViewLbx.Items.Add(new StocksComboBoxItem(s));
             //populateStocks();
         }
 

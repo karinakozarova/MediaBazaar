@@ -11,7 +11,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
 
             this.StartPosition = FormStartPosition.CenterScreen;
-
+            departmentsCmbbxAddingStock.Items.Clear();
             List<Department> departments = Department.GetAllDepartments();
             foreach (Department d in departments) departmentsCmbbxAddingStock.Items.Add(new DepartmentComboBoxItem(d));
         }

@@ -34,8 +34,9 @@ namespace WindowsFormsApp1
                 conn.Open();
                 int effectedRows = cmd.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                String e = ex.Message;
                 // TODO: add it to error log in the future
             }
             finally

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.stocksLbx = new System.Windows.Forms.ListBox();
+            this.stocksViewLbx = new System.Windows.Forms.ListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.editStockBttn = new System.Windows.Forms.Button();
             this.removeStockBttn = new System.Windows.Forms.Button();
@@ -38,16 +38,16 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // stocksLbx
+            // stocksViewLbx
             // 
-            this.stocksLbx.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stocksLbx.FormattingEnabled = true;
-            this.stocksLbx.ItemHeight = 44;
-            this.stocksLbx.Location = new System.Drawing.Point(18, 18);
-            this.stocksLbx.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.stocksLbx.Name = "stocksLbx";
-            this.stocksLbx.Size = new System.Drawing.Size(820, 444);
-            this.stocksLbx.TabIndex = 8;
+            this.stocksViewLbx.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stocksViewLbx.FormattingEnabled = true;
+            this.stocksViewLbx.ItemHeight = 44;
+            this.stocksViewLbx.Location = new System.Drawing.Point(18, 18);
+            this.stocksViewLbx.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.stocksViewLbx.Name = "stocksViewLbx";
+            this.stocksViewLbx.Size = new System.Drawing.Size(820, 444);
+            this.stocksViewLbx.TabIndex = 8;
             // 
             // textBox1
             // 
@@ -124,7 +124,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 483);
-            this.Controls.Add(this.stocksLbx);
+            this.Controls.Add(this.stocksViewLbx);
             this.Controls.Add(this.stockNameTbx);
             this.Controls.Add(this.departmentsCmbbxStockView);
             this.Controls.Add(this.groupBox1);
@@ -140,7 +140,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox stocksLbx;
+        private System.Windows.Forms.ListBox stocksViewLbx;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button editStockBttn;
         private System.Windows.Forms.Button removeStockBttn;
