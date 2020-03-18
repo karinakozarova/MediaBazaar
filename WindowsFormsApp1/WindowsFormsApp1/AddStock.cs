@@ -18,7 +18,6 @@ namespace WindowsFormsApp1
 
         private void addStockBttn_Click(object sender, EventArgs e)
         {
-
             if (String.IsNullOrWhiteSpace(addStockNameTbx.Text))
             {
                 MessageBox.Show("Enter Stock name");

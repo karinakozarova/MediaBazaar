@@ -133,6 +133,58 @@ namespace WindowsFormsApp1
             return stocks;
         }
 
+        public static List<Stock> FilterStocks(int departmentId = -1, string productName = null)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+
+            List<Stock> stocks = new List<Stock>();
+            try
+            {
+                string fields = "name, description,quantity_in_depo,quantity_in_store, price,department_id,id";
+                string whereClause = "";
+
+                if(departmentId != -1 || productName != null)
+                {
+                    whereClause = "WHERE ";
+                    if (departmentId != -1)
+                    {
+                        whereClause += "department_id = " + departmentId;
+                    }
+                    else if(productName != null)
+                    {
+                        // TODO
+                    }
+                }
+                string sql = "SELECT " + fields + " FROM stock " + whereClause + ';';
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+                MySqlDataReader row = cmd.ExecuteReader();
+
+                while (row.Read())
+                {
+                    string name = !String.IsNullOrWhiteSpace(row[0].ToString()) ? row[0].ToString() : "-";
+                    string descr = !String.IsNullOrWhiteSpace(row[1].ToString()) ? row[1].ToString() : "-";
+                    int depo = Convert.ToInt32(row[2]);
+                    int store = Convert.ToInt32(row[3]);
+                    int price = Convert.ToInt32(row[4]);
+                    int department = Convert.ToInt32(row[5]);
+                    Stock s = new Stock(true, name, descr, depo, store, price, department);
+                    s.Id = Convert.ToInt32(row[6]);
+                    stocks.Add(s);
+                }
+            }
+            catch (Exception ex)
+            {
+                String e = ex.Message;
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return stocks;
+        }
+
         public bool RemoveStock(int id)
         {
             throw new NotImplementedException();
