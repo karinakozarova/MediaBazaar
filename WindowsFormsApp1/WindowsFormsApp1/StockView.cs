@@ -43,7 +43,8 @@ namespace WindowsFormsApp1
         private void filterStocksBttn_Click(object sender, EventArgs e)
         {
             int departmentId = ((DepartmentComboBoxItem)departmentsCmbbxStockView.SelectedItem).Id;
-            List<Stock> stocks = Stock.FilterStocks(departmentId);
+            string productName = (stockNameTbx.Text != "Stock name" ? stockNameTbx.Text : null);
+            List<Stock> stocks = Stock.FilterStocks(departmentId, productName);
             populateStocks(stocks);
         }
 

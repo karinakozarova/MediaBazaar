@@ -133,6 +133,30 @@ namespace WindowsFormsApp1
             return stocks;
         }
 
+        private static string BuildFilterQuery(int departmentId = -1, string productName = null)
+        {
+            string fields = "name, description,quantity_in_depo,quantity_in_store, price,department_id,id";
+            string whereClause = "";
+
+            if (departmentId != -1 || productName != null)
+            {
+                int count = 0;
+                whereClause = "WHERE ";
+                if (departmentId != -1)
+                {
+                    count++;
+                    whereClause += "department_id = " + departmentId;
+                }
+                if (productName != null)
+                {
+                    if (count != 0) whereClause += " AND ";
+                    whereClause += "name LIKE '%" + productName + "%'";
+                    // TODO: this is not secure, find a way to fix it later
+                }
+            }
+            string sql = "SELECT " + fields + " FROM stock " + whereClause + ';';
+            return sql;
+        }
         public static List<Stock> FilterStocks(int departmentId = -1, string productName = null)
         {
             MySqlConnection conn = Utils.GetConnection();
@@ -140,22 +164,7 @@ namespace WindowsFormsApp1
             List<Stock> stocks = new List<Stock>();
             try
             {
-                string fields = "name, description,quantity_in_depo,quantity_in_store, price,department_id,id";
-                string whereClause = "";
-
-                if(departmentId != -1 || productName != null)
-                {
-                    whereClause = "WHERE ";
-                    if (departmentId != -1)
-                    {
-                        whereClause += "department_id = " + departmentId;
-                    }
-                    else if(productName != null)
-                    {
-                        // TODO
-                    }
-                }
-                string sql = "SELECT " + fields + " FROM stock " + whereClause + ';';
+                String sql = BuildFilterQuery(departmentId, productName);
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();
                 MySqlDataReader row = cmd.ExecuteReader();
