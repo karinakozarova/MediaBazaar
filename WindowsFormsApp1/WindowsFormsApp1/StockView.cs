@@ -6,11 +6,15 @@ namespace WindowsFormsApp1
 {
     public partial class StockView : Form
     {
-        public StockView()
+        public StockView(int workerRole)
         {
             InitializeComponent();
             PopulateDepartments(Department.GetAllDepartments());
             populateStocks(Stock.GetAllStocks());
+            if (workerRole == (int)ProfileRoles.EMPLOYEE)
+            {
+                this.Width = 580;
+            }
         }
 
         private void PopulateDepartments(List<Department> departments)
