@@ -14,13 +14,16 @@ namespace WindowsFormsApp1
     {
         List<DepartmentUserControl> controls;
         List<Department> departments;
+
+        int workerRole;
+
         private string username;
         public MainForm(string username, int workerRole)
         {
             InitializeComponent();
             controls = new List<DepartmentUserControl>();
             UpdateGUI();
-         
+
             this.username = username;
 
             if(workerRole == (int)ProfileRoles.ADMINISTRATOR)
@@ -32,11 +35,14 @@ namespace WindowsFormsApp1
             {
                 btnFireManager.Visible = false;
                 btnCreateAdminManager.Visible = false;
+                addNewDepartmentBttn.Visible = false;
             }
             else if(workerRole == (int)ProfileRoles.EMPLOYEE)
             {
-                employeesTab.Hide();
                 tabControl1.TabPages.Remove(employeesTab);
+                tabControl1.TabPages.Remove(departmentsTab);
+                requestStockBttn.Visible = false;
+                createStockBttn.Visible = false;
             }
         }
 
@@ -75,10 +81,10 @@ namespace WindowsFormsApp1
 
         private void viewStocksBttn_Click(object sender, EventArgs e)
         {
-             (new StockView()).Show();
+             (new StockView(workerRole)).Show();
         }
 
-        private void addNewDepartmentBttn_Click(object sender, EventArgs e)
+        private void addDepartmentBttn_Click(object sender, EventArgs e)
         {
             (new AddDepartment(this)).Show();
             UpdateGUI();
