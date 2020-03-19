@@ -12,24 +12,17 @@ namespace WindowsFormsApp1
 {
     public partial class MainForm : Form
     {
+        List<DepartmentUserControl> controls;
+        List<Department> departments;
+
         int workerRole;
+
         private string username;
         public MainForm(string username, int workerRole)
         {
             InitializeComponent();
-            List<DepartmentUserControl> controls = new List<DepartmentUserControl>();
-            List<Department> departments = Department.GetAllDepartments();
-            this.workerRole = workerRole;
-
-            foreach(Department d in departments)
-            {
-                controls.Add(new DepartmentUserControl(d.Name, d.Description));
-            }
-
-            foreach (DepartmentUserControl department in controls)
-            {
-                flpDepartments.Controls.Add(department);
-            }
+            controls = new List<DepartmentUserControl>();
+            UpdateGUI();
 
             this.username = username;
 
@@ -42,7 +35,7 @@ namespace WindowsFormsApp1
             {
                 btnFireManager.Visible = false;
                 btnCreateAdminManager.Visible = false;
-                btnAddDepartment.Visible = false;
+                addNewDepartmentBttn.Visible = false;
             }
             else if(workerRole == (int)ProfileRoles.EMPLOYEE)
             {
@@ -53,14 +46,22 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        public void UpdateGUI()
         {
+            departments = null;
+            controls.Clear();
+            flpDepartments.Controls.Clear();
+            departments = Department.GetAllDepartments();
 
-        }
+            foreach (Department d in departments)
+            {
+                controls.Add(new DepartmentUserControl(d.DepartmentId, d.Name, d.Description, d.NeededPeople, this));
+            }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
+            foreach (DepartmentUserControl department in controls)
+            {
+                flpDepartments.Controls.Add(department);
+            }
         }
 
         private void createStockBttn_Click(object sender, EventArgs e)
@@ -81,6 +82,12 @@ namespace WindowsFormsApp1
         private void viewStocksBttn_Click(object sender, EventArgs e)
         {
              (new StockView(workerRole)).Show();
+        }
+
+        private void addDepartmentBttn_Click(object sender, EventArgs e)
+        {
+            (new AddDepartment(this)).Show();
+            UpdateGUI();
         }
     }
 }
