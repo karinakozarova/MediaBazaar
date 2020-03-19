@@ -10,26 +10,38 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
+
     public partial class DepartmentUserControl : UserControl
     {
-        public DepartmentUserControl(string name, string description)
+        Department dep;
+        int depId;
+        int neededPeople;
+        public DepartmentUserControl(int departmentid, string name, string department, int neededpeople)
         {
             InitializeComponent();
             lblDepartmentName.Text = name;
-            lblDepartmentDescription.Text = description;
+            lblDepartmentDescription.Text = department;
+            neededPeople = neededpeople;
+            depId = departmentid;
         }
 
         private void BtnEditDepartment_Click(object sender, EventArgs e)
         {
             string name = lblDepartmentName.Text;
             string description = lblDepartmentDescription.Text;
-            EditDepartmentForm editDepartment = new EditDepartmentForm(name, description);
+            EditDepartmentForm editDepartment = new EditDepartmentForm(depId, name, description, neededPeople);
             editDepartment.Show();
         }
 
         private void BtnRemoveDepartment_Click(object sender, EventArgs e)
         {
-
+            foreach (Department dep in Department.GetAllDepartments())
+            {
+                if (dep.DepartmentId == depId)
+                {
+                    dep.RemoveDepartment();
+                }
+            }
         }
     }
 }

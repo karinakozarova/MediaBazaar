@@ -10,11 +10,42 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
+    
     public partial class AddDepartment : Form
     {
+        Department department;
         public AddDepartment()
         {
             InitializeComponent();
+        }
+
+        private void addDepartmentbttn_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(tbxName.Text))
+            {
+                MessageBox.Show("Enter Stock name");
+                return;
+            }
+
+
+            if (numPeople.Value < 1)
+            {
+                MessageBox.Show("Enter employees quantity");
+                return;
+            }
+
+            int neededpeople = Convert.ToInt32(numPeople.Value);
+            string description = rtbDescription.Text;
+            if (String.IsNullOrWhiteSpace(description))
+            {
+                department = new Department(tbxName.Text, null, neededpeople);
+                this.Hide();
+            }
+            else
+            {
+                department = new Department(tbxName.Text, description, neededpeople);
+                this.Hide();
+            }
         }
     }
 }

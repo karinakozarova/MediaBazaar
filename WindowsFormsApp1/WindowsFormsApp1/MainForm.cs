@@ -12,23 +12,15 @@ namespace WindowsFormsApp1
 {
     public partial class MainForm : Form
     {
+        List<DepartmentUserControl> controls;
+        List<Department> departments;
         private string username;
         public MainForm(string username, int workerRole)
         {
             InitializeComponent();
-            List<DepartmentUserControl> controls = new List<DepartmentUserControl>();
-            List<Department> departments = Department.GetAllDepartments();
-
-            foreach(Department d in departments)
-            {
-                controls.Add(new DepartmentUserControl(d.Name, d.Description));
-            }
-
-            foreach (DepartmentUserControl department in controls)
-            {
-                flpDepartments.Controls.Add(department);
-            }
-
+            controls = new List<DepartmentUserControl>();
+            UpdateGUI();
+         
             this.username = username;
 
             if(workerRole == (int)ProfileRoles.ADMINISTRATOR)
@@ -46,6 +38,26 @@ namespace WindowsFormsApp1
                 employeesTab.Hide();
                 tabControl1.TabPages.Remove(employeesTab);
             }
+        }
+
+        private void UpdateGUI()
+        {
+            departments = null;
+            controls.Clear();
+            flpDepartments.Controls.Clear();
+            departments = Department.GetAllDepartments();
+
+            foreach (Department d in departments)
+            {
+                controls.Add(new DepartmentUserControl(d.DepartmentId, d.Name, d.Description, d.NeededPeople));
+            }
+
+            foreach (DepartmentUserControl department in controls)
+            {
+                flpDepartments.Controls.Add(department);
+            }
+
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -76,6 +88,16 @@ namespace WindowsFormsApp1
         private void viewStocksBttn_Click(object sender, EventArgs e)
         {
              (new StockView()).Show();
+        }
+
+        private void addDepartmentbttn_Click(object sender, EventArgs e)
+        {
+            (new AddDepartment()).Show();
+        }
+
+        private void refreshdepartmentpanelbttn_Click(object sender, EventArgs e)
+        {
+            UpdateGUI();
         }
     }
 }
