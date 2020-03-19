@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,25 +14,44 @@ namespace WindowsFormsApp1
    
     public partial class AddOtherContacts : Form
     {
+        
         public AddOtherContacts()
         {
             InitializeComponent();
+            CreateAccount ca = new CreateAccount(FirstName, LastName, DateOfBirth, Email, PhoneNumber);
         }
-        Person person;
+        Person p;
+       
+        string firstName;
+        string lastName;
+        DateTime dateOfBirth;        //adds other contacts to people
+        string email;
+        long phoneN;
+        public string FirstName { get { return firstName; }private set { firstName = tbFirstName.Text; } }
+        public string LastName { get { return lastName; } private set { lastName = tbLastName.Text; } }
+        public DateTime DateOfBirth { get { return dateOfBirth; } private set { dateOfBirth = dtpBirthdate.Value; } }
+        
+        public long PhoneNumber
+        {
+            get { return phoneN; }
+            private set { phoneN = Convert.ToInt64(tbPhoneNumber.Text); }
+        }
+        public string Email
+        {
+            get { return email; }
+            private set { email = tbEmail.Text; }
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string firstName = tbFirstName.Text;
-            string lastName = tbLastName.Text;
-            DateTime dateOfBirth = dtpBirthdate.Value;        //adds other contacts to people
-            string email = tbEmail.Text;
-            long phoneN = Convert.ToInt64(tbPhoneNumber.Text);
-           person =  new Person(firstName, lastName, dateOfBirth, phoneN, email);
-            this.Close();
+             FirstName = tbFirstName.Text;
+             LastName = tbLastName.Text;
+             DateOfBirth = dtpBirthdate.Value;        //adds other contacts to people
+             Email = tbEmail.Text;
+            PhoneNumber = Convert.ToInt64(tbPhoneNumber.Text);
+            p = new Person(FirstName, LastName, DateOfBirth, PhoneNumber, Email);
+           
         }
 
-        public Person OtherContact() //how to store it in db
-        {
-            return person;
-        }
+      
     }
 }

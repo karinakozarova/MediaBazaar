@@ -6,7 +6,6 @@ namespace WindowsFormsApp1
     public class Person
     {
         private int id;
-        private string username;
         private string firstName;
         private string lastName;
         private DateTime dateOfBirth;
@@ -17,7 +16,7 @@ namespace WindowsFormsApp1
         private long phoneNumber;
         private string email;
 
-        public string Username { get { return username; } }
+
         public string FirstName {get { return firstName; }}
         public string LastName { get { return lastName; } }
         public DateTime DateOFBirth { get { return dateOfBirth; } }
@@ -25,6 +24,11 @@ namespace WindowsFormsApp1
         {
             get { return street; }
            private set{ street = value; } 
+        }
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
         }
 
         public string Postcode 
@@ -53,9 +57,8 @@ namespace WindowsFormsApp1
            private set { email = value; }
         }
 
-        public Person(string username, string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email)
+        public Person(string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email)
         {
-            this.username = username;
             this.firstName = firstName;
             this.lastName = lastName;
             this.dateOfBirth = dateOfBirth;
@@ -82,7 +85,7 @@ namespace WindowsFormsApp1
 
             try
             {
-                string sql = "INSERT INTO person(first_name, last_name, date_of_birth, phone_number, email) VALUES (@first_name, @last_name, @date_of_birth, @phone_number, @email, 1);";
+                string sql = "INSERT INTO person(first_name, last_name, date_of_birth, phone_number, email) VALUES (@first_name, @last_name, @date_of_birth, @phone_number, @email);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@first_name", FirstName);
                 cmd.Parameters.AddWithValue("@last_name", LastName);
@@ -93,9 +96,9 @@ namespace WindowsFormsApp1
                 int effectedRows = cmd.ExecuteNonQuery();
                 this.id = (int)cmd.LastInsertedId;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: add it to error log in the future
+                String e = ex.Message;
             }
             finally
             {
@@ -103,6 +106,38 @@ namespace WindowsFormsApp1
             }
 
         }
+        //private void AddWorker()
+        //{
+        //    MySqlConnection conn = Utils.GetConnection();
+
+        //    try
+        //    {
+        //        string sql = "INSERT INTO person(username, first_name, last_name, date_of_birth, street, postcode, region, country, phone_number, email) VALUES (@username, @first_name, @last_name, @date_of_birth,@street, @postcode, @region, @country, @phone_number, @email);";
+        //        MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //        cmd.Parameters.AddWithValue("@username", username);
+        //        cmd.Parameters.AddWithValue("@first_name", FirstName);
+        //        cmd.Parameters.AddWithValue("@last_name", LastName);
+        //        cmd.Parameters.AddWithValue("@date_of_birth", DateOFBirth);
+        //        cmd.Parameters.AddWithValue("@street", street);
+        //        cmd.Parameters.AddWithValue("@postcode", Postcode);
+        //        cmd.Parameters.AddWithValue("@region", region);
+        //        cmd.Parameters.AddWithValue("@country", country);
+        //        cmd.Parameters.AddWithValue("@phone_number", PhoneNumber);
+        //        cmd.Parameters.AddWithValue("@email", Email);
+        //        conn.Open();
+        //        int effectedRows = cmd.ExecuteNonQuery();
+        //        this.id = (int)cmd.LastInsertedId;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        String e = ex.Message;
+        //    }
+        //    finally
+        //    {
+        //        conn.Close();
+        //    }
+
+        //}
         public string GetName()
         {
             return firstName + " " + lastName;

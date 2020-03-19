@@ -17,19 +17,35 @@ namespace WindowsFormsApp1
         AddOtherContacts adc;
         List<int> workdays = new List<int>();
         List<int> workshifts = new List<int>();
-        int user_id = 0;
+        
+        string username;
+
         public CreateAccount()
         {
             InitializeComponent();
+            pc = new PeopleController();
+            adc = new AddOtherContacts( );
+            
         }
-
+        string contactFirstName;
+        string contactLastName;
+        DateTime contactDateOFBirth;
+        string contactEmail;
+        long contactPhone;
+        public CreateAccount(string contactFirstName, string contactLastName, DateTime contactDateOFBirth, string contactEmail, long contactPhone)
+        {
+            this.contactFirstName = contactFirstName;
+            this.contactLastName = contactLastName;
+            this.contactDateOFBirth = contactDateOFBirth;
+            this.contactEmail = contactEmail;
+            this.contactPhone = contactPhone;
+        }
         private void btnSendRequest_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = Utils.GetConnection();
             try
             {
-                
-                string username = tbUsername.Text;
+                this.username = tbUsername.Text;
                 string firstName = tbFirstName.Text;
                 string lastName = tbLastName.Text;
                 DateTime dateOfBirth = dtpBirthdate.Value;
@@ -38,14 +54,14 @@ namespace WindowsFormsApp1
                 string region = tbRegion.Text;
                 string country = tbCountry.Text;
                 string email = tbEmail.Text;
+                decimal hourlyWage = nHourlyWage.Value;
                 long phoneN = Convert.ToInt64(tbPhoneNumber.Text);
-                pc.CreateAccount(username, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneN, email); //adds person to people
-
+                pc.CreateWorker(firstName, lastName, dateOfBirth, street, postcode, region, country, phoneN, email, username, hourlyWage);//adds worker to people
 
                 string workdaysQuery = "INSERT into employee_working_days (employee_id, week_day_id) VALUE(@userId,@weekDayId)";
                 MySqlCommand workdaysCmd = new MySqlCommand(workdaysQuery, conn);
                 conn.Open();
-                workdaysCmd.Parameters.AddWithValue("@userId", user_id);
+                //workdaysCmd.Parameters.AddWithValue("@userId", user_id);
                 foreach (int d in workdays)
                 {
                     workdaysCmd.Parameters.AddWithValue("@weekDayId", d);
@@ -57,14 +73,54 @@ namespace WindowsFormsApp1
                 string shiftQuery = "INSERT into employee_working_days (employee_id, shifts) VALUE(@userId,@shifts)";
                 MySqlCommand shiftQueryCmd = new MySqlCommand(shiftQuery, conn);
                 conn.Open();
-                shiftQueryCmd.Parameters.AddWithValue("@userId", user_id);
+               // shiftQueryCmd.Parameters.AddWithValue("@userId", user_id);
                 foreach (int s in workshifts)
                 {
                     shiftQueryCmd.Parameters.AddWithValue("@shifts", s);
 
                     shiftQueryCmd.ExecuteNonQuery();
                 }
-                conn.Close();
+
+                ////selecting id by username
+                //string userIdQuery = "SELECT id FROM person where username=@username";
+                //MySqlCommand userIdCmd = new MySqlCommand(userIdQuery, conn);
+
+                //userIdCmd.Parameters.AddWithValue("@username", username);
+                //Object userIdResult = userIdCmd.ExecuteScalar();
+
+                //if (userIdResult != null)
+                //{
+                //    user_id = Convert.ToInt32(userIdResult);
+                //}
+                ////string otherContactIdQuery = "SELECT id FROM person where id=@contactId";
+                ////MySqlCommand otherContactIdCmd = new MySqlCommand(otherContactIdQuery, conn);
+
+                ////userIdCmd.Parameters.AddWithValue("@ContactId", adc.OtherContactId());
+                ////Object otherContactIdResult = userIdCmd.ExecuteScalar();
+                ////int contact_id = 0;
+                ////if (userIdResult != null)
+                ////{
+                ////    contact_id = Convert.ToInt32(userIdResult);
+                ////}
+
+                //string contactIdQuery = "INSERT into contact_person(employee_id, contact_person_id) VALUES( @userId, @contactId);";
+                //MySqlCommand contactIdCmd = new MySqlCommand(contactIdQuery, conn);
+                //contactIdCmd.Parameters.AddWithValue("@userId", user_id);
+                //contactIdCmd.Parameters.AddWithValue("@contactId", adc.OtherContactId());
+
+                //string findContactIdQuery = "SELECT p.contact_person_id FROM Person AS p INNER JOIN contact_person AS c ON p.id=c.contact_person_id";
+                //MySqlCommand findContactIdCmd = new MySqlCommand(findContactIdQuery, conn);
+                //MySqlDataReader dr = findContactIdCmd.ExecuteReader();   ///not sure
+                //List<Person> contactPeople = new List<Person>();
+                //while (dr.Read())
+                //{
+                //    contactPeople.Add();
+                //}
+                //conn.Close();
+
+
+
+
                 if (cbAdmin.Checked)
                 {
                     ProfileRoles role = ProfileRoles.ADMINISTRATOR;
@@ -122,54 +178,92 @@ namespace WindowsFormsApp1
             }
             catch(Exception ex) 
             {
-                ex.Message;
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
         }
 
         private void btnAddOtherContact_Click(object sender, EventArgs e)
         {
-            //string username = tbUsername.Text;
-            //MySqlConnection conn = Utils.GetConnection();
-            //try
-            //{
-            //    string userIdQuery = "SELECT id FROM person where username=@username";
-            //    MySqlCommand userIdCmd = new MySqlCommand(userIdQuery, conn);
-            //    conn.Open();
-            //    userIdCmd.Parameters.AddWithValue("@username", username);
-            //    Object userIdResult = userIdCmd.ExecuteScalar();
+            string username = tbUsername.Text;
+            int user_id = 0;
+            int ContactId=0;
+            int count = -1;
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                string userIdQuery = "SELECT id FROM person where username=@username;";
+                MySqlCommand userIdCmd = new MySqlCommand(userIdQuery, conn);
+                userIdCmd.Parameters.AddWithValue("@username", username);
+                conn.Open();
+                Object userIdResult = userIdCmd.ExecuteScalar();
 
-            //    if (userIdResult != null)
-            //    {
-            //        user_id = Convert.ToInt32(userIdResult);
-            //    }
-            //    string otherContactIdQuery = "SELECT id FROM person where username=@ContactName";
-            //    MySqlCommand otherContactIdCmd = new MySqlCommand(otherContactIdQuery, conn);
+                if (userIdResult != null)
+                {
+                    user_id = Convert.ToInt32(userIdResult);
+                }
 
-            //    userIdCmd.Parameters.AddWithValue("@ContactName", adc.OtherContact());
-            //    Object otherContactIdResult = userIdCmd.ExecuteScalar();
-            //    int contact_id = 0;
-            //    if (userIdResult != null)
-            //    {
-            //        contact_id = Convert.ToInt32(userIdResult);
-            //    }
-            //    string contactIdQuery = "INSERT into contact_person(employee_id, contact_person_id) VALUE( @userId, @contactId)";
-            //    MySqlCommand contactIdCmd = new MySqlCommand(contactIdQuery, conn);
-            //    contactIdCmd.Parameters.AddWithValue("@userId", user_id);
-            //    contactIdCmd.Parameters.AddWithValue("@contactId", contact_id);
+                
 
-            //    string findContactIdQuery = "SELECT p.contact_person_id FROM Person AS p INNER JOIN contact_person AS c ON p.id=c.contact_person_id";
-            //    MySqlCommand findContactIdCmd = new MySqlCommand(findContactIdQuery, conn);
-            //    MySqlDataReader dr = findContactIdCmd.ExecuteReader();   ///not sure
-            //    List<Person> contactPeople = new List<Person>();
-            //    while (dr.Read())
-            //    {
-            //        contactPeople.Add();
-            //    }
-            //    conn.Close();
-            //}
-            //catch (Exception)
-            //{
-            //}
+                string selectContactIdQuery = "SELECT id FROM person where first_name=@firstName AND last_name=@lastName AND date_of_birth=@dateOfBirth AND email=@email AND phone_number=@phoneN";
+                    MySqlCommand selectContactIdCmd = new MySqlCommand(selectContactIdQuery, conn);
+                    selectContactIdCmd.Parameters.AddWithValue("@firstName", contactFirstName);
+                    selectContactIdCmd.Parameters.AddWithValue("@lastName", contactLastName);
+                    selectContactIdCmd.Parameters.AddWithValue("@dateOfBirth", contactDateOFBirth);
+                    selectContactIdCmd.Parameters.AddWithValue("@email", contactEmail);
+                    selectContactIdCmd.Parameters.AddWithValue("@phoneN", contactPhone);
+                    Object contactIdResult = selectContactIdCmd.ExecuteScalar();
+
+                    if (contactIdResult != null)
+                    {
+                        ContactId = Convert.ToInt32(contactIdResult);
+                    }
+
+                    //string otherContactIdQuery = "SELECT id FROM person where id=@contactId";
+                    //MySqlCommand otherContactIdCmd = new MySqlCommand(otherContactIdQuery, conn);
+
+                    //userIdCmd.Parameters.AddWithValue("@ContactId", adc.OtherContactId());
+                    //Object otherContactIdResult = userIdCmd.ExecuteScalar();
+                    //int contact_id = 0;
+                    //if (userIdResult != null)
+                    //{
+                    //    contact_id = Convert.ToInt32(userIdResult);
+                    //}
+
+                    string contactIdQuery = "INSERT INTO contact_person (employee_id, contact_person_id) VALUES (@userId, @contactId);";
+                    MySqlCommand contactIdCmd = new MySqlCommand(contactIdQuery, conn);
+
+                    contactIdCmd.Parameters.AddWithValue("@userId", user_id);
+                    contactIdCmd.Parameters.AddWithValue("@contactId", ContactId);
+
+                    //string findContactIdQuery = "SELECT p.contact_person_id FROM Person AS p INNER JOIN contact_person AS c ON p.id=c.contact_person_id";
+                    //MySqlCommand findContactIdCmd = new MySqlCommand(findContactIdQuery, conn);
+                    //MySqlDataReader dr = findContactIdCmd.ExecuteReader();   ///not sure
+                    //List<Person> contactPeople = new List<Person>();
+                    //while (dr.Read())
+                    //{
+                    //    contactPeople.Add();
+                    //}
+                    //conn.Close();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void btnOpenContact_Click(object sender, EventArgs e)
+        {
+            AddOtherContacts aoc = new AddOtherContacts();
+            aoc.Show();
         }
     }
 }

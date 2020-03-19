@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    public class Employee: Worker
+    public class Employee
     {
         public override string ToString()
         {

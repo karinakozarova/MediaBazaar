@@ -9,7 +9,6 @@ namespace WindowsFormsApp1
     
     class PeopleController
     {
-        private List<Person> people = new List<Person>();
         public void ApproveFire()
         {
 
@@ -35,9 +34,13 @@ namespace WindowsFormsApp1
         {
 
         }
-        public void CreateAccount(string username, string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email)
+        public void CreatePerson(string firstName, string lastName, DateTime dateOfBirth, long phoneNumber, string email)
         {
-            people.Add(new Person(username, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneNumber, email));
+          Person person = new Person(firstName, lastName, dateOfBirth, phoneNumber, email);
+        }
+        public void CreateWorker(string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email, string username, decimal hourlyWage)
+        {
+            Worker worker = new Worker(firstName, lastName, dateOfBirth, street, postcode, region, country, phoneNumber, email, username, hourlyWage);
         }
 
     }

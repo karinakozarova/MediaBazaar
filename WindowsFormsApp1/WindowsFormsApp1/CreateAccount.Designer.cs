@@ -67,6 +67,7 @@
             this.tbCountry = new System.Windows.Forms.TextBox();
             this.btnAddOtherContact = new System.Windows.Forms.Button();
             this.lbContacts = new System.Windows.Forms.ListBox();
+            this.btnOpenContact = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nHourlyWage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -505,10 +506,10 @@
             // btnAddOtherContact
             // 
             this.btnAddOtherContact.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddOtherContact.Location = new System.Drawing.Point(488, 206);
+            this.btnAddOtherContact.Location = new System.Drawing.Point(635, 206);
             this.btnAddOtherContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddOtherContact.Name = "btnAddOtherContact";
-            this.btnAddOtherContact.Size = new System.Drawing.Size(229, 70);
+            this.btnAddOtherContact.Size = new System.Drawing.Size(195, 70);
             this.btnAddOtherContact.TabIndex = 91;
             this.btnAddOtherContact.Text = "Add contact";
             this.btnAddOtherContact.UseVisualStyleBackColor = true;
@@ -523,11 +524,24 @@
             this.lbContacts.Size = new System.Drawing.Size(313, 228);
             this.lbContacts.TabIndex = 92;
             // 
+            // btnOpenContact
+            // 
+            this.btnOpenContact.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenContact.Location = new System.Drawing.Point(385, 206);
+            this.btnOpenContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnOpenContact.Name = "btnOpenContact";
+            this.btnOpenContact.Size = new System.Drawing.Size(229, 70);
+            this.btnOpenContact.TabIndex = 93;
+            this.btnOpenContact.Text = "Input contact";
+            this.btnOpenContact.UseVisualStyleBackColor = true;
+            this.btnOpenContact.Click += new System.EventHandler(this.btnOpenContact_Click);
+            // 
             // CreateAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1376, 687);
+            this.Controls.Add(this.btnOpenContact);
             this.Controls.Add(this.lbContacts);
             this.Controls.Add(this.btnAddOtherContact);
             this.Controls.Add(this.tbCountry);
@@ -617,5 +631,6 @@
         private System.Windows.Forms.TextBox tbCountry;
         private System.Windows.Forms.Button btnAddOtherContact;
         private System.Windows.Forms.ListBox lbContacts;
+        private System.Windows.Forms.Button btnOpenContact;
     }
 }
