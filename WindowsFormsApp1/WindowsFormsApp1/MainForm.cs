@@ -12,12 +12,14 @@ namespace WindowsFormsApp1
 {
     public partial class MainForm : Form
     {
+        int workerRole;
         private string username;
         public MainForm(string username, int workerRole)
         {
             InitializeComponent();
             List<DepartmentUserControl> controls = new List<DepartmentUserControl>();
             List<Department> departments = Department.GetAllDepartments();
+            this.workerRole = workerRole;
 
             foreach(Department d in departments)
             {
@@ -40,11 +42,14 @@ namespace WindowsFormsApp1
             {
                 btnFireManager.Visible = false;
                 btnCreateAdminManager.Visible = false;
+                btnAddDepartment.Visible = false;
             }
             else if(workerRole == (int)ProfileRoles.EMPLOYEE)
             {
-                employeesTab.Hide();
                 tabControl1.TabPages.Remove(employeesTab);
+                tabControl1.TabPages.Remove(departmentsTab);
+                requestStockBttn.Visible = false;
+                createStockBttn.Visible = false;
             }
         }
 
@@ -75,7 +80,7 @@ namespace WindowsFormsApp1
 
         private void viewStocksBttn_Click(object sender, EventArgs e)
         {
-             (new StockView()).Show();
+             (new StockView(workerRole)).Show();
         }
     }
 }
