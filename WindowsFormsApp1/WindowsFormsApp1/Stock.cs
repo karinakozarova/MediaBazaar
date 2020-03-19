@@ -6,6 +6,7 @@ namespace WindowsFormsApp1
 {
     public class Stock
     {
+        private const string tableName = "stock";
         public int Id
         {
             get;
@@ -57,6 +58,33 @@ namespace WindowsFormsApp1
             this.DepartmentId = departmentId;
             AddStock();
         }
+
+        public static void EditStock(int stockId, string name, decimal price, decimal storeQ, decimal depoQ)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                string sql = "UPDATE " + tableName + " SET name = @name, price = @price, quantity_in_store = @quantity_in_store, quantity_in_depo = @quantity_in_depo WHERE id = @id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@price", price);
+                cmd.Parameters.AddWithValue("@quantity_in_store", storeQ);
+                cmd.Parameters.AddWithValue("@quantity_in_depo", depoQ);
+                cmd.Parameters.AddWithValue("@id", stockId);
+  
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception )
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public Stock(bool skipDb, string name, string description, int quantityInDepot, int quantityInStore, decimal price, int departmentId)
         {
             this.Name = name;
@@ -190,9 +218,60 @@ namespace WindowsFormsApp1
             return stocks;
         }
 
-        public bool RemoveStock(int id)
+        public static Stock GetStockById(int id)
         {
-            throw new NotImplementedException();
+            MySqlConnection conn = Utils.GetConnection();
+            Stock s = null;
+            try
+            {
+                string sql = "SELECT name, description,quantity_in_depo,quantity_in_store, price,department_id FROM stock WHERE id=@id;";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+                cmd.Parameters.AddWithValue("@id", id);
+                MySqlDataReader row = cmd.ExecuteReader();
+
+                while (row.Read())
+                {
+                    string name = !String.IsNullOrWhiteSpace(row[0].ToString()) ? row[0].ToString() : "-";
+                    string descr = !String.IsNullOrWhiteSpace(row[1].ToString()) ? row[1].ToString() : "-";
+                    int depo = Convert.ToInt32(row[2]);
+                    int store = Convert.ToInt32(row[3]);
+                    int price = Convert.ToInt32(row[4]);
+                    int department = Convert.ToInt32(row[5]);
+                    s = new Stock(true, name, descr, depo, store, price, department);
+                    s.Id = Convert.ToInt32(row[6]);
+                }
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return s;
+
+        }
+        public static void Remove(int id)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                string sql = "DELETE FROM stock WHERE id=@id;";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                conn.Open();
+                int effectedRows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         public int GetTotalQuantity()

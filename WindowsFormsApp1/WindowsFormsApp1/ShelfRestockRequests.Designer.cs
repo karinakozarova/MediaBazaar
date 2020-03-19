@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.shelfRestockView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,7 +47,7 @@
             this.shelfRestockView.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shelfRestockView.HideSelection = false;
             this.shelfRestockView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.shelfRestockView.Location = new System.Drawing.Point(42, 39);
             this.shelfRestockView.Name = "shelfRestockView";
             this.shelfRestockView.Size = new System.Drawing.Size(1128, 415);
@@ -58,12 +58,12 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Arrival Date";
-            this.columnHeader1.Width = 200;
+            this.columnHeader1.Width = 0;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Name";
-            this.columnHeader2.Width = 200;
+            this.columnHeader2.Width = 300;
             // 
             // columnHeader3
             // 

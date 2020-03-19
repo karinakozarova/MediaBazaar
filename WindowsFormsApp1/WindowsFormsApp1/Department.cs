@@ -38,6 +38,35 @@ namespace WindowsFormsApp1
             AddDepartment();
         }
 
+        internal static Department GetDepartmentById(int departmentId)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+
+            Department department = null;
+            try
+            {
+                string sql = "SELECT name, description, needed_people, id FROM " + tableName + " WHERE id=@id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", departmentId);
+                conn.Open();
+                MySqlDataReader row = cmd.ExecuteReader();
+
+                while (row.Read())
+                {
+                    department = new Department(row[0].ToString(), row[1].ToString(), Convert.ToInt32(row[2]), Convert.ToInt32(row[3]));
+                }
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return department;
+        }
+
         public List<Employee> GetDepartmentEmployees()
         {
             throw new NotImplementedException();

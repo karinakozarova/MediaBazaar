@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.addStockNameTbx = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.StockQuantityLbl = new System.Windows.Forms.Label();
             this.indepoQuantityInput = new System.Windows.Forms.NumericUpDown();
             this.addStockBttn = new System.Windows.Forms.Button();
             this.departmentsCmbbxAddingStock = new System.Windows.Forms.ComboBox();
             this.inStoreQuantityInput = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
+            this.StoreStockQttyLbl = new System.Windows.Forms.Label();
             this.pricePerItemTbx = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.pricePerItemLbl = new System.Windows.Forms.Label();
+            this.addStockNameLbl = new System.Windows.Forms.Label();
             this.descriptionTbx = new System.Windows.Forms.RichTextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.addStockDescriptionLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.indepoQuantityInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inStoreQuantityInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pricePerItemTbx)).BeginInit();
@@ -54,21 +54,21 @@
             this.addStockNameTbx.TabIndex = 0;
             this.addStockNameTbx.Text = "Name";
             // 
-            // label1
+            // StockQuantityLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(32, 475);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 44);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "In depo:";
+            this.StockQuantityLbl.AutoSize = true;
+            this.StockQuantityLbl.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StockQuantityLbl.Location = new System.Drawing.Point(32, 401);
+            this.StockQuantityLbl.Name = "StockQuantityLbl";
+            this.StockQuantityLbl.Size = new System.Drawing.Size(150, 44);
+            this.StockQuantityLbl.TabIndex = 2;
+            this.StockQuantityLbl.Text = "In depo:";
             // 
             // indepoQuantityInput
             // 
             this.indepoQuantityInput.CausesValidation = false;
             this.indepoQuantityInput.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.indepoQuantityInput.Location = new System.Drawing.Point(40, 532);
+            this.indepoQuantityInput.Location = new System.Drawing.Point(40, 452);
             this.indepoQuantityInput.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -81,7 +81,7 @@
             // addStockBttn
             // 
             this.addStockBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addStockBttn.Location = new System.Drawing.Point(40, 727);
+            this.addStockBttn.Location = new System.Drawing.Point(40, 603);
             this.addStockBttn.Name = "addStockBttn";
             this.addStockBttn.Size = new System.Drawing.Size(453, 65);
             this.addStockBttn.TabIndex = 6;
@@ -93,7 +93,7 @@
             // 
             this.departmentsCmbbxAddingStock.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.departmentsCmbbxAddingStock.FormattingEnabled = true;
-            this.departmentsCmbbxAddingStock.Location = new System.Drawing.Point(40, 635);
+            this.departmentsCmbbxAddingStock.Location = new System.Drawing.Point(40, 530);
             this.departmentsCmbbxAddingStock.Name = "departmentsCmbbxAddingStock";
             this.departmentsCmbbxAddingStock.Size = new System.Drawing.Size(453, 52);
             this.departmentsCmbbxAddingStock.TabIndex = 5;
@@ -102,7 +102,7 @@
             // inStoreQuantityInput
             // 
             this.inStoreQuantityInput.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inStoreQuantityInput.Location = new System.Drawing.Point(298, 532);
+            this.inStoreQuantityInput.Location = new System.Drawing.Point(298, 453);
             this.inStoreQuantityInput.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -112,20 +112,20 @@
             this.inStoreQuantityInput.Size = new System.Drawing.Size(195, 47);
             this.inStoreQuantityInput.TabIndex = 4;
             // 
-            // label2
+            // StoreStockQttyLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(280, 475);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 44);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "In store:";
+            this.StoreStockQttyLbl.AutoSize = true;
+            this.StoreStockQttyLbl.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StoreStockQttyLbl.Location = new System.Drawing.Point(280, 401);
+            this.StoreStockQttyLbl.Name = "StoreStockQttyLbl";
+            this.StoreStockQttyLbl.Size = new System.Drawing.Size(147, 44);
+            this.StoreStockQttyLbl.TabIndex = 7;
+            this.StoreStockQttyLbl.Text = "In store:";
             // 
             // pricePerItemTbx
             // 
             this.pricePerItemTbx.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pricePerItemTbx.Location = new System.Drawing.Point(40, 391);
+            this.pricePerItemTbx.Location = new System.Drawing.Point(40, 338);
             this.pricePerItemTbx.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -135,61 +135,61 @@
             this.pricePerItemTbx.Size = new System.Drawing.Size(453, 47);
             this.pricePerItemTbx.TabIndex = 2;
             // 
-            // label3
+            // pricePerItemLbl
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 344);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(252, 44);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Price per item:";
+            this.pricePerItemLbl.AutoSize = true;
+            this.pricePerItemLbl.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pricePerItemLbl.Location = new System.Drawing.Point(32, 291);
+            this.pricePerItemLbl.Name = "pricePerItemLbl";
+            this.pricePerItemLbl.Size = new System.Drawing.Size(252, 44);
+            this.pricePerItemLbl.TabIndex = 9;
+            this.pricePerItemLbl.Text = "Price per item:";
             // 
-            // label4
+            // addStockNameLbl
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(32, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 44);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Name:";
+            this.addStockNameLbl.AutoSize = true;
+            this.addStockNameLbl.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addStockNameLbl.Location = new System.Drawing.Point(32, 16);
+            this.addStockNameLbl.Name = "addStockNameLbl";
+            this.addStockNameLbl.Size = new System.Drawing.Size(125, 44);
+            this.addStockNameLbl.TabIndex = 10;
+            this.addStockNameLbl.Text = "Name:";
             // 
             // descriptionTbx
             // 
-            this.descriptionTbx.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionTbx.Location = new System.Drawing.Point(40, 200);
+            this.descriptionTbx.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionTbx.Location = new System.Drawing.Point(40, 173);
             this.descriptionTbx.Name = "descriptionTbx";
             this.descriptionTbx.Size = new System.Drawing.Size(453, 107);
             this.descriptionTbx.TabIndex = 1;
             this.descriptionTbx.Text = "";
             // 
-            // label5
+            // addStockDescriptionLbl
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(32, 142);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(214, 44);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Description:";
+            this.addStockDescriptionLbl.AutoSize = true;
+            this.addStockDescriptionLbl.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addStockDescriptionLbl.Location = new System.Drawing.Point(32, 124);
+            this.addStockDescriptionLbl.Name = "addStockDescriptionLbl";
+            this.addStockDescriptionLbl.Size = new System.Drawing.Size(214, 44);
+            this.addStockDescriptionLbl.TabIndex = 12;
+            this.addStockDescriptionLbl.Text = "Description:";
             // 
             // AddStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 808);
-            this.Controls.Add(this.label5);
+            this.ClientSize = new System.Drawing.Size(539, 693);
+            this.Controls.Add(this.addStockDescriptionLbl);
             this.Controls.Add(this.descriptionTbx);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.addStockNameLbl);
+            this.Controls.Add(this.pricePerItemLbl);
             this.Controls.Add(this.pricePerItemTbx);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.StoreStockQttyLbl);
             this.Controls.Add(this.inStoreQuantityInput);
             this.Controls.Add(this.departmentsCmbbxAddingStock);
             this.Controls.Add(this.addStockBttn);
             this.Controls.Add(this.indepoQuantityInput);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.StockQuantityLbl);
             this.Controls.Add(this.addStockNameTbx);
             this.Name = "AddStock";
             this.Text = "Add Stock";
@@ -204,16 +204,16 @@
         #endregion
 
         private System.Windows.Forms.TextBox addStockNameTbx;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label StockQuantityLbl;
         private System.Windows.Forms.NumericUpDown indepoQuantityInput;
         private System.Windows.Forms.Button addStockBttn;
         private System.Windows.Forms.ComboBox departmentsCmbbxAddingStock;
         private System.Windows.Forms.NumericUpDown inStoreQuantityInput;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label StoreStockQttyLbl;
         private System.Windows.Forms.NumericUpDown pricePerItemTbx;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label pricePerItemLbl;
+        private System.Windows.Forms.Label addStockNameLbl;
         private System.Windows.Forms.RichTextBox descriptionTbx;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label addStockDescriptionLbl;
     }
 }

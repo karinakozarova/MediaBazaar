@@ -20,8 +20,13 @@ namespace WindowsFormsApp1
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
-            List<Stock> stocks = Stock.GetAllStocks();
-            foreach (Stock s in stocks) requestStockStocksCmbbx.Items.Add(new StocksComboBoxItem(s));
+            PopulateStocks(Stock.GetAllStocks());
+        }
+
+        private void PopulateStocks(List<Stock> stocks)
+        {
+            foreach (Stock s in stocks) 
+                requestStockStocksCmbbx.Items.Add(new StocksComboBoxItem(s));
         }
 
         private void requestStockBttn_Click(object sender, EventArgs e)
@@ -32,8 +37,15 @@ namespace WindowsFormsApp1
                 return;
             }
 
+            if (requestStockStocksCmbbx.SelectedIndex == -1)
+            {
+                MessageBox.Show("Select stock");
+                return;
+            }
+
             int quantity = (int)requestStockQtty.Value;
             int stock_id = ((StocksComboBoxItem)requestStockStocksCmbbx.SelectedItem).Id;
+
             StockRequest.CreateStockRequest(stock_id, quantity);
             this.Hide();
         }

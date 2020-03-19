@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
+            this.requestStockQttyLbl = new System.Windows.Forms.Label();
             this.requestStockQtty = new System.Windows.Forms.NumericUpDown();
             this.requestStockBttn = new System.Windows.Forms.Button();
             this.requestStockStocksCmbbx = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.requestStockQtty)).BeginInit();
             this.SuspendLayout();
             // 
-            // label2
+            // requestStockQttyLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(38, 261);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(169, 44);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Quantity:";
+            this.requestStockQttyLbl.AutoSize = true;
+            this.requestStockQttyLbl.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.requestStockQttyLbl.Location = new System.Drawing.Point(38, 261);
+            this.requestStockQttyLbl.Name = "requestStockQttyLbl";
+            this.requestStockQttyLbl.Size = new System.Drawing.Size(169, 44);
+            this.requestStockQttyLbl.TabIndex = 21;
+            this.requestStockQttyLbl.Text = "Quantity:";
             // 
             // requestStockQtty
             // 
@@ -87,7 +87,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 430);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.requestStockQttyLbl);
             this.Controls.Add(this.requestStockQtty);
             this.Controls.Add(this.requestStockStocksCmbbx);
             this.Controls.Add(this.requestStockBttn);
@@ -102,7 +102,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label requestStockQttyLbl;
         private System.Windows.Forms.NumericUpDown requestStockQtty;
         private System.Windows.Forms.Button requestStockBttn;
         private System.Windows.Forms.ComboBox requestStockStocksCmbbx;

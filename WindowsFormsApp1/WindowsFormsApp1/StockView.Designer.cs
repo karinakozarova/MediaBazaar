@@ -38,9 +38,10 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.filterStocksBttn = new System.Windows.Forms.Button();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.filterStocksBttn = new System.Windows.Forms.Button();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,6 +107,7 @@
             // stocksViewLbx
             // 
             this.stocksViewLbx.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
@@ -123,22 +125,36 @@
             this.stocksViewLbx.TabIndex = 14;
             this.stocksViewLbx.UseCompatibleStateImageBehavior = false;
             this.stocksViewLbx.View = System.Windows.Forms.View.Details;
-            this.stocksViewLbx.SelectedIndexChanged += new System.EventHandler(this.stocksViewLbx_SelectedIndexChanged);
             // 
             // columnHeader2
             // 
+            this.columnHeader2.DisplayIndex = 0;
             this.columnHeader2.Text = "Name";
             this.columnHeader2.Width = 200;
             // 
             // columnHeader3
             // 
+            this.columnHeader3.DisplayIndex = 1;
             this.columnHeader3.Text = "Description";
             this.columnHeader3.Width = 300;
             // 
             // columnHeader4
             // 
+            this.columnHeader4.DisplayIndex = 2;
             this.columnHeader4.Text = "In Store";
-            this.columnHeader4.Width = 80;
+            this.columnHeader4.Width = 100;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.DisplayIndex = 3;
+            this.columnHeader5.Text = "In Depo";
+            this.columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.DisplayIndex = 4;
+            this.columnHeader6.Text = "Price";
+            this.columnHeader6.Width = 100;
             // 
             // filterStocksBttn
             // 
@@ -152,15 +168,11 @@
             this.filterStocksBttn.UseVisualStyleBackColor = true;
             this.filterStocksBttn.Click += new System.EventHandler(this.filterStocksBttn_Click);
             // 
-            // columnHeader5
+            // columnHeader1
             // 
-            this.columnHeader5.Text = "In Depo";
-            this.columnHeader5.Width = 40;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Price";
-            this.columnHeader6.Width = 100;
+            this.columnHeader1.DisplayIndex = 5;
+            this.columnHeader1.Text = "Id";
+            this.columnHeader1.Width = 0;
             // 
             // StockView
             // 
@@ -194,5 +206,6 @@
         private System.Windows.Forms.Button filterStocksBttn;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }
