@@ -66,7 +66,7 @@ namespace WindowsFormsApp1
                     requests.Add(request);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // TODO: add it to error log in the future
             }
