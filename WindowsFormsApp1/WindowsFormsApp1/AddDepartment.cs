@@ -13,10 +13,12 @@ namespace WindowsFormsApp1
     
     public partial class AddDepartment : Form
     {
+        MainForm form;
         Department department;
-        public AddDepartment()
+        public AddDepartment(MainForm form)
         {
             InitializeComponent();
+            this.form = form;
         }
 
         private void addDepartmentbttn_Click(object sender, EventArgs e)
@@ -26,7 +28,6 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Enter Stock name");
                 return;
             }
-
 
             if (numPeople.Value < 1)
             {
@@ -46,6 +47,7 @@ namespace WindowsFormsApp1
                 department = new Department(tbxName.Text, description, neededpeople);
                 this.Hide();
             }
+            form.UpdateGUI();
         }
     }
 }

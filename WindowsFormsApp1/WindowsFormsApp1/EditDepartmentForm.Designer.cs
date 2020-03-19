@@ -39,9 +39,9 @@
             // tbxName
             // 
             this.tbxName.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxName.Location = new System.Drawing.Point(23, 53);
+            this.tbxName.Location = new System.Drawing.Point(25, 34);
             this.tbxName.Name = "tbxName";
-            this.tbxName.Size = new System.Drawing.Size(296, 40);
+            this.tbxName.Size = new System.Drawing.Size(397, 47);
             this.tbxName.TabIndex = 1;
             this.tbxName.Text = "Name";
             // 
@@ -50,34 +50,34 @@
             this.rtbDescription.Font = new System.Drawing.Font("Montserrat", 16.15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbDescription.Location = new System.Drawing.Point(23, 124);
             this.rtbDescription.Name = "rtbDescription";
-            this.rtbDescription.Size = new System.Drawing.Size(296, 175);
+            this.rtbDescription.Size = new System.Drawing.Size(399, 175);
             this.rtbDescription.TabIndex = 2;
             this.rtbDescription.Text = "Description";
             // 
             // lblNeededPeople
             // 
             this.lblNeededPeople.AutoSize = true;
-            this.lblNeededPeople.Font = new System.Drawing.Font("Montserrat", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNeededPeople.Location = new System.Drawing.Point(18, 324);
+            this.lblNeededPeople.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNeededPeople.Location = new System.Drawing.Point(12, 324);
             this.lblNeededPeople.Name = "lblNeededPeople";
-            this.lblNeededPeople.Size = new System.Drawing.Size(209, 29);
+            this.lblNeededPeople.Size = new System.Drawing.Size(273, 44);
             this.lblNeededPeople.TabIndex = 3;
             this.lblNeededPeople.Text = "Needed people:";
             // 
             // numPeople
             // 
-            this.numPeople.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numPeople.Location = new System.Drawing.Point(218, 325);
+            this.numPeople.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numPeople.Location = new System.Drawing.Point(291, 324);
             this.numPeople.Name = "numPeople";
-            this.numPeople.Size = new System.Drawing.Size(101, 32);
+            this.numPeople.Size = new System.Drawing.Size(131, 47);
             this.numPeople.TabIndex = 4;
             // 
             // btnEdit
             // 
-            this.btnEdit.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(23, 374);
+            this.btnEdit.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(23, 399);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(296, 50);
+            this.btnEdit.Size = new System.Drawing.Size(385, 58);
             this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit department";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -85,9 +85,9 @@
             // 
             // EditDepartmentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 436);
+            this.ClientSize = new System.Drawing.Size(446, 491);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.numPeople);
             this.Controls.Add(this.lblNeededPeople);

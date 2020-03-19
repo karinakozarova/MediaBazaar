@@ -13,27 +13,29 @@ namespace WindowsFormsApp1
 
     public partial class DepartmentUserControl : UserControl
     {
-        Department dep;
         int depId;
         int neededPeople;
-        public DepartmentUserControl(int departmentid, string name, string department, int neededpeople)
+        MainForm form;
+
+        public DepartmentUserControl(int departmentid, string name, string department, int neededpeople, MainForm form = null)
         {
             InitializeComponent();
             lblDepartmentName.Text = name;
             lblDepartmentDescription.Text = department;
             neededPeople = neededpeople;
             depId = departmentid;
+            this.form = form;
         }
 
-        private void BtnEditDepartment_Click(object sender, EventArgs e)
+        private void editDepartmentBttn_Click(object sender, EventArgs e)
         {
             string name = lblDepartmentName.Text;
             string description = lblDepartmentDescription.Text;
-            EditDepartmentForm editDepartment = new EditDepartmentForm(depId, name, description, neededPeople);
+            EditDepartmentForm editDepartment = new EditDepartmentForm(depId, name, description, neededPeople, form);
             editDepartment.Show();
         }
 
-        private void BtnRemoveDepartment_Click(object sender, EventArgs e)
+        private void deleteDepartmentBttn_Click(object sender, EventArgs e)
         {
             foreach (Department dep in Department.GetAllDepartments())
             {
@@ -42,6 +44,7 @@ namespace WindowsFormsApp1
                     dep.RemoveDepartment();
                 }
             }
+            form.UpdateGUI();
         }
     }
 }

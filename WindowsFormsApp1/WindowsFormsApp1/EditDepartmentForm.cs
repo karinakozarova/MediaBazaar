@@ -14,13 +14,16 @@ namespace WindowsFormsApp1
     {
         Department department;
         int depId;
-        public EditDepartmentForm(int id, string name, string description, int neededpeople)
+        MainForm previousForm;
+
+        public EditDepartmentForm(int id, string name, string description, int neededpeople, MainForm form)
         {
             InitializeComponent();
             this.depId = id;
             tbxName.Text = name;
             rtbDescription.Text = description;
             numPeople.Value = neededpeople;
+            this.previousForm = form;
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -36,6 +39,7 @@ namespace WindowsFormsApp1
                 }
             }
             this.Close();
+            previousForm.UpdateGUI();
         }
     }
 }

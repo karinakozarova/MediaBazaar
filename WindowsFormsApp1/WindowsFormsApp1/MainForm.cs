@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void UpdateGUI()
+        public void UpdateGUI()
         {
             departments = null;
             controls.Clear();
@@ -49,25 +49,13 @@ namespace WindowsFormsApp1
 
             foreach (Department d in departments)
             {
-                controls.Add(new DepartmentUserControl(d.DepartmentId, d.Name, d.Description, d.NeededPeople));
+                controls.Add(new DepartmentUserControl(d.DepartmentId, d.Name, d.Description, d.NeededPeople, this));
             }
 
             foreach (DepartmentUserControl department in controls)
             {
                 flpDepartments.Controls.Add(department);
             }
-
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void createStockBttn_Click(object sender, EventArgs e)
@@ -90,13 +78,9 @@ namespace WindowsFormsApp1
              (new StockView()).Show();
         }
 
-        private void addDepartmentbttn_Click(object sender, EventArgs e)
+        private void addNewDepartmentBttn_Click(object sender, EventArgs e)
         {
-            (new AddDepartment()).Show();
-        }
-
-        private void refreshdepartmentpanelbttn_Click(object sender, EventArgs e)
-        {
+            (new AddDepartment(this)).Show();
             UpdateGUI();
         }
     }
