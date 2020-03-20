@@ -74,6 +74,12 @@
     <Compile Include="AddDepartment.Designer.cs">
       <DependentUpon>AddDepartment.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddOtherContacts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddOtherContacts.Designer.cs">
+      <DependentUpon>AddOtherContacts.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,7 @@
     <Compile Include="ModifyEmployee.Designer.cs">
       <DependentUpon>ModifyEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="PeopleController.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="ProfileRoles.cs" />
     <Compile Include="Program.cs" />
@@ -212,6 +219,9 @@
     </Compile>
     <EmbeddedResource Include="AddDepartment.resx">
       <DependentUpon>AddDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddOtherContacts.resx">
+      <DependentUpon>AddOtherContacts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddStock.resx">
       <DependentUpon>AddStock.cs</DependentUpon>

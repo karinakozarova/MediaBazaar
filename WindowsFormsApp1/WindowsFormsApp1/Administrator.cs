@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class Administrator : Worker
+    class Administrator 
     {
         public override string ToString()
         {
@@ -112,5 +112,6 @@ namespace WindowsFormsApp1
         {
             throw new NotImplementedException();
         }
+
     }
 }
