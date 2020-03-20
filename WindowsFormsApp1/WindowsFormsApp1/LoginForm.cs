@@ -39,13 +39,16 @@ namespace WindowsFormsApp1
             string username = usernameLoginInput.Text;
             string psswd = passwordLoginInput.Text;
             bool isLoggedIn = worker.Login(username,psswd);
+            int user_id = worker.Id;
+            int workerRole = worker.WorkerRole;
             if (!isLoggedIn)
             {
                 MessageBox.Show("Wrong credentials");
                 return;
             }
-            (new MainForm(username)).Show();
+            (new MainForm(username, workerRole, user_id)).Show();
             this.Hide();
+            
         }
     }
 }

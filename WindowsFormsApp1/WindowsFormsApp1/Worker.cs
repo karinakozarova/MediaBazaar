@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
             get;
             private set;
         }
+
         public Worker(int accountType,string username, string password, string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email, decimal hourlyWage, DateTime contractStartDate, int departmentId)
             :base(accountType, username, password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneNumber, email, hourlyWage, contractStartDate, departmentId)
         {
@@ -83,11 +84,22 @@ namespace WindowsFormsApp1
             {
                 conn.Close();
             }
+        }
 
+        public int Id
+        {
+            get;
+            private set;
         }
         public decimal GetWage()
         {
             return this.hourlyWage;
+        }
+
+        public int WorkerRole
+        {
+            get;
+            private set;
         }
 
         public double TotalHoursWorked()
@@ -122,6 +134,7 @@ namespace WindowsFormsApp1
                     Object userIdResult = userIdCmd.ExecuteScalar();
                     int user_id = 0;
                     if (userIdResult != null) { user_id = Convert.ToInt32(userIdResult); }
+                    this.Id = user_id;
 
                     string wageQuery = "SELECT hourly_wage FROM employee_details where person_id=@user_id";
 
@@ -132,6 +145,14 @@ namespace WindowsFormsApp1
                     decimal wage = 0;
                     if (wageResult != null) { wage = Convert.ToDecimal(wageResult); }
                     this.hourlyWage = wage;
+
+                    string userTypeQuery = "SELECT account_type FROM user where username=@username";
+                    MySqlCommand userTypeCmd = new MySqlCommand(userTypeQuery, conn);
+                    userTypeCmd.Parameters.AddWithValue("@username", username);
+                    Object userTypeResult = userTypeCmd.ExecuteScalar();
+                    int userType = 0;
+                    if (userTypeResult != null) { userType = Convert.ToInt32(userTypeResult); }
+                    WorkerRole = userType;
                 }
             }
             catch (Exception)

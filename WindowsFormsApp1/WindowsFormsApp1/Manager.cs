@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
             throw new NotImplementedException();
         }
 
-        public bool MakeStockRequest(StockRequest s)
+        public bool MakeStockRequest(ShelfRestockRequests s)
         {
             throw new NotImplementedException();
         }

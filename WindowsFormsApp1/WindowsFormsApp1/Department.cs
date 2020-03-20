@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
             this.Name = name;
             this.Description = description;
             this.NeededPeople = neededPeople;
+            AddDepartment();
         }
         public Department(string name, string description, int neededPeople, int id)
         {
@@ -36,6 +37,35 @@ namespace WindowsFormsApp1
             this.Name = name;
             this.NeededPeople = neededPeople;
             AddDepartment();
+        }
+
+        internal static Department GetDepartmentById(int departmentId)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+
+            Department department = null;
+            try
+            {
+                string sql = "SELECT name, description, needed_people, id FROM " + tableName + " WHERE id=@id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", departmentId);
+                conn.Open();
+                MySqlDataReader row = cmd.ExecuteReader();
+
+                while (row.Read())
+                {
+                    department = new Department(row[0].ToString(), row[1].ToString(), Convert.ToInt32(row[2]), Convert.ToInt32(row[3]));
+                }
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return department;
         }
 
         public List<Employee> GetDepartmentEmployees()
@@ -58,25 +88,122 @@ namespace WindowsFormsApp1
             throw new NotImplementedException();
         }
 
-        private Department AddDepartment()
+        private bool AddDepartment()
         {
             // add this object to the database
-            throw new NotImplementedException();
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                string sql = "INSERT INTO " + tableName + "(name , description , needed_people) VALUES (@name, @description ,@needed_people);";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@name", Name);
+                cmd.Parameters.AddWithValue("@description", Description);
+                cmd.Parameters.AddWithValue("@needed_people", NeededPeople);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return false;
         }
 
-        public static Department AddDepartment(Department d)
+        public static bool AddDepartment(Department d)
         {
-            throw new NotImplementedException();
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                string sql = "INSERT INTO " + tableName + "(name , description , needed_people) VALUES (@name, @description ,@needed_people);";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@name", d.Name);
+                cmd.Parameters.AddWithValue("@description", d.Description);
+                cmd.Parameters.AddWithValue("@needed_people", d.NeededPeople);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return false;
         }
 
         public bool RemoveDepartment()
         {
-            throw new NotImplementedException();
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                string sql = "DELETE From " + tableName + " WHERE id = @depId";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@depId", DepartmentId);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return false;
         }
 
         public static bool RemoveDepartment(Department d)
         {
-            throw new NotImplementedException();
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                string sql = "DELETE From " + tableName + " WHERE id = @depId";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@depId", d.DepartmentId);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return false;
+
+        }
+        public void EditDepartment(string name, string description, int neededpeople)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                string sql = "UPDATE " + tableName + " SET name = @name, description = @description, needed_people = @needed_people WHERE id = @departmentId";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@description", description);
+                cmd.Parameters.AddWithValue("@needed_people", neededpeople);
+                cmd.Parameters.AddWithValue("@departmentId", DepartmentId);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
         }
 
         public static List<Department> GetAllDepartments()

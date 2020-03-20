@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.lblRequest = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpRequests = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // lblRequest
             // 
             this.lblRequest.AutoSize = true;
-            this.lblRequest.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblRequest.BackColor = System.Drawing.Color.White;
             this.lblRequest.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRequest.Location = new System.Drawing.Point(25, 25);
             this.lblRequest.Name = "lblRequest";
@@ -43,20 +43,22 @@
             this.lblRequest.TabIndex = 12;
             this.lblRequest.Text = "Request for Hiring/Firing employees";
             // 
-            // flowLayoutPanel1
+            // flpRequests
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 106);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(776, 320);
-            this.flowLayoutPanel1.TabIndex = 11;
+            this.flpRequests.AutoScroll = true;
+            this.flpRequests.Location = new System.Drawing.Point(12, 106);
+            this.flpRequests.Name = "flpRequests";
+            this.flpRequests.Size = new System.Drawing.Size(776, 320);
+            this.flpRequests.TabIndex = 11;
             // 
             // ApproveManagerRequests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblRequest);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flpRequests);
             this.Name = "ApproveManagerRequests";
             this.Text = "ApproveManagerRequests";
             this.ResumeLayout(false);
@@ -67,6 +69,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblRequest;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpRequests;
     }
 }

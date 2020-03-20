@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-        public enum ProfileRoles
-        {
-            ADMINISTRATOR,
-            MANAGER,
-            EMPLOYEE
-        }
+    public enum ProfileRoles
+    {
+        ADMINISTRATOR,
+        MANAGER,
+        EMPLOYEE
+    }
 }

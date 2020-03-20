@@ -28,90 +28,73 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.requestStockQttyLbl = new System.Windows.Forms.Label();
+            this.requestStockQtty = new System.Windows.Forms.NumericUpDown();
+            this.requestStockBttn = new System.Windows.Forms.Button();
+            this.requestStockStocksCmbbx = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.requestStockQtty)).BeginInit();
             this.SuspendLayout();
             // 
-            // label2
+            // requestStockQttyLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(144, 212);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 33);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Quantity:";
+            this.requestStockQttyLbl.AutoSize = true;
+            this.requestStockQttyLbl.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.requestStockQttyLbl.Location = new System.Drawing.Point(38, 261);
+            this.requestStockQttyLbl.Name = "requestStockQttyLbl";
+            this.requestStockQttyLbl.Size = new System.Drawing.Size(169, 44);
+            this.requestStockQttyLbl.TabIndex = 21;
+            this.requestStockQttyLbl.Text = "Quantity:";
             // 
-            // numericUpDown2
+            // requestStockQtty
             // 
-            this.numericUpDown2.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(127, 247);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(173, 40);
-            this.numericUpDown2.TabIndex = 20;
+            this.requestStockQtty.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.requestStockQtty.Location = new System.Drawing.Point(255, 258);
+            this.requestStockQtty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.requestStockQtty.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.requestStockQtty.Name = "requestStockQtty";
+            this.requestStockQtty.Size = new System.Drawing.Size(195, 47);
+            this.requestStockQtty.TabIndex = 20;
             // 
-            // comboBox1
+            // requestStockBttn
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 313);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(403, 41);
-            this.comboBox1.TabIndex = 19;
-            this.comboBox1.Text = "Department";
+            this.requestStockBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.requestStockBttn.Location = new System.Drawing.Point(19, 347);
+            this.requestStockBttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.requestStockBttn.Name = "requestStockBttn";
+            this.requestStockBttn.Size = new System.Drawing.Size(453, 65);
+            this.requestStockBttn.TabIndex = 18;
+            this.requestStockBttn.Text = "Request Stock";
+            this.requestStockBttn.UseVisualStyleBackColor = true;
+            this.requestStockBttn.Click += new System.EventHandler(this.requestStockBttn_Click);
             // 
-            // button1
+            // requestStockStocksCmbbx
             // 
-            this.button1.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 370);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(403, 52);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Request Stock";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Font = new System.Drawing.Font("Montserrat", 16F);
-            this.richTextBox1.Location = new System.Drawing.Point(12, 74);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(403, 123);
-            this.richTextBox1.TabIndex = 17;
-            this.richTextBox1.Text = "Description";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(403, 40);
-            this.textBox1.TabIndex = 16;
-            this.textBox1.Text = "Name";
+            this.requestStockStocksCmbbx.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.requestStockStocksCmbbx.FormattingEnabled = true;
+            this.requestStockStocksCmbbx.Location = new System.Drawing.Point(29, 41);
+            this.requestStockStocksCmbbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.requestStockStocksCmbbx.Name = "requestStockStocksCmbbx";
+            this.requestStockStocksCmbbx.Size = new System.Drawing.Size(432, 52);
+            this.requestStockStocksCmbbx.TabIndex = 19;
+            this.requestStockStocksCmbbx.Text = "Stock";
             // 
             // RequestStock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 450);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(484, 430);
+            this.Controls.Add(this.requestStockQttyLbl);
+            this.Controls.Add(this.requestStockQtty);
+            this.Controls.Add(this.requestStockStocksCmbbx);
+            this.Controls.Add(this.requestStockBttn);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "RequestStock";
             this.Text = "RequestStock";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestStockQtty)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,11 +102,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label requestStockQttyLbl;
+        private System.Windows.Forms.NumericUpDown requestStockQtty;
+        private System.Windows.Forms.Button requestStockBttn;
+        private System.Windows.Forms.ComboBox requestStockStocksCmbbx;
     }
 }
