@@ -50,9 +50,9 @@ namespace WindowsFormsApp1
              Email = tbEmail.Text;
             PhoneNumber = Convert.ToInt64(tbPhoneNumber.Text);
             p = new Person(FirstName, LastName, DateOfBirth, PhoneNumber, Email);
-
-            ca = new CreateAccount(FirstName, LastName, DateOfBirth, Email, PhoneNumber, this);
-            
+            string display = FirstName + " " + LastName + " date of birth: " + DateOfBirth + " tel: " + PhoneNumber + " email: " + Email;
+            ca = new CreateAccount(FirstName, LastName, DateOfBirth, Email, PhoneNumber,display, this);
         }
+
     }
 }

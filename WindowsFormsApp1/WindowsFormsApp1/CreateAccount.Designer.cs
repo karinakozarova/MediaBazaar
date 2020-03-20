@@ -41,7 +41,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dtbContractStartDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbDepartment = new System.Windows.Forms.ComboBox();
+            this.cmbDepartment = new System.Windows.Forms.ComboBox();
             this.cbMonday = new System.Windows.Forms.CheckBox();
             this.cbTuesday = new System.Windows.Forms.CheckBox();
             this.cbThursday = new System.Windows.Forms.CheckBox();
@@ -70,6 +70,7 @@
             this.btnOpenContact = new System.Windows.Forms.Button();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnShowContacts = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nHourlyWage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,16 +210,16 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "Contract start date:";
             // 
-            // cbDepartment
+            // cmbDepartment
             // 
-            this.cbDepartment.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDepartment.FormattingEnabled = true;
-            this.cbDepartment.Location = new System.Drawing.Point(960, 206);
-            this.cbDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbDepartment.Name = "cbDepartment";
-            this.cbDepartment.Size = new System.Drawing.Size(288, 41);
-            this.cbDepartment.TabIndex = 18;
-            this.cbDepartment.Text = "Department";
+            this.cmbDepartment.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDepartment.FormattingEnabled = true;
+            this.cmbDepartment.Location = new System.Drawing.Point(960, 206);
+            this.cmbDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbDepartment.Name = "cmbDepartment";
+            this.cmbDepartment.Size = new System.Drawing.Size(288, 41);
+            this.cmbDepartment.TabIndex = 18;
+            this.cmbDepartment.Text = "Department";
             // 
             // cbMonday
             // 
@@ -507,11 +508,11 @@
             // 
             // btnAddOtherContact
             // 
-            this.btnAddOtherContact.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddOtherContact.Location = new System.Drawing.Point(635, 206);
+            this.btnAddOtherContact.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddOtherContact.Location = new System.Drawing.Point(519, 230);
             this.btnAddOtherContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddOtherContact.Name = "btnAddOtherContact";
-            this.btnAddOtherContact.Size = new System.Drawing.Size(195, 70);
+            this.btnAddOtherContact.Size = new System.Drawing.Size(142, 46);
             this.btnAddOtherContact.TabIndex = 91;
             this.btnAddOtherContact.Text = "Add contact";
             this.btnAddOtherContact.UseVisualStyleBackColor = true;
@@ -519,20 +520,23 @@
             // 
             // lbContacts
             // 
+            this.lbContacts.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbContacts.FormattingEnabled = true;
-            this.lbContacts.ItemHeight = 16;
-            this.lbContacts.Location = new System.Drawing.Point(436, 290);
+            this.lbContacts.HorizontalScrollbar = true;
+            this.lbContacts.ItemHeight = 20;
+            this.lbContacts.Location = new System.Drawing.Point(358, 290);
             this.lbContacts.Name = "lbContacts";
-            this.lbContacts.Size = new System.Drawing.Size(313, 228);
+            this.lbContacts.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lbContacts.Size = new System.Drawing.Size(469, 224);
             this.lbContacts.TabIndex = 92;
             // 
             // btnOpenContact
             // 
-            this.btnOpenContact.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenContact.Location = new System.Drawing.Point(385, 206);
+            this.btnOpenContact.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenContact.Location = new System.Drawing.Point(358, 230);
             this.btnOpenContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOpenContact.Name = "btnOpenContact";
-            this.btnOpenContact.Size = new System.Drawing.Size(229, 70);
+            this.btnOpenContact.Size = new System.Drawing.Size(155, 46);
             this.btnOpenContact.TabIndex = 93;
             this.btnOpenContact.Text = "Input contact";
             this.btnOpenContact.UseVisualStyleBackColor = true;
@@ -558,11 +562,24 @@
             this.label10.TabIndex = 95;
             this.label10.Text = "User password";
             // 
+            // btnShowContacts
+            // 
+            this.btnShowContacts.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowContacts.Location = new System.Drawing.Point(667, 230);
+            this.btnShowContacts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnShowContacts.Name = "btnShowContacts";
+            this.btnShowContacts.Size = new System.Drawing.Size(163, 46);
+            this.btnShowContacts.TabIndex = 96;
+            this.btnShowContacts.Text = "Show contacts";
+            this.btnShowContacts.UseVisualStyleBackColor = true;
+            this.btnShowContacts.Click += new System.EventHandler(this.btnShowContacts_Click);
+            // 
             // CreateAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1376, 892);
+            this.Controls.Add(this.btnShowContacts);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.btnOpenContact);
@@ -591,7 +608,7 @@
             this.Controls.Add(this.cbThursday);
             this.Controls.Add(this.cbTuesday);
             this.Controls.Add(this.cbMonday);
-            this.Controls.Add(this.cbDepartment);
+            this.Controls.Add(this.cmbDepartment);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dtbContractStartDate);
             this.Controls.Add(this.label5);
@@ -629,7 +646,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtbContractStartDate;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbDepartment;
+        private System.Windows.Forms.ComboBox cmbDepartment;
         private System.Windows.Forms.CheckBox cbMonday;
         private System.Windows.Forms.CheckBox cbTuesday;
         private System.Windows.Forms.CheckBox cbThursday;
@@ -658,5 +675,6 @@
         private System.Windows.Forms.Button btnOpenContact;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnShowContacts;
     }
 }
