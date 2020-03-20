@@ -15,11 +15,15 @@ namespace WindowsFormsApp1
         private string country;
         private long phoneNumber;
         private string email;
+        private string password;
+        private int accountType = 0;
+        private string username;
 
-
+        public string Username { get { return username; } private set { username = value; } }
         public string FirstName {get { return firstName; }}
         public string LastName { get { return lastName; } }
         public DateTime DateOFBirth { get { return dateOfBirth; } }
+
         public string Street
         {
             get { return street; }
@@ -56,8 +60,23 @@ namespace WindowsFormsApp1
             get { return email; }
            private set { email = value; }
         }
+        public string Password
+        {
+            get { return password; }
+            private set { password = value; }
+        }
+        public int AccountId
+        {
+            get { return id; }
+            private set { id = value; }
+        }
+        public int AccountType
+        {
+            get { return accountType; }
+            private set { accountType = value; }
+        }
 
-        public Person(string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email)
+        public Person(int accountType,string username, string password,string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -68,6 +87,9 @@ namespace WindowsFormsApp1
             this.country = country;
             this.phoneNumber = phoneNumber;
             this.email = email;
+            this.password = password;
+            this.username = username;
+            this.accountType= accountType;
         }
         public Person(string firstName, string lastName, DateTime dateOfBirth, long phoneNumber, string email)
         {
@@ -77,6 +99,10 @@ namespace WindowsFormsApp1
             this.phoneNumber = phoneNumber;
             this.email = email;
             AddPerson();
+        }
+
+        public Person()
+        {
         }
 
         private void AddPerson()
@@ -93,7 +119,7 @@ namespace WindowsFormsApp1
                 cmd.Parameters.AddWithValue("@phone_number", PhoneNumber);
                 cmd.Parameters.AddWithValue("@email", Email);
                 conn.Open();
-                int effectedRows = cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
                 this.id = (int)cmd.LastInsertedId;
             }
             catch (Exception ex)
@@ -106,38 +132,7 @@ namespace WindowsFormsApp1
             }
 
         }
-        //private void AddWorker()
-        //{
-        //    MySqlConnection conn = Utils.GetConnection();
-
-        //    try
-        //    {
-        //        string sql = "INSERT INTO person(username, first_name, last_name, date_of_birth, street, postcode, region, country, phone_number, email) VALUES (@username, @first_name, @last_name, @date_of_birth,@street, @postcode, @region, @country, @phone_number, @email);";
-        //        MySqlCommand cmd = new MySqlCommand(sql, conn);
-        //        cmd.Parameters.AddWithValue("@username", username);
-        //        cmd.Parameters.AddWithValue("@first_name", FirstName);
-        //        cmd.Parameters.AddWithValue("@last_name", LastName);
-        //        cmd.Parameters.AddWithValue("@date_of_birth", DateOFBirth);
-        //        cmd.Parameters.AddWithValue("@street", street);
-        //        cmd.Parameters.AddWithValue("@postcode", Postcode);
-        //        cmd.Parameters.AddWithValue("@region", region);
-        //        cmd.Parameters.AddWithValue("@country", country);
-        //        cmd.Parameters.AddWithValue("@phone_number", PhoneNumber);
-        //        cmd.Parameters.AddWithValue("@email", Email);
-        //        conn.Open();
-        //        int effectedRows = cmd.ExecuteNonQuery();
-        //        this.id = (int)cmd.LastInsertedId;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        String e = ex.Message;
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
-
-        //}
+      
         public string GetName()
         {
             return firstName + " " + lastName;
@@ -150,8 +145,5 @@ namespace WindowsFormsApp1
         {
             return id+ ": " + firstName + "  " + lastName + " - " + dateOfBirth + " - " + phoneNumber + " - " + email;
         }
-
-
-
     }
 }

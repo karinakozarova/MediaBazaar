@@ -46,5 +46,12 @@ namespace WindowsFormsApp1
         {
             (new AddStock()).Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CreateAccount ca = new CreateAccount();
+            ca.Show();
+            this.Close();
+        }
     }
 }

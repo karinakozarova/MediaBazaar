@@ -38,10 +38,10 @@ namespace WindowsFormsApp1
         {
           Person person = new Person(firstName, lastName, dateOfBirth, phoneNumber, email);
         }
-        public void CreateWorker(string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email, string username, decimal hourlyWage)
+        public void CreateWorker(int accountType,string username, string password, string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email, decimal hourlyWage)
         {
-            Worker worker = new Worker(firstName, lastName, dateOfBirth, street, postcode, region, country, phoneNumber, email, username, hourlyWage);
-        }
+            Worker worker = new Worker(accountType,username,password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneNumber, email, hourlyWage);
 
+        }
     }
 }

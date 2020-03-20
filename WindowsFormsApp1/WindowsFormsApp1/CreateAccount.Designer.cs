@@ -68,6 +68,8 @@
             this.btnAddOtherContact = new System.Windows.Forms.Button();
             this.lbContacts = new System.Windows.Forms.ListBox();
             this.btnOpenContact = new System.Windows.Forms.Button();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nHourlyWage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -445,7 +447,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(635, 602);
+            this.button1.Location = new System.Drawing.Point(661, 602);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(148, 46);
@@ -519,7 +521,7 @@
             // 
             this.lbContacts.FormattingEnabled = true;
             this.lbContacts.ItemHeight = 16;
-            this.lbContacts.Location = new System.Drawing.Point(448, 290);
+            this.lbContacts.Location = new System.Drawing.Point(436, 290);
             this.lbContacts.Name = "lbContacts";
             this.lbContacts.Size = new System.Drawing.Size(313, 228);
             this.lbContacts.TabIndex = 92;
@@ -536,11 +538,33 @@
             this.btnOpenContact.UseVisualStyleBackColor = true;
             this.btnOpenContact.Click += new System.EventHandler(this.btnOpenContact_Click);
             // 
+            // tbPassword
+            // 
+            this.tbPassword.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPassword.Location = new System.Drawing.Point(346, 636);
+            this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(283, 40);
+            this.tbPassword.TabIndex = 94;
+            this.tbPassword.Text = "Password";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(370, 590);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(209, 31);
+            this.label10.TabIndex = 95;
+            this.label10.Text = "User password";
+            // 
             // CreateAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1376, 687);
+            this.ClientSize = new System.Drawing.Size(1376, 892);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.btnOpenContact);
             this.Controls.Add(this.lbContacts);
             this.Controls.Add(this.btnAddOtherContact);
@@ -632,5 +656,7 @@
         private System.Windows.Forms.Button btnAddOtherContact;
         private System.Windows.Forms.ListBox lbContacts;
         private System.Windows.Forms.Button btnOpenContact;
+        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.Label label10;
     }
 }

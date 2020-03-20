@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             mediaBazarLogoLogin.BorderStyle = BorderStyle.None;
-            //worker = new Worker();
+            worker = new Worker();
         }
 
         private void loginBttn_Click(object sender, EventArgs e)

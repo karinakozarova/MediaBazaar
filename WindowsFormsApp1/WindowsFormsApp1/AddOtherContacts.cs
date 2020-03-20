@@ -14,14 +14,15 @@ namespace WindowsFormsApp1
    
     public partial class AddOtherContacts : Form
     {
-        
+       
         public AddOtherContacts()
         {
             InitializeComponent();
-            CreateAccount ca = new CreateAccount(FirstName, LastName, DateOfBirth, Email, PhoneNumber);
+
         }
         Person p;
-       
+        CreateAccount ca;
+        PeopleController pc;
         string firstName;
         string lastName;
         DateTime dateOfBirth;        //adds other contacts to people
@@ -49,9 +50,9 @@ namespace WindowsFormsApp1
              Email = tbEmail.Text;
             PhoneNumber = Convert.ToInt64(tbPhoneNumber.Text);
             p = new Person(FirstName, LastName, DateOfBirth, PhoneNumber, Email);
-           
-        }
 
-      
+            ca = new CreateAccount(FirstName, LastName, DateOfBirth, Email, PhoneNumber, this);
+            
+        }
     }
 }
