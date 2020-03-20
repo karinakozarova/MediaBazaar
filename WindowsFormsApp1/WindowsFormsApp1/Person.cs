@@ -18,7 +18,11 @@ namespace WindowsFormsApp1
         private string password;
         private int accountType = 0;
         private string username;
+        private int departmentId = 0;
+        DateTime contractStartDate;
 
+        public DateTime ContractStartDate { get { return contractStartDate; } private set { contractStartDate = value; } }
+        public int DepartmentId { get { return departmentId; } private set { departmentId = value; } }
         public string Username { get { return username; } private set { username = value; } }
         public string FirstName {get { return firstName; }}
         public string LastName { get { return lastName; } }
@@ -76,7 +80,7 @@ namespace WindowsFormsApp1
             private set { accountType = value; }
         }
 
-        public Person(int accountType,string username, string password,string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email)
+        public Person(int accountType,string username, string password,string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email,decimal hourlyWage, DateTime contractStartDate, int departmentId)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -90,6 +94,8 @@ namespace WindowsFormsApp1
             this.password = password;
             this.username = username;
             this.accountType= accountType;
+            this.departmentId = departmentId;
+            this.contractStartDate = contractStartDate;
         }
         public Person(string firstName, string lastName, DateTime dateOfBirth, long phoneNumber, string email)
         {

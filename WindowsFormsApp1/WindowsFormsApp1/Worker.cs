@@ -16,8 +16,8 @@ namespace WindowsFormsApp1
             get;
             private set;
         }
-        public Worker(int accountType,string username, string password, string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email, decimal hourlyWage)
-            :base(accountType, username, password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneNumber, email)
+        public Worker(int accountType,string username, string password, string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email, decimal hourlyWage, DateTime contractStartDate, int departmentId)
+            :base(accountType, username, password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneNumber, email, hourlyWage, contractStartDate, departmentId)
         {
             this.hourlyWage = hourlyWage;
             AddWorker();
@@ -73,6 +73,7 @@ namespace WindowsFormsApp1
                 userCmd.Parameters.AddWithValue("@account_type", AccountType);
                 userCmd.ExecuteNonQuery();
                 this.Id = (int)userCmd.LastInsertedId;
+
             }
             catch (Exception ex)
             {

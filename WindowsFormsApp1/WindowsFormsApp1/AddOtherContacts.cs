@@ -22,7 +22,6 @@ namespace WindowsFormsApp1
         }
         Person p;
         CreateAccount ca;
-        PeopleController pc;
         string firstName;
         string lastName;
         DateTime dateOfBirth;        //adds other contacts to people
@@ -51,7 +50,7 @@ namespace WindowsFormsApp1
             PhoneNumber = Convert.ToInt64(tbPhoneNumber.Text);
             p = new Person(FirstName, LastName, DateOfBirth, PhoneNumber, Email);
             string display = FirstName + " " + LastName + " date of birth: " + DateOfBirth + " tel: " + PhoneNumber + " email: " + Email;
-            ca = new CreateAccount(FirstName, LastName, DateOfBirth, Email, PhoneNumber, this);
+            ca = new CreateAccount( this);
         }
 
     }
