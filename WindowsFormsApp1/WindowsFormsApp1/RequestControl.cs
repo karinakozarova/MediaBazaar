@@ -44,7 +44,14 @@ namespace WindowsFormsApp1
 
         private void BtnApprove_Click(object sender, EventArgs e)
         {
-
+            foreach (FiringRequests fr in FiringRequests.GetAllFiringRequests())
+            {
+                if (fr.PersonId == personId)
+                {
+                    fr.ApproveFiringRequest();
+                }
+            }
+            form.UpdateGUI();
         }
 
         private void BtnDecline_Click(object sender, EventArgs e)

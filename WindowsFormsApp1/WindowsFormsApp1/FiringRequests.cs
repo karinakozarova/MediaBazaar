@@ -54,6 +54,11 @@ namespace WindowsFormsApp1
             get;
             private set;
         }
+        public DateTime GetDateTime()
+        {
+            DateTime date = DateTime.Now;
+            return date;
+        }
 
         public FiringRequests(int personId, int createdById, string username, string description, string firstName, string lastName, int departmentId)
         {
@@ -150,6 +155,54 @@ namespace WindowsFormsApp1
                 cmd.Parameters.AddWithValue("@person_Id", PersonId);
                 conn.Open();
                 cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void ApproveFiringRequest()
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                string sql = "DELETE From " + tableName + " WHERE person_id = @person_Id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@person_Id", PersonId);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                string userRemoveQuery = "DELETE From user WHERE account_id = @person_Id";
+                MySqlCommand userRemoveCmd = new MySqlCommand(userRemoveQuery, conn);
+                userRemoveCmd.Parameters.AddWithValue("@person_Id", PersonId);
+                userRemoveCmd.ExecuteNonQuery();
+
+                string employeeRemoveQuery = "DELETE From employee_details WHERE person_id = @person_Id";
+                MySqlCommand employeeRemoveCmd = new MySqlCommand(employeeRemoveQuery, conn);
+                employeeRemoveCmd.Parameters.AddWithValue("@person_Id", PersonId);
+                employeeRemoveCmd.ExecuteNonQuery();
+
+                //string employeeDaysRemoveQuery = "DELETE From employee_working_days WHERE employee_id = @person_Id";
+                //MySqlCommand employeeDaysRemoveCmd = new MySqlCommand(employeeDaysRemoveQuery, conn);
+                //employeeDaysRemoveCmd.Parameters.AddWithValue("@person_Id", PersonId);
+                //employeeDaysRemoveCmd.ExecuteNonQuery();
+
+                string employeeContactRemoveQuery = "DELETE From contact_person WHERE employee_id = @person_Id";
+                MySqlCommand employeeContactRemoveCmd = new MySqlCommand(employeeContactRemoveQuery, conn);
+                employeeContactRemoveCmd.Parameters.AddWithValue("@person_Id", PersonId);
+                employeeContactRemoveCmd.ExecuteNonQuery();
+
+                string contractUpdateQuery = "UPDATE contract SET contract_end = @end_date, reason_for_leaving = @description";
+                MySqlCommand contractUpdateCmd = new MySqlCommand(contractUpdateQuery, conn);
+                contractUpdateCmd.Parameters.AddWithValue("@end_date", GetDateTime());
+                contractUpdateCmd.Parameters.AddWithValue("@description", Description);
+                contractUpdateCmd.ExecuteNonQuery();
+
             }
             catch (Exception)
             {
