@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -24,24 +18,20 @@ namespace WindowsFormsApp1
         AddOtherContacts aoc;
 
 
-         string  contactFirstName;
-           string contactLastName;
-           DateTime contactDateOFBirth;
-            string contactEmail;
-           long contactPhone;
-        string displayContact;
+        string contactFirstName;
+        string contactLastName;
+        DateTime contactDateOFBirth;
+        string contactEmail;
+        long contactPhone;
         public CreateAccount()
         {
             InitializeComponent();
             pc = new PeopleController();
             PopulateDepartments(Department.GetAllDepartments());
-            if (!string.IsNullOrEmpty(displayContact))
-            {
-                lbContacts.Items.Add(displayContact);
-            }
+
         }
 
-        public CreateAccount(string contactFirstName, string contactLastName, DateTime contactDateOFBirth, string contactEmail, long contactPhone,string displayContact, AddOtherContacts aoc=null)
+        public CreateAccount(string contactFirstName, string contactLastName, DateTime contactDateOFBirth, string contactEmail, long contactPhone, AddOtherContacts aoc = null)
         {
             this.contactFirstName = contactFirstName;
             this.contactLastName = contactLastName;
@@ -49,7 +39,6 @@ namespace WindowsFormsApp1
             this.contactEmail = contactEmail;
             this.contactPhone = contactPhone;
             this.aoc = aoc;
-            this.displayContact = displayContact;
         }
         private void btnSendRequest_Click(object sender, EventArgs e)
         {
@@ -65,7 +54,7 @@ namespace WindowsFormsApp1
                 }
                 else if (cbManager.Checked)
                 {
-                    accountType = (int)ProfileRoles.MANAGER;        
+                    accountType = (int)ProfileRoles.MANAGER;
                 }
                 else if (cbEmployee.Checked)
                 {
@@ -85,6 +74,7 @@ namespace WindowsFormsApp1
                 string password = tbPassword.Text;
                 long phoneN = Convert.ToInt64(tbPhoneNumber.Text);
                 DateTime contractStartDate = dtbContractStartDate.Value;
+                int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
                 pc.CreateWorker(accountType, username, password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneN, email, hourlyWage);//adds worker to person table
 
 
@@ -110,33 +100,20 @@ namespace WindowsFormsApp1
                 employeDetailsCmd.Parameters.AddWithValue("@person_id", GetIdByUsername());
                 employeDetailsCmd.Parameters.AddWithValue("@hourly_wage", hourlyWage);
                 employeDetailsCmd.Parameters.AddWithValue("@contract_id", contract_id);
-                employeDetailsCmd.Parameters.AddWithValue("@department_id", 1);//department ID department class
+                employeDetailsCmd.Parameters.AddWithValue("@department_id", departmentId);//department ID department class
                 employeDetailsCmd.Parameters.AddWithValue("@is_approved", 1);
                 employeDetailsCmd.ExecuteNonQuery();
 
 
-                string workdaysQuery = "INSERT into employee_working_days (employee_id, week_day_id) VALUE(@userId,@weekDayId)";
-                MySqlCommand workdaysCmd = new MySqlCommand(workdaysQuery, conn);
-                workdaysCmd.Parameters.AddWithValue("@userId", GetIdByUsername());
-                foreach (int d in workdays)
-                {
-                    workdaysCmd.Parameters.AddWithValue("@weekDayId", d);
+                //string workdaysQuery = "INSERT into employee_working_days (employee_id, week_day_id) VALUE(@userId,@weekDayId)";
+                //MySqlCommand workdaysCmd = new MySqlCommand(workdaysQuery, conn);
+                //workdaysCmd.Parameters.AddWithValue("@userId", GetIdByUsername());
+                //foreach (int d in workdays)
+                //{
+                //    workdaysCmd.Parameters.AddWithValue("@weekDayId", d);
 
-                    workdaysCmd.ExecuteNonQuery();
-                }
-                
-
-                string shiftsQuery = "INSERT into employee_working_days (employee_id, shifts) VALUE(@userId,@shifts)";
-                MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
-                
-                // shiftQueryCmd.Parameters.AddWithValue("@userId", user_id);
-                foreach (int s in workshifts)
-                {
-                    shiftsQueryCmd.Parameters.AddWithValue("@shifts", s);
-
-                    shiftsQueryCmd.ExecuteNonQuery();
-                }
-
+                //    workdaysCmd.ExecuteNonQuery();
+                //}
 
                 if (cbMonday.Checked)
                 {
@@ -169,18 +146,33 @@ namespace WindowsFormsApp1
 
                 if (cbMorningShift.Checked)
                 {
-                    workshifts.Add(0);
+                    workshifts.Add(1);
                 }
                 if (cbAfternoonShift.Checked)
                 {
-                    workshifts.Add(1);
+                    workshifts.Add(2);
                 }
                 if (cbEveningShift.Checked)
                 {
-                    workshifts.Add(2);
+                    workshifts.Add(3);
+                }
+                
+                foreach (int shift in workshifts)
+                {
+                    MessageBox.Show(shift.ToString());
+                    foreach (int day in workdays)
+                    {
+                        string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift) VALUE(@userId,@week_day_id, @shift)";
+                        MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
+                        shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
+                        shiftsQueryCmd.Parameters.AddWithValue("@userId", GetIdByUsername());
+                        shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
+
+                        shiftsQueryCmd.ExecuteNonQuery();
+                    }
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -192,33 +184,33 @@ namespace WindowsFormsApp1
 
         private void btnAddOtherContact_Click(object sender, EventArgs e)
         {
-            
-            int ContactId=0;
+
+            int ContactId = 0;
             MySqlConnection conn = Utils.GetConnection();
             try
             {
 
                 string selectContactIdQuery = "SELECT id FROM person where first_name=@firstName AND last_name=@lastName AND date_of_birth=@dateOfBirth AND email=@email AND phone_number=@phoneN";
-                    MySqlCommand selectContactIdCmd = new MySqlCommand(selectContactIdQuery, conn);
-                    selectContactIdCmd.Parameters.AddWithValue("@firstName", aoc.FirstName);
-                    selectContactIdCmd.Parameters.AddWithValue("@lastName", aoc.LastName);
-                    selectContactIdCmd.Parameters.AddWithValue("@dateOfBirth", aoc.DateOfBirth);
-                    selectContactIdCmd.Parameters.AddWithValue("@email", aoc.Email);
-                    selectContactIdCmd.Parameters.AddWithValue("@phoneN", aoc.PhoneNumber);
-                    conn.Open();
-                    Object contactIdResult = selectContactIdCmd.ExecuteScalar();
+                MySqlCommand selectContactIdCmd = new MySqlCommand(selectContactIdQuery, conn);
+                selectContactIdCmd.Parameters.AddWithValue("@firstName", aoc.FirstName);
+                selectContactIdCmd.Parameters.AddWithValue("@lastName", aoc.LastName);
+                selectContactIdCmd.Parameters.AddWithValue("@dateOfBirth", aoc.DateOfBirth);
+                selectContactIdCmd.Parameters.AddWithValue("@email", aoc.Email);
+                selectContactIdCmd.Parameters.AddWithValue("@phoneN", aoc.PhoneNumber);
+                conn.Open();
+                Object contactIdResult = selectContactIdCmd.ExecuteScalar();
 
-                    if (contactIdResult != null)
-                    {
-                        ContactId = Convert.ToInt32(contactIdResult);
-                    }
+                if (contactIdResult != null)
+                {
+                    ContactId = Convert.ToInt32(contactIdResult);
+                }
 
-                    string contactIdQuery = "INSERT INTO contact_person (employee_id, contact_person_id) VALUES (@userId, @contactId);";
-                    MySqlCommand contactIdCmd = new MySqlCommand(contactIdQuery, conn);
-                    contactIdCmd.Parameters.AddWithValue("@userId", GetIdByUsername());
-                    contactIdCmd.Parameters.AddWithValue("@contactId", ContactId);
-                    contactIdCmd.ExecuteNonQuery();
- 
+                string contactIdQuery = "INSERT INTO contact_person (employee_id, contact_person_id) VALUES (@userId, @contactId);";
+                MySqlCommand contactIdCmd = new MySqlCommand(contactIdQuery, conn);
+                contactIdCmd.Parameters.AddWithValue("@userId", GetIdByUsername());
+                contactIdCmd.Parameters.AddWithValue("@contactId", ContactId);
+                contactIdCmd.ExecuteNonQuery();
+
 
             }
             catch (Exception ex)
@@ -232,7 +224,7 @@ namespace WindowsFormsApp1
 
         }
 
-        
+
         public static List<Department> GetAllDepartments()
         {
             MySqlConnection conn = Utils.GetConnection();
@@ -260,7 +252,7 @@ namespace WindowsFormsApp1
             }
             return departments;
         }
-        public  List<Person> GetOtherContacts()
+        public List<Person> GetOtherContacts()
         {
             MySqlConnection conn = Utils.GetConnection();
 
@@ -292,9 +284,9 @@ namespace WindowsFormsApp1
             }
             return contacts;
         }
-      
 
-            public void PopulateListBox(int user_id)
+
+        public void PopulateListBox(int user_id)
         {
             MySqlConnection conn = Utils.GetConnection();
 
@@ -308,9 +300,9 @@ namespace WindowsFormsApp1
 
                 while (row.Read())
                 {
-                    lbContacts.Items.Add(row["first_name"] +" " + row["last_name"] +" "+ "date of birth: "+row["date_of_birth"] +" "+ "tel: " + row["phone_number"] + " " + "email: " + row["email"].ToString());
+                    lbContacts.Items.Add(row["first_name"] + " " + row["last_name"] + " " + "date of birth: " + row["date_of_birth"] + " " + "tel: " + row["phone_number"] + " " + "email: " + row["email"].ToString());
                 }
-                
+
 
             }
             catch (Exception)
@@ -322,7 +314,7 @@ namespace WindowsFormsApp1
                 conn.Close();
             }
         }
-    private void PopulateDepartments(List<Department> departments)
+        private void PopulateDepartments(List<Department> departments)
         {
             foreach (Department d in departments)
                 cmbDepartment.Items.Add(new DepartmentComboBoxItem(d));
@@ -364,7 +356,7 @@ namespace WindowsFormsApp1
         }
         private void btnShowContacts_Click(object sender, EventArgs e)
         {
-          PopulateListBox(GetIdByUsername());
+            PopulateListBox(GetIdByUsername());
         }
     }
 }

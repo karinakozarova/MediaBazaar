@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
             PhoneNumber = Convert.ToInt64(tbPhoneNumber.Text);
             p = new Person(FirstName, LastName, DateOfBirth, PhoneNumber, Email);
             string display = FirstName + " " + LastName + " date of birth: " + DateOfBirth + " tel: " + PhoneNumber + " email: " + Email;
-            ca = new CreateAccount(FirstName, LastName, DateOfBirth, Email, PhoneNumber,display, this);
+            ca = new CreateAccount(FirstName, LastName, DateOfBirth, Email, PhoneNumber, this);
         }
 
     }
