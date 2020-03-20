@@ -17,7 +17,11 @@ namespace WindowsFormsApp1
             get;
             private set;
         }
-
+        public int Id
+        {
+            get;
+            private set;
+        }
         public decimal GetWage()
         {
             return this.hourlyWage;
@@ -61,6 +65,7 @@ namespace WindowsFormsApp1
                     Object userIdResult = userIdCmd.ExecuteScalar();
                     int user_id = 0;
                     if (userIdResult != null) { user_id = Convert.ToInt32(userIdResult); }
+                    this.Id = user_id;
 
                     string wageQuery = "SELECT hourly_wage FROM employee_details where person_id=@user_id";
 

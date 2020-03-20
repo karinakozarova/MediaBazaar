@@ -121,6 +121,7 @@
     <Compile Include="FiringRequest.Designer.cs">
       <DependentUpon>FiringRequest.cs</DependentUpon>
     </Compile>
+    <Compile Include="FiringRequests.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

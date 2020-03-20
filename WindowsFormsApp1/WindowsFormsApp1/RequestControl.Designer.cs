@@ -28,22 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnDecline = new System.Windows.Forms.Button();
             this.lblRequestDescription = new System.Windows.Forms.Label();
             this.lblRequest = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDetails = new System.Windows.Forms.Button();
+            this.btnApprove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button3
+            // btnDecline
             // 
-            this.button3.Font = new System.Drawing.Font("Montserrat", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(549, 101);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(73, 33);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Decline";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDecline.BackColor = System.Drawing.Color.Silver;
+            this.btnDecline.Font = new System.Drawing.Font("Montserrat", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDecline.Location = new System.Drawing.Point(549, 101);
+            this.btnDecline.Name = "btnDecline";
+            this.btnDecline.Size = new System.Drawing.Size(78, 33);
+            this.btnDecline.TabIndex = 19;
+            this.btnDecline.Text = "Decline";
+            this.btnDecline.UseVisualStyleBackColor = false;
+            this.btnDecline.Click += new System.EventHandler(this.BtnDecline_Click);
             // 
             // lblRequestDescription
             // 
@@ -59,7 +61,7 @@
             // lblRequest
             // 
             this.lblRequest.AutoSize = true;
-            this.lblRequest.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblRequest.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRequest.Location = new System.Drawing.Point(7, 17);
             this.lblRequest.Name = "lblRequest";
@@ -67,37 +69,43 @@
             this.lblRequest.TabIndex = 17;
             this.lblRequest.Text = "Request";
             // 
-            // button2
+            // btnDetails
             // 
-            this.button2.Font = new System.Drawing.Font("Montserrat", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(13, 101);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(73, 33);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Details";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDetails.BackColor = System.Drawing.Color.Silver;
+            this.btnDetails.Font = new System.Drawing.Font("Montserrat", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetails.Location = new System.Drawing.Point(13, 101);
+            this.btnDetails.Name = "btnDetails";
+            this.btnDetails.Size = new System.Drawing.Size(73, 33);
+            this.btnDetails.TabIndex = 16;
+            this.btnDetails.Text = "Details";
+            this.btnDetails.UseVisualStyleBackColor = false;
+            this.btnDetails.Click += new System.EventHandler(this.BtnDetails_Click);
             // 
-            // button1
+            // btnApprove
             // 
-            this.button1.Font = new System.Drawing.Font("Montserrat", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(460, 101);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 33);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Approve";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnApprove.BackColor = System.Drawing.Color.Silver;
+            this.btnApprove.Font = new System.Drawing.Font("Montserrat", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApprove.Location = new System.Drawing.Point(460, 101);
+            this.btnApprove.Name = "btnApprove";
+            this.btnApprove.Size = new System.Drawing.Size(83, 33);
+            this.btnApprove.TabIndex = 15;
+            this.btnApprove.Text = "Approve";
+            this.btnApprove.UseVisualStyleBackColor = false;
+            this.btnApprove.Click += new System.EventHandler(this.BtnApprove_Click);
             // 
             // RequestControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button3);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.btnDecline);
             this.Controls.Add(this.lblRequestDescription);
             this.Controls.Add(this.lblRequest);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDetails);
+            this.Controls.Add(this.btnApprove);
             this.Name = "RequestControl";
-            this.Size = new System.Drawing.Size(648, 150);
+            this.Size = new System.Drawing.Size(646, 148);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,10 +113,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnDecline;
         private System.Windows.Forms.Label lblRequestDescription;
         private System.Windows.Forms.Label lblRequest;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDetails;
+        private System.Windows.Forms.Button btnApprove;
     }
 }

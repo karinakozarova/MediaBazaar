@@ -18,12 +18,13 @@ namespace WindowsFormsApp1
         int workerRole;
 
         private string username;
-        public MainForm(string username, int workerRole)
+        private int user_id;
+        public MainForm(string username, int workerRole, int user_id)
         {
             InitializeComponent();
             controls = new List<DepartmentUserControl>();
             UpdateGUI();
-
+            this.user_id = user_id;
             this.username = username;
 
             if(workerRole == (int)ProfileRoles.ADMINISTRATOR)
@@ -36,6 +37,7 @@ namespace WindowsFormsApp1
                 btnFireManager.Visible = false;
                 btnCreateAdminManager.Visible = false;
                 addNewDepartmentBttn.Visible = false;
+                btnViewRequests.Visible = false;
             }
             else if(workerRole == (int)ProfileRoles.EMPLOYEE)
             {
@@ -88,6 +90,16 @@ namespace WindowsFormsApp1
         {
             (new AddDepartment(this)).Show();
             UpdateGUI();
+        }
+
+        private void BtnViewRequests_Click(object sender, EventArgs e)
+        {
+            (new ApproveManagerRequests()).Show();
+        }
+
+        private void BtnFireEmployeeRequest_Click(object sender, EventArgs e)
+        {
+            (new FiringRequest(this.user_id)).Show();
         }
     }
 }
