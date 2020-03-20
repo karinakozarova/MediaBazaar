@@ -130,7 +130,18 @@ namespace WindowsFormsApp1
                     workshifts.Add(3);
                 }
 
-                pc.InsertWorkShifts(workshifts, workdays);
+                foreach (int shift in workshifts)
+                {
+                    foreach (int day in workdays)
+                    {
+                        string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift) VALUE(@userId,@week_day_id, @shift)";
+                        MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
+                        shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
+                        shiftsQueryCmd.Parameters.AddWithValue("@userId", GetIdByUsername());
+                        shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
+                        shiftsQueryCmd.ExecuteNonQuery();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -182,7 +193,7 @@ namespace WindowsFormsApp1
             }
 
         }
-
+       
         private void PopulateDepartments(List<Department> departments)
         {
             foreach (Department d in departments)
