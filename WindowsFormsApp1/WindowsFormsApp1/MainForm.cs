@@ -101,5 +101,12 @@ namespace WindowsFormsApp1
         {
             (new FiringRequest(this.user_id)).Show();
         }
+
+        private void btnCreateAdminManager_Click(object sender, EventArgs e)
+        {
+            CreateAccount ca = new CreateAccount();
+            ca.Show();
+            this.Close();
+        }
     }
 }
