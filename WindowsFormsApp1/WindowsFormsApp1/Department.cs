@@ -32,6 +32,29 @@ namespace WindowsFormsApp1
             this.DepartmentId = id;
         }
 
+        public static int GetNeededPeopleCount(int departmentId)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            int count = 0;
+            try
+            {
+                string sql = "SELECT needed_people FROM " + tableName + " WHERE id=@id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", departmentId);
+                conn.Open();
+                count = (Int32)cmd.ExecuteScalar();
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+
         public Department(string name, int neededPeople)
         {
             this.Name = name;
