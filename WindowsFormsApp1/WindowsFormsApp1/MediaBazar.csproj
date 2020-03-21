@@ -312,6 +312,7 @@
     <EmbeddedResource Include="ShelfRestockRequests.resx">
       <DependentUpon>ShelfRestockRequests.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <EmbeddedResource Include="WordaysControl.resx">
       <DependentUpon>WordaysControl.cs</DependentUpon>
     </EmbeddedResource>
