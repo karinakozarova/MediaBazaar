@@ -118,5 +118,10 @@ namespace WindowsFormsApp1
         {
             (new DepartmentActions()).Show();
         }
+
+        private void btnSearchEmployee_Click(object sender, EventArgs e)
+        {
+            (new SearchForEmployee()).Show();
+        }
     }
 }
