@@ -23,16 +23,19 @@ namespace WindowsFormsApp1
             tbxLastName.Enabled = false;
             PopulateDepartments(Department.GetAllDepartments());
             PopulateManagers(Manager.GetAllManagers());
+            PopulateEmployees(Employee.GetAllEmployees());
             this.loggedUserId = user_id;
             this.workerRole = workerRole;
             if (workerRole == (int)ProfileRoles.ADMINISTRATOR)
             {
                 btnSendFiringRequest.Visible = false;
                 this.Text = "Remove manager!";
+                cmbEmployees.Visible = false;
             }
             else if (workerRole == (int)ProfileRoles.MANAGER)
             {
                 btnRemoveManager.Visible = false;
+                cmbManagers.Visible = false;
             }
         }
 
@@ -45,7 +48,6 @@ namespace WindowsFormsApp1
                 this.Enabled = false;
                 tbxFirstName.Text = firstName;
                 tbxLastName.Text = lastName;
-                tbxUsername.Text = username;
                 rtbReason.Text = description;
                 List<Department> departments = new List<Department>();
                 departments = Department.GetAllDepartments();
@@ -76,81 +78,57 @@ namespace WindowsFormsApp1
                 cmbManagers.Items.Add(new ManagerComboBoxItems(m));
             }
         }
+        private void PopulateEmployees(List<Employee> employees)
+        {
+            foreach(Employee e in employees)
+            {
+                cmbEmployees.Items.Add(new EmployeeComboBoxItem(e));
+            }
+        }
 
         private void BtnSendFiringRequest_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = Utils.GetConnection();
             
             string description = rtbReason.Text;
-            string username = tbxUsername.Text;
             try
             {
                 int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
+                int employeeId = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).Id;
+                string employeeUsername = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).Username;
+                string employeeFirstName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).FirstName;
+                string employeeLastName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).LastName;
                 if (cmbDepartment.Text == "Department" || cmbDepartment.Text == "")
                 {
                     MessageBox.Show("Please select a department from the menu!");
                 }
-                else if (tbxUsername.Text == "Username" || rtbReason.Text == "Reason for firing")
+                else if (rtbReason.Text == "Reason for firing")
                 {
                     MessageBox.Show("Please change the initial information in the fields!");
                 }
-                else if (tbxUsername.Text == "" || rtbReason.Text == "")
+                else if (rtbReason.Text == "")
                 {
                     MessageBox.Show("Please fill in all the fields in the table!");
+                }else if (cmbEmployees.Text == "Employees" || cmbEmployees.Text == "")
+                {
+                    MessageBox.Show("Please select an employee from the menu!");
                 }
                 else
                 {
                     try
                     {
-                        string userIdQuery = "SELECT account_id FROM user where username=@username";
-                        MySqlCommand userIdCmd = new MySqlCommand(userIdQuery, conn);
-                        userIdCmd.Parameters.AddWithValue("@username", username);
-                        conn.Open();
-                        Object userIdResult = userIdCmd.ExecuteScalar();
-                        int user_id = 0;
-                        if (userIdResult != null) { user_id = Convert.ToInt32(userIdResult); }
-                        else { MessageBox.Show("Wrong username!"); return; }
-
-                        string accountTypeQuery = "SELECT account_type FROM user where account_id=@user_id";
-                        MySqlCommand accountTypeCmd = new MySqlCommand(accountTypeQuery, conn);
-                        accountTypeCmd.Parameters.AddWithValue("@user_id", user_id);
-                        Object accountTypeResult = accountTypeCmd.ExecuteScalar();
-                        int accountType = 0;
-                        if (accountTypeResult != null) { accountType = Convert.ToInt32(accountTypeResult); }
-                        if (accountType == (int)ProfileRoles.ADMINISTRATOR || accountType == (int)ProfileRoles.MANAGER)
-                        {
-                            MessageBox.Show("Sorry you can't send firing request for administrator or manager account!");
-                        }
-                        else
-                        {
-                            string userFirstNameQuery = "SELECT first_name FROM person WHERE id=@user_id";
-                            MySqlCommand userFirstNameCmd = new MySqlCommand(userFirstNameQuery, conn);
-                            userFirstNameCmd.Parameters.AddWithValue("@user_id", user_id);
-                            Object userFirstNameResult = userFirstNameCmd.ExecuteScalar();
-                            string firstName = "";
-                            if (userFirstNameResult != null) { firstName = userFirstNameResult.ToString(); }
-
-                            string userLastNameQuery = "SELECT last_name FROM person WHERE id=@user_id";
-                            MySqlCommand userLastNameCmd = new MySqlCommand(userLastNameQuery, conn);
-                            userLastNameCmd.Parameters.AddWithValue("@user_id", user_id);
-                            Object userLastNameResult = userLastNameCmd.ExecuteScalar();
-                            string lastName = "";
-                            if (userLastNameResult != null) { lastName = userLastNameResult.ToString(); }
-                            FiringRequests fr = new FiringRequests(user_id, this.loggedUserId, username, description, firstName, lastName, departmentId);
-                            FiringRequests fr1 = new FiringRequests(user_id, this.loggedUserId, description);
+                            FiringRequests fr = new FiringRequests(employeeId, this.loggedUserId, employeeUsername, description, employeeFirstName, employeeLastName, departmentId);
+                            FiringRequests fr1 = new FiringRequests(employeeId, this.loggedUserId, description);
                             if (!fr1.FrExists)
                             {
                                 MessageBox.Show("Firing request already exists!");
                             }
                             else
                             {
-                                tbxFirstName.Text = firstName;
-                                tbxLastName.Text = lastName;
+                                tbxFirstName.Text = employeeFirstName;
+                                tbxLastName.Text = employeeLastName;
                                 MessageBox.Show("Request sent successfully!");
                             }
-                        }
-
-
                     }
                     catch (Exception ex)
                     {
@@ -172,8 +150,6 @@ namespace WindowsFormsApp1
         private void BtnRemoveManager_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = Utils.GetConnection();
-            string description = rtbReason.Text;
-            string username = tbxUsername.Text;
             List<int> contactIds = new List<int>();
             try
             {
@@ -190,7 +166,7 @@ namespace WindowsFormsApp1
                 {
                     MessageBox.Show("Please select a manager from the menu!");
                 }
-                else if (tbxUsername.Text == "" || rtbReason.Text == "")
+                else if (rtbReason.Text == "")
                 {
                     MessageBox.Show("Please fill in all the fields in the table!");
                 }
