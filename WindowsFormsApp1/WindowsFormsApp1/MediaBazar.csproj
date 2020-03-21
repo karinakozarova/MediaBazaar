@@ -127,6 +127,7 @@
       <DependentUpon>EditDepartmentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeComboBoxItem.cs" />
     <Compile Include="FiringRequest.cs">
       <SubType>Form</SubType>
     </Compile>
