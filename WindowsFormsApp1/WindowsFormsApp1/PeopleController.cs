@@ -6,8 +6,7 @@ namespace WindowsFormsApp1
 {
 
     class PeopleController
-    {
-        CreateAccount ca;
+    {        
         public void ApproveFire()
         {
 
@@ -129,34 +128,8 @@ namespace WindowsFormsApp1
             }
             return listContacts;
         }
-        public void InsertWorkShifts(List<int> workshifts, List<int> workdays)
-        {
-            MySqlConnection conn = Utils.GetConnection();
-            try
-            {
 
-                foreach (int shift in workshifts)
-                {
-                    foreach (int day in workdays)
-                    {
-                        string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift) VALUE(@userId,@week_day_id, @shift)";
-                        MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
-                        shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
-                        shiftsQueryCmd.Parameters.AddWithValue("@userId", ca.GetIdByUsername());
-                        shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
-                        conn.Open();
-                        shiftsQueryCmd.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                // TODO: add it to error log in the future
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
+       
+        
     }
 }
