@@ -14,19 +14,19 @@ namespace WindowsFormsApp1
    
     public partial class AddOtherContacts : Form
     {
-       
-        public AddOtherContacts()
+        CreateAccount ca;
+        Person p;
+        public AddOtherContacts(CreateAccount form)
         {
             InitializeComponent();
-
+            ca = form;
         }
-        Person p;
-        CreateAccount ca;
         string firstName;
         string lastName;
-        DateTime dateOfBirth;        //adds other contacts to people
+        DateTime dateOfBirth;        
         string email;
         long phoneN;
+        private string sendContact;
         public string FirstName { get { return firstName; }private set { firstName = tbFirstName.Text; } }
         public string LastName { get { return lastName; } private set { lastName = tbLastName.Text; } }
         public DateTime DateOfBirth { get { return dateOfBirth; } private set { dateOfBirth = dtpBirthdate.Value; } }
@@ -41,16 +41,26 @@ namespace WindowsFormsApp1
             get { return email; }
             private set { email = tbEmail.Text; }
         }
+      
         private void btnAdd_Click(object sender, EventArgs e)
         {
-             FirstName = tbFirstName.Text;
-             LastName = tbLastName.Text;
-             DateOfBirth = dtpBirthdate.Value;        //adds other contacts to people
-             Email = tbEmail.Text;
-            PhoneNumber = Convert.ToInt64(tbPhoneNumber.Text);
-            p = new Person(FirstName, LastName, DateOfBirth, PhoneNumber, Email);
-            string display = FirstName + " " + LastName + " date of birth: " + DateOfBirth + " tel: " + PhoneNumber + " email: " + Email;
-            ca = new CreateAccount( this);
+            try
+            {
+                FirstName = tbFirstName.Text;
+                LastName = tbLastName.Text;
+                DateOfBirth = dtpBirthdate.Value;        
+                Email = tbEmail.Text;
+                PhoneNumber = Convert.ToInt64(tbPhoneNumber.Text);
+                p = new Person(FirstName, LastName, DateOfBirth, PhoneNumber, Email);
+                sendContact = FirstName +" "+ LastName +" date of birth: "+ DateOfBirth +" tel: "+ PhoneNumber + " email: "+Email;
+                ca.ShowContact(sendContact);
+                ca.ShowListContacts();
+                this.Hide();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
     }
