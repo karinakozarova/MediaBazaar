@@ -12,9 +12,10 @@ namespace WindowsFormsApp1
 {
     public partial class EmployeeCosts : UserControl
     {
-        public EmployeeCosts()
+        public EmployeeCosts(Worker worker)
         {
             InitializeComponent();
+            nameLbl.Text = worker.FirstName + " " + worker.LastName;
         }
     }
 }

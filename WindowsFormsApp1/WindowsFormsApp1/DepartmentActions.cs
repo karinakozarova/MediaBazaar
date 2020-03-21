@@ -14,6 +14,13 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             LoadDepartments();
+            LoadPeople();
+        }
+
+        private void LoadPeople()
+        {
+            List<Worker> people = Worker.GetAllEmployees();
+            PopulatePeople(people);
         }
 
         private void LoadDepartments()
@@ -57,7 +64,25 @@ namespace WindowsFormsApp1
         private void departmentAvailableCmbbx_SelectedIndexChanged(object sender, EventArgs e)
         {
             int departmentId = ((DepartmentComboBoxItem)departmentAvailableCmbbx.SelectedItem).Id;
-            // List<Person> people = Worker.GetAllEmployees();
+            List<Worker> people = Department.GetDepartmentEmployees();
+            PopulatePeople(people);
+        }
+
+        private void PopulatePeople(List<Worker> people)
+        {
+            availablePanel.Controls.Clear();
+            foreach (Worker w in people)
+            {
+                List<EmployeeCosts> controls = new List<EmployeeCosts>();
+                controls.Clear();
+                controls.Add(new EmployeeCosts(w));
+
+                flpDays.Controls.Clear();
+                foreach (EmployeeCosts costs in controls)
+                {
+                    availablePanel.Controls.Add(costs);
+                }
+            }
         }
     }
 }
