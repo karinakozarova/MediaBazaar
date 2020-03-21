@@ -50,9 +50,6 @@
             this.btnSendRequest = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.cbAdmin = new System.Windows.Forms.CheckBox();
-            this.cbManager = new System.Windows.Forms.CheckBox();
-            this.cbEmployee = new System.Windows.Forms.CheckBox();
             this.cbSaturday = new System.Windows.Forms.CheckBox();
             this.cbSunday = new System.Windows.Forms.CheckBox();
             this.cbMorningShift = new System.Windows.Forms.CheckBox();
@@ -70,7 +67,9 @@
             this.btnOpenContact = new System.Windows.Forms.Button();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnShowContacts = new System.Windows.Forms.Button();
+            this.rbManager = new System.Windows.Forms.RadioButton();
+            this.rbAdmin = new System.Windows.Forms.RadioButton();
+            this.rbEmployee = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.nHourlyWage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -323,48 +322,6 @@
             this.label8.TabIndex = 27;
             this.label8.Text = "Contacts:";
             // 
-            // cbAdmin
-            // 
-            this.cbAdmin.AutoSize = true;
-            this.cbAdmin.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbAdmin.Location = new System.Drawing.Point(535, 69);
-            this.cbAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbAdmin.Name = "cbAdmin";
-            this.cbAdmin.Size = new System.Drawing.Size(126, 37);
-            this.cbAdmin.TabIndex = 28;
-            this.cbAdmin.Text = "Admin";
-            this.cbAdmin.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.cbAdmin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.cbAdmin.UseVisualStyleBackColor = true;
-            // 
-            // cbManager
-            // 
-            this.cbManager.AutoSize = true;
-            this.cbManager.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbManager.Location = new System.Drawing.Point(406, 106);
-            this.cbManager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbManager.Name = "cbManager";
-            this.cbManager.Size = new System.Drawing.Size(159, 37);
-            this.cbManager.TabIndex = 29;
-            this.cbManager.Text = "Manager";
-            this.cbManager.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.cbManager.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.cbManager.UseVisualStyleBackColor = true;
-            // 
-            // cbEmployee
-            // 
-            this.cbEmployee.AutoSize = true;
-            this.cbEmployee.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbEmployee.Location = new System.Drawing.Point(635, 106);
-            this.cbEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbEmployee.Name = "cbEmployee";
-            this.cbEmployee.Size = new System.Drawing.Size(174, 37);
-            this.cbEmployee.TabIndex = 30;
-            this.cbEmployee.Text = "Employee";
-            this.cbEmployee.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.cbEmployee.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.cbEmployee.UseVisualStyleBackColor = true;
-            // 
             // cbSaturday
             // 
             this.cbSaturday.AutoSize = true;
@@ -465,6 +422,7 @@
             this.tbUsername.Size = new System.Drawing.Size(283, 40);
             this.tbUsername.TabIndex = 86;
             this.tbUsername.Text = "Username";
+            this.tbUsername.TextChanged += new System.EventHandler(this.tbUsername_TextChanged);
             // 
             // tbStreet
             // 
@@ -509,7 +467,7 @@
             // btnAddOtherContact
             // 
             this.btnAddOtherContact.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddOtherContact.Location = new System.Drawing.Point(519, 230);
+            this.btnAddOtherContact.Location = new System.Drawing.Point(685, 230);
             this.btnAddOtherContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddOtherContact.Name = "btnAddOtherContact";
             this.btnAddOtherContact.Size = new System.Drawing.Size(142, 46);
@@ -562,24 +520,50 @@
             this.label10.TabIndex = 95;
             this.label10.Text = "User password";
             // 
-            // btnShowContacts
+            // rbManager
             // 
-            this.btnShowContacts.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowContacts.Location = new System.Drawing.Point(667, 230);
-            this.btnShowContacts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnShowContacts.Name = "btnShowContacts";
-            this.btnShowContacts.Size = new System.Drawing.Size(163, 46);
-            this.btnShowContacts.TabIndex = 96;
-            this.btnShowContacts.Text = "Show contacts";
-            this.btnShowContacts.UseVisualStyleBackColor = true;
-            this.btnShowContacts.Click += new System.EventHandler(this.btnShowContacts_Click);
+            this.rbManager.AutoSize = true;
+            this.rbManager.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbManager.Location = new System.Drawing.Point(376, 79);
+            this.rbManager.Name = "rbManager";
+            this.rbManager.Size = new System.Drawing.Size(160, 38);
+            this.rbManager.TabIndex = 96;
+            this.rbManager.TabStop = true;
+            this.rbManager.Text = "Manager";
+            this.rbManager.UseVisualStyleBackColor = true;
+            // 
+            // rbAdmin
+            // 
+            this.rbAdmin.AutoSize = true;
+            this.rbAdmin.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbAdmin.Location = new System.Drawing.Point(564, 78);
+            this.rbAdmin.Name = "rbAdmin";
+            this.rbAdmin.Size = new System.Drawing.Size(130, 38);
+            this.rbAdmin.TabIndex = 97;
+            this.rbAdmin.TabStop = true;
+            this.rbAdmin.Text = "Admin";
+            this.rbAdmin.UseVisualStyleBackColor = true;
+            // 
+            // rbEmployee
+            // 
+            this.rbEmployee.AutoSize = true;
+            this.rbEmployee.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbEmployee.Location = new System.Drawing.Point(719, 79);
+            this.rbEmployee.Name = "rbEmployee";
+            this.rbEmployee.Size = new System.Drawing.Size(177, 38);
+            this.rbEmployee.TabIndex = 98;
+            this.rbEmployee.TabStop = true;
+            this.rbEmployee.Text = "Employee";
+            this.rbEmployee.UseVisualStyleBackColor = true;
             // 
             // CreateAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1376, 892);
-            this.Controls.Add(this.btnShowContacts);
+            this.Controls.Add(this.rbEmployee);
+            this.Controls.Add(this.rbAdmin);
+            this.Controls.Add(this.rbManager);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.btnOpenContact);
@@ -595,9 +579,6 @@
             this.Controls.Add(this.cbAfternoonShift);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cbEveningShift);
-            this.Controls.Add(this.cbEmployee);
-            this.Controls.Add(this.cbManager);
-            this.Controls.Add(this.cbAdmin);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnSendRequest);
@@ -655,9 +636,6 @@
         private System.Windows.Forms.Button btnSendRequest;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox cbAdmin;
-        private System.Windows.Forms.CheckBox cbManager;
-        private System.Windows.Forms.CheckBox cbEmployee;
         private System.Windows.Forms.CheckBox cbSaturday;
         private System.Windows.Forms.CheckBox cbSunday;
         private System.Windows.Forms.CheckBox cbMorningShift;
@@ -675,6 +653,8 @@
         private System.Windows.Forms.Button btnOpenContact;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btnShowContacts;
+        private System.Windows.Forms.RadioButton rbManager;
+        private System.Windows.Forms.RadioButton rbAdmin;
+        private System.Windows.Forms.RadioButton rbEmployee;
     }
 }

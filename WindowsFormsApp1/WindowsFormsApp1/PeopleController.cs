@@ -8,6 +8,7 @@ namespace WindowsFormsApp1
     class PeopleController
     {
         CreateAccount ca;
+        
         public void ApproveFire()
         {
 
@@ -129,6 +130,8 @@ namespace WindowsFormsApp1
             }
             return listContacts;
         }
+
+       
         
     }
 }
