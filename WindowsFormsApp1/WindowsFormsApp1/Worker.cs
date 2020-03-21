@@ -17,11 +17,11 @@ namespace WindowsFormsApp1
             private set;
         }
 
-        public Worker(int accountType,string username, string password, string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email, decimal hourlyWage, DateTime contractStartDate, int departmentId)
-            :base(accountType, username, password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneNumber, email, hourlyWage, contractStartDate, departmentId)
+        public Worker(int accountType, string username, string password, string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email, decimal hourlyWage, DateTime contractStartDate, int departmentId, bool addToDB = true)
+             : base(accountType, username, password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneNumber, email, hourlyWage, contractStartDate, departmentId)
         {
             this.hourlyWage = hourlyWage;
-            AddWorker();
+            if (addToDB) AddWorker();
         }
         public Worker()
         {
@@ -179,6 +179,133 @@ namespace WindowsFormsApp1
             }
             return IsLoggedIn;
         }
+
+        public static List<Worker> GetAllEmployees()
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            List<Worker> emlpoyees = new List<Worker>();
+
+            List<int> employeeid = new List<int>();
+            try
+            {
+
+                string sql = "SELECT account_id FROM user WHERE account_type = 2";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+                MySqlDataReader row = cmd.ExecuteReader();
+                while (row.Read())
+                {
+                    int id = Convert.ToInt32(row[0]);
+                    employeeid.Add(id);
+                }
+                conn.Close();
+
+                string GetinfoSql = "SELECT p.id, p.first_name, p.last_name, p.date_of_birth, p.street, p.postcode, p.region, p.country, p.phone_number, p.email , ed.hourly_wage , ed.department_id , c.contract_start FROM person AS p INNER JOIN employee_details AS ed ON p.id = ed.person_id INNER JOIN contract AS c ON ed.person_id = c.person_id";
+                MySqlCommand cmd2 = new MySqlCommand(GetinfoSql, conn);
+                conn.Open();
+                MySqlDataReader row2 = cmd2.ExecuteReader();
+                while (row2.Read())
+                {
+                    int personid = Convert.ToInt32(row2[0]);
+                    foreach (int id in employeeid)
+                    {
+                        if (id == personid)
+                        {
+                            string firstname = row2[1].ToString();
+                            string lastname = row2[2].ToString();
+
+                            DateTime dateOfBirth = Convert.ToDateTime(row2[3]);
+                            string street = row2[4].ToString();
+                            string postcode = row2[5].ToString();
+                            string region = row2[6].ToString();
+                            string country = row2[7].ToString();
+                            int phonenumber = Convert.ToInt32(row2[8]);
+                            string email = row2[9].ToString();
+                            decimal hourly_wage = Convert.ToDecimal(row2[10]);
+                            int departmentid = Convert.ToInt32(row2[11]);
+                            DateTime ContractDate = Convert.ToDateTime(row2[12]);
+                            Worker worker = new Worker(personid, null, null, firstname, lastname, dateOfBirth, street, postcode, region, country, phonenumber, email, hourly_wage, ContractDate, departmentid, false);
+                            worker.Id = personid;
+                            emlpoyees.Add(worker);
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                String e = ex.Message;
+            }
+            finally { conn.Close(); }
+
+
+
+            return emlpoyees;
+        }
+
+        public static List<Worker> GetAllManagers()
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            List<Worker> Managers = new List<Worker>();
+
+            List<int> Managersid = new List<int>();
+            try
+            {
+
+                string sql = "SELECT account_id FROM user WHERE account_type = 1";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+                MySqlDataReader row = cmd.ExecuteReader();
+                while (row.Read())
+                {
+                    int id = Convert.ToInt32(row[0]);
+                    Managersid.Add(id);
+                }
+                conn.Close();
+
+                string GetinfoSql = "SELECT p.id, p.first_name, p.last_name, p.date_of_birth, p.street, p.postcode, p.region, p.country, p.phone_number, p.email , ed.hourly_wage , ed.department_id , c.contract_start FROM person AS p INNER JOIN employee_details AS ed ON p.id = ed.person_id INNER JOIN contract AS c ON ed.person_id = c.person_id";
+                MySqlCommand cmd2 = new MySqlCommand(GetinfoSql, conn);
+                conn.Open();
+                MySqlDataReader row2 = cmd2.ExecuteReader();
+                while (row2.Read())
+                {
+                    int personid = Convert.ToInt32(row2[0]);
+                    foreach (int id in Managersid)
+                    {
+                        if (id == personid)
+                        {
+                            string firstname = row2[1].ToString();
+                            string lastname = row2[2].ToString();
+
+                            DateTime dateOfBirth = Convert.ToDateTime(row2[3]);
+                            string street = row2[4].ToString();
+                            string postcode = row2[5].ToString();
+                            string region = row2[6].ToString();
+                            string country = row2[7].ToString();
+                            int phonenumber = Convert.ToInt32(row2[8]);
+                            string email = row2[9].ToString();
+                            decimal hourly_wage = Convert.ToDecimal(row2[10]);
+                            int departmentid = Convert.ToInt32(row2[11]);
+                            DateTime ContractDate = Convert.ToDateTime(row2[12]);
+                            Worker worker = new Worker(personid, null, null, firstname, lastname, dateOfBirth, street, postcode, region, country, phonenumber, email, hourly_wage, ContractDate, departmentid, false);
+                            worker.Id = personid;
+                            Managers.Add(worker);
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                String e = ex.Message;
+            }
+            finally { conn.Close(); }
+
+
+
+            return Managers;
+        }
+
         public override string ToString()
         {
             return "Worker";
