@@ -30,7 +30,7 @@
         {
             this.mornDataLbl = new System.Windows.Forms.Label();
             this.timeOfTheDayData = new System.Windows.Forms.Label();
-            this.morningPanel = new System.Windows.Forms.Panel();
+            this.colorPanel = new System.Windows.Forms.Panel();
             this.sunData = new System.Windows.Forms.Label();
             this.satData = new System.Windows.Forms.Label();
             this.fridayData = new System.Windows.Forms.Label();
@@ -47,7 +47,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.totalData = new System.Windows.Forms.Label();
-            this.morningPanel.SuspendLayout();
+            this.colorPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mornDataLbl
@@ -70,33 +70,33 @@
             this.timeOfTheDayData.TabIndex = 109;
             this.timeOfTheDayData.Text = "Morning";
             // 
-            // morningPanel
+            // colorPanel
             // 
-            this.morningPanel.BackColor = System.Drawing.Color.LightGreen;
-            this.morningPanel.Controls.Add(this.totalData);
-            this.morningPanel.Controls.Add(this.label7);
-            this.morningPanel.Controls.Add(this.label6);
-            this.morningPanel.Controls.Add(this.sunData);
-            this.morningPanel.Controls.Add(this.satData);
-            this.morningPanel.Controls.Add(this.fridayData);
-            this.morningPanel.Controls.Add(this.thurData);
-            this.morningPanel.Controls.Add(this.wedData);
-            this.morningPanel.Controls.Add(this.mondayData);
-            this.morningPanel.Controls.Add(this.tuesData);
-            this.morningPanel.Controls.Add(this.label5);
-            this.morningPanel.Controls.Add(this.label4);
-            this.morningPanel.Controls.Add(this.label3);
-            this.morningPanel.Controls.Add(this.label2);
-            this.morningPanel.Controls.Add(this.label1);
-            this.morningPanel.Controls.Add(this.mornDataLbl);
-            this.morningPanel.Controls.Add(this.morningDataLbl);
-            this.morningPanel.Controls.Add(this.timeOfTheDayData);
-            this.morningPanel.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.morningPanel.Location = new System.Drawing.Point(0, 0);
-            this.morningPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.morningPanel.Name = "morningPanel";
-            this.morningPanel.Size = new System.Drawing.Size(307, 349);
-            this.morningPanel.TabIndex = 120;
+            this.colorPanel.BackColor = System.Drawing.Color.LightGreen;
+            this.colorPanel.Controls.Add(this.totalData);
+            this.colorPanel.Controls.Add(this.label7);
+            this.colorPanel.Controls.Add(this.label6);
+            this.colorPanel.Controls.Add(this.sunData);
+            this.colorPanel.Controls.Add(this.satData);
+            this.colorPanel.Controls.Add(this.fridayData);
+            this.colorPanel.Controls.Add(this.thurData);
+            this.colorPanel.Controls.Add(this.wedData);
+            this.colorPanel.Controls.Add(this.mondayData);
+            this.colorPanel.Controls.Add(this.tuesData);
+            this.colorPanel.Controls.Add(this.label5);
+            this.colorPanel.Controls.Add(this.label4);
+            this.colorPanel.Controls.Add(this.label3);
+            this.colorPanel.Controls.Add(this.label2);
+            this.colorPanel.Controls.Add(this.label1);
+            this.colorPanel.Controls.Add(this.mornDataLbl);
+            this.colorPanel.Controls.Add(this.morningDataLbl);
+            this.colorPanel.Controls.Add(this.timeOfTheDayData);
+            this.colorPanel.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorPanel.Location = new System.Drawing.Point(0, 0);
+            this.colorPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.colorPanel.Name = "colorPanel";
+            this.colorPanel.Size = new System.Drawing.Size(307, 349);
+            this.colorPanel.TabIndex = 120;
             // 
             // sunData
             // 
@@ -261,11 +261,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.morningPanel);
+            this.Controls.Add(this.colorPanel);
             this.Name = "WordaysControl";
             this.Size = new System.Drawing.Size(307, 349);
-            this.morningPanel.ResumeLayout(false);
-            this.morningPanel.PerformLayout();
+            this.colorPanel.ResumeLayout(false);
+            this.colorPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -274,7 +274,7 @@
 
         private System.Windows.Forms.Label mornDataLbl;
         private System.Windows.Forms.Label timeOfTheDayData;
-        private System.Windows.Forms.Panel morningPanel;
+        private System.Windows.Forms.Panel colorPanel;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
