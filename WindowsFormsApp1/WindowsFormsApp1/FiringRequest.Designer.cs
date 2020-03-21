@@ -156,7 +156,7 @@
             this.cmbEmployees.Name = "cmbEmployees";
             this.cmbEmployees.Size = new System.Drawing.Size(256, 41);
             this.cmbEmployees.TabIndex = 91;
-            this.cmbEmployees.Text = "Emloyees";
+            this.cmbEmployees.Text = "Employees";
             // 
             // FiringRequest
             // 

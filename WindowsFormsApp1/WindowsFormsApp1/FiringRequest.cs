@@ -88,33 +88,31 @@ namespace WindowsFormsApp1
 
         private void BtnSendFiringRequest_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn = Utils.GetConnection();
-            
-            string description = rtbReason.Text;
-            try
-            {
-                int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
-                int employeeId = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).Id;
-                string employeeUsername = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).Username;
-                string employeeFirstName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).FirstName;
-                string employeeLastName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).LastName;
+                MySqlConnection conn = Utils.GetConnection();
+
                 if (cmbDepartment.Text == "Department" || cmbDepartment.Text == "")
                 {
                     MessageBox.Show("Please select a department from the menu!");
                 }
-                else if (rtbReason.Text == "Reason for firing")
+                else if (cmbEmployees.Text == "Employees" || cmbEmployees.Text == "")
                 {
-                    MessageBox.Show("Please change the initial information in the fields!");
+                    MessageBox.Show("Please select an employee from the menu!");
                 }
                 else if (rtbReason.Text == "")
                 {
                     MessageBox.Show("Please fill in all the fields in the table!");
-                }else if (cmbEmployees.Text == "Employees" || cmbEmployees.Text == "")
+                }else if ( rtbReason.Text == "Reason for firing")
                 {
-                    MessageBox.Show("Please select an employee from the menu!");
+                    MessageBox.Show("Please change the initial information in the fields!");
                 }
                 else
                 {
+                    string description = rtbReason.Text;
+                    int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
+                    int employeeId = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).Id;
+                    string employeeUsername = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).Username;
+                    string employeeFirstName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).FirstName;
+                    string employeeLastName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).LastName;
                     try
                     {
                             FiringRequests fr = new FiringRequests(employeeId, this.loggedUserId, employeeUsername, description, employeeFirstName, employeeLastName, departmentId);
@@ -139,11 +137,6 @@ namespace WindowsFormsApp1
                         conn.Close();
                     }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Please select a department from the menu!");
-            }
                 
         }
 
