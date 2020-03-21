@@ -32,6 +32,76 @@ namespace WindowsFormsApp1
             this.DepartmentId = id;
         }
 
+        public static int GetNeededPeopleCount(int departmentId)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            int count = 0;
+            try
+            {
+                string sql = "SELECT needed_people FROM " + tableName + " WHERE id=@id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", departmentId);
+                conn.Open();
+                count = (Int32)cmd.ExecuteScalar();
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+
+        internal static int[] GetWorkersCountFor(int departmentId, string shift)
+        {
+            //SELECT* FROM `employee_details` left join person p on person_id = p.id left join employee_working_days wd on wd.employee_id = p.id  where department_id = 24 and shift = "morning"
+            MySqlConnection conn = Utils.GetConnection();
+            Int32 count = 0;
+            int[] days = new int[8];
+
+            try
+            {
+                String sql = "";
+                switch (shift)
+                {
+                    case "morning":
+                        sql = "SELECT * FROM employee_details left join person p on person_id=p.id left join employee_working_days wd on wd.employee_id = p.id where department_id = @departmentId and shift = 'morning'";
+                        break;
+                    case "afternoon":
+                        sql = "SELECT * FROM employee_details left join person p on person_id=p.id left join employee_working_days wd on wd.employee_id = p.id where department_id = @departmentId and shift = 'afternoon'";
+                        break;
+                    case "evening":
+                        sql = "SELECT * FROM employee_details left join person p on person_id=p.id left join employee_working_days wd on wd.employee_id = p.id where department_id = @departmentId and shift = 'evening'";
+                        break;
+
+                }
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@departmentId", departmentId);
+                conn.Open();
+
+                MySqlDataReader row = cmd.ExecuteReader();
+                while (row.Read())
+                {
+                    days[Convert.ToInt32(row["week_day_id"])] += 1;
+                    count += 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                // TODO: add it to error log in the future
+                String e = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            days[7] = count;
+            return days;
+        }
+
         public Department(string name, int neededPeople)
         {
             this.Name = name;
