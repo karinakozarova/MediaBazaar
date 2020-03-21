@@ -108,5 +108,10 @@ namespace WindowsFormsApp1
             ca.Show();
             this.Close();
         }
+
+        private void additionalDepartmentActionsBttn_Click(object sender, EventArgs e)
+        {
+            (new DepartmentActions()).Show();
+        }
     }
 }

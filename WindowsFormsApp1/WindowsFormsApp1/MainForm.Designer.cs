@@ -48,6 +48,7 @@
             this.addNewDepartmentBttn = new System.Windows.Forms.PictureBox();
             this.flpDepartments = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
+            this.additionalDepartmentActionsBttn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.employeesTab.SuspendLayout();
             this.stocksTab.SuspendLayout();
@@ -231,6 +232,7 @@
             // 
             // departmentsTab
             // 
+            this.departmentsTab.Controls.Add(this.additionalDepartmentActionsBttn);
             this.departmentsTab.Controls.Add(this.addDepartmentBttn);
             this.departmentsTab.Controls.Add(this.addNewDepartmentBttn);
             this.departmentsTab.Controls.Add(this.flpDepartments);
@@ -246,10 +248,10 @@
             // addDepartmentBttn
             // 
             this.addDepartmentBttn.Image = ((System.Drawing.Image)(resources.GetObject("addDepartmentBttn.Image")));
-            this.addDepartmentBttn.Location = new System.Drawing.Point(1155, 25);
+            this.addDepartmentBttn.Location = new System.Drawing.Point(1152, 25);
             this.addDepartmentBttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addDepartmentBttn.Name = "addDepartmentBttn";
-            this.addDepartmentBttn.Size = new System.Drawing.Size(58, 50);
+            this.addDepartmentBttn.Size = new System.Drawing.Size(61, 52);
             this.addDepartmentBttn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.addDepartmentBttn.TabIndex = 17;
             this.addDepartmentBttn.TabStop = false;
@@ -283,6 +285,17 @@
             this.label4.Size = new System.Drawing.Size(251, 44);
             this.label4.TabIndex = 12;
             this.label4.Text = "Departments:";
+            // 
+            // additionalDepartmentActionsBttn
+            // 
+            this.additionalDepartmentActionsBttn.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.additionalDepartmentActionsBttn.Location = new System.Drawing.Point(861, 25);
+            this.additionalDepartmentActionsBttn.Name = "additionalDepartmentActionsBttn";
+            this.additionalDepartmentActionsBttn.Size = new System.Drawing.Size(259, 52);
+            this.additionalDepartmentActionsBttn.TabIndex = 19;
+            this.additionalDepartmentActionsBttn.Text = "Additional Actions";
+            this.additionalDepartmentActionsBttn.UseVisualStyleBackColor = true;
+            this.additionalDepartmentActionsBttn.Click += new System.EventHandler(this.additionalDepartmentActionsBttn_Click);
             // 
             // MainForm
             // 
@@ -331,5 +344,6 @@
         private System.Windows.Forms.PictureBox addNewDepartmentBttn;
         private System.Windows.Forms.PictureBox addDepartmentBttn;
         private System.Windows.Forms.Button btnViewRequests;
+        private System.Windows.Forms.Button additionalDepartmentActionsBttn;
     }
 }
