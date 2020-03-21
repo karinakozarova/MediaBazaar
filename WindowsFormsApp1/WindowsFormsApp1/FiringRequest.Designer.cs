@@ -37,6 +37,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.rtbReason = new System.Windows.Forms.RichTextBox();
             this.tbxUsername = new System.Windows.Forms.TextBox();
+            this.btnRemoveManager = new System.Windows.Forms.Button();
+            this.cmbManagers = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label6
@@ -132,11 +134,36 @@
             this.tbxUsername.TabIndex = 88;
             this.tbxUsername.Text = "Username";
             // 
+            // btnRemoveManager
+            // 
+            this.btnRemoveManager.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveManager.Location = new System.Drawing.Point(202, 324);
+            this.btnRemoveManager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRemoveManager.Name = "btnRemoveManager";
+            this.btnRemoveManager.Size = new System.Drawing.Size(239, 46);
+            this.btnRemoveManager.TabIndex = 89;
+            this.btnRemoveManager.Text = "Fire manager";
+            this.btnRemoveManager.UseVisualStyleBackColor = true;
+            this.btnRemoveManager.Click += new System.EventHandler(this.BtnRemoveManager_Click);
+            // 
+            // cmbManagers
+            // 
+            this.cmbManagers.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbManagers.FormattingEnabled = true;
+            this.cmbManagers.Location = new System.Drawing.Point(268, 163);
+            this.cmbManagers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbManagers.Name = "cmbManagers";
+            this.cmbManagers.Size = new System.Drawing.Size(288, 41);
+            this.cmbManagers.TabIndex = 90;
+            this.cmbManagers.Text = "Managers";
+            // 
             // FiringRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 381);
+            this.Controls.Add(this.cmbManagers);
+            this.Controls.Add(this.btnRemoveManager);
             this.Controls.Add(this.tbxUsername);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cmbDepartment);
@@ -164,5 +191,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtbReason;
         private System.Windows.Forms.TextBox tbxUsername;
+        private System.Windows.Forms.Button btnRemoveManager;
+        private System.Windows.Forms.ComboBox cmbManagers;
     }
 }

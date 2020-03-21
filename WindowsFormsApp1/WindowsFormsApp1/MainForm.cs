@@ -100,7 +100,7 @@ namespace WindowsFormsApp1
 
         private void BtnFireEmployeeRequest_Click(object sender, EventArgs e)
         {
-            (new FiringRequest(this.user_id)).Show();
+            (new FiringRequest(this.user_id,workerRole)).Show();
         }
 
         private void btnCreateAdminManager_Click(object sender, EventArgs e)
@@ -117,6 +117,12 @@ namespace WindowsFormsApp1
         private void additionalDepartmentActionsBttn_Click(object sender, EventArgs e)
         {
             (new DepartmentActions()).Show();
+        }
+
+
+        private void BtnFireManager_Click(object sender, EventArgs e)
+        {
+            (new FiringRequest(this.user_id, workerRole)).Show();
         }
 
         private void btnSearchEmployee_Click(object sender, EventArgs e)
