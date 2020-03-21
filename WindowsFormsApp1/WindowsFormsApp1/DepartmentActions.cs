@@ -22,11 +22,30 @@ namespace WindowsFormsApp1
                 departmentsCmbbxAddingStock.Items.Add(new DepartmentComboBoxItem(d));
         }
 
+        private string GetDataForLabel(int having, int total)
+        {
+            return $"{having} out of {total}";
+        }
         private void departmentsCmbbxAddingStock_SelectedIndexChanged(object sender, EventArgs e)
         {
             int departmentId = ((DepartmentComboBoxItem)departmentsCmbbxAddingStock.SelectedItem).Id;
-            int neededPeople = Department.GetNeededPeopleCount(departmentId);
-            MessageBox.Show(neededPeople.ToString());
+            int[] morningPeople = Department.GetWorkersCountFor(departmentId, "morning");
+            int[] afternoonPeople = Department.GetWorkersCountFor(departmentId, "afternoon");
+            int[] eveningPeople = Department.GetWorkersCountFor(departmentId, "evening");
+
+            List<WordaysControl> controls = new List<WordaysControl>();
+            controls.Clear();
+            controls.Add(new WordaysControl(morningPeople, "morning"));
+            controls.Add(new WordaysControl(afternoonPeople, "afternoon"));
+            controls.Add(new WordaysControl(eveningPeople, "evening"));
+
+            flpDays.Controls.Clear();
+            foreach (WordaysControl day in controls)
+            {
+                flpDays.Controls.Add(day);
+            }
+            neededWorkersCount.Text = Department.GetNeededPeopleCount(departmentId).ToString();
+
         }
     }
 }
