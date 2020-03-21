@@ -13,13 +13,31 @@ namespace WindowsFormsApp1
         decimal hourlyWage;
         List<int> workdays = new List<int>();
         List<int> workshifts = new List<int>();
-        List<string> displayContacts = new List<string>();
-        public CreateAccount()
+        List<String> displayContacts;
+        int loggedInUser;
+        int workerRole;
+
+        public CreateAccount(int user_id, int workerRole)
         {
             InitializeComponent();
             pc = new PeopleController();
             PopulateDepartments(Department.GetAllDepartments());
+            this.loggedInUser = user_id;
+            displayContacts = new List<String>();
+
+            this.workerRole = workerRole;
+            if (workerRole == (int)ProfileRoles.ADMINISTRATOR)
+            {
+                btnEdit.Visible = true;
+                btnSendRequest.Visible = false;
+            }
+            else if (workerRole == (int)ProfileRoles.MANAGER)
+            {
+                btnEdit.Visible = false;
+                btnSendRequest.Visible = true;
+            }
         }
+
         private void btnSendRequest_Click(object sender, EventArgs e)
         {
             if (UniqueUsername())
@@ -42,6 +60,7 @@ namespace WindowsFormsApp1
                     {
                         accountType = (int)ProfileRoles.EMPLOYEE;
                     }
+
                     int contract_id = 0;
                     this.username = tbUsername.Text;
                     string firstName = tbFirstName.Text;
@@ -139,6 +158,16 @@ namespace WindowsFormsApp1
                             shiftsQueryCmd.ExecuteNonQuery();
                         }
                     }
+                    HiringRequests hr = new HiringRequests(GetIdByUsername(), loggedInUser, this.username, firstName, lastName, this.hourlyWage, departmentId, contractStartDate, phoneN, email);
+                    HiringRequests hr1 = new HiringRequests(GetIdByUsername(), loggedInUser);
+                    if (!hr1.FrExists)
+                    {
+                        MessageBox.Show("Hiring request already exists!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Request sent successfully!");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -148,6 +177,7 @@ namespace WindowsFormsApp1
                 {
                     conn.Close();
                 }
+
             }
             else { MessageBox.Show("User with that username already exists."); }
         }
@@ -283,6 +313,134 @@ namespace WindowsFormsApp1
             foreach(string s in displayContacts)
             {
                 lbContacts.Items.Add(s);
+            }
+        }
+
+        private void BtnCreateAccount_Click(object sender, EventArgs e)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                int accountType = 0;
+                if (rbAdmin.Checked)
+                {
+
+                    accountType = (int)ProfileRoles.ADMINISTRATOR;
+
+                }
+                else if (rbManager.Checked)
+                {
+                    accountType = (int)ProfileRoles.MANAGER;
+                }
+                else if (rbEmployee.Checked)
+                {
+                    accountType = (int)ProfileRoles.EMPLOYEE;
+                }
+                int contract_id = 0;
+                this.username = tbUsername.Text;
+                string firstName = tbFirstName.Text;
+                string lastName = tbLastName.Text;
+                DateTime dateOfBirth = dtpBirthdate.Value;
+                string street = tbStreet.Text;
+                string postcode = tbPostcode.Text;
+                string region = tbRegion.Text;
+                string country = tbCountry.Text;
+                string email = tbEmail.Text;
+                hourlyWage = nHourlyWage.Value;
+                string password = tbPassword.Text;
+                long phoneN = Convert.ToInt64(tbPhoneNumber.Text);
+                DateTime contractStartDate = dtbContractStartDate.Value;
+                int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
+                pc.CreateWorker(accountType, username, password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneN, email, hourlyWage, contractStartDate, departmentId);//adds worker to person table
+
+                string contractQuery = "INSERT into contract (person_id, contract_start) VALUES (@person_id, @contract_start);";
+                MySqlCommand contractCmd = new MySqlCommand(contractQuery, conn);
+                contractCmd.Parameters.AddWithValue("@person_id", GetIdByUsername());
+                contractCmd.Parameters.AddWithValue("@contract_start", contractStartDate);
+                conn.Open();
+                contractCmd.ExecuteNonQuery();
+
+                string userIdQuery = "SELECT id FROM contract where person_id=@person_id;";
+                MySqlCommand userIdCmd = new MySqlCommand(userIdQuery, conn);
+                userIdCmd.Parameters.AddWithValue("@person_id", GetIdByUsername());
+                Object userIdResult = userIdCmd.ExecuteScalar();
+
+                if (userIdResult != null)
+                {
+                    contract_id = Convert.ToInt32(userIdResult);
+                }
+
+                string employeDetailsQuery = "INSERT into employee_details(person_id, hourly_wage, contract_id, department_id, is_approved) VALUES (@person_id, @hourly_wage, @contract_id, @department_id, @is_approved);";
+                MySqlCommand employeDetailsCmd = new MySqlCommand(employeDetailsQuery, conn);
+                employeDetailsCmd.Parameters.AddWithValue("@person_id", GetIdByUsername());
+                employeDetailsCmd.Parameters.AddWithValue("@hourly_wage", hourlyWage);
+                employeDetailsCmd.Parameters.AddWithValue("@contract_id", contract_id);
+                employeDetailsCmd.Parameters.AddWithValue("@department_id", departmentId);//department ID department class
+                employeDetailsCmd.Parameters.AddWithValue("@is_approved", 2);
+                employeDetailsCmd.ExecuteNonQuery();
+
+                if (cbMonday.Checked)
+                {
+                    workdays.Add(0);
+                }
+                if (cbTuesday.Checked)
+                {
+                    workdays.Add(1);
+                }
+                if (cbWednesday.Checked)
+                {
+                    workdays.Add(2);
+                }
+                if (cbThursday.Checked)
+                {
+                    workdays.Add(3);
+                }
+                if (cbFriday.Checked)
+                {
+                    workdays.Add(4);
+                }
+                if (cbSaturday.Checked)
+                {
+                    workdays.Add(5);
+                }
+                if (cbSunday.Checked)
+                {
+                    workdays.Add(6);
+                }
+
+                if (cbMorningShift.Checked)
+                {
+                    workshifts.Add(1);
+                }
+                if (cbAfternoonShift.Checked)
+                {
+                    workshifts.Add(2);
+                }
+                if (cbEveningShift.Checked)
+                {
+                    workshifts.Add(3);
+                }
+
+                foreach (int shift in workshifts)
+                {
+                    foreach (int day in workdays)
+                    {
+                        string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift) VALUE(@userId,@week_day_id, @shift)";
+                        MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
+                        shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
+                        shiftsQueryCmd.Parameters.AddWithValue("@userId", GetIdByUsername());
+                        shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
+                        shiftsQueryCmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
         }
     }

@@ -6,9 +6,7 @@ namespace WindowsFormsApp1
 {
 
     class PeopleController
-    {
-        CreateAccount ca;
-        
+    {        
         public void ApproveFire()
         {
 

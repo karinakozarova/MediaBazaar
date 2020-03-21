@@ -120,15 +120,15 @@ namespace WindowsFormsApp1
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@password", password);
                 conn.Open();
-
                 Object result = cmd.ExecuteScalar();
+                
                 if (result != null) { count = Convert.ToInt32(result); }
                 if (count == 1)
                 {
-                    IsLoggedIn = true;
+                    
                    // this.username = username;
 
-                    string userIdQuery = "SELECT id FROM user where username=@username";
+                    string userIdQuery = "SELECT account_id FROM user where username=@username";
                     MySqlCommand userIdCmd = new MySqlCommand(userIdQuery, conn);
                     userIdCmd.Parameters.AddWithValue("@username", username);
                     Object userIdResult = userIdCmd.ExecuteScalar();
@@ -153,6 +153,20 @@ namespace WindowsFormsApp1
                     int userType = 0;
                     if (userTypeResult != null) { userType = Convert.ToInt32(userTypeResult); }
                     WorkerRole = userType;
+
+                    string isApprovedCheck = "SELECT is_approved FROM employee_details where person_id=@person_id;";
+                    MySqlCommand isApprovedCmd = new MySqlCommand(isApprovedCheck, conn);
+                    isApprovedCmd.Parameters.AddWithValue("@person_id", user_id);
+                    Object isApprovedResult = isApprovedCmd.ExecuteScalar();
+                    int isApproved = 0;
+                    if(isApprovedResult != null) { isApproved = Convert.ToInt32(isApprovedResult); }
+                    if(isApproved == 1)
+                    {
+                        IsLoggedIn = false;
+                    }else if(isApproved == 2)
+                    {
+                        IsLoggedIn = true;
+                    }
                 }
             }
             catch (Exception)

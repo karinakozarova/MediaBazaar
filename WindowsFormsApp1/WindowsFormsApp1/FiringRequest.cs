@@ -28,12 +28,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             if (flag)
             {
-                tbxFirstName.Enabled = false;
-                tbxLastName.Enabled = false;
-                tbxUsername.Enabled = false;
-                cmbDepartment.Enabled = false;
-                rtbReason.Enabled = false;
-                btnSendFiringRequest.Visible = false;
+                this.Enabled = false;
                 tbxFirstName.Text = firstName;
                 tbxLastName.Text = lastName;
                 tbxUsername.Text = username;
@@ -74,30 +69,46 @@ namespace WindowsFormsApp1
                 if (userIdResult != null) { user_id = Convert.ToInt32(userIdResult); }
                 else { MessageBox.Show("Wrong username!"); return; }
 
-                string userFirstNameQuery = "SELECT first_name FROM person WHERE id=@user_id";
-                MySqlCommand userFirstNameCmd = new MySqlCommand(userFirstNameQuery, conn);
-                userFirstNameCmd.Parameters.AddWithValue("@user_id", user_id);
-                Object userFirstNameResult = userFirstNameCmd.ExecuteScalar();
-                string firstName = "";
-                if (userFirstNameResult != null) { firstName = userFirstNameResult.ToString(); }
-
-                string userLastNameQuery = "SELECT last_name FROM person WHERE id=@user_id";
-                MySqlCommand userLastNameCmd = new MySqlCommand(userLastNameQuery, conn);
-                userLastNameCmd.Parameters.AddWithValue("@user_id", user_id);
-                Object userLastNameResult = userLastNameCmd.ExecuteScalar();
-                string lastName = "";
-                if (userLastNameResult != null) { lastName = userLastNameResult.ToString(); }
-                FiringRequests fr = new FiringRequests(user_id, this.loggedUserId, username, description, firstName, lastName, departmentId);
-                FiringRequests fr1 = new FiringRequests(user_id, this.loggedUserId, description);
-                if (!fr1.FrExists)
+                string accountTypeQuery = "SELECT account_type FROM user where account_id=@user_id";
+                MySqlCommand accountTypeCmd = new MySqlCommand(accountTypeQuery, conn);
+                accountTypeCmd.Parameters.AddWithValue("@user_id", user_id);
+                Object accountTypeResult = accountTypeCmd.ExecuteScalar();
+                int accountType = 0;
+                if (accountTypeResult != null) { accountType = Convert.ToInt32(accountTypeResult); }
+                if(accountType == (int)ProfileRoles.ADMINISTRATOR || accountType == (int)ProfileRoles.MANAGER)
                 {
-                    MessageBox.Show("Firing request already exists!");
-                }else
-                {
-                    tbxFirstName.Text = firstName;
-                    tbxLastName.Text = lastName;
-                    MessageBox.Show("Request sent successfully!");
+                    MessageBox.Show("Sorry you can't send firing request for administrator or manager account!");
                 }
+                else
+                {
+                    string userFirstNameQuery = "SELECT first_name FROM person WHERE id=@user_id";
+                    MySqlCommand userFirstNameCmd = new MySqlCommand(userFirstNameQuery, conn);
+                    userFirstNameCmd.Parameters.AddWithValue("@user_id", user_id);
+                    Object userFirstNameResult = userFirstNameCmd.ExecuteScalar();
+                    string firstName = "";
+                    if (userFirstNameResult != null) { firstName = userFirstNameResult.ToString(); }
+
+                    string userLastNameQuery = "SELECT last_name FROM person WHERE id=@user_id";
+                    MySqlCommand userLastNameCmd = new MySqlCommand(userLastNameQuery, conn);
+                    userLastNameCmd.Parameters.AddWithValue("@user_id", user_id);
+                    Object userLastNameResult = userLastNameCmd.ExecuteScalar();
+                    string lastName = "";
+                    if (userLastNameResult != null) { lastName = userLastNameResult.ToString(); }
+                    FiringRequests fr = new FiringRequests(user_id, this.loggedUserId, username, description, firstName, lastName, departmentId);
+                    FiringRequests fr1 = new FiringRequests(user_id, this.loggedUserId, description);
+                    if (!fr1.FrExists)
+                    {
+                        MessageBox.Show("Firing request already exists!");
+                    }
+                    else
+                    {
+                        tbxFirstName.Text = firstName;
+                        tbxLastName.Text = lastName;
+                        MessageBox.Show("Request sent successfully!");
+                    }
+                }
+
+                
             }
             catch (Exception ex)
             {

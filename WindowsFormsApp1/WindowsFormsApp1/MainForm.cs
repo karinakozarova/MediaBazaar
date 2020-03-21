@@ -26,6 +26,7 @@ namespace WindowsFormsApp1
             UpdateGUI();
             this.user_id = user_id;
             this.username = username;
+            this.workerRole = workerRole;
 
             if(workerRole == (int)ProfileRoles.ADMINISTRATOR)
             {
@@ -104,9 +105,13 @@ namespace WindowsFormsApp1
 
         private void btnCreateAdminManager_Click(object sender, EventArgs e)
         {
-            CreateAccount ca = new CreateAccount();
+            CreateAccount ca = new CreateAccount(user_id,workerRole);
             ca.Show();
-            this.Close();
+        }
+
+        private void BtnHireEmployeeRequest_Click(object sender, EventArgs e)
+        {
+            (new CreateAccount(this.user_id, workerRole)).Show();
         }
 
         private void additionalDepartmentActionsBttn_Click(object sender, EventArgs e)
