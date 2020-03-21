@@ -119,9 +119,15 @@ namespace WindowsFormsApp1
             (new DepartmentActions()).Show();
         }
 
+
         private void BtnFireManager_Click(object sender, EventArgs e)
         {
             (new FiringRequest(this.user_id, workerRole)).Show();
+        }
+
+        private void btnSearchEmployee_Click(object sender, EventArgs e)
+        {
+            (new SearchForEmployee()).Show();
         }
     }
 }
