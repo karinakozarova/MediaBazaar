@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             ca = form;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
         string firstName;
         string lastName;
@@ -44,23 +45,37 @@ namespace WindowsFormsApp1
       
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            try
+            if(tbFirstName.Text == "First name" || tbLastName.Text == "Last name" || tbPhoneNumber.Text == "Phone number")
             {
-                FirstName = tbFirstName.Text;
-                LastName = tbLastName.Text;
-                DateOfBirth = dtpBirthdate.Value;        
-                Email = tbEmail.Text;
-                PhoneNumber = Convert.ToInt64(tbPhoneNumber.Text);
-                p = new Person(FirstName, LastName, DateOfBirth, PhoneNumber, Email);
-                sendContact = FirstName +" "+ LastName +" date of birth: "+ DateOfBirth +" tel: "+ PhoneNumber + " email: "+Email;
-                ca.ShowContact(sendContact);
-                ca.ShowListContacts();
-                this.Hide();
-            }
-            catch(Exception ex)
+                MessageBox.Show("Please change the initial information in the fields!");
+            } else if (tbFirstName.Text == "" || tbLastName.Text == "" || tbPhoneNumber.Text == "" || tbEmail.Text == "")
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Please fill in all the fields in the table!");
+            } else if (!ca.IsValidEmail(tbEmail.Text))
+            {
+                MessageBox.Show("Please enter a valid email address!");
+            }else
+            {
+                try
+                {
+                    FirstName = tbFirstName.Text;
+                    LastName = tbLastName.Text;
+                    DateOfBirth = dtpBirthdate.Value;
+                    Email = tbEmail.Text;
+                    PhoneNumber = Convert.ToInt64(tbPhoneNumber.Text);
+                    p = new Person(FirstName, LastName, DateOfBirth, PhoneNumber, Email);
+                    sendContact = FirstName + " " + LastName + " date of birth: " + DateOfBirth + " tel: " + PhoneNumber + " email: " + Email;
+                    ca.ShowContact(sendContact);
+                    ca.ShowListContacts();
+                    this.Hide();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
+            
         }
 
     }

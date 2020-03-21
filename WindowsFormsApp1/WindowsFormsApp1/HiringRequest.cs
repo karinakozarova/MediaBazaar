@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
         public HiringRequest(string username, string firstName, string lastName, decimal hourlyWage, int departmentId, DateTime contractStartDate, long phoneNumber, string email)
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Enabled = false;
             tbUsername.Text = username;
             tbFirstName.Text = firstName;

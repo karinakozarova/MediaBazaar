@@ -78,9 +78,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 22);
+            this.label1.Location = new System.Drawing.Point(20, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(281, 37);
+            this.label1.Size = new System.Drawing.Size(239, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Basic information";
             // 
@@ -88,9 +88,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(20, 665);
+            this.label2.Location = new System.Drawing.Point(18, 532);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(316, 37);
+            this.label2.Size = new System.Drawing.Size(269, 31);
             this.label2.TabIndex = 1;
             this.label2.Text = "Contact information";
             // 
@@ -98,29 +98,29 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1064, 22);
+            this.label3.Location = new System.Drawing.Point(946, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(313, 37);
+            this.label3.Size = new System.Drawing.Size(268, 31);
             this.label3.TabIndex = 2;
             this.label3.Text = "Employment details";
             // 
             // tbFirstName
             // 
             this.tbFirstName.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbFirstName.Location = new System.Drawing.Point(29, 170);
+            this.tbFirstName.Location = new System.Drawing.Point(26, 136);
             this.tbFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbFirstName.Name = "tbFirstName";
-            this.tbFirstName.Size = new System.Drawing.Size(318, 47);
+            this.tbFirstName.Size = new System.Drawing.Size(283, 40);
             this.tbFirstName.TabIndex = 2;
             this.tbFirstName.Text = "First name";
             // 
             // tbLastName
             // 
             this.tbLastName.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLastName.Location = new System.Drawing.Point(29, 251);
+            this.tbLastName.Location = new System.Drawing.Point(26, 201);
             this.tbLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbLastName.Name = "tbLastName";
-            this.tbLastName.Size = new System.Drawing.Size(318, 47);
+            this.tbLastName.Size = new System.Drawing.Size(283, 40);
             this.tbLastName.TabIndex = 3;
             this.tbLastName.Text = "Last name";
             // 
@@ -129,31 +129,31 @@
             this.dtpBirthdate.CalendarFont = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpBirthdate.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpBirthdate.Location = new System.Drawing.Point(29, 328);
+            this.dtpBirthdate.Location = new System.Drawing.Point(26, 262);
             this.dtpBirthdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpBirthdate.Name = "dtpBirthdate";
             this.dtpBirthdate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dtpBirthdate.Size = new System.Drawing.Size(318, 47);
+            this.dtpBirthdate.Size = new System.Drawing.Size(283, 40);
             this.dtpBirthdate.TabIndex = 4;
             this.dtpBirthdate.Value = new System.DateTime(2020, 2, 29, 0, 51, 0, 0);
             // 
             // tbPhoneNumber
             // 
             this.tbPhoneNumber.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPhoneNumber.Location = new System.Drawing.Point(27, 726);
+            this.tbPhoneNumber.Location = new System.Drawing.Point(24, 581);
             this.tbPhoneNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPhoneNumber.Name = "tbPhoneNumber";
-            this.tbPhoneNumber.Size = new System.Drawing.Size(318, 47);
+            this.tbPhoneNumber.Size = new System.Drawing.Size(283, 40);
             this.tbPhoneNumber.TabIndex = 7;
             this.tbPhoneNumber.Text = "Phone number";
             // 
             // tbEmail
             // 
             this.tbEmail.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEmail.Location = new System.Drawing.Point(27, 795);
+            this.tbEmail.Location = new System.Drawing.Point(24, 636);
             this.tbEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(318, 47);
+            this.tbEmail.Size = new System.Drawing.Size(283, 40);
             this.tbEmail.TabIndex = 8;
             this.tbEmail.Text = "Email address";
             // 
@@ -161,9 +161,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(558, 22);
+            this.label4.Location = new System.Drawing.Point(496, 18);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(224, 37);
+            this.label4.Size = new System.Drawing.Size(193, 31);
             this.label4.TabIndex = 11;
             this.label4.Text = "Account type:";
             // 
@@ -171,19 +171,19 @@
             // 
             this.nHourlyWage.DecimalPlaces = 2;
             this.nHourlyWage.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nHourlyWage.Location = new System.Drawing.Point(1284, 95);
+            this.nHourlyWage.Location = new System.Drawing.Point(1141, 76);
             this.nHourlyWage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nHourlyWage.Name = "nHourlyWage";
-            this.nHourlyWage.Size = new System.Drawing.Size(120, 47);
+            this.nHourlyWage.Size = new System.Drawing.Size(107, 40);
             this.nHourlyWage.TabIndex = 16;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1071, 98);
+            this.label5.Location = new System.Drawing.Point(952, 78);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(192, 32);
+            this.label5.Size = new System.Drawing.Size(165, 29);
             this.label5.TabIndex = 15;
             this.label5.Text = "Hourly wage:";
             // 
@@ -192,11 +192,11 @@
             this.dtbContractStartDate.CalendarFont = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtbContractStartDate.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtbContractStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtbContractStartDate.Location = new System.Drawing.Point(1078, 195);
+            this.dtbContractStartDate.Location = new System.Drawing.Point(958, 156);
             this.dtbContractStartDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtbContractStartDate.Name = "dtbContractStartDate";
             this.dtbContractStartDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dtbContractStartDate.Size = new System.Drawing.Size(326, 47);
+            this.dtbContractStartDate.Size = new System.Drawing.Size(290, 40);
             this.dtbContractStartDate.TabIndex = 17;
             this.dtbContractStartDate.Value = new System.DateTime(2020, 2, 29, 0, 51, 0, 0);
             // 
@@ -204,9 +204,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1071, 152);
+            this.label6.Location = new System.Drawing.Point(952, 122);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(275, 32);
+            this.label6.Size = new System.Drawing.Size(232, 29);
             this.label6.TabIndex = 17;
             this.label6.Text = "Contract start date:";
             // 
@@ -214,10 +214,10 @@
             // 
             this.cmbDepartment.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDepartment.FormattingEnabled = true;
-            this.cmbDepartment.Location = new System.Drawing.Point(1080, 258);
+            this.cmbDepartment.Location = new System.Drawing.Point(960, 206);
             this.cmbDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbDepartment.Name = "cmbDepartment";
-            this.cmbDepartment.Size = new System.Drawing.Size(324, 52);
+            this.cmbDepartment.Size = new System.Drawing.Size(288, 41);
             this.cmbDepartment.TabIndex = 18;
             this.cmbDepartment.Text = "Department";
             // 
@@ -225,10 +225,10 @@
             // 
             this.cbMonday.AutoSize = true;
             this.cbMonday.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMonday.Location = new System.Drawing.Point(962, 406);
+            this.cbMonday.Location = new System.Drawing.Point(855, 325);
             this.cbMonday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbMonday.Name = "cbMonday";
-            this.cbMonday.Size = new System.Drawing.Size(158, 43);
+            this.cbMonday.Size = new System.Drawing.Size(135, 33);
             this.cbMonday.TabIndex = 19;
             this.cbMonday.Text = "Monday";
             this.cbMonday.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -239,10 +239,10 @@
             // 
             this.cbTuesday.AutoSize = true;
             this.cbTuesday.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbTuesday.Location = new System.Drawing.Point(962, 451);
+            this.cbTuesday.Location = new System.Drawing.Point(855, 361);
             this.cbTuesday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbTuesday.Name = "cbTuesday";
-            this.cbTuesday.Size = new System.Drawing.Size(160, 43);
+            this.cbTuesday.Size = new System.Drawing.Size(135, 33);
             this.cbTuesday.TabIndex = 20;
             this.cbTuesday.Text = "Tuesday";
             this.cbTuesday.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -253,10 +253,10 @@
             // 
             this.cbThursday.AutoSize = true;
             this.cbThursday.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbThursday.Location = new System.Drawing.Point(963, 548);
+            this.cbThursday.Location = new System.Drawing.Point(856, 438);
             this.cbThursday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbThursday.Name = "cbThursday";
-            this.cbThursday.Size = new System.Drawing.Size(173, 43);
+            this.cbThursday.Size = new System.Drawing.Size(147, 33);
             this.cbThursday.TabIndex = 21;
             this.cbThursday.Text = "Thursday";
             this.cbThursday.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -267,10 +267,10 @@
             // 
             this.cbFriday.AutoSize = true;
             this.cbFriday.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbFriday.Location = new System.Drawing.Point(962, 598);
+            this.cbFriday.Location = new System.Drawing.Point(855, 478);
             this.cbFriday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbFriday.Name = "cbFriday";
-            this.cbFriday.Size = new System.Drawing.Size(131, 43);
+            this.cbFriday.Size = new System.Drawing.Size(110, 33);
             this.cbFriday.TabIndex = 22;
             this.cbFriday.Text = "Friday";
             this.cbFriday.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -281,10 +281,10 @@
             // 
             this.cbWednesday.AutoSize = true;
             this.cbWednesday.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbWednesday.Location = new System.Drawing.Point(962, 500);
+            this.cbWednesday.Location = new System.Drawing.Point(855, 400);
             this.cbWednesday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbWednesday.Name = "cbWednesday";
-            this.cbWednesday.Size = new System.Drawing.Size(209, 43);
+            this.cbWednesday.Size = new System.Drawing.Size(178, 33);
             this.cbWednesday.TabIndex = 22;
             this.cbWednesday.Text = "Wednesday";
             this.cbWednesday.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -294,10 +294,10 @@
             // btnSendRequest
             // 
             this.btnSendRequest.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendRequest.Location = new System.Drawing.Point(934, 752);
+            this.btnSendRequest.Location = new System.Drawing.Point(830, 602);
             this.btnSendRequest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSendRequest.Name = "btnSendRequest";
-            this.btnSendRequest.Size = new System.Drawing.Size(585, 58);
+            this.btnSendRequest.Size = new System.Drawing.Size(520, 46);
             this.btnSendRequest.TabIndex = 25;
             this.btnSendRequest.Text = "Send request for account creation";
             this.btnSendRequest.UseVisualStyleBackColor = true;
@@ -307,9 +307,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1120, 352);
+            this.label7.Location = new System.Drawing.Point(996, 282);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(223, 32);
+            this.label7.Size = new System.Drawing.Size(188, 29);
             this.label7.TabIndex = 26;
             this.label7.Text = "Available days:";
             // 
@@ -317,9 +317,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(594, 198);
+            this.label8.Location = new System.Drawing.Point(523, 156);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(162, 37);
+            this.label8.Size = new System.Drawing.Size(140, 31);
             this.label8.TabIndex = 27;
             this.label8.Text = "Contacts:";
             // 
@@ -327,10 +327,10 @@
             // 
             this.cbSaturday.AutoSize = true;
             this.cbSaturday.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSaturday.Location = new System.Drawing.Point(1162, 406);
+            this.cbSaturday.Location = new System.Drawing.Point(1033, 325);
             this.cbSaturday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbSaturday.Name = "cbSaturday";
-            this.cbSaturday.Size = new System.Drawing.Size(169, 43);
+            this.cbSaturday.Size = new System.Drawing.Size(144, 33);
             this.cbSaturday.TabIndex = 23;
             this.cbSaturday.Text = "Saturday";
             this.cbSaturday.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -341,10 +341,10 @@
             // 
             this.cbSunday.AutoSize = true;
             this.cbSunday.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSunday.Location = new System.Drawing.Point(1162, 455);
+            this.cbSunday.Location = new System.Drawing.Point(1033, 364);
             this.cbSunday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbSunday.Name = "cbSunday";
-            this.cbSunday.Size = new System.Drawing.Size(149, 43);
+            this.cbSunday.Size = new System.Drawing.Size(126, 33);
             this.cbSunday.TabIndex = 24;
             this.cbSunday.Text = "Sunday";
             this.cbSunday.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -355,10 +355,10 @@
             // 
             this.cbMorningShift.AutoSize = true;
             this.cbMorningShift.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMorningShift.Location = new System.Drawing.Point(1338, 471);
+            this.cbMorningShift.Location = new System.Drawing.Point(1189, 377);
             this.cbMorningShift.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbMorningShift.Name = "cbMorningShift";
-            this.cbMorningShift.Size = new System.Drawing.Size(164, 43);
+            this.cbMorningShift.Size = new System.Drawing.Size(140, 33);
             this.cbMorningShift.TabIndex = 83;
             this.cbMorningShift.Text = "Morning";
             this.cbMorningShift.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -369,10 +369,10 @@
             // 
             this.cbAfternoonShift.AutoSize = true;
             this.cbAfternoonShift.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbAfternoonShift.Location = new System.Drawing.Point(1338, 535);
+            this.cbAfternoonShift.Location = new System.Drawing.Point(1189, 428);
             this.cbAfternoonShift.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbAfternoonShift.Name = "cbAfternoonShift";
-            this.cbAfternoonShift.Size = new System.Drawing.Size(184, 43);
+            this.cbAfternoonShift.Size = new System.Drawing.Size(161, 33);
             this.cbAfternoonShift.TabIndex = 82;
             this.cbAfternoonShift.Text = "Afternoon";
             this.cbAfternoonShift.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -383,9 +383,9 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1331, 406);
+            this.label9.Location = new System.Drawing.Point(1183, 325);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(159, 32);
+            this.label9.Size = new System.Drawing.Size(135, 29);
             this.label9.TabIndex = 81;
             this.label9.Text = "Work shift:";
             // 
@@ -393,10 +393,10 @@
             // 
             this.cbEveningShift.AutoSize = true;
             this.cbEveningShift.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbEveningShift.Location = new System.Drawing.Point(1338, 591);
+            this.cbEveningShift.Location = new System.Drawing.Point(1189, 473);
             this.cbEveningShift.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbEveningShift.Name = "cbEveningShift";
-            this.cbEveningShift.Size = new System.Drawing.Size(159, 43);
+            this.cbEveningShift.Size = new System.Drawing.Size(135, 33);
             this.cbEveningShift.TabIndex = 80;
             this.cbEveningShift.Text = "Evening";
             this.cbEveningShift.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -406,10 +406,10 @@
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(744, 752);
+            this.btnEdit.Location = new System.Drawing.Point(661, 602);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(166, 58);
+            this.btnEdit.Size = new System.Drawing.Size(148, 46);
             this.btnEdit.TabIndex = 15;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -417,10 +417,10 @@
             // tbUsername
             // 
             this.tbUsername.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsername.Location = new System.Drawing.Point(29, 90);
+            this.tbUsername.Location = new System.Drawing.Point(26, 72);
             this.tbUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(318, 47);
+            this.tbUsername.Size = new System.Drawing.Size(283, 40);
             this.tbUsername.TabIndex = 1;
             this.tbUsername.Text = "Username";
             this.tbUsername.TextChanged += new System.EventHandler(this.tbUsername_TextChanged);
@@ -428,50 +428,50 @@
             // tbStreet
             // 
             this.tbStreet.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbStreet.Location = new System.Drawing.Point(29, 398);
+            this.tbStreet.Location = new System.Drawing.Point(26, 318);
             this.tbStreet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbStreet.Name = "tbStreet";
-            this.tbStreet.Size = new System.Drawing.Size(318, 47);
+            this.tbStreet.Size = new System.Drawing.Size(283, 40);
             this.tbStreet.TabIndex = 5;
             this.tbStreet.Text = "street";
             // 
             // tbPostcode
             // 
             this.tbPostcode.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPostcode.Location = new System.Drawing.Point(29, 464);
+            this.tbPostcode.Location = new System.Drawing.Point(26, 371);
             this.tbPostcode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPostcode.Name = "tbPostcode";
-            this.tbPostcode.Size = new System.Drawing.Size(318, 47);
+            this.tbPostcode.Size = new System.Drawing.Size(283, 40);
             this.tbPostcode.TabIndex = 88;
             this.tbPostcode.Text = "postcode";
             // 
             // tbRegion
             // 
             this.tbRegion.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRegion.Location = new System.Drawing.Point(28, 528);
+            this.tbRegion.Location = new System.Drawing.Point(25, 422);
             this.tbRegion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbRegion.Name = "tbRegion";
-            this.tbRegion.Size = new System.Drawing.Size(318, 47);
+            this.tbRegion.Size = new System.Drawing.Size(283, 40);
             this.tbRegion.TabIndex = 5;
             this.tbRegion.Text = "region";
             // 
             // tbCountry
             // 
             this.tbCountry.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCountry.Location = new System.Drawing.Point(27, 598);
+            this.tbCountry.Location = new System.Drawing.Point(24, 478);
             this.tbCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbCountry.Name = "tbCountry";
-            this.tbCountry.Size = new System.Drawing.Size(318, 47);
+            this.tbCountry.Size = new System.Drawing.Size(283, 40);
             this.tbCountry.TabIndex = 6;
             this.tbCountry.Text = "Country";
             // 
             // btnAddOtherContact
             // 
             this.btnAddOtherContact.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddOtherContact.Location = new System.Drawing.Point(771, 288);
+            this.btnAddOtherContact.Location = new System.Drawing.Point(685, 230);
             this.btnAddOtherContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddOtherContact.Name = "btnAddOtherContact";
-            this.btnAddOtherContact.Size = new System.Drawing.Size(160, 58);
+            this.btnAddOtherContact.Size = new System.Drawing.Size(142, 46);
             this.btnAddOtherContact.TabIndex = 13;
             this.btnAddOtherContact.Text = "Add contact";
             this.btnAddOtherContact.UseVisualStyleBackColor = true;
@@ -482,21 +482,20 @@
             this.lbContacts.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbContacts.FormattingEnabled = true;
             this.lbContacts.HorizontalScrollbar = true;
-            this.lbContacts.ItemHeight = 27;
-            this.lbContacts.Location = new System.Drawing.Point(403, 362);
-            this.lbContacts.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lbContacts.ItemHeight = 20;
+            this.lbContacts.Location = new System.Drawing.Point(358, 290);
             this.lbContacts.Name = "lbContacts";
             this.lbContacts.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbContacts.Size = new System.Drawing.Size(527, 274);
+            this.lbContacts.Size = new System.Drawing.Size(469, 204);
             this.lbContacts.TabIndex = 92;
             // 
             // btnOpenContact
             // 
             this.btnOpenContact.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenContact.Location = new System.Drawing.Point(403, 288);
+            this.btnOpenContact.Location = new System.Drawing.Point(358, 230);
             this.btnOpenContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOpenContact.Name = "btnOpenContact";
-            this.btnOpenContact.Size = new System.Drawing.Size(174, 58);
+            this.btnOpenContact.Size = new System.Drawing.Size(155, 46);
             this.btnOpenContact.TabIndex = 12;
             this.btnOpenContact.Text = "Input contact";
             this.btnOpenContact.UseVisualStyleBackColor = true;
@@ -505,10 +504,10 @@
             // tbPassword
             // 
             this.tbPassword.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.Location = new System.Drawing.Point(389, 795);
+            this.tbPassword.Location = new System.Drawing.Point(346, 636);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(318, 47);
+            this.tbPassword.Size = new System.Drawing.Size(283, 40);
             this.tbPassword.TabIndex = 14;
             this.tbPassword.Text = "Password";
             // 
@@ -516,19 +515,19 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(382, 752);
+            this.label10.Location = new System.Drawing.Point(340, 602);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(244, 37);
+            this.label10.Size = new System.Drawing.Size(209, 31);
             this.label10.TabIndex = 95;
             this.label10.Text = "User password";
             // 
             // btnCreateAccount
             // 
             this.btnCreateAccount.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateAccount.Location = new System.Drawing.Point(934, 690);
+            this.btnCreateAccount.Location = new System.Drawing.Point(830, 552);
             this.btnCreateAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreateAccount.Name = "btnCreateAccount";
-            this.btnCreateAccount.Size = new System.Drawing.Size(585, 58);
+            this.btnCreateAccount.Size = new System.Drawing.Size(520, 46);
             this.btnCreateAccount.TabIndex = 97;
             this.btnCreateAccount.Text = "Create account";
             this.btnCreateAccount.UseVisualStyleBackColor = true;
@@ -538,10 +537,9 @@
             // 
             this.rbManager.AutoSize = true;
             this.rbManager.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbManager.Location = new System.Drawing.Point(423, 99);
-            this.rbManager.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbManager.Location = new System.Drawing.Point(685, 72);
             this.rbManager.Name = "rbManager";
-            this.rbManager.Size = new System.Drawing.Size(193, 50);
+            this.rbManager.Size = new System.Drawing.Size(160, 38);
             this.rbManager.TabIndex = 9;
             this.rbManager.TabStop = true;
             this.rbManager.Text = "Manager";
@@ -551,10 +549,9 @@
             // 
             this.rbAdmin.AutoSize = true;
             this.rbAdmin.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbAdmin.Location = new System.Drawing.Point(634, 98);
-            this.rbAdmin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbAdmin.Location = new System.Drawing.Point(358, 72);
             this.rbAdmin.Name = "rbAdmin";
-            this.rbAdmin.Size = new System.Drawing.Size(157, 50);
+            this.rbAdmin.Size = new System.Drawing.Size(130, 38);
             this.rbAdmin.TabIndex = 10;
             this.rbAdmin.TabStop = true;
             this.rbAdmin.Text = "Admin";
@@ -563,11 +560,11 @@
             // rbEmployee
             // 
             this.rbEmployee.AutoSize = true;
+            this.rbEmployee.Checked = true;
             this.rbEmployee.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbEmployee.Location = new System.Drawing.Point(809, 99);
-            this.rbEmployee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbEmployee.Location = new System.Drawing.Point(502, 72);
             this.rbEmployee.Name = "rbEmployee";
-            this.rbEmployee.Size = new System.Drawing.Size(212, 50);
+            this.rbEmployee.Size = new System.Drawing.Size(177, 38);
             this.rbEmployee.TabIndex = 11;
             this.rbEmployee.TabStop = true;
             this.rbEmployee.Text = "Employee";
@@ -575,9 +572,9 @@
             // 
             // CreateAccount
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1548, 847);
+            this.ClientSize = new System.Drawing.Size(1376, 678);
             this.Controls.Add(this.btnCreateAccount);
             this.Controls.Add(this.rbEmployee);
             this.Controls.Add(this.rbAdmin);
