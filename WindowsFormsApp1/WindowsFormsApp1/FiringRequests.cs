@@ -187,20 +187,21 @@ namespace WindowsFormsApp1
                 employeeRemoveCmd.Parameters.AddWithValue("@person_Id", PersonId);
                 employeeRemoveCmd.ExecuteNonQuery();
 
-                //string employeeDaysRemoveQuery = "DELETE From employee_working_days WHERE employee_id = @person_Id";
-                //MySqlCommand employeeDaysRemoveCmd = new MySqlCommand(employeeDaysRemoveQuery, conn);
-                //employeeDaysRemoveCmd.Parameters.AddWithValue("@person_Id", PersonId);
-                //employeeDaysRemoveCmd.ExecuteNonQuery();
+                string employeeDaysRemoveQuery = "DELETE From employee_working_days WHERE employee_id = @person_Id";
+                MySqlCommand employeeDaysRemoveCmd = new MySqlCommand(employeeDaysRemoveQuery, conn);
+                employeeDaysRemoveCmd.Parameters.AddWithValue("@person_Id", PersonId);
+                employeeDaysRemoveCmd.ExecuteNonQuery();
 
                 string employeeContactRemoveQuery = "DELETE From contact_person WHERE employee_id = @person_Id";
                 MySqlCommand employeeContactRemoveCmd = new MySqlCommand(employeeContactRemoveQuery, conn);
                 employeeContactRemoveCmd.Parameters.AddWithValue("@person_Id", PersonId);
                 employeeContactRemoveCmd.ExecuteNonQuery();
 
-                string contractUpdateQuery = "UPDATE contract SET contract_end = @end_date, reason_for_leaving = @description";
+                string contractUpdateQuery = "UPDATE contract SET contract_end = @end_date, reason_for_leaving = @description WHERE person_id = @person_id";
                 MySqlCommand contractUpdateCmd = new MySqlCommand(contractUpdateQuery, conn);
                 contractUpdateCmd.Parameters.AddWithValue("@end_date", GetDateTime());
                 contractUpdateCmd.Parameters.AddWithValue("@description", Description);
+                contractUpdateCmd.Parameters.AddWithValue("@person_id", PersonId);
                 contractUpdateCmd.ExecuteNonQuery();
 
             }

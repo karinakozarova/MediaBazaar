@@ -108,5 +108,10 @@ namespace WindowsFormsApp1
             ca.Show();
             this.Close();
         }
+
+        private void BtnHireEmployeeRequest_Click(object sender, EventArgs e)
+        {
+            (new CreateAccount(this.user_id)).Show();
+        }
     }
 }

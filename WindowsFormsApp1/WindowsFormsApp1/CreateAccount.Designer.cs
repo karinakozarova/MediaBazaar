@@ -71,6 +71,7 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnShowContacts = new System.Windows.Forms.Button();
+            this.btnCreateAccount = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nHourlyWage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -574,11 +575,24 @@
             this.btnShowContacts.UseVisualStyleBackColor = true;
             this.btnShowContacts.Click += new System.EventHandler(this.btnShowContacts_Click);
             // 
+            // btnCreateAccount
+            // 
+            this.btnCreateAccount.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateAccount.Location = new System.Drawing.Point(830, 630);
+            this.btnCreateAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCreateAccount.Name = "btnCreateAccount";
+            this.btnCreateAccount.Size = new System.Drawing.Size(520, 46);
+            this.btnCreateAccount.TabIndex = 97;
+            this.btnCreateAccount.Text = "Create account";
+            this.btnCreateAccount.UseVisualStyleBackColor = true;
+            this.btnCreateAccount.Click += new System.EventHandler(this.BtnCreateAccount_Click);
+            // 
             // CreateAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1376, 892);
+            this.Controls.Add(this.btnCreateAccount);
             this.Controls.Add(this.btnShowContacts);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.tbPassword);
@@ -676,5 +690,6 @@
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnShowContacts;
+        private System.Windows.Forms.Button btnCreateAccount;
     }
 }

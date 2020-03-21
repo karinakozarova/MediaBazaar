@@ -128,6 +128,13 @@
       <DependentUpon>FiringRequest.cs</DependentUpon>
     </Compile>
     <Compile Include="FiringRequests.cs" />
+    <Compile Include="HiringRequests.cs" />
+    <Compile Include="HiringRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HiringRequest.Designer.cs">
+      <DependentUpon>HiringRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FiringRequest.resx">
       <DependentUpon>FiringRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HiringRequest.resx">
+      <DependentUpon>HiringRequest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

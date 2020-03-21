@@ -28,12 +28,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             if (flag)
             {
-                tbxFirstName.Enabled = false;
-                tbxLastName.Enabled = false;
-                tbxUsername.Enabled = false;
-                cmbDepartment.Enabled = false;
-                rtbReason.Enabled = false;
-                btnSendFiringRequest.Visible = false;
+                this.Enabled = false;
                 tbxFirstName.Text = firstName;
                 tbxLastName.Text = lastName;
                 tbxUsername.Text = username;
