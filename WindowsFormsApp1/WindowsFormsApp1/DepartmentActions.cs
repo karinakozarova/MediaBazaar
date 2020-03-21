@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -14,13 +13,19 @@ namespace WindowsFormsApp1
         public DepartmentActions()
         {
             InitializeComponent();
-            PopulateDepartments(Department.GetAllDepartments());
+            LoadDepartments();
         }
 
-        private void PopulateDepartments(List<Department> departments)
+        private void LoadDepartments()
+        {
+            PopulateDepartments(Department.GetAllDepartments(), departmentsCmbbxAddingStock);
+            PopulateDepartments(Department.GetAllDepartments(), departmentAvailableCmbbx);
+
+        }
+        private void PopulateDepartments(List<Department> departments, ComboBox combobox)
         {
             foreach (Department d in departments)
-                departmentsCmbbxAddingStock.Items.Add(new DepartmentComboBoxItem(d));
+                combobox.Items.Add(new DepartmentComboBoxItem(d));
         }
 
         private string GetDataForLabel(int having, int total)
@@ -47,6 +52,12 @@ namespace WindowsFormsApp1
                 flpDays.Controls.Add(day);
             }
             neededWorkersCount.Text = neededPeople.ToString();
+        }
+
+        private void departmentAvailableCmbbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int departmentId = ((DepartmentComboBoxItem)departmentAvailableCmbbx.SelectedItem).Id;
+            // List<Person> people = Worker.GetAllEmployees();
         }
     }
 }
