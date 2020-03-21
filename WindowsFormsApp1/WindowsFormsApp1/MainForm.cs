@@ -113,5 +113,10 @@ namespace WindowsFormsApp1
         {
             (new CreateAccount(this.user_id, workerRole)).Show();
         }
+
+        private void additionalDepartmentActionsBttn_Click(object sender, EventArgs e)
+        {
+            (new DepartmentActions()).Show();
+        }
     }
 }
