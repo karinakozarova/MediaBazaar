@@ -55,6 +55,38 @@ namespace WindowsFormsApp1
             return count;
         }
 
+        internal static bool[] GetWorkersShifts(int workerId)
+        {
+            //SELECT* FROM `employee_details` left join person p on person_id = p.id left join employee_working_days wd on wd.employee_id = p.id  where department_id = 24 and shift = "morning"
+            MySqlConnection conn = Utils.GetConnection();
+
+            bool[] days = new bool[7];
+
+            try
+            {
+                String sql = "SELECT week_day_id FROM `employee_working_days` where `employee_id` = @id group by week_day_id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", workerId);
+                conn.Open();
+
+                MySqlDataReader row = cmd.ExecuteReader();
+                while (row.Read())
+                {
+                    days[Convert.ToInt32(row["week_day_id"])] = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                // TODO: add it to error log in the future
+                String e = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return days;
+        }
+
         internal static int[] GetWorkersCountFor(int departmentId, string shift)
         {
             //SELECT* FROM `employee_details` left join person p on person_id = p.id left join employee_working_days wd on wd.employee_id = p.id  where department_id = 24 and shift = "morning"

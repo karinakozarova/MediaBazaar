@@ -64,7 +64,8 @@ namespace WindowsFormsApp1
         private void departmentAvailableCmbbx_SelectedIndexChanged(object sender, EventArgs e)
         {
             int departmentId = ((DepartmentComboBoxItem)departmentAvailableCmbbx.SelectedItem).Id;
-            List<Worker> people = Department.GetDepartmentEmployees();
+            Department department = Department.GetDepartmentById(departmentId);
+            List<Worker> people = Worker.GetAllEmployeesFromDepartment(departmentId);
             PopulatePeople(people);
         }
 

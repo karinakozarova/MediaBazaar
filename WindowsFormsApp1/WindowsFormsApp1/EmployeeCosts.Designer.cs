@@ -32,11 +32,11 @@
             this.mondayBttn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.wednesdayBttn = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.fridayBttn = new System.Windows.Forms.Button();
             this.tuesdayBttn = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.thursdayBttn = new System.Windows.Forms.Button();
+            this.saturdayBttn = new System.Windows.Forms.Button();
+            this.sundayBttn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.costsLbl = new System.Windows.Forms.Label();
@@ -55,13 +55,16 @@
             // 
             // mondayBttn
             // 
+            this.mondayBttn.BackColor = System.Drawing.Color.LightCoral;
+            this.mondayBttn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.mondayBttn.FlatAppearance.BorderSize = 0;
             this.mondayBttn.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mondayBttn.Location = new System.Drawing.Point(41, 104);
             this.mondayBttn.Name = "mondayBttn";
             this.mondayBttn.Size = new System.Drawing.Size(114, 36);
             this.mondayBttn.TabIndex = 111;
             this.mondayBttn.Text = "Monday";
-            this.mondayBttn.UseVisualStyleBackColor = true;
+            this.mondayBttn.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -75,6 +78,9 @@
             // 
             // wednesdayBttn
             // 
+            this.wednesdayBttn.BackColor = System.Drawing.Color.LightCoral;
+            this.wednesdayBttn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.wednesdayBttn.FlatAppearance.BorderSize = 0;
             this.wednesdayBttn.Font = new System.Drawing.Font("Montserrat", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.wednesdayBttn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.wednesdayBttn.Location = new System.Drawing.Point(41, 146);
@@ -82,57 +88,72 @@
             this.wednesdayBttn.Size = new System.Drawing.Size(114, 36);
             this.wednesdayBttn.TabIndex = 113;
             this.wednesdayBttn.Text = "Wednesday";
-            this.wednesdayBttn.UseVisualStyleBackColor = true;
+            this.wednesdayBttn.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // fridayBttn
             // 
-            this.button3.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(41, 188);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(114, 36);
-            this.button3.TabIndex = 114;
-            this.button3.Text = "Friday";
-            this.button3.UseVisualStyleBackColor = true;
+            this.fridayBttn.BackColor = System.Drawing.Color.LightCoral;
+            this.fridayBttn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.fridayBttn.FlatAppearance.BorderSize = 0;
+            this.fridayBttn.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fridayBttn.Location = new System.Drawing.Point(41, 188);
+            this.fridayBttn.Name = "fridayBttn";
+            this.fridayBttn.Size = new System.Drawing.Size(114, 36);
+            this.fridayBttn.TabIndex = 114;
+            this.fridayBttn.Text = "Friday";
+            this.fridayBttn.UseVisualStyleBackColor = false;
             // 
             // tuesdayBttn
             // 
+            this.tuesdayBttn.BackColor = System.Drawing.Color.LightCoral;
+            this.tuesdayBttn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.tuesdayBttn.FlatAppearance.BorderSize = 0;
             this.tuesdayBttn.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tuesdayBttn.Location = new System.Drawing.Point(161, 104);
             this.tuesdayBttn.Name = "tuesdayBttn";
             this.tuesdayBttn.Size = new System.Drawing.Size(126, 36);
             this.tuesdayBttn.TabIndex = 115;
             this.tuesdayBttn.Text = "Tuesday";
-            this.tuesdayBttn.UseVisualStyleBackColor = true;
+            this.tuesdayBttn.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // thursdayBttn
             // 
-            this.button5.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(161, 146);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(126, 36);
-            this.button5.TabIndex = 116;
-            this.button5.Text = "Thursday";
-            this.button5.UseVisualStyleBackColor = true;
+            this.thursdayBttn.BackColor = System.Drawing.Color.LightCoral;
+            this.thursdayBttn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.thursdayBttn.FlatAppearance.BorderSize = 0;
+            this.thursdayBttn.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.thursdayBttn.Location = new System.Drawing.Point(161, 146);
+            this.thursdayBttn.Name = "thursdayBttn";
+            this.thursdayBttn.Size = new System.Drawing.Size(126, 36);
+            this.thursdayBttn.TabIndex = 116;
+            this.thursdayBttn.Text = "Thursday";
+            this.thursdayBttn.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // saturdayBttn
             // 
-            this.button6.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(161, 188);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(126, 36);
-            this.button6.TabIndex = 117;
-            this.button6.Text = "Saturday";
-            this.button6.UseVisualStyleBackColor = true;
+            this.saturdayBttn.BackColor = System.Drawing.Color.LightCoral;
+            this.saturdayBttn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.saturdayBttn.FlatAppearance.BorderSize = 0;
+            this.saturdayBttn.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saturdayBttn.Location = new System.Drawing.Point(161, 188);
+            this.saturdayBttn.Name = "saturdayBttn";
+            this.saturdayBttn.Size = new System.Drawing.Size(126, 36);
+            this.saturdayBttn.TabIndex = 117;
+            this.saturdayBttn.Text = "Saturday";
+            this.saturdayBttn.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // sundayBttn
             // 
-            this.button7.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(95, 230);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(105, 36);
-            this.button7.TabIndex = 118;
-            this.button7.Text = "Sunday";
-            this.button7.UseVisualStyleBackColor = true;
+            this.sundayBttn.BackColor = System.Drawing.Color.LightCoral;
+            this.sundayBttn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.sundayBttn.FlatAppearance.BorderSize = 0;
+            this.sundayBttn.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sundayBttn.Location = new System.Drawing.Point(95, 230);
+            this.sundayBttn.Name = "sundayBttn";
+            this.sundayBttn.Size = new System.Drawing.Size(105, 36);
+            this.sundayBttn.TabIndex = 118;
+            this.sundayBttn.Text = "Sunday";
+            this.sundayBttn.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -183,11 +204,11 @@
             this.Controls.Add(this.costsLbl);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.sundayBttn);
+            this.Controls.Add(this.saturdayBttn);
+            this.Controls.Add(this.thursdayBttn);
             this.Controls.Add(this.tuesdayBttn);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.fridayBttn);
             this.Controls.Add(this.wednesdayBttn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mondayBttn);
@@ -205,11 +226,11 @@
         private System.Windows.Forms.Button mondayBttn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button wednesdayBttn;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button fridayBttn;
         private System.Windows.Forms.Button tuesdayBttn;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button thursdayBttn;
+        private System.Windows.Forms.Button saturdayBttn;
+        private System.Windows.Forms.Button sundayBttn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label costsLbl;
