@@ -14,29 +14,40 @@ namespace WindowsFormsApp1
     public partial class FiringRequest : Form
     {
         private int loggedUserId;
-        public FiringRequest(int user_id)
+        private int workerRole;
+        public FiringRequest(int user_id, int workerRole)
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             tbxFirstName.Enabled = false;
             tbxLastName.Enabled = false;
             PopulateDepartments(Department.GetAllDepartments());
+            PopulateManagers(Manager.GetAllManagers());
+            PopulateEmployees(Employee.GetAllEmployees());
             this.loggedUserId = user_id;
+            this.workerRole = workerRole;
+            if (workerRole == (int)ProfileRoles.ADMINISTRATOR)
+            {
+                btnSendFiringRequest.Visible = false;
+                this.Text = "Remove manager!";
+                cmbEmployees.Visible = false;
+            }
+            else if (workerRole == (int)ProfileRoles.MANAGER)
+            {
+                btnRemoveManager.Visible = false;
+                cmbManagers.Visible = false;
+            }
         }
 
         public FiringRequest(bool flag, int departmentId, string username, string firstName, string lastName, string description)
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             if (flag)
             {
-                tbxFirstName.Enabled = false;
-                tbxLastName.Enabled = false;
-                tbxUsername.Enabled = false;
-                cmbDepartment.Enabled = false;
-                rtbReason.Enabled = false;
-                btnSendFiringRequest.Visible = false;
+                this.Enabled = false;
                 tbxFirstName.Text = firstName;
                 tbxLastName.Text = lastName;
-                tbxUsername.Text = username;
                 rtbReason.Text = description;
                 List<Department> departments = new List<Department>();
                 departments = Department.GetAllDepartments();
@@ -46,66 +57,176 @@ namespace WindowsFormsApp1
                     {
                         cmbDepartment.Text = d.Name;
                     }
-                };
+                }
             }
         }
 
+        public DateTime GetDateTime()
+        {
+            DateTime date = DateTime.Now;
+            return date;
+        }
         private void PopulateDepartments(List<Department> departments)
         {
             foreach (Department d in departments)
                 cmbDepartment.Items.Add(new DepartmentComboBoxItem(d));
         }
+        private void PopulateManagers(List<Manager> managers)
+        {
+            foreach(Manager m in managers)
+            {
+                cmbManagers.Items.Add(new ManagerComboBoxItems(m));
+            }
+        }
+        private void PopulateEmployees(List<Employee> employees)
+        {
+            foreach(Employee e in employees)
+            {
+                cmbEmployees.Items.Add(new EmployeeComboBoxItem(e));
+            }
+        }
 
         private void BtnSendFiringRequest_Click(object sender, EventArgs e)
         {
+                MySqlConnection conn = Utils.GetConnection();
+
+                if (cmbDepartment.Text == "Department" || cmbDepartment.Text == "")
+                {
+                    MessageBox.Show("Please select a department from the menu!");
+                }
+                else if (cmbEmployees.Text == "Employees" || cmbEmployees.Text == "")
+                {
+                    MessageBox.Show("Please select an employee from the menu!");
+                }
+                else if (rtbReason.Text == "")
+                {
+                    MessageBox.Show("Please fill in all the fields in the table!");
+                }else if ( rtbReason.Text == "Reason for firing")
+                {
+                    MessageBox.Show("Please change the initial information in the fields!");
+                }
+                else
+                {
+                    string description = rtbReason.Text;
+                    int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
+                    int employeeId = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).Id;
+                    string employeeUsername = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).Username;
+                    string employeeFirstName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).FirstName;
+                    string employeeLastName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).LastName;
+                    try
+                    {
+                            FiringRequests fr = new FiringRequests(employeeId, this.loggedUserId, employeeUsername, description, employeeFirstName, employeeLastName, departmentId);
+                            FiringRequests fr1 = new FiringRequests(employeeId, this.loggedUserId, description);
+                            if (!fr1.FrExists)
+                            {
+                                MessageBox.Show("Firing request already exists!");
+                            }
+                            else
+                            {
+                                tbxFirstName.Text = employeeFirstName;
+                                tbxLastName.Text = employeeLastName;
+                                MessageBox.Show("Request sent successfully!");
+                            }
+                    }
+                    catch (Exception ex)
+                    {
+                        string epra = ex.Message;
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                }
+                
+        }
+
+        private void BtnRemoveManager_Click(object sender, EventArgs e)
+        {
             MySqlConnection conn = Utils.GetConnection();
-            
-            string description = rtbReason.Text;
-            string username = tbxUsername.Text;
-            int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
+            List<int> contactIds = new List<int>();
             try
             {
-                string userIdQuery = "SELECT account_id FROM user where username=@username";
-                MySqlCommand userIdCmd = new MySqlCommand(userIdQuery, conn);
-                userIdCmd.Parameters.AddWithValue("@username", username);
-                conn.Open();
-                Object userIdResult = userIdCmd.ExecuteScalar();
-                int user_id = 0;
-                if (userIdResult != null) { user_id = Convert.ToInt32(userIdResult); }
-                else { MessageBox.Show("Wrong username!"); return; }
-
-                string userFirstNameQuery = "SELECT first_name FROM person WHERE id=@user_id";
-                MySqlCommand userFirstNameCmd = new MySqlCommand(userFirstNameQuery, conn);
-                userFirstNameCmd.Parameters.AddWithValue("@user_id", user_id);
-                Object userFirstNameResult = userFirstNameCmd.ExecuteScalar();
-                string firstName = "";
-                if (userFirstNameResult != null) { firstName = userFirstNameResult.ToString(); }
-
-                string userLastNameQuery = "SELECT last_name FROM person WHERE id=@user_id";
-                MySqlCommand userLastNameCmd = new MySqlCommand(userLastNameQuery, conn);
-                userLastNameCmd.Parameters.AddWithValue("@user_id", user_id);
-                Object userLastNameResult = userLastNameCmd.ExecuteScalar();
-                string lastName = "";
-                if (userLastNameResult != null) { lastName = userLastNameResult.ToString(); }
-                FiringRequests fr = new FiringRequests(user_id, this.loggedUserId, username, description, firstName, lastName, departmentId);
-                FiringRequests fr1 = new FiringRequests(user_id, this.loggedUserId, description);
-                if (!fr1.FrExists)
+                int managerId = ((ManagerComboBoxItems)cmbManagers.SelectedItem).Id;
+                if (cmbDepartment.Text == "Department" || cmbDepartment.Text == "")
                 {
-                    MessageBox.Show("Firing request already exists!");
-                }else
+                    MessageBox.Show("Please select a department from the menu!");
+                }
+                else if (rtbReason.Text == "Reason for firing")
                 {
-                    tbxFirstName.Text = firstName;
-                    tbxLastName.Text = lastName;
-                    MessageBox.Show("Request sent successfully!");
+                    MessageBox.Show("Please change the initial information in the fields!");
+                }
+                else if (cmbManagers.Text == "Managers" || cmbManagers.Text == "")
+                {
+                    MessageBox.Show("Please select a manager from the menu!");
+                }
+                else if (rtbReason.Text == "")
+                {
+                    MessageBox.Show("Please fill in all the fields in the table!");
+                }
+                else
+                {
+                    try
+                    {
+                        string userRemoveQuery = "DELETE From user WHERE account_id = @manager_Id";
+                        MySqlCommand userRemoveCmd = new MySqlCommand(userRemoveQuery, conn);
+                        conn.Open();
+                        userRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                        userRemoveCmd.ExecuteNonQuery();
+
+                        string employeeRemoveQuery = "DELETE From employee_details WHERE person_id = @manager_Id";
+                        MySqlCommand employeeRemoveCmd = new MySqlCommand(employeeRemoveQuery, conn);
+                        employeeRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                        employeeRemoveCmd.ExecuteNonQuery();
+
+                        string employeeDaysRemoveQuery = "DELETE From employee_working_days WHERE employee_id = @manager_Id";
+                        MySqlCommand employeeDaysRemoveCmd = new MySqlCommand(employeeDaysRemoveQuery, conn);
+                        employeeDaysRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                        employeeDaysRemoveCmd.ExecuteNonQuery();
+
+                        string sql = "SELECT contact_person_id FROM contact_person WHERE employee_id = @manager_Id";
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@manager_Id", managerId);
+                        MySqlDataReader row = cmd.ExecuteReader();
+                        while (row.Read())
+                        {
+                            contactIds.Add(Convert.ToInt32(row[0]));
+                        }
+                        conn.Close();
+
+                        string employeeContactRemoveQuery = "DELETE From contact_person WHERE employee_id = @manager_Id";
+                        MySqlCommand employeeContactRemoveCmd = new MySqlCommand(employeeContactRemoveQuery, conn);
+                        conn.Open();
+                        employeeContactRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                        employeeContactRemoveCmd.ExecuteNonQuery();
+
+                        foreach (int id in contactIds)
+                        {
+                            string contactRemoveQuery = "DELETE FROM person WHERE id=@contact_Id";
+                            MySqlCommand contactRemoveCmd = new MySqlCommand(contactRemoveQuery, conn);
+                            contactRemoveCmd.Parameters.AddWithValue("@contact_id", id);
+                            contactRemoveCmd.ExecuteNonQuery();
+                        }
+
+                        string contractUpdateQuery = "UPDATE contract SET contract_end = @end_date, reason_for_leaving = @description WHERE person_id = @manager_Id";
+                        MySqlCommand contractUpdateCmd = new MySqlCommand(contractUpdateQuery, conn);
+                        contractUpdateCmd.Parameters.AddWithValue("@end_date", GetDateTime());
+                        contractUpdateCmd.Parameters.AddWithValue("@description", rtbReason.Text);
+                        contractUpdateCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                        contractUpdateCmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        string epra = ex.Message;
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                string epra = ex.Message;
-            }
-            finally
-            {
-                conn.Close();
+                MessageBox.Show("Please select a department from the menu!");
             }
         }
     }

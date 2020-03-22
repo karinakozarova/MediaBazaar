@@ -138,9 +138,9 @@ namespace WindowsFormsApp1
                 cmd.ExecuteNonQuery();
                 this.id = (int)cmd.LastInsertedId;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                String e = ex.Message;
+                // TODO: add to error log in the future
             }
             finally
             {

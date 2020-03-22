@@ -67,6 +67,7 @@
             this.btnOpenContact = new System.Windows.Forms.Button();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnCreateAccount = new System.Windows.Forms.Button();
             this.rbManager = new System.Windows.Forms.RadioButton();
             this.rbAdmin = new System.Windows.Forms.RadioButton();
             this.rbEmployee = new System.Windows.Forms.RadioButton();
@@ -112,7 +113,7 @@
             this.tbFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(283, 40);
-            this.tbFirstName.TabIndex = 3;
+            this.tbFirstName.TabIndex = 2;
             this.tbFirstName.Text = "First name";
             // 
             // tbLastName
@@ -122,7 +123,7 @@
             this.tbLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(283, 40);
-            this.tbLastName.TabIndex = 4;
+            this.tbLastName.TabIndex = 3;
             this.tbLastName.Text = "Last name";
             // 
             // dtpBirthdate
@@ -135,7 +136,7 @@
             this.dtpBirthdate.Name = "dtpBirthdate";
             this.dtpBirthdate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dtpBirthdate.Size = new System.Drawing.Size(283, 40);
-            this.dtpBirthdate.TabIndex = 7;
+            this.dtpBirthdate.TabIndex = 4;
             this.dtpBirthdate.Value = new System.DateTime(2020, 2, 29, 0, 51, 0, 0);
             // 
             // tbPhoneNumber
@@ -145,7 +146,7 @@
             this.tbPhoneNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(283, 40);
-            this.tbPhoneNumber.TabIndex = 9;
+            this.tbPhoneNumber.TabIndex = 7;
             this.tbPhoneNumber.Text = "Phone number";
             // 
             // tbEmail
@@ -155,7 +156,7 @@
             this.tbEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(283, 40);
-            this.tbEmail.TabIndex = 10;
+            this.tbEmail.TabIndex = 8;
             this.tbEmail.Text = "Email address";
             // 
             // label4
@@ -176,7 +177,7 @@
             this.nHourlyWage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nHourlyWage.Name = "nHourlyWage";
             this.nHourlyWage.Size = new System.Drawing.Size(107, 40);
-            this.nHourlyWage.TabIndex = 14;
+            this.nHourlyWage.TabIndex = 16;
             // 
             // label5
             // 
@@ -198,7 +199,7 @@
             this.dtbContractStartDate.Name = "dtbContractStartDate";
             this.dtbContractStartDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dtbContractStartDate.Size = new System.Drawing.Size(290, 40);
-            this.dtbContractStartDate.TabIndex = 16;
+            this.dtbContractStartDate.TabIndex = 17;
             this.dtbContractStartDate.Value = new System.DateTime(2020, 2, 29, 0, 51, 0, 0);
             // 
             // label6
@@ -318,7 +319,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(528, 158);
+            this.label8.Location = new System.Drawing.Point(523, 156);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(140, 31);
             this.label8.TabIndex = 27;
@@ -407,6 +408,7 @@
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             this.btnEdit.Location = new System.Drawing.Point(1017, 630);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit.Name = "btnEdit";
@@ -415,6 +417,7 @@
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+
             // 
             // tbUsername
             // 
@@ -423,7 +426,7 @@
             this.tbUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(283, 40);
-            this.tbUsername.TabIndex = 86;
+            this.tbUsername.TabIndex = 1;
             this.tbUsername.Text = "Username";
             this.tbUsername.TextChanged += new System.EventHandler(this.tbUsername_TextChanged);
             // 
@@ -434,7 +437,7 @@
             this.tbStreet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbStreet.Name = "tbStreet";
             this.tbStreet.Size = new System.Drawing.Size(283, 40);
-            this.tbStreet.TabIndex = 87;
+            this.tbStreet.TabIndex = 5;
             this.tbStreet.Text = "street";
             // 
             // tbPostcode
@@ -454,7 +457,7 @@
             this.tbRegion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbRegion.Name = "tbRegion";
             this.tbRegion.Size = new System.Drawing.Size(283, 40);
-            this.tbRegion.TabIndex = 89;
+            this.tbRegion.TabIndex = 5;
             this.tbRegion.Text = "region";
             // 
             // tbCountry
@@ -464,7 +467,7 @@
             this.tbCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbCountry.Name = "tbCountry";
             this.tbCountry.Size = new System.Drawing.Size(283, 40);
-            this.tbCountry.TabIndex = 90;
+            this.tbCountry.TabIndex = 6;
             this.tbCountry.Text = "Country";
             // 
             // btnAddOtherContact
@@ -474,7 +477,7 @@
             this.btnAddOtherContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddOtherContact.Name = "btnAddOtherContact";
             this.btnAddOtherContact.Size = new System.Drawing.Size(142, 46);
-            this.btnAddOtherContact.TabIndex = 91;
+            this.btnAddOtherContact.TabIndex = 13;
             this.btnAddOtherContact.Text = "Add contact";
             this.btnAddOtherContact.UseVisualStyleBackColor = true;
             this.btnAddOtherContact.Click += new System.EventHandler(this.btnAddOtherContact_Click);
@@ -488,7 +491,7 @@
             this.lbContacts.Location = new System.Drawing.Point(358, 290);
             this.lbContacts.Name = "lbContacts";
             this.lbContacts.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbContacts.Size = new System.Drawing.Size(469, 224);
+            this.lbContacts.Size = new System.Drawing.Size(469, 204);
             this.lbContacts.TabIndex = 92;
             // 
             // btnOpenContact
@@ -498,7 +501,7 @@
             this.btnOpenContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOpenContact.Name = "btnOpenContact";
             this.btnOpenContact.Size = new System.Drawing.Size(155, 46);
-            this.btnOpenContact.TabIndex = 93;
+            this.btnOpenContact.TabIndex = 12;
             this.btnOpenContact.Text = "Input contact";
             this.btnOpenContact.UseVisualStyleBackColor = true;
             this.btnOpenContact.Click += new System.EventHandler(this.btnOpenContact_Click);
@@ -510,27 +513,39 @@
             this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(283, 40);
-            this.tbPassword.TabIndex = 94;
+            this.tbPassword.TabIndex = 14;
             this.tbPassword.Text = "Password";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(370, 590);
+            this.label10.Location = new System.Drawing.Point(340, 602);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(209, 31);
             this.label10.TabIndex = 95;
             this.label10.Text = "User password";
             // 
+            // btnCreateAccount
+            // 
+            this.btnCreateAccount.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateAccount.Location = new System.Drawing.Point(830, 552);
+            this.btnCreateAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCreateAccount.Name = "btnCreateAccount";
+            this.btnCreateAccount.Size = new System.Drawing.Size(520, 46);
+            this.btnCreateAccount.TabIndex = 97;
+            this.btnCreateAccount.Text = "Create account";
+            this.btnCreateAccount.UseVisualStyleBackColor = true;
+            this.btnCreateAccount.Click += new System.EventHandler(this.BtnCreateAccount_Click);
+            // 
             // rbManager
             // 
             this.rbManager.AutoSize = true;
             this.rbManager.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbManager.Location = new System.Drawing.Point(376, 79);
+            this.rbManager.Location = new System.Drawing.Point(685, 72);
             this.rbManager.Name = "rbManager";
             this.rbManager.Size = new System.Drawing.Size(160, 38);
-            this.rbManager.TabIndex = 96;
+            this.rbManager.TabIndex = 9;
             this.rbManager.TabStop = true;
             this.rbManager.Text = "Manager";
             this.rbManager.UseVisualStyleBackColor = true;
@@ -539,10 +554,10 @@
             // 
             this.rbAdmin.AutoSize = true;
             this.rbAdmin.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbAdmin.Location = new System.Drawing.Point(564, 78);
+            this.rbAdmin.Location = new System.Drawing.Point(358, 72);
             this.rbAdmin.Name = "rbAdmin";
             this.rbAdmin.Size = new System.Drawing.Size(130, 38);
-            this.rbAdmin.TabIndex = 97;
+            this.rbAdmin.TabIndex = 10;
             this.rbAdmin.TabStop = true;
             this.rbAdmin.Text = "Admin";
             this.rbAdmin.UseVisualStyleBackColor = true;
@@ -550,11 +565,12 @@
             // rbEmployee
             // 
             this.rbEmployee.AutoSize = true;
+            this.rbEmployee.Checked = true;
             this.rbEmployee.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbEmployee.Location = new System.Drawing.Point(719, 79);
+            this.rbEmployee.Location = new System.Drawing.Point(502, 72);
             this.rbEmployee.Name = "rbEmployee";
             this.rbEmployee.Size = new System.Drawing.Size(177, 38);
-            this.rbEmployee.TabIndex = 98;
+            this.rbEmployee.TabIndex = 11;
             this.rbEmployee.TabStop = true;
             this.rbEmployee.Text = "Employee";
             this.rbEmployee.UseVisualStyleBackColor = true;
@@ -587,9 +603,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+
             this.ClientSize = new System.Drawing.Size(1376, 699);
             this.Controls.Add(this.btnDeleteContact);
             this.Controls.Add(this.btnChangeShifts);
+            this.Controls.Add(this.btnCreateAccount);
+
             this.Controls.Add(this.rbEmployee);
             this.Controls.Add(this.rbAdmin);
             this.Controls.Add(this.rbManager);
@@ -682,9 +701,12 @@
         private System.Windows.Forms.Button btnOpenContact;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnCreateAccount;
+
         private System.Windows.Forms.RadioButton rbManager;
         private System.Windows.Forms.RadioButton rbAdmin;
         private System.Windows.Forms.RadioButton rbEmployee;
+
         private System.Windows.Forms.Button btnChangeShifts;
         private System.Windows.Forms.Button btnDeleteContact;
     }
