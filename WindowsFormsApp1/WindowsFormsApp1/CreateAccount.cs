@@ -44,6 +44,7 @@ namespace MediaBazar
                 btnEdit.Visible = true;
                 btnSendRequest.Visible = false;
                 rbEmployee.Visible = false;
+                rbEmployee.Checked = false;
             }
             else if (workerRole == (int)ProfileRoles.MANAGER)
             {
@@ -137,7 +138,6 @@ namespace MediaBazar
                         contractCmd.Parameters.AddWithValue("@contract_start", contractStartDate);
                         conn.Open();
                         contractCmd.ExecuteNonQuery();
-
 
 
                         string employeDetailsQuery = "INSERT into employee_details(person_id, hourly_wage, contract_id, department_id, is_approved) VALUES (@person_id, @hourly_wage, @contract_id, @department_id, @is_approved);";
@@ -323,6 +323,16 @@ namespace MediaBazar
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
             this.username = tbUsername.Text;
+            if (pc.GetAccountType(username) == 2)
+            {
+                rbEmployee.Visible = true;
+                rbEmployee.Checked = true;
+            }
+            else
+            {
+                rbEmployee.Visible = false;
+                rbEmployee.Checked = false;
+            }
             PopulateListBoxOtherContacts();
             try
             {
@@ -512,7 +522,7 @@ namespace MediaBazar
                         long phoneN = Convert.ToInt64(tbPhoneNumber.Text);
                         DateTime contractStartDate = dtbContractStartDate.Value;
                         int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
-                        pc.UpdateWorker(pc.GetIdByUsername(username), password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneN, email, hourlyWage, contractStartDate);
+                        pc.UpdateWorker(accountType, pc.GetIdByUsername(username), password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneN, email);
 
                         string contractQuery = "UPDATE contract SET contract_start=@contract_start where person_id=@person_id;";
                         MySqlCommand contractCmd = new MySqlCommand(contractQuery, conn);

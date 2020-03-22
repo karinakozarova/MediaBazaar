@@ -471,12 +471,12 @@
             // btnAddOtherContact
             // 
             this.btnAddOtherContact.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddOtherContact.Location = new System.Drawing.Point(507, 230);
+            this.btnAddOtherContact.Location = new System.Drawing.Point(494, 230);
             this.btnAddOtherContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddOtherContact.Name = "btnAddOtherContact";
-            this.btnAddOtherContact.Size = new System.Drawing.Size(142, 46);
+            this.btnAddOtherContact.Size = new System.Drawing.Size(155, 46);
             this.btnAddOtherContact.TabIndex = 13;
-            this.btnAddOtherContact.Text = "Add contact";
+            this.btnAddOtherContact.Text = "Save contact";
             this.btnAddOtherContact.UseVisualStyleBackColor = true;
             this.btnAddOtherContact.Click += new System.EventHandler(this.btnAddOtherContact_Click);
             // 
@@ -486,16 +486,16 @@
             this.lbContacts.FormattingEnabled = true;
             this.lbContacts.HorizontalScrollbar = true;
             this.lbContacts.ItemHeight = 20;
-            this.lbContacts.Location = new System.Drawing.Point(346, 290);
+            this.lbContacts.Location = new System.Drawing.Point(332, 290);
             this.lbContacts.Name = "lbContacts";
             this.lbContacts.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbContacts.Size = new System.Drawing.Size(487, 204);
+            this.lbContacts.Size = new System.Drawing.Size(501, 204);
             this.lbContacts.TabIndex = 92;
             // 
             // btnOpenContact
             // 
             this.btnOpenContact.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenContact.Location = new System.Drawing.Point(346, 230);
+            this.btnOpenContact.Location = new System.Drawing.Point(333, 230);
             this.btnOpenContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOpenContact.Name = "btnOpenContact";
             this.btnOpenContact.Size = new System.Drawing.Size(155, 46);
@@ -540,7 +540,7 @@
             // 
             this.rbManager.AutoSize = true;
             this.rbManager.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbManager.Location = new System.Drawing.Point(685, 72);
+            this.rbManager.Location = new System.Drawing.Point(708, 72);
             this.rbManager.Name = "rbManager";
             this.rbManager.Size = new System.Drawing.Size(160, 38);
             this.rbManager.TabIndex = 9;
@@ -565,7 +565,7 @@
             this.rbEmployee.AutoSize = true;
             this.rbEmployee.Checked = true;
             this.rbEmployee.Font = new System.Drawing.Font("Montserrat", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbEmployee.Location = new System.Drawing.Point(502, 72);
+            this.rbEmployee.Location = new System.Drawing.Point(507, 72);
             this.rbEmployee.Name = "rbEmployee";
             this.rbEmployee.Size = new System.Drawing.Size(177, 38);
             this.rbEmployee.TabIndex = 11;
