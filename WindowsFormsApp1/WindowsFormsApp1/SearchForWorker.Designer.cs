@@ -29,19 +29,8 @@
         private void InitializeComponent()
         {
             this.bttnSearchworker = new System.Windows.Forms.Button();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.cbDepartment = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tbLname = new System.Windows.Forms.TextBox();
             this.tbFname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,70 +46,32 @@
             this.rbAll = new System.Windows.Forms.RadioButton();
             this.rbManager = new System.Windows.Forms.RadioButton();
             this.rbEmployee = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbMorningshift = new System.Windows.Forms.RadioButton();
+            this.rbAfternoonShift = new System.Windows.Forms.RadioButton();
+            this.rbEveningShift = new System.Windows.Forms.RadioButton();
+            this.rbTuesday = new System.Windows.Forms.RadioButton();
+            this.rbSunday = new System.Windows.Forms.RadioButton();
+            this.rbSaturday = new System.Windows.Forms.RadioButton();
+            this.rbFriday = new System.Windows.Forms.RadioButton();
+            this.rbThrusday = new System.Windows.Forms.RadioButton();
+            this.rbWednesday = new System.Windows.Forms.RadioButton();
+            this.rbMonday = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // bttnSearchworker
             // 
             this.bttnSearchworker.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnSearchworker.Location = new System.Drawing.Point(8, 367);
+            this.bttnSearchworker.Location = new System.Drawing.Point(27, 362);
             this.bttnSearchworker.Name = "bttnSearchworker";
             this.bttnSearchworker.Size = new System.Drawing.Size(311, 37);
             this.bttnSearchworker.TabIndex = 39;
             this.bttnSearchworker.Text = "Search";
             this.bttnSearchworker.UseVisualStyleBackColor = true;
             this.bttnSearchworker.Click += new System.EventHandler(this.bttnSearchworker_Click);
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox8.Location = new System.Drawing.Point(8, 198);
-            this.checkBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(113, 30);
-            this.checkBox8.TabIndex = 73;
-            this.checkBox8.Text = "Morning";
-            this.checkBox8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox7.Location = new System.Drawing.Point(240, 198);
-            this.checkBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(128, 30);
-            this.checkBox7.TabIndex = 72;
-            this.checkBox7.Text = "Afternoon";
-            this.checkBox7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox6.Location = new System.Drawing.Point(122, 198);
-            this.checkBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(114, 30);
-            this.checkBox6.TabIndex = 71;
-            this.checkBox6.Text = "Evening ";
-            this.checkBox6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Montserrat Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(5, 174);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 22);
-            this.label4.TabIndex = 70;
-            this.label4.Text = "WorkShifts:";
             // 
             // cbDepartment
             // 
@@ -132,64 +83,11 @@
             this.cbDepartment.TabIndex = 69;
             this.cbDepartment.Text = "Department";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Montserrat Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 231);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 22);
-            this.label2.TabIndex = 67;
-            this.label2.Text = "Available days:";
-            // 
-            // checkBox12
-            // 
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox12.Location = new System.Drawing.Point(216, 329);
-            this.checkBox12.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(103, 30);
-            this.checkBox12.TabIndex = 66;
-            this.checkBox12.Text = "Sunday";
-            this.checkBox12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkBox12.UseVisualStyleBackColor = true;
-            // 
-            // checkBox11
-            // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox11.Location = new System.Drawing.Point(207, 295);
-            this.checkBox11.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(117, 30);
-            this.checkBox11.TabIndex = 65;
-            this.checkBox11.Text = "Saturday";
-            this.checkBox11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkBox11.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox5.Location = new System.Drawing.Point(9, 295);
-            this.checkBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(142, 30);
-            this.checkBox5.TabIndex = 63;
-            this.checkBox5.Text = "Wednesday";
-            this.checkBox5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
             this.checkBox4.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox4.Location = new System.Drawing.Point(122, 261);
+            this.checkBox4.Location = new System.Drawing.Point(394, 367);
             this.checkBox4.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(90, 30);
@@ -199,48 +97,6 @@
             this.checkBox4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.checkBox4.UseVisualStyleBackColor = true;
             this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(8, 329);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(119, 30);
-            this.checkBox3.TabIndex = 62;
-            this.checkBox3.Text = "Thursday";
-            this.checkBox3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(9, 261);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(109, 30);
-            this.checkBox2.TabIndex = 61;
-            this.checkBox2.Text = "Tuesday";
-            this.checkBox2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(216, 261);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(108, 30);
-            this.checkBox1.TabIndex = 60;
-            this.checkBox1.Text = "Monday";
-            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // tbLname
             // 
@@ -375,11 +231,153 @@
             this.rbEmployee.Text = "Employee";
             this.rbEmployee.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbEveningShift);
+            this.groupBox1.Controls.Add(this.rbAfternoonShift);
+            this.groupBox1.Controls.Add(this.rbMorningshift);
+            this.groupBox1.Font = new System.Drawing.Font("Montserrat Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 177);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(355, 66);
+            this.groupBox1.TabIndex = 82;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Workshifts";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbMonday);
+            this.groupBox2.Controls.Add(this.rbWednesday);
+            this.groupBox2.Controls.Add(this.rbThrusday);
+            this.groupBox2.Controls.Add(this.rbFriday);
+            this.groupBox2.Controls.Add(this.rbSaturday);
+            this.groupBox2.Controls.Add(this.rbSunday);
+            this.groupBox2.Controls.Add(this.rbTuesday);
+            this.groupBox2.Font = new System.Drawing.Font("Montserrat Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(12, 256);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(355, 105);
+            this.groupBox2.TabIndex = 83;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Available days";
+            // 
+            // rbMorningshift
+            // 
+            this.rbMorningshift.AutoSize = true;
+            this.rbMorningshift.Location = new System.Drawing.Point(6, 26);
+            this.rbMorningshift.Name = "rbMorningshift";
+            this.rbMorningshift.Size = new System.Drawing.Size(104, 26);
+            this.rbMorningshift.TabIndex = 0;
+            this.rbMorningshift.TabStop = true;
+            this.rbMorningshift.Text = "Morning";
+            this.rbMorningshift.UseVisualStyleBackColor = true;
+            // 
+            // rbAfternoonShift
+            // 
+            this.rbAfternoonShift.AutoSize = true;
+            this.rbAfternoonShift.Location = new System.Drawing.Point(116, 26);
+            this.rbAfternoonShift.Name = "rbAfternoonShift";
+            this.rbAfternoonShift.Size = new System.Drawing.Size(121, 26);
+            this.rbAfternoonShift.TabIndex = 1;
+            this.rbAfternoonShift.TabStop = true;
+            this.rbAfternoonShift.Text = "Afternoon";
+            this.rbAfternoonShift.UseVisualStyleBackColor = true;
+            // 
+            // rbEveningShift
+            // 
+            this.rbEveningShift.AutoSize = true;
+            this.rbEveningShift.Location = new System.Drawing.Point(243, 26);
+            this.rbEveningShift.Name = "rbEveningShift";
+            this.rbEveningShift.Size = new System.Drawing.Size(102, 26);
+            this.rbEveningShift.TabIndex = 2;
+            this.rbEveningShift.TabStop = true;
+            this.rbEveningShift.Text = "Evening";
+            this.rbEveningShift.UseVisualStyleBackColor = true;
+            // 
+            // rbTuesday
+            // 
+            this.rbTuesday.AutoSize = true;
+            this.rbTuesday.Location = new System.Drawing.Point(116, 22);
+            this.rbTuesday.Name = "rbTuesday";
+            this.rbTuesday.Size = new System.Drawing.Size(103, 26);
+            this.rbTuesday.TabIndex = 0;
+            this.rbTuesday.TabStop = true;
+            this.rbTuesday.Text = "Tuesday";
+            this.rbTuesday.UseVisualStyleBackColor = true;
+            // 
+            // rbSunday
+            // 
+            this.rbSunday.AutoSize = true;
+            this.rbSunday.Location = new System.Drawing.Point(2, 73);
+            this.rbSunday.Name = "rbSunday";
+            this.rbSunday.Size = new System.Drawing.Size(96, 26);
+            this.rbSunday.TabIndex = 1;
+            this.rbSunday.TabStop = true;
+            this.rbSunday.Text = "Sunday";
+            this.rbSunday.UseVisualStyleBackColor = true;
+            // 
+            // rbSaturday
+            // 
+            this.rbSaturday.AutoSize = true;
+            this.rbSaturday.Location = new System.Drawing.Point(215, 47);
+            this.rbSaturday.Name = "rbSaturday";
+            this.rbSaturday.Size = new System.Drawing.Size(111, 26);
+            this.rbSaturday.TabIndex = 2;
+            this.rbSaturday.TabStop = true;
+            this.rbSaturday.Text = "Saturday";
+            this.rbSaturday.UseVisualStyleBackColor = true;
+            // 
+            // rbFriday
+            // 
+            this.rbFriday.AutoSize = true;
+            this.rbFriday.Location = new System.Drawing.Point(116, 47);
+            this.rbFriday.Name = "rbFriday";
+            this.rbFriday.Size = new System.Drawing.Size(85, 26);
+            this.rbFriday.TabIndex = 3;
+            this.rbFriday.TabStop = true;
+            this.rbFriday.Text = "Friday";
+            this.rbFriday.UseVisualStyleBackColor = true;
+            // 
+            // rbThrusday
+            // 
+            this.rbThrusday.AutoSize = true;
+            this.rbThrusday.Location = new System.Drawing.Point(2, 47);
+            this.rbThrusday.Name = "rbThrusday";
+            this.rbThrusday.Size = new System.Drawing.Size(112, 26);
+            this.rbThrusday.TabIndex = 4;
+            this.rbThrusday.TabStop = true;
+            this.rbThrusday.Text = "Thursday";
+            this.rbThrusday.UseVisualStyleBackColor = true;
+            // 
+            // rbWednesday
+            // 
+            this.rbWednesday.AutoSize = true;
+            this.rbWednesday.Location = new System.Drawing.Point(215, 22);
+            this.rbWednesday.Name = "rbWednesday";
+            this.rbWednesday.Size = new System.Drawing.Size(134, 26);
+            this.rbWednesday.TabIndex = 5;
+            this.rbWednesday.TabStop = true;
+            this.rbWednesday.Text = "Wednesday";
+            this.rbWednesday.UseVisualStyleBackColor = true;
+            // 
+            // rbMonday
+            // 
+            this.rbMonday.AutoSize = true;
+            this.rbMonday.Location = new System.Drawing.Point(2, 22);
+            this.rbMonday.Name = "rbMonday";
+            this.rbMonday.Size = new System.Drawing.Size(100, 26);
+            this.rbMonday.TabIndex = 6;
+            this.rbMonday.TabStop = true;
+            this.rbMonday.Text = "Monday";
+            this.rbMonday.UseVisualStyleBackColor = true;
+            // 
             // SearchForEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(965, 423);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rbAll);
             this.Controls.Add(this.rbManager);
             this.Controls.Add(this.rbEmployee);
@@ -387,18 +385,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbDepartment);
-            this.Controls.Add(this.checkBox8);
-            this.Controls.Add(this.checkBox7);
-            this.Controls.Add(this.checkBox6);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.checkBox12);
-            this.Controls.Add(this.checkBox11);
-            this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.tbLname);
             this.Controls.Add(this.tbFname);
             this.Controls.Add(this.label1);
@@ -406,6 +393,10 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SearchForEmployee";
             this.Text = "Search For Employee";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -414,19 +405,8 @@
         #endregion
 
         private System.Windows.Forms.Button bttnSearchworker;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbDepartment;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox12;
-        private System.Windows.Forms.CheckBox checkBox11;
-        private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox tbLname;
         private System.Windows.Forms.TextBox tbFname;
         private System.Windows.Forms.Label label1;
@@ -442,5 +422,17 @@
         private System.Windows.Forms.RadioButton rbAll;
         private System.Windows.Forms.RadioButton rbManager;
         private System.Windows.Forms.RadioButton rbEmployee;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbEveningShift;
+        private System.Windows.Forms.RadioButton rbAfternoonShift;
+        private System.Windows.Forms.RadioButton rbMorningshift;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rbMonday;
+        private System.Windows.Forms.RadioButton rbWednesday;
+        private System.Windows.Forms.RadioButton rbThrusday;
+        private System.Windows.Forms.RadioButton rbFriday;
+        private System.Windows.Forms.RadioButton rbSaturday;
+        private System.Windows.Forms.RadioButton rbSunday;
+        private System.Windows.Forms.RadioButton rbTuesday;
     }
 }
