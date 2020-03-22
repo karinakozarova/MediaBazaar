@@ -107,7 +107,7 @@ namespace WindowsFormsApp1
             try
             {
 
-                string ShowContactsQuery = "SELECT p.first_name, p.last_name, p.date_of_birth, p.phone_number, p.email  FROM person AS p INNER JOIN contact_person AS cp ON p.id = cp.contact_person_id where employee_id=@userId;";
+                string ShowContactsQuery = "SELECT p.id, p.first_name, p.last_name, p.date_of_birth, p.phone_number, p.email  FROM person AS p INNER JOIN contact_person AS cp ON p.id = cp.contact_person_id where employee_id=@userId;";
                 MySqlCommand ShowContactsCmd = new MySqlCommand(ShowContactsQuery, conn);
                 ShowContactsCmd.Parameters.AddWithValue("@userId", user_id);
                 conn.Open();
@@ -115,14 +115,14 @@ namespace WindowsFormsApp1
 
                 while (row.Read())
                 {
-                    listContacts.Add(row["first_name"] + " " + row["last_name"] + " " + "date of birth: " + row["date_of_birth"] + " " + "tel: " + row["phone_number"] + " " + "email: " + row["email"].ToString());
+                    listContacts.Add("[" + row["id"].ToString() + "] " + row["first_name"] + " " + row["last_name"] + " " + "date of birth: " + row["date_of_birth"] + " " + "tel: " + row["phone_number"] + " " + "email: " + row["email"].ToString());
                 }
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: add it to error log in the future
+                string e = ex.Message;
             }
             finally
             {
@@ -198,7 +198,6 @@ namespace WindowsFormsApp1
 
             try
             {
-
                 string ShowContactsQuery = "SELECT shift FROM employee_working_days WHERE employee_id=@userId;";
                 MySqlCommand ShowContactsCmd = new MySqlCommand(ShowContactsQuery, conn);
                 ShowContactsCmd.Parameters.AddWithValue("@userId", user_id);
@@ -313,7 +312,6 @@ namespace WindowsFormsApp1
 
             try
             {
-                
                 string personSql = "UPDATE person SET first_name=@first_name, last_name=@last_name, date_of_birth=@date_of_birth, street=@street, postcode=@postcode,region=@region, country=@country, phone_number=@phone_number,email=@email where id=@id";
                 MySqlCommand personCmd = new MySqlCommand(personSql, conn);
                 personCmd.Parameters.AddWithValue("@first_name", firstName);
@@ -353,7 +351,7 @@ namespace WindowsFormsApp1
             {
                 string shiftsQuery = "DELETE from employee_working_days where employee_id=@person_id;";
                 MySqlCommand shiftsCmd = new MySqlCommand(shiftsQuery, conn);
-                shiftsCmd.Parameters.AddWithValue("@person_id",GetIdByUsername(ca.GetUSername()));
+                shiftsCmd.Parameters.AddWithValue("@person_id", GetIdByUsername(ca.GetUSername()));
                 conn.Open();
                 shiftsCmd.ExecuteNonQuery();
             }
@@ -365,6 +363,62 @@ namespace WindowsFormsApp1
             {
                 conn.Close();
             }
+        }
+        public void DeleteSelectedContact(int contact_id)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                string DeleteRelationQuery = "DELETE from contact_person WHERE contact_person_id=@id;";
+                MySqlCommand DeleteRelationCmd = new MySqlCommand(DeleteRelationQuery, conn);
+                DeleteRelationCmd.Parameters.AddWithValue("@id", contact_id);
+                conn.Open();
+                DeleteRelationCmd.ExecuteNonQuery();
+
+                string DeletePersonQuery = "DELETE from person WHERE id=@id;";
+                MySqlCommand DeletePersonCmd = new MySqlCommand(DeletePersonQuery, conn);
+                DeletePersonCmd.Parameters.AddWithValue("@id", contact_id);
+                DeletePersonCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                string e = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public List<int> CheckExistingContacts(string userName)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            List<int> CheckContactIds = new List<int>();
+
+            try
+            {
+                
+                string CheckContactQuery = "Select contact_person_id from contact_person WHERE employee_id=@id;";
+                MySqlCommand CheckContactCmd = new MySqlCommand(CheckContactQuery, conn);
+                CheckContactCmd.Parameters.AddWithValue("@id", GetIdByUsername(userName));
+                conn.Open();
+                MySqlDataReader Check = CheckContactCmd.ExecuteReader();
+
+                while (Check.Read())
+                {
+                    CheckContactIds.Add(Convert.ToInt32(Check["contact_person_id"]));
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string e = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return CheckContactIds;
         }
     }
 }

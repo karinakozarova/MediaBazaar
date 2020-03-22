@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
         List<int> workdays = new List<int>();
         List<int> workshifts = new List<int>();
         List<string> displayContacts = new List<string>();
-        List<int> contactIds = new List<int>();
+
         bool state = false;
         public CreateAccount(int workerRole)
         {
@@ -160,7 +160,7 @@ namespace WindowsFormsApp1
 
         private void btnAddOtherContact_Click(object sender, EventArgs e)
         {
-
+            bool contactExists = false;
             int ContactId = 0;
             MySqlConnection conn = Utils.GetConnection();
             try
@@ -179,14 +179,26 @@ namespace WindowsFormsApp1
                 {
                     ContactId = Convert.ToInt32(contactIdResult);
                 }
+                foreach(int Check in pc.CheckExistingContacts(username))
+                {
+                    if (Check == ContactId)
+                    {
+                        contactExists = true;
+                    }
+                }
+                if (contactExists == false) 
+                { 
+                    string contactIdQuery = "INSERT INTO contact_person (employee_id, contact_person_id) VALUES (@userId, @contactId);";
+                    MySqlCommand contactIdCmd = new MySqlCommand(contactIdQuery, conn);
+                    contactIdCmd.Parameters.AddWithValue("@userId", pc.GetIdByUsername(username));
+                    contactIdCmd.Parameters.AddWithValue("@contactId", ContactId);
+                    contactIdCmd.ExecuteNonQuery();
 
-                string contactIdQuery = "INSERT INTO contact_person (employee_id, contact_person_id) VALUES (@userId, @contactId);";
-                MySqlCommand contactIdCmd = new MySqlCommand(contactIdQuery, conn);
-                contactIdCmd.Parameters.AddWithValue("@userId", pc.GetIdByUsername(username));
-                contactIdCmd.Parameters.AddWithValue("@contactId", ContactId);
-                contactIdCmd.ExecuteNonQuery();
-
-
+                }
+                else
+                {
+                    MessageBox.Show("This contact is already added.");
+                }
             }
             catch (Exception ex)
             {
@@ -218,6 +230,7 @@ namespace WindowsFormsApp1
             {
                 lbContacts.Items.Add(s);
             }
+
 
         }
         private void tbUsername_TextChanged(object sender, EventArgs e)
@@ -297,17 +310,10 @@ namespace WindowsFormsApp1
         }
         public void ShowContact(string contact)
         {
-
-            this.displayContacts.Add(contact);
-        }
-        public void ShowListContacts()
-        {
             lbContacts.Items.Clear();
-            foreach (string s in displayContacts)
-            {
-                lbContacts.Items.Add(s);
-            }
+            lbContacts.Items.Add(contact);
         }
+
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -364,11 +370,6 @@ namespace WindowsFormsApp1
                     if (state == true)
                     {
                         pc.DeleteShifts();
-                        //string shiftsQuery = "DELETE from employee_working_days where employee_id=@person_id;";
-                        //MySqlCommand shiftsCmd = new MySqlCommand(shiftsQuery, conn);
-                        //shiftsCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
-                        //shiftsCmd.ExecuteNonQuery();
-
                         if (cbMonday.Checked)
                         {
                             workdays.Add(0);
@@ -459,72 +460,17 @@ namespace WindowsFormsApp1
 
         private void btnDeleteContact_Click(object sender, EventArgs e)
         {
-
-            MySqlConnection conn = Utils.GetConnection();
-            
             try
             {
-                string contactToBeDeletedQuery = "SELECT contact_person_id FROM contact_person WHERE employee_id=@userId;";
-                MySqlCommand contactToBeDeletedCmd = new MySqlCommand(contactToBeDeletedQuery, conn);
-                contactToBeDeletedCmd.Parameters.AddWithValue("@userId", pc.GetIdByUsername(username));
-                conn.Open();
-                MySqlDataReader row = contactToBeDeletedCmd.ExecuteReader();
-
-                while (row.Read())
-                {
-                    contactIds.Add(Convert.ToInt32(row["contact_person_id"]));
-                }
-                
-               
+                string a = lbContacts.SelectedItem.ToString();
+                int output = Convert.ToInt32(a.Split('[', ']')[1]);
+                pc.DeleteSelectedContact(output);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                conn.Close();
-            }
-            try
-            {
-                foreach (int i in contactIds)
-                {
-                    string shiftsQuery = "DELETE from contact_person WHERE contact_person_id=@id;";
-                    MySqlCommand shiftsCmd = new MySqlCommand(shiftsQuery, conn);
-                    shiftsCmd.Parameters.AddWithValue("@id", i);
-                    conn.Open();
-                    shiftsCmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-            //try
-            //{
-            //    int item = 0;
-            //    for (int i = 0; i < pc.PopulateListBox(pc.GetIdByUsername(username)).Count; i++)
-            //    {
-            //        if (lbContacts.SelectedIndex == i)
-            //        {
-            //            item = contactIds[i];
-            //        }
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-            //finally
-            //{
-            //    conn.Close();
-            //}
-            // PopulateListBoxOtherContacts();
+            PopulateListBoxOtherContacts();
         }
     }
 }
