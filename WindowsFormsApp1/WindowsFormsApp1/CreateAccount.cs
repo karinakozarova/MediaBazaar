@@ -18,25 +18,7 @@ namespace WindowsFormsApp1
         bool state = false;
         int loggedInUser;
         int contactCounter;
-
-        public CreateAccount(int workerRole)
-        {
-            InitializeComponent();
-            pc = new PeopleController();
-            PopulateDepartments(Department.GetAllDepartments());
-            this.workerRole = workerRole;
-            if (workerRole == (int)ProfileRoles.ADMINISTRATOR)
-            {
-                btnEdit.Visible = true;
-                btnSendRequest.Visible = false;
-            }
-            else if (workerRole == (int)ProfileRoles.MANAGER)
-            {
-                btnEdit.Visible = false;
-                btnSendRequest.Visible = true;
-            }
-
-        }
+        bool addContact = false;
 
         public CreateAccount(int user_id, int workerRole)
         {
@@ -45,12 +27,17 @@ namespace WindowsFormsApp1
             pc = new PeopleController();
             PopulateDepartments(Department.GetAllDepartments());
             this.loggedInUser = user_id;
-            dtbContractStartDate.MinDate = System.DateTime.Now;
-            dtbContractStartDate.Value = System.DateTime.Now;
-            dtpBirthdate.Value = System.DateTime.Now;
-            dtpBirthdate.MaxDate = System.DateTime.Now;
+            //dtbContractStartDate.MinDate = System.DateTime.Now;
+            //dtbContractStartDate.Value = System.DateTime.Now;
+            //dtpBirthdate.Value = System.DateTime.Now;
+            //dtpBirthdate.MaxDate = System.DateTime.Now;
             contactCounter = 0;
-
+            if (!addContact)
+            {
+                btnAddOtherContact.Enabled = false;
+                btnOpenContact.Enabled = false;
+                btnDeleteContact.Enabled = false;
+            }
             this.workerRole = workerRole;
             if (workerRole == (int)ProfileRoles.ADMINISTRATOR)
             {
@@ -61,6 +48,7 @@ namespace WindowsFormsApp1
             else if (workerRole == (int)ProfileRoles.MANAGER)
             {
                 btnEdit.Visible = false;
+                btnChangeShifts.Visible = false;
                 btnCreateAccount.Visible = false;
                 rbAdmin.Visible = false;
                 rbManager.Visible = false;
@@ -71,7 +59,7 @@ namespace WindowsFormsApp1
 
         private void btnSendRequest_Click(object sender, EventArgs e)
         {
-            
+
             decimal minHourlyWage = 7;
             if (tbUsername.Text == "Username" || tbFirstName.Text == "First name" || tbLastName.Text == "Last name" || tbCountry.Text == "Country" || tbRegion.Text == "region" || tbPostcode.Text == "postcode" || tbStreet.Text == "street" || tbPhoneNumber.Text == "Phone number" || tbPassword.Text == "Password")
             {
@@ -100,7 +88,8 @@ namespace WindowsFormsApp1
             else if (!IsValidEmail(tbEmail.Text))
             {
                 MessageBox.Show("Please enter a valid email address!");
-            } else
+            }
+            else
             {
                 if (UniqueUsername())
                 {
@@ -110,9 +99,9 @@ namespace WindowsFormsApp1
                         int accountType = 0;
                         if (rbAdmin.Checked)
                         {
- 
+
                             accountType = (int)ProfileRoles.ADMINISTRATOR;
- 
+
                         }
                         else if (rbManager.Checked)
                         {
@@ -122,7 +111,7 @@ namespace WindowsFormsApp1
                         {
                             accountType = (int)ProfileRoles.EMPLOYEE;
                         }
- 
+
                         int contract_id = 0;
                         this.username = tbUsername.Text;
                         string firstName = tbFirstName.Text;
@@ -139,33 +128,25 @@ namespace WindowsFormsApp1
                         DateTime contractStartDate = dtbContractStartDate.Value;
                         int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
                         pc.CreateWorker(accountType, username, password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneN, email, hourlyWage, contractStartDate, departmentId);//adds worker to person table
- 
+
                         string contractQuery = "INSERT into contract (person_id, contract_start) VALUES (@person_id, @contract_start);";
                         MySqlCommand contractCmd = new MySqlCommand(contractQuery, conn);
                         contractCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
                         contractCmd.Parameters.AddWithValue("@contract_start", contractStartDate);
                         conn.Open();
                         contractCmd.ExecuteNonQuery();
- 
-                        string userIdQuery = "SELECT id FROM contract where person_id=@person_id;";
-                        MySqlCommand userIdCmd = new MySqlCommand(userIdQuery, conn);
-                        userIdCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
-                        Object userIdResult = userIdCmd.ExecuteScalar();
- 
-                        if (userIdResult != null)
-                        {
-                            contract_id = Convert.ToInt32(userIdResult);
-                        }
- 
+
+
+
                         string employeDetailsQuery = "INSERT into employee_details(person_id, hourly_wage, contract_id, department_id, is_approved) VALUES (@person_id, @hourly_wage, @contract_id, @department_id, @is_approved);";
                         MySqlCommand employeDetailsCmd = new MySqlCommand(employeDetailsQuery, conn);
                         employeDetailsCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
                         employeDetailsCmd.Parameters.AddWithValue("@hourly_wage", hourlyWage);
-                        employeDetailsCmd.Parameters.AddWithValue("@contract_id", contract_id);
+                        employeDetailsCmd.Parameters.AddWithValue("@contract_id", pc.GetContractId(pc.GetIdByUsername(username)));
                         employeDetailsCmd.Parameters.AddWithValue("@department_id", departmentId);//department ID department class
                         employeDetailsCmd.Parameters.AddWithValue("@is_approved", 1);
                         employeDetailsCmd.ExecuteNonQuery();
- 
+
                         if (cbMonday.Checked)
                         {
                             workdays.Add(0);
@@ -194,7 +175,7 @@ namespace WindowsFormsApp1
                         {
                             workdays.Add(6);
                         }
- 
+
                         if (cbMorningShift.Checked)
                         {
                             workshifts.Add(1);
@@ -207,7 +188,7 @@ namespace WindowsFormsApp1
                         {
                             workshifts.Add(3);
                         }
- 
+
                         foreach (int shift in workshifts)
                         {
                             foreach (int day in workdays)
@@ -230,6 +211,13 @@ namespace WindowsFormsApp1
                         {
                             MessageBox.Show("Request sent successfully!");
                         }
+                        addContact = true;
+                        if (addContact)
+                        {
+                            btnAddOtherContact.Enabled = true;
+                            btnOpenContact.Enabled = true;
+                            btnDeleteContact.Enabled = true;
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -239,7 +227,7 @@ namespace WindowsFormsApp1
                     {
                         conn.Close();
                     }
- 
+
                 }
                 else { MessageBox.Show("User with that username already exists."); }
             }
@@ -251,7 +239,7 @@ namespace WindowsFormsApp1
             int ContactId = 0;
             MySqlConnection conn = Utils.GetConnection();
 
-            if(this.contactCounter == 2)
+            if (this.contactCounter == 2)
             {
                 btnAddOtherContact.Enabled = false;
                 MessageBox.Show("Sorry you have reached the limit of contacts per person!");
@@ -274,16 +262,15 @@ namespace WindowsFormsApp1
                     {
                         ContactId = Convert.ToInt32(contactIdResult);
                     }
-
-                    foreach(int Check in pc.CheckExistingContacts(username))
+                    foreach (int Check in pc.CheckExistingContacts(username))
                     {
                         if (Check == ContactId)
                         {
                             contactExists = true;
                         }
                     }
-                    if (contactExists == false) 
-                    { 
+                    if (contactExists == false)
+                    {
                         string contactIdQuery = "INSERT INTO contact_person (employee_id, contact_person_id) VALUES (@userId, @contactId);";
                         MySqlCommand contactIdCmd = new MySqlCommand(contactIdQuery, conn);
                         contactIdCmd.Parameters.AddWithValue("@userId", pc.GetIdByUsername(username));
@@ -295,8 +282,6 @@ namespace WindowsFormsApp1
                     {
                         MessageBox.Show("This contact is already added.");
                     }
-
-                    this.contactCounter++;
                 }
                 catch (Exception ex)
                 {
@@ -308,7 +293,7 @@ namespace WindowsFormsApp1
                 }
                 PopulateListBoxOtherContacts();
             }
-            
+
         }
 
         private void PopulateDepartments(List<Department> departments)
@@ -417,127 +402,160 @@ namespace WindowsFormsApp1
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (!UniqueUsername())
+            decimal minHourlyWage = 7;
+           
+            if (tbUsername.Text == "" || tbFirstName.Text == "" || tbLastName.Text == "" || tbCountry.Text == "" || tbRegion.Text == "" || tbPostcode.Text == "" || tbStreet.Text == "" || tbPhoneNumber.Text == "" || tbPassword.Text == "" || tbEmail.Text == "")
             {
-                MySqlConnection conn = Utils.GetConnection();
-                try
+                MessageBox.Show("Please fill in all the fields in the table!");
+            }
+            else if (!rbAdmin.Checked && !rbManager.Checked)
+            {
+                MessageBox.Show("Please select an account type!");
+            }
+            else if (!cbMonday.Checked && !cbTuesday.Checked && !cbWednesday.Checked && !cbThursday.Checked && !cbFriday.Checked && !cbSaturday.Checked && !cbSunday.Checked)
+            {
+                MessageBox.Show("Please select available working days!");
+            }
+            else if (!cbMorningShift.Checked && !cbAfternoonShift.Checked && !cbEveningShift.Checked)
+            {
+                MessageBox.Show("Please select a prefered workshift!");
+            }
+            else if (nHourlyWage.Value < minHourlyWage)
+            {
+                MessageBox.Show("Employee hourly wage must be above the minimum!");
+            }
+            else if (cmbDepartment.Text == "")
+            {
+                MessageBox.Show("Please select a department from the menu!");
+            }
+            else if (!IsValidEmail(tbEmail.Text))
+            {
+                MessageBox.Show("Please enter a valid email address!");
+            }
+            else
+            {
+                if (!UniqueUsername())
                 {
-                    int accountType = 0;
-                    if (rbAdmin.Checked)
+                    MySqlConnection conn = Utils.GetConnection();
+                    try
                     {
+                        int accountType = 0;
+                        if (rbAdmin.Checked)
+                        {
 
-                        accountType = (int)ProfileRoles.ADMINISTRATOR;
+                            accountType = (int)ProfileRoles.ADMINISTRATOR;
 
-                    }
-                    else if (rbManager.Checked)
-                    {
-                        accountType = (int)ProfileRoles.MANAGER;
-                    }
-                    else if (rbEmployee.Checked)
-                    {
-                        accountType = (int)ProfileRoles.EMPLOYEE;
-                    }
-                    this.username = tbUsername.Text;
-                    string firstName = tbFirstName.Text;
-                    string lastName = tbLastName.Text;
-                    DateTime dateOfBirth = dtpBirthdate.Value;
-                    string street = tbStreet.Text;
-                    string postcode = tbPostcode.Text;
-                    string region = tbRegion.Text;
-                    string country = tbCountry.Text;
-                    string email = tbEmail.Text;
-                    hourlyWage = nHourlyWage.Value;
-                    string password = tbPassword.Text;
-                    long phoneN = Convert.ToInt64(tbPhoneNumber.Text);
-                    DateTime contractStartDate = dtbContractStartDate.Value;
-                    int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
-                    pc.UpdateWorker(pc.GetIdByUsername(username), password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneN, email, hourlyWage, contractStartDate);
+                        }
+                        else if (rbManager.Checked)
+                        {
+                            accountType = (int)ProfileRoles.MANAGER;
+                        }
+                        else if (rbEmployee.Checked)
+                        {
+                            accountType = (int)ProfileRoles.EMPLOYEE;
+                        }
+                        this.username = tbUsername.Text;
+                        string firstName = tbFirstName.Text;
+                        string lastName = tbLastName.Text;
+                        DateTime dateOfBirth = dtpBirthdate.Value;
+                        string street = tbStreet.Text;
+                        string postcode = tbPostcode.Text;
+                        string region = tbRegion.Text;
+                        string country = tbCountry.Text;
+                        string email = tbEmail.Text;
+                        hourlyWage = nHourlyWage.Value;
+                        string password = tbPassword.Text;
+                        long phoneN = Convert.ToInt64(tbPhoneNumber.Text);
+                        DateTime contractStartDate = dtbContractStartDate.Value;
+                        int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
+                        pc.UpdateWorker(pc.GetIdByUsername(username), password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneN, email, hourlyWage, contractStartDate);
 
-                    string contractQuery = "UPDATE contract SET contract_start=@contract_start where person_id=@person_id;";
-                    MySqlCommand contractCmd = new MySqlCommand(contractQuery, conn);
-                    contractCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
-                    contractCmd.Parameters.AddWithValue("@contract_start", contractStartDate);
-                    conn.Open();
-                    contractCmd.ExecuteNonQuery();
+                        string contractQuery = "UPDATE contract SET contract_start=@contract_start where person_id=@person_id;";
+                        MySqlCommand contractCmd = new MySqlCommand(contractQuery, conn);
+                        contractCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
+                        contractCmd.Parameters.AddWithValue("@contract_start", contractStartDate);
+                        conn.Open();
+                        contractCmd.ExecuteNonQuery();
 
-                    string employeDetailsQuery = "UPDATE employee_details SET  hourly_wage=@hourly_wage, department_id=@department_id WHERE  person_id=@person_id";
-                    MySqlCommand employeDetailsCmd = new MySqlCommand(employeDetailsQuery, conn);
-                    employeDetailsCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
-                    employeDetailsCmd.Parameters.AddWithValue("@hourly_wage", hourlyWage);
-                    employeDetailsCmd.Parameters.AddWithValue("@department_id", departmentId);
-                    employeDetailsCmd.ExecuteNonQuery();
+                        string employeDetailsQuery = "UPDATE employee_details SET  hourly_wage=@hourly_wage, department_id=@department_id WHERE  person_id=@person_id";
+                        MySqlCommand employeDetailsCmd = new MySqlCommand(employeDetailsQuery, conn);
+                        employeDetailsCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
+                        employeDetailsCmd.Parameters.AddWithValue("@hourly_wage", hourlyWage);
+                        employeDetailsCmd.Parameters.AddWithValue("@department_id", departmentId);
+                        employeDetailsCmd.ExecuteNonQuery();
 
-                    if (state == true)
-                    {
-                        pc.DeleteShifts();
-                        if (cbMonday.Checked)
+                        if (state == true)
                         {
-                            workdays.Add(0);
-                        }
-                        if (cbTuesday.Checked)
-                        {
-                            workdays.Add(1);
-                        }
-                        if (cbWednesday.Checked)
-                        {
-                            workdays.Add(2);
-                        }
-                        if (cbThursday.Checked)
-                        {
-                            workdays.Add(3);
-                        }
-                        if (cbFriday.Checked)
-                        {
-                            workdays.Add(4);
-                        }
-                        if (cbSaturday.Checked)
-                        {
-                            workdays.Add(5);
-                        }
-                        if (cbSunday.Checked)
-                        {
-                            workdays.Add(6);
-                        }
-
-                        if (cbMorningShift.Checked)
-                        {
-                            workshifts.Add(1);
-                        }
-                        if (cbAfternoonShift.Checked)
-                        {
-                            workshifts.Add(2);
-                        }
-                        if (cbEveningShift.Checked)
-                        {
-                            workshifts.Add(3);
-                        }
-
-                        foreach (int shift in workshifts)
-                        {
-                            foreach (int day in workdays)
+                            pc.DeleteShifts();
+                            if (cbMonday.Checked)
                             {
-                                string workdaysQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift) VALUE(@userId,@week_day_id, @shift)";
-                                MySqlCommand workdaysQueryCmd = new MySqlCommand(workdaysQuery, conn);
-                                workdaysQueryCmd.Parameters.AddWithValue("@shift", shift);
-                                workdaysQueryCmd.Parameters.AddWithValue("@userId", pc.GetIdByUsername(username));
-                                workdaysQueryCmd.Parameters.AddWithValue("@week_day_id", day);
-                                workdaysQueryCmd.ExecuteNonQuery();
+                                workdays.Add(0);
+                            }
+                            if (cbTuesday.Checked)
+                            {
+                                workdays.Add(1);
+                            }
+                            if (cbWednesday.Checked)
+                            {
+                                workdays.Add(2);
+                            }
+                            if (cbThursday.Checked)
+                            {
+                                workdays.Add(3);
+                            }
+                            if (cbFriday.Checked)
+                            {
+                                workdays.Add(4);
+                            }
+                            if (cbSaturday.Checked)
+                            {
+                                workdays.Add(5);
+                            }
+                            if (cbSunday.Checked)
+                            {
+                                workdays.Add(6);
+                            }
+
+                            if (cbMorningShift.Checked)
+                            {
+                                workshifts.Add(1);
+                            }
+                            if (cbAfternoonShift.Checked)
+                            {
+                                workshifts.Add(2);
+                            }
+                            if (cbEveningShift.Checked)
+                            {
+                                workshifts.Add(3);
+                            }
+
+                            foreach (int shift in workshifts)
+                            {
+                                foreach (int day in workdays)
+                                {
+                                    string workdaysQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift) VALUE(@userId,@week_day_id, @shift)";
+                                    MySqlCommand workdaysQueryCmd = new MySqlCommand(workdaysQuery, conn);
+                                    workdaysQueryCmd.Parameters.AddWithValue("@shift", shift);
+                                    workdaysQueryCmd.Parameters.AddWithValue("@userId", pc.GetIdByUsername(username));
+                                    workdaysQueryCmd.Parameters.AddWithValue("@week_day_id", day);
+                                    workdaysQueryCmd.ExecuteNonQuery();
+                                }
                             }
                         }
+                        MessageBox.Show("The account has been edited.");
                     }
-                    MessageBox.Show("The account has been edited.");
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Invalid Data!Check person details.");
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Invalid Data!Check person details.");
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                else { MessageBox.Show("User with that username doesn't exists."); }
+                state = false;
             }
-            else { MessageBox.Show("User with that username doesn't exists."); }
-            state = false;
         }
         public string GetUSername()
         {
@@ -631,7 +649,7 @@ namespace WindowsFormsApp1
                         {
                             accountType = (int)ProfileRoles.EMPLOYEE;
                         }
-                        int contract_id = 0;
+                        //int contract_id = 0;
                         this.username = tbUsername.Text;
                         string firstName = tbFirstName.Text;
                         string lastName = tbLastName.Text;
@@ -655,21 +673,12 @@ namespace WindowsFormsApp1
                         conn.Open();
                         contractCmd.ExecuteNonQuery();
 
-                        string userIdQuery = "SELECT id FROM contract where person_id=@person_id;";
-                        MySqlCommand userIdCmd = new MySqlCommand(userIdQuery, conn);
-                        userIdCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
-                        Object userIdResult = userIdCmd.ExecuteScalar();
-
-                        if (userIdResult != null)
-                        {
-                            contract_id = Convert.ToInt32(userIdResult);
-                        }
 
                         string employeDetailsQuery = "INSERT into employee_details(person_id, hourly_wage, contract_id, department_id, is_approved) VALUES (@person_id, @hourly_wage, @contract_id, @department_id, @is_approved);";
                         MySqlCommand employeDetailsCmd = new MySqlCommand(employeDetailsQuery, conn);
                         employeDetailsCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
                         employeDetailsCmd.Parameters.AddWithValue("@hourly_wage", hourlyWage);
-                        employeDetailsCmd.Parameters.AddWithValue("@contract_id", contract_id);
+                        employeDetailsCmd.Parameters.AddWithValue("@contract_id", pc.GetContractId(pc.GetIdByUsername(username)));
                         employeDetailsCmd.Parameters.AddWithValue("@department_id", departmentId);//department ID department class
                         employeDetailsCmd.Parameters.AddWithValue("@is_approved", 2);
                         employeDetailsCmd.ExecuteNonQuery();
@@ -728,11 +737,19 @@ namespace WindowsFormsApp1
                                 shiftsQueryCmd.ExecuteNonQuery();
                             }
                         }
-                        MessageBox.Show("Account created successfully!");
+
+                        MessageBox.Show("The account has been created.");
+                        addContact = true;
+                        if (addContact)
+                        {
+                            btnAddOtherContact.Enabled = true;
+                            btnOpenContact.Enabled = true;
+                            btnDeleteContact.Enabled = true;
+                        }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("Invalid Data!Check person details.");
                     }
                     finally
                     {
@@ -740,8 +757,9 @@ namespace WindowsFormsApp1
                     }
                 }
                 else { MessageBox.Show("User with that username already exists."); }
+
             }
-            
+
 
         }
 

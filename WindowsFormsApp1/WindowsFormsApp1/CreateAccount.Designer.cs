@@ -408,8 +408,7 @@
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
-            this.btnEdit.Location = new System.Drawing.Point(1017, 630);
+            this.btnEdit.Location = new System.Drawing.Point(763, 630);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(179, 46);
@@ -417,7 +416,6 @@
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-
             // 
             // tbUsername
             // 
@@ -529,10 +527,10 @@
             // btnCreateAccount
             // 
             this.btnCreateAccount.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateAccount.Location = new System.Drawing.Point(830, 552);
+            this.btnCreateAccount.Location = new System.Drawing.Point(980, 630);
             this.btnCreateAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreateAccount.Name = "btnCreateAccount";
-            this.btnCreateAccount.Size = new System.Drawing.Size(520, 46);
+            this.btnCreateAccount.Size = new System.Drawing.Size(370, 46);
             this.btnCreateAccount.TabIndex = 97;
             this.btnCreateAccount.Text = "Create account";
             this.btnCreateAccount.UseVisualStyleBackColor = true;
@@ -578,10 +576,10 @@
             // btnChangeShifts
             // 
             this.btnChangeShifts.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangeShifts.Location = new System.Drawing.Point(1189, 517);
+            this.btnChangeShifts.Location = new System.Drawing.Point(1181, 517);
             this.btnChangeShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChangeShifts.Name = "btnChangeShifts";
-            this.btnChangeShifts.Size = new System.Drawing.Size(142, 55);
+            this.btnChangeShifts.Size = new System.Drawing.Size(150, 66);
             this.btnChangeShifts.TabIndex = 99;
             this.btnChangeShifts.Text = "Change current shifts";
             this.btnChangeShifts.UseVisualStyleBackColor = true;
@@ -603,12 +601,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-
-            this.ClientSize = new System.Drawing.Size(1376, 699);
+            this.ClientSize = new System.Drawing.Size(1376, 705);
             this.Controls.Add(this.btnDeleteContact);
             this.Controls.Add(this.btnChangeShifts);
             this.Controls.Add(this.btnCreateAccount);
-
             this.Controls.Add(this.rbEmployee);
             this.Controls.Add(this.rbAdmin);
             this.Controls.Add(this.rbManager);

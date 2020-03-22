@@ -105,9 +105,8 @@ namespace WindowsFormsApp1
 
         private void btnCreateAdminManager_Click(object sender, EventArgs e)
         {
-            CreateAccount ca = new CreateAccount(workerRole);
-            ca.Show();
-            this.Close();
+            (new CreateAccount(this.user_id, workerRole)).Show();
+            //this.Close();
         }
 
         private void BtnHireEmployeeRequest_Click(object sender, EventArgs e)
