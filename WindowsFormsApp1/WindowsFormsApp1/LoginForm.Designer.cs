@@ -41,21 +41,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(45, 60);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(349, 37);
+            this.label1.Size = new System.Drawing.Size(443, 50);
             this.label1.TabIndex = 0;
             this.label1.Text = "Enter your credentials";
             // 
             // usernameLoginInput
             // 
-            this.usernameLoginInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameLoginInput.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameLoginInput.Location = new System.Drawing.Point(56, 226);
             this.usernameLoginInput.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.usernameLoginInput.Name = "usernameLoginInput";
-            this.usernameLoginInput.Size = new System.Drawing.Size(498, 44);
+            this.usernameLoginInput.Size = new System.Drawing.Size(498, 51);
             this.usernameLoginInput.TabIndex = 1;
             // 
             // mediaBazarLogoLogin
@@ -71,17 +71,17 @@
             // 
             // passwordLoginInput
             // 
-            this.passwordLoginInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordLoginInput.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordLoginInput.Location = new System.Drawing.Point(56, 354);
             this.passwordLoginInput.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.passwordLoginInput.Name = "passwordLoginInput";
-            this.passwordLoginInput.Size = new System.Drawing.Size(498, 44);
+            this.passwordLoginInput.Size = new System.Drawing.Size(498, 51);
             this.passwordLoginInput.TabIndex = 3;
             this.passwordLoginInput.UseSystemPasswordChar = true;
             // 
             // loginBttn
             // 
-            this.loginBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginBttn.Font = new System.Drawing.Font("Montserrat Medium", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginBttn.Location = new System.Drawing.Point(92, 469);
             this.loginBttn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.loginBttn.Name = "loginBttn";
@@ -94,22 +94,22 @@
             // usernameLoginLbl
             // 
             this.usernameLoginLbl.AutoSize = true;
-            this.usernameLoginLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameLoginLbl.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameLoginLbl.Location = new System.Drawing.Point(46, 171);
             this.usernameLoginLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.usernameLoginLbl.Name = "usernameLoginLbl";
-            this.usernameLoginLbl.Size = new System.Drawing.Size(173, 37);
+            this.usernameLoginLbl.Size = new System.Drawing.Size(218, 50);
             this.usernameLoginLbl.TabIndex = 5;
             this.usernameLoginLbl.Text = "Username:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(46, 298);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(167, 37);
+            this.label3.Size = new System.Drawing.Size(204, 50);
             this.label3.TabIndex = 6;
             this.label3.Text = "Password:";
             // 

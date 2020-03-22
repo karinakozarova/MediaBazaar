@@ -18,34 +18,13 @@ namespace WindowsFormsApp1
 
         private void ChangeColors(int id)
         {
-            if (Department.GetWorkersShifts(id)[0])
-            {
-                mondayBttn.BackColor = workingColor;
-            }
-            if (Department.GetWorkersShifts(id)[1])
-            {
-                tuesdayBttn.BackColor = workingColor;
-            }
-            if (Department.GetWorkersShifts(id)[2])
-            {
-                wednesdayBttn.BackColor = workingColor;
-            }
-            if (Department.GetWorkersShifts(id)[3])
-            {
-                thursdayBttn.BackColor = workingColor;
-            }
-            if (Department.GetWorkersShifts(id)[4])
-            {
-                fridayBttn.BackColor = workingColor;
-            }
-            if (Department.GetWorkersShifts(id)[5])
-            {
-                saturdayBttn.BackColor = workingColor;
-            }
-            if (Department.GetWorkersShifts(id)[6])
-            {
-                sundayBttn.BackColor = workingColor;
-            }
+            if (Department.GetWorkersShifts(id)[0]) mondayBttn.BackColor = workingColor;
+            if (Department.GetWorkersShifts(id)[1]) tuesdayBttn.BackColor = workingColor;
+            if (Department.GetWorkersShifts(id)[2]) wednesdayBttn.BackColor = workingColor;
+            if (Department.GetWorkersShifts(id)[3]) thursdayBttn.BackColor = workingColor;
+            if (Department.GetWorkersShifts(id)[4]) fridayBttn.BackColor = workingColor;
+            if (Department.GetWorkersShifts(id)[5]) saturdayBttn.BackColor = workingColor;
+            if (Department.GetWorkersShifts(id)[6]) sundayBttn.BackColor = workingColor;
         }
     }
 }

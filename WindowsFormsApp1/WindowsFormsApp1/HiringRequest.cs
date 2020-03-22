@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -15,8 +9,10 @@ namespace WindowsFormsApp1
         public HiringRequest(string username, string firstName, string lastName, decimal hourlyWage, int departmentId, DateTime contractStartDate, long phoneNumber, string email)
         {
             InitializeComponent();
+
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Enabled = false;
+
             tbUsername.Text = username;
             tbFirstName.Text = firstName;
             tbLastName.Text = lastName;
@@ -24,14 +20,11 @@ namespace WindowsFormsApp1
             dtbContractStartDate.Value = contractStartDate;
             tbPhoneNumber.Text = phoneNumber.ToString();
             tbEmail.Text = email;
-            List<Department> departments = new List<Department>();
-            departments = Department.GetAllDepartments();
+
+            List<Department> departments = Department.GetAllDepartments();
             foreach (Department d in departments)
             {
-                if (d.DepartmentId == departmentId)
-                {
-                    cmbDepartment.Text = d.Name;
-                }
+                if (d.DepartmentId == departmentId) cmbDepartment.Text = d.Name;
             };
         }
     }

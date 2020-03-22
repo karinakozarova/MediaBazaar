@@ -1,11 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public class StockRequest: Stock
+    public class StockRequest : Stock
     {
         public int Quantity
         {
@@ -57,12 +56,12 @@ namespace WindowsFormsApp1
             {
                 string sql = "SELECT name, description, quantity_in_depo, quantity_in_store, price, department_id, needed_quantity FROM stock INNER JOIN stockrequests ON stock_id = id;";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                conn.Open();    
+                conn.Open();
                 MySqlDataReader row = cmd.ExecuteReader();
 
                 while (row.Read())
                 {
-                    StockRequest request = new StockRequest(row[0].ToString(),row[1].ToString(), Convert.ToInt32(row[2].ToString()), Convert.ToInt32(row[3]), Convert.ToInt32(row[4]), Convert.ToInt32(row[5]), Convert.ToInt32(row[6]));
+                    StockRequest request = new StockRequest(row[0].ToString(), row[1].ToString(), Convert.ToInt32(row[2].ToString()), Convert.ToInt32(row[3]), Convert.ToInt32(row[4]), Convert.ToInt32(row[5]), Convert.ToInt32(row[6]));
                     requests.Add(request);
                 }
             }

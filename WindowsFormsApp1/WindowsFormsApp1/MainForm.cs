@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -28,19 +22,19 @@ namespace WindowsFormsApp1
             this.username = username;
             this.workerRole = workerRole;
 
-            if(workerRole == (int)ProfileRoles.ADMINISTRATOR)
+            if (workerRole == (int)ProfileRoles.ADMINISTRATOR)
             {
                 btnFireEmployeeRequest.Visible = false;
                 btnHireEmployeeRequest.Visible = false;
             }
-            else if(workerRole == (int)ProfileRoles.MANAGER)
+            else if (workerRole == (int)ProfileRoles.MANAGER)
             {
                 btnFireManager.Visible = false;
                 btnCreateAdminManager.Visible = false;
                 addNewDepartmentBttn.Visible = false;
                 btnViewRequests.Visible = false;
             }
-            else if(workerRole == (int)ProfileRoles.EMPLOYEE)
+            else if (workerRole == (int)ProfileRoles.EMPLOYEE)
             {
                 tabControl1.TabPages.Remove(employeesTab);
                 tabControl1.TabPages.Remove(departmentsTab);
@@ -84,7 +78,7 @@ namespace WindowsFormsApp1
 
         private void viewStocksBttn_Click(object sender, EventArgs e)
         {
-             (new StockView(workerRole)).Show();
+            (new StockView(workerRole)).Show();
         }
 
         private void addDepartmentBttn_Click(object sender, EventArgs e)
@@ -100,13 +94,12 @@ namespace WindowsFormsApp1
 
         private void BtnFireEmployeeRequest_Click(object sender, EventArgs e)
         {
-            (new FiringRequest(this.user_id,workerRole)).Show();
+            (new FiringRequest(this.user_id, workerRole)).Show();
         }
 
         private void btnCreateAdminManager_Click(object sender, EventArgs e)
         {
             (new CreateAccount(this.user_id, workerRole)).Show();
-            //this.Close();
         }
 
         private void BtnHireEmployeeRequest_Click(object sender, EventArgs e)

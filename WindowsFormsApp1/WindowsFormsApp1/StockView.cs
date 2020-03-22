@@ -19,9 +19,10 @@ namespace WindowsFormsApp1
 
         private void PopulateDepartments(List<Department> departments)
         {
-            foreach (Department d in departments) 
+            foreach (Department d in departments)
                 departmentsCmbbxStockView.Items.Add(new DepartmentComboBoxItem(d));
         }
+
         private void populateStocks(List<Stock> stocks)
         {
             stocksViewLbx.Items.Clear();
@@ -86,7 +87,7 @@ namespace WindowsFormsApp1
 
             int departmentId = ((DepartmentComboBoxItem)departmentsCmbbxStockView.SelectedItem).Id;
             string productName = (stockNameTbx.Text != "Stock name" ? stockNameTbx.Text : null);
-            
+
             List<Stock> stocks = Stock.FilterStocks(departmentId, productName);
             populateStocks(stocks);
         }

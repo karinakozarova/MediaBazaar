@@ -30,14 +30,8 @@ namespace WindowsFormsApp1
             sunData.Text = numbers[6].ToString();
             totalData.Text = total.ToString();
 
-            if (neededPeople <= total)
-            {
-                colorPanel.BackColor = greenColor;
-            }
-            else
-            {
-                colorPanel.BackColor = redColor;
-            }
+            if (neededPeople <= total) colorPanel.BackColor = greenColor;
+            else  colorPanel.BackColor = redColor;
         }
     }
 }

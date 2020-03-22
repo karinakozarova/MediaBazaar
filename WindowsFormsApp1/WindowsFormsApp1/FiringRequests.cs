@@ -158,7 +158,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception)
             {
-
+                // TODO: add it to error log in the future
             }
             finally
             {
@@ -207,13 +207,12 @@ namespace WindowsFormsApp1
             }
             catch (Exception)
             {
-
+                // TODO: add it to error log in the future
             }
             finally
             {
                 conn.Close();
             }
         }
-
     }
 }

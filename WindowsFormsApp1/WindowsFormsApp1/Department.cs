@@ -12,7 +12,6 @@ namespace WindowsFormsApp1
             get;
             private set;
         }
-
         public string Name { get; set; }
         public string Description { get; set; }
         public int NeededPeople { get; set; }
@@ -24,6 +23,7 @@ namespace WindowsFormsApp1
             this.NeededPeople = neededPeople;
             AddDepartment();
         }
+
         public Department(string name, string description, int neededPeople, int id)
         {
             this.Name = name;
@@ -57,7 +57,6 @@ namespace WindowsFormsApp1
 
         internal static bool[] GetWorkersShifts(int workerId)
         {
-            //SELECT* FROM `employee_details` left join person p on person_id = p.id left join employee_working_days wd on wd.employee_id = p.id  where department_id = 24 and shift = "morning"
             MySqlConnection conn = Utils.GetConnection();
 
             bool[] days = new bool[7];
@@ -75,10 +74,9 @@ namespace WindowsFormsApp1
                     days[Convert.ToInt32(row["week_day_id"])] = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // TODO: add it to error log in the future
-                String e = ex.Message;
             }
             finally
             {
@@ -89,7 +87,6 @@ namespace WindowsFormsApp1
 
         internal static int[] GetWorkersCountFor(int departmentId, string shift)
         {
-            //SELECT* FROM `employee_details` left join person p on person_id = p.id left join employee_working_days wd on wd.employee_id = p.id  where department_id = 24 and shift = "morning"
             MySqlConnection conn = Utils.GetConnection();
             Int32 count = 0;
             int[] days = new int[8];
@@ -121,10 +118,9 @@ namespace WindowsFormsApp1
                     count += 1;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // TODO: add it to error log in the future
-                String e = ex.Message;
             }
             finally
             {
@@ -192,8 +188,8 @@ namespace WindowsFormsApp1
 
         private bool AddDepartment()
         {
-            // add this object to the database
             MySqlConnection conn = Utils.GetConnection();
+            
             try
             {
                 string sql = "INSERT INTO " + tableName + "(name , description , needed_people) VALUES (@name, @description ,@needed_people);";
@@ -206,7 +202,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception)
             {
-
+                // TODO: add it to error log in the future
             }
             finally
             {
@@ -230,7 +226,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception)
             {
-
+                // TODO: add it to error log in the future
             }
             finally
             {
@@ -252,7 +248,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception)
             {
-
+                // TODO: add it to error log in the future
             }
             finally
             {
@@ -274,15 +270,15 @@ namespace WindowsFormsApp1
             }
             catch (Exception)
             {
-
+                // TODO: add it to error log in the future
             }
             finally
             {
                 conn.Close();
             }
             return false;
-
         }
+
         public void EditDepartment(string name, string description, int neededpeople)
         {
             MySqlConnection conn = Utils.GetConnection();
@@ -299,7 +295,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception)
             {
-
+                // TODO: add it to error log in the future
             }
             finally
             {
@@ -315,7 +311,7 @@ namespace WindowsFormsApp1
             List<Department> departments = new List<Department>();
             try
             {
-                string sql = "SELECT name, description, needed_people, id FROM " + tableName; 
+                string sql = "SELECT name, description, needed_people, id FROM " + tableName;
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();
                 MySqlDataReader row = cmd.ExecuteReader();
