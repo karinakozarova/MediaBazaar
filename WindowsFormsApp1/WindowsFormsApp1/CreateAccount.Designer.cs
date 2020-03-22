@@ -471,7 +471,7 @@
             // btnAddOtherContact
             // 
             this.btnAddOtherContact.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddOtherContact.Location = new System.Drawing.Point(526, 230);
+            this.btnAddOtherContact.Location = new System.Drawing.Point(507, 230);
             this.btnAddOtherContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddOtherContact.Name = "btnAddOtherContact";
             this.btnAddOtherContact.Size = new System.Drawing.Size(142, 46);
@@ -486,16 +486,16 @@
             this.lbContacts.FormattingEnabled = true;
             this.lbContacts.HorizontalScrollbar = true;
             this.lbContacts.ItemHeight = 20;
-            this.lbContacts.Location = new System.Drawing.Point(358, 290);
+            this.lbContacts.Location = new System.Drawing.Point(346, 290);
             this.lbContacts.Name = "lbContacts";
             this.lbContacts.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbContacts.Size = new System.Drawing.Size(469, 204);
+            this.lbContacts.Size = new System.Drawing.Size(487, 204);
             this.lbContacts.TabIndex = 92;
             // 
             // btnOpenContact
             // 
             this.btnOpenContact.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenContact.Location = new System.Drawing.Point(358, 230);
+            this.btnOpenContact.Location = new System.Drawing.Point(346, 230);
             this.btnOpenContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOpenContact.Name = "btnOpenContact";
             this.btnOpenContact.Size = new System.Drawing.Size(155, 46);
@@ -579,7 +579,7 @@
             this.btnChangeShifts.Location = new System.Drawing.Point(1181, 517);
             this.btnChangeShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChangeShifts.Name = "btnChangeShifts";
-            this.btnChangeShifts.Size = new System.Drawing.Size(150, 66);
+            this.btnChangeShifts.Size = new System.Drawing.Size(150, 77);
             this.btnChangeShifts.TabIndex = 99;
             this.btnChangeShifts.Text = "Change current shifts";
             this.btnChangeShifts.UseVisualStyleBackColor = true;
@@ -588,10 +588,10 @@
             // btnDeleteContact
             // 
             this.btnDeleteContact.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteContact.Location = new System.Drawing.Point(674, 230);
+            this.btnDeleteContact.Location = new System.Drawing.Point(655, 230);
             this.btnDeleteContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDeleteContact.Name = "btnDeleteContact";
-            this.btnDeleteContact.Size = new System.Drawing.Size(153, 46);
+            this.btnDeleteContact.Size = new System.Drawing.Size(178, 46);
             this.btnDeleteContact.TabIndex = 100;
             this.btnDeleteContact.Text = "Delete contact";
             this.btnDeleteContact.UseVisualStyleBackColor = true;

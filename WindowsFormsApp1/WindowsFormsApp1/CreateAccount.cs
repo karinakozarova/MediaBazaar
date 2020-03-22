@@ -52,6 +52,8 @@ namespace WindowsFormsApp1
                 btnCreateAccount.Visible = false;
                 rbAdmin.Visible = false;
                 rbManager.Visible = false;
+                rbEmployee.Checked = true;
+                rbEmployee.Enabled = false;
                 this.Text = "Hiring Request";
             }
         }
@@ -276,7 +278,7 @@ namespace WindowsFormsApp1
                         contactIdCmd.Parameters.AddWithValue("@userId", pc.GetIdByUsername(username));
                         contactIdCmd.Parameters.AddWithValue("@contactId", ContactId);
                         contactIdCmd.ExecuteNonQuery();
-
+                        MessageBox.Show("The contact has been added.");
                     }
                     else
                     {
@@ -358,6 +360,48 @@ namespace WindowsFormsApp1
                         else if (s == "evening") { cbEveningShift.Checked = true; }
                     }
 
+                    addContact = true;
+                    if (addContact)
+                    {
+                        btnAddOtherContact.Enabled = true;
+                        btnOpenContact.Enabled = true;
+                        btnDeleteContact.Enabled = true;
+                    }
+                }
+                else
+                {
+                    tbFirstName.Text = "First Name";
+                    tbLastName.Text = "Last Name";
+                    tbStreet.Text = "street";
+                    tbPostcode.Text = "postcode";
+                    tbRegion.Text = "region";
+                    tbCountry.Text = "Country";
+                    tbPhoneNumber.Text = "Phone number";
+                    tbEmail.Text = "Email address";
+                    tbPassword.Text = "Password";
+                    nHourlyWage.Value = 0;
+                    cmbDepartment.SelectedIndex = cmbDepartment.FindStringExact("Department");
+                    dtbContractStartDate.Value = System.DateTime.Now;
+                    rbAdmin.Checked = false;
+                    rbManager.Checked = false;
+                    rbEmployee.Checked = false;
+                    cbMorningShift.Checked = false;
+                    cbAfternoonShift.Checked = false;
+                    cbEveningShift.Checked = false;
+                    cbMonday.Checked = false;
+                    cbTuesday.Checked = false;
+                    cbWednesday.Checked = false;
+                    cbThursday.Checked = false;
+                    cbFriday.Checked = false;
+                    cbSaturday.Checked = false;
+                    cbSunday.Checked = false;
+                    addContact = false;
+                    if (!addContact)
+                    {
+                        btnAddOtherContact.Enabled = false;
+                        btnOpenContact.Enabled = false;
+                        btnDeleteContact.Enabled = false;
+                    }
                 }
             }
             catch (Exception ex)

@@ -22,96 +22,118 @@ namespace WindowsFormsApp1
         DateTime contractStartDate;
         private decimal hourlyWage;
 
-        public DateTime ContractStartDate { get { return contractStartDate; } private set { contractStartDate = value; } }
-        public int DepartmentId { get { return departmentId; } private set { departmentId = value; } }
-        public string Username { get { return username; } private set { username = value; } }
-        public string FirstName { get { return firstName; } }
-        public string LastName { get { return lastName; } }
-        public DateTime DateOFBirth { get { return dateOfBirth; } }
+        public DateTime ContractStartDate
+        { 
+            get; 
+            private set; 
+        }
+        public int DepartmentId 
+        {
+            get; 
+            private set; 
+        }
+        public string Username
+        { 
+            get;
+            private set; }
+        public string FirstName
+        {
+            get;
+            private set;
+        }
+        public string LastName 
+        {
+            get;
+            private set;
+        }
+        public DateTime DateOFBirth
+        {
+            get;
+            private set;
+            }
 
         public string Street
         {
-            get { return street; }
-            private set { street = value; }
+            get;
+            private set;
         }
         public int Id
         {
-            get { return id; }
-            set { id = value; }
+            get;
+            set;
         }
 
         public string Postcode
         {
-            get { return postcode; }
-            private set { postcode = value; }
+            get;
+            private set;
         }
         public string Region
         {
-            get { return region; }
-            private set { region = value; }
+            get;
+            private set;
         }
         public string Country
         {
-            get { return country; }
-            private set { country = value; }
+            get;
+            private set;
         }
         public long PhoneNumber
         {
-            get { return phoneNumber; }
-            private set { phoneNumber = value; }
+            get;
+            private set;
         }
         public string Email
         {
-            get { return email; }
-            private set { email = value; }
+            get;
+            private set;
         }
         public string Password
         {
-            get { return password; }
-            private set { password = value; }
+            get;
+            private set;
         }
         public int AccountId
         {
-            get { return id; }
-            private set { id = value; }
+            get;
+            private set;
         }
         public int AccountType
         {
-            get { return accountType; }
-            private set { accountType = value; }
+            get;
+            private set;
         }
         public decimal HourlyWage
         {
-            get { return hourlyWage; }
-            private set { hourlyWage = value; }
+            get;
+            private set;
         }
 
         public Person(int accountType, string username, string password, string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email, decimal hourlyWage, DateTime contractStartDate, int departmentId)
         {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.dateOfBirth = dateOfBirth;
-            this.street = street;
-            this.postcode = postcode;
-            this.region = region;
-            this.country = country;
-            this.phoneNumber = phoneNumber;
-            this.email = email;
-            this.password = password;
-            this.username = username;
-            this.accountType = accountType;
-            this.departmentId = departmentId;
-            this.contractStartDate = contractStartDate;
-            this.hourlyWage = hourlyWage;
-
+            FirstName = firstName;
+            LastName = lastName;
+            DateOFBirth = dateOfBirth;
+            Street = street;
+            Postcode = postcode;
+            Region = region;
+            Country = country;
+            PhoneNumber = phoneNumber;
+            Email = email;
+            Password = password;
+            Username = username;
+            AccountType = accountType;
+            DepartmentId = departmentId;
+            ContractStartDate = contractStartDate;
+            HourlyWage = hourlyWage;
         }
         public Person(string firstName, string lastName, DateTime dateOfBirth, long phoneNumber, string email)
         {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.dateOfBirth = dateOfBirth;
-            this.phoneNumber = phoneNumber;
-            this.email = email;
+            FirstName = firstName;
+            LastName = lastName;
+            DateOFBirth = dateOfBirth;
+            PhoneNumber = phoneNumber;
+            Email = email;
             AddPerson();
         }
 
@@ -156,7 +178,7 @@ namespace WindowsFormsApp1
         }
         public virtual string ToString()
         {
-            return id + ": " + firstName + "  " + lastName + " - " + dateOfBirth + " - " + phoneNumber + " - " + email;
+            return Id + ": " + FirstName + "  " + LastName + " - " + DateOFBirth + " - " + PhoneNumber + " - " + Email;
         }
     }
 }
