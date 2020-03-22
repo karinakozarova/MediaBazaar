@@ -1,13 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    public class Worker: Person
+    public class Worker : Person
     {
         CreateAccount ca;
         private decimal hourlyWage = 0;
@@ -77,9 +74,9 @@ namespace WindowsFormsApp1
                 this.Id = (int)userCmd.LastInsertedId;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                String e = ex.Message;
+                // TODO: add to error log in the future
             }
             finally
             {
@@ -103,10 +100,8 @@ namespace WindowsFormsApp1
             private set;
         }
 
-
         public static int TotalHoursWeekWorked(int workerId)
         {
-            // TODO: fix this
             MySqlConnection conn = Utils.GetConnection();
             int count = 0;
             try
@@ -116,15 +111,13 @@ namespace WindowsFormsApp1
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@id", workerId);
                 conn.Open();
+
                 MySqlDataReader row2 = cmd.ExecuteReader();
-                while (row2.Read())
-                {
-                    count++;
-                }
-               
+                while (row2.Read())  count++;
             }
-            catch (Exception )
+            catch (Exception)
             {
+                // TODO: add to error log in the future
             }
             finally
             {
@@ -152,13 +145,10 @@ namespace WindowsFormsApp1
                 cmd.Parameters.AddWithValue("@password", password);
                 conn.Open();
                 Object result = cmd.ExecuteScalar();
-                
+
                 if (result != null) { count = Convert.ToInt32(result); }
                 if (count == 1)
                 {
-                    
-                   // this.username = username;
-
                     string userIdQuery = "SELECT account_id FROM user where username=@username";
                     MySqlCommand userIdCmd = new MySqlCommand(userIdQuery, conn);
                     userIdCmd.Parameters.AddWithValue("@username", username);
@@ -190,11 +180,12 @@ namespace WindowsFormsApp1
                     isApprovedCmd.Parameters.AddWithValue("@person_id", user_id);
                     Object isApprovedResult = isApprovedCmd.ExecuteScalar();
                     int isApproved = 0;
-                    if(isApprovedResult != null) { isApproved = Convert.ToInt32(isApprovedResult); }
-                    if(isApproved == 1)
+                    if (isApprovedResult != null) { isApproved = Convert.ToInt32(isApprovedResult); }
+                    if (isApproved == 1)
                     {
                         IsLoggedIn = false;
-                    }else if(isApproved == 2)
+                    }
+                    else if (isApproved == 2)
                     {
                         IsLoggedIn = true;
                     }
@@ -264,9 +255,9 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                String e = ex.Message;
+                // TODO: add to error log in the future
             }
             finally { conn.Close(); }
 
@@ -317,10 +308,10 @@ namespace WindowsFormsApp1
                             decimal hourly_wage = Convert.ToDecimal(row2[10]);
                             int departmentid = Convert.ToInt32(row2[11]);
                             DateTime ContractDate = Convert.ToDateTime(row2[12]);
+                            
                             Worker worker = new Worker(personid, null, null, firstname, lastname, dateOfBirth, street, postcode, region, country, phonenumber, email, hourly_wage, ContractDate, departmentid, false);
                             worker.Id = personid;
                             emlpoyees.Add(worker);
-
                         }
                     }
                 }

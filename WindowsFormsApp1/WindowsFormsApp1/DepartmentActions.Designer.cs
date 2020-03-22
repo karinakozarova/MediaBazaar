@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.departmentsCmbbxAddingStock = new System.Windows.Forms.ComboBox();
-            this.flpDays = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.neededWorkersCount = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.departmentAvailableCmbbx = new System.Windows.Forms.ComboBox();
             this.availablePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.departmentAvailableCmbbx = new System.Windows.Forms.ComboBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.neededWorkersCount = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.flpDays = new System.Windows.Forms.FlowLayoutPanel();
+            this.departmentsCmbbxAddingStock = new System.Windows.Forms.ComboBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -53,6 +53,27 @@
             this.tabPage3.Text = "Available employees costs";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // availablePanel
+            // 
+            this.availablePanel.AutoScroll = true;
+            this.availablePanel.Font = new System.Drawing.Font("Montserrat", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.availablePanel.Location = new System.Drawing.Point(19, 97);
+            this.availablePanel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
+            this.availablePanel.Name = "availablePanel";
+            this.availablePanel.Size = new System.Drawing.Size(1050, 396);
+            this.availablePanel.TabIndex = 15;
+            // 
+            // departmentAvailableCmbbx
+            // 
+            this.departmentAvailableCmbbx.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.departmentAvailableCmbbx.FormattingEnabled = true;
+            this.departmentAvailableCmbbx.Location = new System.Drawing.Point(19, 23);
+            this.departmentAvailableCmbbx.Name = "departmentAvailableCmbbx";
+            this.departmentAvailableCmbbx.Size = new System.Drawing.Size(523, 52);
+            this.departmentAvailableCmbbx.TabIndex = 7;
+            this.departmentAvailableCmbbx.Text = "Department";
+            this.departmentAvailableCmbbx.SelectedIndexChanged += new System.EventHandler(this.departmentAvailableCmbbx_SelectedIndexChanged);
+            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.neededWorkersCount);
@@ -67,26 +88,15 @@
             this.tabPage1.Text = "Per Work Shift";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // departmentsCmbbxAddingStock
+            // neededWorkersCount
             // 
-            this.departmentsCmbbxAddingStock.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.departmentsCmbbxAddingStock.FormattingEnabled = true;
-            this.departmentsCmbbxAddingStock.Location = new System.Drawing.Point(26, 24);
-            this.departmentsCmbbxAddingStock.Name = "departmentsCmbbxAddingStock";
-            this.departmentsCmbbxAddingStock.Size = new System.Drawing.Size(523, 52);
-            this.departmentsCmbbxAddingStock.TabIndex = 6;
-            this.departmentsCmbbxAddingStock.Text = "Department";
-            this.departmentsCmbbxAddingStock.SelectedIndexChanged += new System.EventHandler(this.departmentsCmbbxAddingStock_SelectedIndexChanged);
-            // 
-            // flpDays
-            // 
-            this.flpDays.AutoScroll = true;
-            this.flpDays.Font = new System.Drawing.Font("Montserrat", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flpDays.Location = new System.Drawing.Point(26, 96);
-            this.flpDays.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.flpDays.Name = "flpDays";
-            this.flpDays.Size = new System.Drawing.Size(1050, 396);
-            this.flpDays.TabIndex = 14;
+            this.neededWorkersCount.AutoSize = true;
+            this.neededWorkersCount.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.neededWorkersCount.Location = new System.Drawing.Point(907, 27);
+            this.neededWorkersCount.Name = "neededWorkersCount";
+            this.neededWorkersCount.Size = new System.Drawing.Size(32, 44);
+            this.neededWorkersCount.TabIndex = 16;
+            this.neededWorkersCount.Text = "-";
             // 
             // label1
             // 
@@ -98,15 +108,26 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Needed workers:";
             // 
-            // neededWorkersCount
+            // flpDays
             // 
-            this.neededWorkersCount.AutoSize = true;
-            this.neededWorkersCount.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.neededWorkersCount.Location = new System.Drawing.Point(907, 27);
-            this.neededWorkersCount.Name = "neededWorkersCount";
-            this.neededWorkersCount.Size = new System.Drawing.Size(32, 44);
-            this.neededWorkersCount.TabIndex = 16;
-            this.neededWorkersCount.Text = "-";
+            this.flpDays.AutoScroll = true;
+            this.flpDays.Font = new System.Drawing.Font("Montserrat", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flpDays.Location = new System.Drawing.Point(26, 96);
+            this.flpDays.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
+            this.flpDays.Name = "flpDays";
+            this.flpDays.Size = new System.Drawing.Size(1050, 396);
+            this.flpDays.TabIndex = 14;
+            // 
+            // departmentsCmbbxAddingStock
+            // 
+            this.departmentsCmbbxAddingStock.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.departmentsCmbbxAddingStock.FormattingEnabled = true;
+            this.departmentsCmbbxAddingStock.Location = new System.Drawing.Point(26, 24);
+            this.departmentsCmbbxAddingStock.Name = "departmentsCmbbxAddingStock";
+            this.departmentsCmbbxAddingStock.Size = new System.Drawing.Size(523, 52);
+            this.departmentsCmbbxAddingStock.TabIndex = 6;
+            this.departmentsCmbbxAddingStock.Text = "Department";
+            this.departmentsCmbbxAddingStock.SelectedIndexChanged += new System.EventHandler(this.departmentsCmbbxAddingStock_SelectedIndexChanged);
             // 
             // tabControl1
             // 
@@ -118,27 +139,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1110, 589);
             this.tabControl1.TabIndex = 0;
-            // 
-            // departmentAvailableCmbbx
-            // 
-            this.departmentAvailableCmbbx.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.departmentAvailableCmbbx.FormattingEnabled = true;
-            this.departmentAvailableCmbbx.Location = new System.Drawing.Point(19, 23);
-            this.departmentAvailableCmbbx.Name = "departmentAvailableCmbbx";
-            this.departmentAvailableCmbbx.Size = new System.Drawing.Size(523, 52);
-            this.departmentAvailableCmbbx.TabIndex = 7;
-            this.departmentAvailableCmbbx.Text = "Department";
-            this.departmentAvailableCmbbx.SelectedIndexChanged += new System.EventHandler(this.departmentAvailableCmbbx_SelectedIndexChanged);
-            // 
-            // availablePanel
-            // 
-            this.availablePanel.AutoScroll = true;
-            this.availablePanel.Font = new System.Drawing.Font("Montserrat", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.availablePanel.Location = new System.Drawing.Point(19, 97);
-            this.availablePanel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.availablePanel.Name = "availablePanel";
-            this.availablePanel.Size = new System.Drawing.Size(1050, 396);
-            this.availablePanel.TabIndex = 15;
             // 
             // DepartmentActions
             // 

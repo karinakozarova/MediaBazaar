@@ -39,7 +39,6 @@ namespace WindowsFormsApp1
             this.CreatedById = createdById;
             AddHiringRequest();
         }
-
         private void AddHiringRequest()
         {
             MySqlConnection conn = Utils.GetConnection();
@@ -68,9 +67,8 @@ namespace WindowsFormsApp1
                     FrExists = false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                string epra = ex.Message;
                 FrExists = false;
             }
             finally
@@ -96,9 +94,9 @@ namespace WindowsFormsApp1
                     hiringRequests.Add(new HiringRequests(Convert.ToInt32(row[0]), Convert.ToInt32(row[1]), row[2].ToString(), row[3].ToString(), row[4].ToString(), Convert.ToDecimal(row[5]), Convert.ToInt32(row[6]), Convert.ToDateTime(row[7]), Convert.ToInt64(row[8]), row[9].ToString()));
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                string epra = ex.Message;
+                // TODO: add to error log in the future
             }
             finally
             {
@@ -150,7 +148,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception)
             {
-
+                // TODO: add to error log in the future
             }
             finally
             {
@@ -174,9 +172,9 @@ namespace WindowsFormsApp1
                 cmd.Parameters.AddWithValue("@person_Id", PersonId);
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                string epra = ex.Message;
+                // TODO: add to error log in the future
             }
             finally
             {

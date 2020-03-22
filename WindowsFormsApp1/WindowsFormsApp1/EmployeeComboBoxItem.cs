@@ -8,34 +8,23 @@ namespace WindowsFormsApp1
 {
     class EmployeeComboBoxItem
     {
-        private string firstName;
-        private string lastName;
-        private int id;
-        private string username;
-
         public EmployeeComboBoxItem(Employee e)
         {
-            this.id = e.EmployeeId;
-            this.firstName = e.EmployeeFirstName;
-            this.lastName = e.EmployeeLastName;
-            this.username = e.EmployeeUsername;
+            this.Id = e.EmployeeId;
+            this.FirstName = e.EmployeeFirstName;
+            this.LastName = e.EmployeeLastName;
+            this.Username = e.EmployeeUsername;
         }
 
-        public int Id
-        {
-            get
-            {
-                return id;
-            }
-        }
-        public string FirstName { get { return this.firstName; } }
-        public string LastName { get { return this.lastName; } }
-        public string Username { get { return this.username; } }
+        public int Id { get; }
+        public string FirstName { get; }
+        public string LastName { get; }
+        public string Username { get; }
 
         //Override ToString method
         public override string ToString()
         {
-            return $"{firstName} {lastName}";
+            return $"{FirstName} {LastName}";
         }
     }
 }

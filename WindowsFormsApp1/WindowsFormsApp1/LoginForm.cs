@@ -1,12 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -23,32 +15,32 @@ namespace WindowsFormsApp1
 
         private void loginBttn_Click(object sender, EventArgs e)
         {
-            
-            if(String.IsNullOrWhiteSpace(usernameLoginInput.Text))
+
+            if (String.IsNullOrWhiteSpace(usernameLoginInput.Text))
             {
                 MessageBox.Show("Enter username");
                 return;
             }
-            
-            if(String.IsNullOrWhiteSpace(passwordLoginInput.Text))
+
+            if (String.IsNullOrWhiteSpace(passwordLoginInput.Text))
             {
-                MessageBox.Show("enter password");
+                MessageBox.Show("Enter password");
                 return;
             }
 
             string username = usernameLoginInput.Text;
             string psswd = passwordLoginInput.Text;
-            bool isLoggedIn = worker.Login(username,psswd);
+            bool isLoggedIn = worker.Login(username, psswd);
             int user_id = worker.Id;
             int workerRole = worker.WorkerRole;
             if (!isLoggedIn)
             {
-                MessageBox.Show("Wrong credentials");
+                MessageBox.Show("You have entered wrong credentials");
                 return;
             }
             (new MainForm(username, workerRole, user_id)).Show();
             this.Hide();
-            
+
         }
     }
 }

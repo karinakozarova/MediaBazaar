@@ -77,7 +77,7 @@
             this.btnEdit.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.Location = new System.Drawing.Point(23, 399);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(385, 58);
+            this.btnEdit.Size = new System.Drawing.Size(399, 58);
             this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit department";
             this.btnEdit.UseVisualStyleBackColor = true;

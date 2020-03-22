@@ -71,11 +71,11 @@ namespace WindowsFormsApp1
                 cmd.Parameters.AddWithValue("@quantity_in_store", storeQ);
                 cmd.Parameters.AddWithValue("@quantity_in_depo", depoQ);
                 cmd.Parameters.AddWithValue("@id", stockId);
-  
+
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception )
+            catch (Exception)
             {
                 // TODO: add it to error log in the future
             }

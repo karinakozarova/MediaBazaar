@@ -11,28 +11,28 @@ namespace WindowsFormsApp1
 
         public void ApproveFire()
         {
-
+            throw new NotImplementedException();
         }
         public void RemoveManager()
         {
-
+            throw new NotImplementedException();
         }
         public void GetAllFireRequests()
         {
-
+            throw new NotImplementedException();
         }
 
         public void GetAllHiringRequests()
         {
-
+            throw new NotImplementedException();
         }
         public void ApproveHire()
         {
-
+            throw new NotImplementedException();
         }
         public void AddManager()
         {
-
+            throw new NotImplementedException();
         }
         public void CreatePerson(string firstName, string lastName, DateTime dateOfBirth, long phoneNumber, string email)
         {
@@ -41,8 +41,6 @@ namespace WindowsFormsApp1
         public void CreateWorker(int accountType, string username, string password, string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email, decimal hourlyWage, DateTime contractStartDate, int departmentId)
         {
             Worker worker = new Worker(accountType, username, password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneNumber, email, hourlyWage, contractStartDate, departmentId);
-
-
         }
         public List<Person> GetOtherContacts()
         {
@@ -396,7 +394,6 @@ namespace WindowsFormsApp1
 
             try
             {
-                
                 string CheckContactQuery = "Select contact_person_id from contact_person WHERE employee_id=@id;";
                 MySqlCommand CheckContactCmd = new MySqlCommand(CheckContactQuery, conn);
                 CheckContactCmd.Parameters.AddWithValue("@id", GetIdByUsername(userName));
@@ -406,13 +403,12 @@ namespace WindowsFormsApp1
                 while (Check.Read())
                 {
                     CheckContactIds.Add(Convert.ToInt32(Check["contact_person_id"]));
-
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                string e = ex.Message;
+                // TODO: add to error log in the future
             }
             finally
             {

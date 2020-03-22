@@ -18,25 +18,26 @@ namespace WindowsFormsApp1
 
         private void addStockBttn_Click(object sender, EventArgs e)
         {
+            int minimumValue = 1;
             if (String.IsNullOrWhiteSpace(addStockNameTbx.Text))
             {
                 MessageBox.Show("Enter Stock name");
                 return;
             }
 
-            if (pricePerItemTbx.Value < 1)
+            if (pricePerItemTbx.Value < minimumValue)
             {
                 MessageBox.Show("Enter price");
                 return;
             }
 
-            if (indepoQuantityInput.Value < 1)
+            if (indepoQuantityInput.Value < minimumValue)
             {
                 MessageBox.Show("Enter depo quantity");
                 return;
             }
 
-            if (inStoreQuantityInput.Value < 1)
+            if (inStoreQuantityInput.Value < minimumValue)
             {
                 MessageBox.Show("Enter store quantity");
                 return;

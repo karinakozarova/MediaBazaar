@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 
 namespace WindowsFormsApp1
 {
@@ -23,18 +22,17 @@ namespace WindowsFormsApp1
         DateTime contractStartDate;
         private decimal hourlyWage;
 
-
         public DateTime ContractStartDate { get { return contractStartDate; } private set { contractStartDate = value; } }
         public int DepartmentId { get { return departmentId; } private set { departmentId = value; } }
         public string Username { get { return username; } private set { username = value; } }
-        public string FirstName {get { return firstName; }}
+        public string FirstName { get { return firstName; } }
         public string LastName { get { return lastName; } }
         public DateTime DateOFBirth { get { return dateOfBirth; } }
 
         public string Street
         {
             get { return street; }
-           private set{ street = value; } 
+            private set { street = value; }
         }
         public int Id
         {
@@ -42,30 +40,30 @@ namespace WindowsFormsApp1
             set { id = value; }
         }
 
-        public string Postcode 
-        { 
+        public string Postcode
+        {
             get { return postcode; }
             private set { postcode = value; }
         }
-        public string Region 
-        { 
+        public string Region
+        {
             get { return region; }
             private set { region = value; }
         }
-        public string Country 
-        { 
+        public string Country
+        {
             get { return country; }
-           private set { country = value; }
+            private set { country = value; }
         }
-        public long PhoneNumber 
-        { 
+        public long PhoneNumber
+        {
             get { return phoneNumber; }
             private set { phoneNumber = value; }
         }
-        public string Email 
-        { 
+        public string Email
+        {
             get { return email; }
-           private set { email = value; }
+            private set { email = value; }
         }
         public string Password
         {
@@ -88,7 +86,7 @@ namespace WindowsFormsApp1
             private set { hourlyWage = value; }
         }
 
-        public Person( int accountType,string username, string password,string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email,decimal hourlyWage, DateTime contractStartDate, int departmentId)
+        public Person(int accountType, string username, string password, string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email, decimal hourlyWage, DateTime contractStartDate, int departmentId)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -101,7 +99,7 @@ namespace WindowsFormsApp1
             this.email = email;
             this.password = password;
             this.username = username;
-            this.accountType= accountType;
+            this.accountType = accountType;
             this.departmentId = departmentId;
             this.contractStartDate = contractStartDate;
             this.hourlyWage = hourlyWage;
@@ -138,7 +136,7 @@ namespace WindowsFormsApp1
                 cmd.ExecuteNonQuery();
                 this.id = (int)cmd.LastInsertedId;
             }
-            catch (Exception )
+            catch (Exception)
             {
                 // TODO: add to error log in the future
             }
@@ -146,20 +144,19 @@ namespace WindowsFormsApp1
             {
                 conn.Close();
             }
-
         }
-      
+
         public string GetName()
         {
             return firstName + " " + lastName;
         }
         public string GetAddress()
         {
-            return street + ", "+ postcode + ", "+region + ", "+ country;
+            return street + ", " + postcode + ", " + region + ", " + country;
         }
         public virtual string ToString()
         {
-            return id+ ": " + firstName + "  " + lastName + " - " + dateOfBirth + " - " + phoneNumber + " - " + email;
+            return id + ": " + firstName + "  " + lastName + " - " + dateOfBirth + " - " + phoneNumber + " - " + email;
         }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.shelfRestockView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -48,7 +48,7 @@
             this.shelfRestockView.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shelfRestockView.HideSelection = false;
             this.shelfRestockView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem2});
             this.shelfRestockView.Location = new System.Drawing.Point(42, 39);
             this.shelfRestockView.Name = "shelfRestockView";
             this.shelfRestockView.Size = new System.Drawing.Size(1128, 415);
@@ -79,11 +79,11 @@
             // exportToExcelBttn
             // 
             this.exportToExcelBttn.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exportToExcelBttn.Location = new System.Drawing.Point(547, 490);
+            this.exportToExcelBttn.Location = new System.Drawing.Point(656, 490);
             this.exportToExcelBttn.Name = "exportToExcelBttn";
-            this.exportToExcelBttn.Size = new System.Drawing.Size(623, 63);
+            this.exportToExcelBttn.Size = new System.Drawing.Size(514, 63);
             this.exportToExcelBttn.TabIndex = 1;
-            this.exportToExcelBttn.Text = "[WIP] Export to Excel";
+            this.exportToExcelBttn.Text = "Export to Excel";
             this.exportToExcelBttn.UseVisualStyleBackColor = true;
             this.exportToExcelBttn.Click += new System.EventHandler(this.exportToExcelBttn_Click);
             // 
@@ -92,7 +92,7 @@
             this.exportToCsvBttn.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exportToCsvBttn.Location = new System.Drawing.Point(42, 490);
             this.exportToCsvBttn.Name = "exportToCsvBttn";
-            this.exportToCsvBttn.Size = new System.Drawing.Size(455, 63);
+            this.exportToCsvBttn.Size = new System.Drawing.Size(530, 63);
             this.exportToCsvBttn.TabIndex = 2;
             this.exportToCsvBttn.Text = " Export to CSV";
             this.exportToCsvBttn.UseVisualStyleBackColor = true;
