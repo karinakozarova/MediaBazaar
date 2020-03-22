@@ -49,5 +49,34 @@ namespace MediaBazar
         {
             return "Employee";
         }
+
+        internal static List<Employee> GetAllEmployeesByDepartment(int departmentId)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+
+            List<Employee> employees = new List<Employee>();
+            try
+            {
+                string sql = "SELECT p.id, p.first_name, p.last_name, u.username FROM person AS p INNER JOIN user AS u ON p.id = u.account_id INNER JOIN employee_details AS ep ON p.id = ep.person_id WHERE u.account_type = 2 AND ep.is_approved = 2 AND ep.department_id=@department_id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@department_id", departmentId);
+                conn.Open();
+                MySqlDataReader row = cmd.ExecuteReader();
+
+                while (row.Read())
+                {
+                    employees.Add(new Employee(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), row[3].ToString()));
+                }
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return employees;
+        }
     }
 }

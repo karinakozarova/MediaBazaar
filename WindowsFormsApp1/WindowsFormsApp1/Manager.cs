@@ -85,5 +85,34 @@ namespace MediaBazar
         {
             throw new NotImplementedException();
         }
+
+        internal static List<Manager> GetAllManagersByDepartment(int departmentId)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+
+            List<Manager> managers = new List<Manager>();
+            try
+            {
+                string sql = "SELECT p.id, p.first_name, p.last_name, u.username FROM person AS p INNER JOIN user AS u ON p.id = u.account_id INNER JOIN employee_details AS ep ON p.id = ep.person_id WHERE u.account_type = 1 AND ep.is_approved = 2 AND ep.department_id=@department_id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@department_id", departmentId);
+                conn.Open();
+                MySqlDataReader row = cmd.ExecuteReader();
+
+                while (row.Read())
+                {
+                    managers.Add(new Manager(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString()));
+                }
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return managers;
+        }
     }
 }

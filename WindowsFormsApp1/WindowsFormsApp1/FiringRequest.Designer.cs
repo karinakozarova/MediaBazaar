@@ -61,6 +61,7 @@
             this.cmbDepartment.Size = new System.Drawing.Size(256, 41);
             this.cmbDepartment.TabIndex = 86;
             this.cmbDepartment.Text = "Department";
+            this.cmbDepartment.SelectedIndexChanged += new System.EventHandler(this.CmbDepartment_SelectedIndexChanged);
             // 
             // label3
             // 

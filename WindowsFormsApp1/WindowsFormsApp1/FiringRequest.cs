@@ -61,6 +61,7 @@ namespace MediaBazar
         }
         private void PopulateManagers(List<Manager> managers)
         {
+            cmbManagers.Items.Clear();
             foreach (Manager m in managers)
             {
                 cmbManagers.Items.Add(new ManagerComboBoxItems(m));
@@ -68,6 +69,7 @@ namespace MediaBazar
         }
         private void PopulateEmployees(List<Employee> employees)
         {
+            cmbEmployees.Items.Clear();
             foreach (Employee e in employees)
             {
                 cmbEmployees.Items.Add(new EmployeeComboBoxItem(e));
@@ -217,6 +219,13 @@ namespace MediaBazar
             {
                 MessageBox.Show("Please select a department from the menu!");
             }
+        }
+
+        private void CmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
+            PopulateManagers(Manager.GetAllManagersByDepartment(departmentId));
+            PopulateEmployees(Employee.GetAllEmployeesByDepartment(departmentId));
         }
     }
 }
