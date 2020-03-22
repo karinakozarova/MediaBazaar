@@ -1,13 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp1
 {
@@ -49,23 +43,17 @@ namespace WindowsFormsApp1
                 tbxFirstName.Text = firstName;
                 tbxLastName.Text = lastName;
                 rtbReason.Text = description;
-                List<Department> departments = new List<Department>();
-                departments = Department.GetAllDepartments();
+
+                List<Department> departments = Department.GetAllDepartments();
                 foreach (Department d in departments)
                 {
-                    if(d.DepartmentId == departmentId)
-                    {
-                        cmbDepartment.Text = d.Name;
-                    }
+                    if (d.DepartmentId == departmentId) cmbDepartment.Text = d.Name;
                 }
             }
         }
 
-        public DateTime GetDateTime()
-        {
-            DateTime date = DateTime.Now;
-            return date;
-        }
+        
+
         private void PopulateDepartments(List<Department> departments)
         {
             foreach (Department d in departments)
@@ -73,14 +61,14 @@ namespace WindowsFormsApp1
         }
         private void PopulateManagers(List<Manager> managers)
         {
-            foreach(Manager m in managers)
+            foreach (Manager m in managers)
             {
                 cmbManagers.Items.Add(new ManagerComboBoxItems(m));
             }
         }
         private void PopulateEmployees(List<Employee> employees)
         {
-            foreach(Employee e in employees)
+            foreach (Employee e in employees)
             {
                 cmbEmployees.Items.Add(new EmployeeComboBoxItem(e));
             }
@@ -88,56 +76,57 @@ namespace WindowsFormsApp1
 
         private void BtnSendFiringRequest_Click(object sender, EventArgs e)
         {
-                MySqlConnection conn = Utils.GetConnection();
+            MySqlConnection conn = Utils.GetConnection();
 
-                if (cmbDepartment.Text == "Department" || cmbDepartment.Text == "")
+            if (cmbDepartment.Text == "Department" || cmbDepartment.Text == "")
+            {
+                MessageBox.Show("Please select a department from the menu!");
+            }
+            else if (cmbEmployees.Text == "Employees" || cmbEmployees.Text == "")
+            {
+                MessageBox.Show("Please select an employee from the menu!");
+            }
+            else if (rtbReason.Text == "")
+            {
+                MessageBox.Show("Please fill in all the fields in the table!");
+            }
+            else if (rtbReason.Text == "Reason for firing")
+            {
+                MessageBox.Show("Please change the initial information in the fields!");
+            }
+            else
+            {
+                string description = rtbReason.Text;
+                int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
+                int employeeId = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).Id;
+                string employeeUsername = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).Username;
+                string employeeFirstName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).FirstName;
+                string employeeLastName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).LastName;
+                try
                 {
-                    MessageBox.Show("Please select a department from the menu!");
-                }
-                else if (cmbEmployees.Text == "Employees" || cmbEmployees.Text == "")
-                {
-                    MessageBox.Show("Please select an employee from the menu!");
-                }
-                else if (rtbReason.Text == "")
-                {
-                    MessageBox.Show("Please fill in all the fields in the table!");
-                }else if ( rtbReason.Text == "Reason for firing")
-                {
-                    MessageBox.Show("Please change the initial information in the fields!");
-                }
-                else
-                {
-                    string description = rtbReason.Text;
-                    int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
-                    int employeeId = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).Id;
-                    string employeeUsername = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).Username;
-                    string employeeFirstName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).FirstName;
-                    string employeeLastName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).LastName;
-                    try
+                    FiringRequests fr = new FiringRequests(employeeId, this.loggedUserId, employeeUsername, description, employeeFirstName, employeeLastName, departmentId);
+                    FiringRequests fr1 = new FiringRequests(employeeId, this.loggedUserId, description);
+                    if (!fr1.FrExists)
                     {
-                            FiringRequests fr = new FiringRequests(employeeId, this.loggedUserId, employeeUsername, description, employeeFirstName, employeeLastName, departmentId);
-                            FiringRequests fr1 = new FiringRequests(employeeId, this.loggedUserId, description);
-                            if (!fr1.FrExists)
-                            {
-                                MessageBox.Show("Firing request already exists!");
-                            }
-                            else
-                            {
-                                tbxFirstName.Text = employeeFirstName;
-                                tbxLastName.Text = employeeLastName;
-                                MessageBox.Show("Request sent successfully!");
-                            }
+                        MessageBox.Show("Firing request already exists!");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        string epra = ex.Message;
-                    }
-                    finally
-                    {
-                        conn.Close();
+                        tbxFirstName.Text = employeeFirstName;
+                        tbxLastName.Text = employeeLastName;
+                        MessageBox.Show("Request sent successfully!");
                     }
                 }
-                
+                catch (Exception ex)
+                {
+                    string epra = ex.Message;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
         }
 
         private void BtnRemoveManager_Click(object sender, EventArgs e)
@@ -209,7 +198,7 @@ namespace WindowsFormsApp1
 
                         string contractUpdateQuery = "UPDATE contract SET contract_end = @end_date, reason_for_leaving = @description WHERE person_id = @manager_Id";
                         MySqlCommand contractUpdateCmd = new MySqlCommand(contractUpdateQuery, conn);
-                        contractUpdateCmd.Parameters.AddWithValue("@end_date", GetDateTime());
+                        contractUpdateCmd.Parameters.AddWithValue("@end_date", Utils.GetDateTime());
                         contractUpdateCmd.Parameters.AddWithValue("@description", rtbReason.Text);
                         contractUpdateCmd.Parameters.AddWithValue("@manager_Id", managerId);
                         contractUpdateCmd.ExecuteNonQuery();

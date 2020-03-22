@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
     {
         MainForm form;
         Department department;
+
         public AddDepartment(MainForm form)
         {
             InitializeComponent();

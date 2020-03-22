@@ -22,7 +22,6 @@ namespace WindowsFormsApp1
         DateTime contractStartDate;
         private decimal hourlyWage;
 
-
         public DateTime ContractStartDate
         { 
             get; 
@@ -127,7 +126,6 @@ namespace WindowsFormsApp1
             DepartmentId = departmentId;
             ContractStartDate = contractStartDate;
             HourlyWage = hourlyWage;
-
         }
         public Person(string firstName, string lastName, DateTime dateOfBirth, long phoneNumber, string email)
         {
@@ -168,7 +166,6 @@ namespace WindowsFormsApp1
             {
                 conn.Close();
             }
-
         }
 
         public string GetName()

@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
             PopulateDepartments(Department.GetAllDepartments(), departmentAvailableCmbbx);
 
         }
+
         private void PopulateDepartments(List<Department> departments, ComboBox combobox)
         {
             foreach (Department d in departments)
@@ -39,13 +40,15 @@ namespace WindowsFormsApp1
         {
             return $"{having} out of {total}";
         }
+
         private void departmentsCmbbxAddingStock_SelectedIndexChanged(object sender, EventArgs e)
         {
             int departmentId = ((DepartmentComboBoxItem)departmentsCmbbxAddingStock.SelectedItem).Id;
+            int neededPeople = Department.GetNeededPeopleCount(departmentId);
+
             int[] morningPeople = Department.GetWorkersCountFor(departmentId, morning);
             int[] afternoonPeople = Department.GetWorkersCountFor(departmentId, afternoon);
             int[] eveningPeople = Department.GetWorkersCountFor(departmentId, evening);
-            int neededPeople = Department.GetNeededPeopleCount(departmentId);
 
             List<WordaysControl> controls = new List<WordaysControl>();
             controls.Clear();
@@ -64,7 +67,6 @@ namespace WindowsFormsApp1
         private void departmentAvailableCmbbx_SelectedIndexChanged(object sender, EventArgs e)
         {
             int departmentId = ((DepartmentComboBoxItem)departmentAvailableCmbbx.SelectedItem).Id;
-            Department department = Department.GetDepartmentById(departmentId);
             List<Worker> people = Worker.GetAllEmployeesFromDepartment(departmentId);
             PopulatePeople(people);
         }

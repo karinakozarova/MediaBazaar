@@ -1,11 +1,7 @@
 ﻿using ClosedXML.Excel;
 using MySql.Data.MySqlClient;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
@@ -41,7 +37,7 @@ namespace WindowsFormsApp1
             workbook.SaveAs(filename);
         }
 
-        public static void StockRequestsToCSV(string filename="stocks.csv")
+        public static void StockRequestsToCSV(string filename = "stocks.csv")
         {
             MySqlConnection conn = Utils.GetConnection();
 

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -61,20 +54,21 @@ namespace WindowsFormsApp1
         private void BtnDetails_Click(object sender, EventArgs e)
         {
             bool flag = true;
-            if(this.email != null)
+            if (this.email != null)
             {
                 HiringRequest hrForm = new HiringRequest(this.username, this.firstName, this.lastName, this.hourlyWage, this.departmentId, this.contractStartDate, this.phoneNumber, this.email);
                 hrForm.Show();
-            }else
+            }
+            else
             {
                 FiringRequest frForm = new FiringRequest(flag, this.departmentId, this.username, this.firstName, this.lastName, this.description);
                 frForm.Show();
             }
         }
 
-        private void BtnApprove_Click(object sender, EventArgs e)
+        private void btnApprove_Click_1(object sender, EventArgs e)
         {
-            if(this.email != null)
+            if (this.email != null)
             {
                 foreach (HiringRequests hr in HiringRequests.GetAllHiringRequests())
                 {
@@ -84,7 +78,8 @@ namespace WindowsFormsApp1
                     }
                 }
                 form.UpdateGUI();
-            }else
+            }
+            else
             {
                 foreach (FiringRequests fr in FiringRequests.GetAllFiringRequests())
                 {
@@ -95,12 +90,11 @@ namespace WindowsFormsApp1
                 }
                 form.UpdateGUI();
             }
-            
         }
 
-        private void BtnDecline_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            if(this.email != null)
+            if (this.email != null)
             {
                 foreach (HiringRequests hr in HiringRequests.GetAllHiringRequests())
                 {
@@ -122,7 +116,6 @@ namespace WindowsFormsApp1
                 }
                 form.UpdateGUI();
             }
-            
         }
     }
 }

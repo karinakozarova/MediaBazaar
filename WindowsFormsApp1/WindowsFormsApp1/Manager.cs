@@ -9,7 +9,6 @@ namespace WindowsFormsApp1
 {
     public class Manager 
     {
-        
         public int ManagerId { get; private set; }
         public string ManagerFirstName { get; private set; }
         public string ManagerLastName { get; private set; }
@@ -82,7 +81,6 @@ namespace WindowsFormsApp1
         {
             throw new NotImplementedException();
         }
-
         public bool AddStock(Stock s)
         {
             throw new NotImplementedException();
