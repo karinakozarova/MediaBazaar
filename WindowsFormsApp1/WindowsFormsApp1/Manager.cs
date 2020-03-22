@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
             List<Manager> managers = new List<Manager>();
             try
             {
-                string sql = "SELECT p.id, p.first_name, p.last_name FROM person AS p INNER JOIN user AS u ON p.id = u.account_id WHERE u.account_type = 1";
+                string sql = "SELECT p.id, p.first_name, p.last_name, u.username FROM person AS p INNER JOIN user AS u ON p.id = u.account_id INNER JOIN employee_details AS ep ON p.id = ep.person_id WHERE u.account_type = 1 AND ep.is_approved = 2";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();
                 MySqlDataReader row = cmd.ExecuteReader();

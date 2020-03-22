@@ -133,6 +133,7 @@
     <Compile Include="EmployeeCosts.Designer.cs">
       <DependentUpon>EmployeeCosts.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeComboBoxItem.cs" />
     <Compile Include="FiringRequest.cs">
       <SubType>Form</SubType>
     </Compile>

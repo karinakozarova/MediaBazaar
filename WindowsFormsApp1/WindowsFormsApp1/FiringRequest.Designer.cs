@@ -36,9 +36,9 @@
             this.btnSendFiringRequest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.rtbReason = new System.Windows.Forms.RichTextBox();
-            this.tbxUsername = new System.Windows.Forms.TextBox();
             this.btnRemoveManager = new System.Windows.Forms.Button();
             this.cmbManagers = new System.Windows.Forms.ComboBox();
+            this.cmbEmployees = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label6
@@ -58,7 +58,7 @@
             this.cmbDepartment.Location = new System.Drawing.Point(24, 71);
             this.cmbDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbDepartment.Name = "cmbDepartment";
-            this.cmbDepartment.Size = new System.Drawing.Size(228, 41);
+            this.cmbDepartment.Size = new System.Drawing.Size(256, 41);
             this.cmbDepartment.TabIndex = 86;
             this.cmbDepartment.Text = "Department";
             // 
@@ -78,7 +78,7 @@
             this.tbxLastName.Location = new System.Drawing.Point(24, 271);
             this.tbxLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxLastName.Name = "tbxLastName";
-            this.tbxLastName.Size = new System.Drawing.Size(228, 40);
+            this.tbxLastName.Size = new System.Drawing.Size(255, 40);
             this.tbxLastName.TabIndex = 84;
             this.tbxLastName.Text = "Last name";
             // 
@@ -88,7 +88,7 @@
             this.tbxFirstName.Location = new System.Drawing.Point(24, 218);
             this.tbxFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxFirstName.Name = "tbxFirstName";
-            this.tbxFirstName.Size = new System.Drawing.Size(228, 40);
+            this.tbxFirstName.Size = new System.Drawing.Size(256, 40);
             this.tbxFirstName.TabIndex = 83;
             this.tbxFirstName.Text = "First name";
             // 
@@ -124,16 +124,6 @@
             this.rtbReason.TabIndex = 80;
             this.rtbReason.Text = "Reason for firing";
             // 
-            // tbxUsername
-            // 
-            this.tbxUsername.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxUsername.Location = new System.Drawing.Point(24, 163);
-            this.tbxUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbxUsername.Name = "tbxUsername";
-            this.tbxUsername.Size = new System.Drawing.Size(228, 40);
-            this.tbxUsername.TabIndex = 88;
-            this.tbxUsername.Text = "Username";
-            // 
             // btnRemoveManager
             // 
             this.btnRemoveManager.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -150,21 +140,32 @@
             // 
             this.cmbManagers.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbManagers.FormattingEnabled = true;
-            this.cmbManagers.Location = new System.Drawing.Point(268, 163);
+            this.cmbManagers.Location = new System.Drawing.Point(25, 163);
             this.cmbManagers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbManagers.Name = "cmbManagers";
-            this.cmbManagers.Size = new System.Drawing.Size(288, 41);
+            this.cmbManagers.Size = new System.Drawing.Size(255, 41);
             this.cmbManagers.TabIndex = 90;
             this.cmbManagers.Text = "Managers";
+            // 
+            // cmbEmployees
+            // 
+            this.cmbEmployees.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEmployees.FormattingEnabled = true;
+            this.cmbEmployees.Location = new System.Drawing.Point(25, 163);
+            this.cmbEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbEmployees.Name = "cmbEmployees";
+            this.cmbEmployees.Size = new System.Drawing.Size(256, 41);
+            this.cmbEmployees.TabIndex = 91;
+            this.cmbEmployees.Text = "Employees";
             // 
             // FiringRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 381);
+            this.Controls.Add(this.cmbEmployees);
             this.Controls.Add(this.cmbManagers);
             this.Controls.Add(this.btnRemoveManager);
-            this.Controls.Add(this.tbxUsername);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cmbDepartment);
             this.Controls.Add(this.label3);
@@ -190,8 +191,8 @@
         private System.Windows.Forms.Button btnSendFiringRequest;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtbReason;
-        private System.Windows.Forms.TextBox tbxUsername;
         private System.Windows.Forms.Button btnRemoveManager;
         private System.Windows.Forms.ComboBox cmbManagers;
+        private System.Windows.Forms.ComboBox cmbEmployees;
     }
 }
