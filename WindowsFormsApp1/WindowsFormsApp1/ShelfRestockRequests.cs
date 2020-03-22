@@ -1,12 +1,18 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using MySql.Data.MySqlClient;
+using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LicenseContext = OfficeOpenXml.LicenseContext;
 
 namespace WindowsFormsApp1
 {
@@ -23,9 +29,16 @@ namespace WindowsFormsApp1
             }
         }
 
+        
+
         private void exportToExcelBttn_Click(object sender, EventArgs e)
         {
+            Export.StockRequestsToExcel();
+        }
 
+        private void exportToCsvBttn_Click(object sender, EventArgs e)
+        {
+            Export.StockRequestsToCSV();
         }
     }
 }
