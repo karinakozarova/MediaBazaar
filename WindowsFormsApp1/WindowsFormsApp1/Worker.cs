@@ -9,6 +9,7 @@ namespace WindowsFormsApp1
 {
     public class Worker: Person
     {
+        CreateAccount ca;
         private decimal hourlyWage = 0;
 
         public bool IsLoggedIn

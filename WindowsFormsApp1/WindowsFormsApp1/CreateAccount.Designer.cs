@@ -71,6 +71,8 @@
             this.rbManager = new System.Windows.Forms.RadioButton();
             this.rbAdmin = new System.Windows.Forms.RadioButton();
             this.rbEmployee = new System.Windows.Forms.RadioButton();
+            this.btnChangeShifts = new System.Windows.Forms.Button();
+            this.btnDeleteContact = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nHourlyWage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -294,7 +296,7 @@
             // btnSendRequest
             // 
             this.btnSendRequest.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendRequest.Location = new System.Drawing.Point(830, 602);
+            this.btnSendRequest.Location = new System.Drawing.Point(830, 630);
             this.btnSendRequest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSendRequest.Name = "btnSendRequest";
             this.btnSendRequest.Size = new System.Drawing.Size(520, 46);
@@ -406,13 +408,14 @@
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(661, 602);
+            this.btnEdit.Location = new System.Drawing.Point(763, 630);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(148, 46);
-            this.btnEdit.TabIndex = 15;
+            this.btnEdit.Size = new System.Drawing.Size(179, 46);
+            this.btnEdit.TabIndex = 85;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // tbUsername
             // 
@@ -468,7 +471,7 @@
             // btnAddOtherContact
             // 
             this.btnAddOtherContact.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddOtherContact.Location = new System.Drawing.Point(685, 230);
+            this.btnAddOtherContact.Location = new System.Drawing.Point(526, 230);
             this.btnAddOtherContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddOtherContact.Name = "btnAddOtherContact";
             this.btnAddOtherContact.Size = new System.Drawing.Size(142, 46);
@@ -524,10 +527,10 @@
             // btnCreateAccount
             // 
             this.btnCreateAccount.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateAccount.Location = new System.Drawing.Point(830, 552);
+            this.btnCreateAccount.Location = new System.Drawing.Point(980, 630);
             this.btnCreateAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreateAccount.Name = "btnCreateAccount";
-            this.btnCreateAccount.Size = new System.Drawing.Size(520, 46);
+            this.btnCreateAccount.Size = new System.Drawing.Size(370, 46);
             this.btnCreateAccount.TabIndex = 97;
             this.btnCreateAccount.Text = "Create account";
             this.btnCreateAccount.UseVisualStyleBackColor = true;
@@ -570,11 +573,37 @@
             this.rbEmployee.Text = "Employee";
             this.rbEmployee.UseVisualStyleBackColor = true;
             // 
+            // btnChangeShifts
+            // 
+            this.btnChangeShifts.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeShifts.Location = new System.Drawing.Point(1181, 517);
+            this.btnChangeShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnChangeShifts.Name = "btnChangeShifts";
+            this.btnChangeShifts.Size = new System.Drawing.Size(150, 66);
+            this.btnChangeShifts.TabIndex = 99;
+            this.btnChangeShifts.Text = "Change current shifts";
+            this.btnChangeShifts.UseVisualStyleBackColor = true;
+            this.btnChangeShifts.Click += new System.EventHandler(this.btnChangeShifts_Click);
+            // 
+            // btnDeleteContact
+            // 
+            this.btnDeleteContact.Font = new System.Drawing.Font("Montserrat", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteContact.Location = new System.Drawing.Point(674, 230);
+            this.btnDeleteContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteContact.Name = "btnDeleteContact";
+            this.btnDeleteContact.Size = new System.Drawing.Size(153, 46);
+            this.btnDeleteContact.TabIndex = 100;
+            this.btnDeleteContact.Text = "Delete contact";
+            this.btnDeleteContact.UseVisualStyleBackColor = true;
+            this.btnDeleteContact.Click += new System.EventHandler(this.btnDeleteContact_Click);
+            // 
             // CreateAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1376, 688);
+            this.ClientSize = new System.Drawing.Size(1376, 705);
+            this.Controls.Add(this.btnDeleteContact);
+            this.Controls.Add(this.btnChangeShifts);
             this.Controls.Add(this.btnCreateAccount);
             this.Controls.Add(this.rbEmployee);
             this.Controls.Add(this.rbAdmin);
@@ -674,5 +703,7 @@
         private System.Windows.Forms.RadioButton rbAdmin;
         private System.Windows.Forms.RadioButton rbEmployee;
 
+        private System.Windows.Forms.Button btnChangeShifts;
+        private System.Windows.Forms.Button btnDeleteContact;
     }
 }
