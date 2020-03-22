@@ -52,7 +52,8 @@ namespace WindowsFormsApp1
                 Email = tbEmail.Text;
                 PhoneNumber = Convert.ToInt64(tbPhoneNumber.Text);
                 p = new Person(FirstName, LastName, DateOfBirth, PhoneNumber, Email);
-                sendContact = FirstName +" "+ LastName +" date of birth: "+ DateOfBirth +" tel: "+ PhoneNumber + " email: "+Email;
+                sendContact = FirstName + " "+ LastName +" date of birth: "+ DateOfBirth +" tel: "+ PhoneNumber + " email: "+Email;
+
                 ca.ShowContact(sendContact);
                 ca.ShowListContacts();
                 this.Hide();

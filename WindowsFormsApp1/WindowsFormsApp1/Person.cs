@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 
 namespace WindowsFormsApp1
 {
@@ -20,6 +21,8 @@ namespace WindowsFormsApp1
         private string username;
         private int departmentId = 0;
         DateTime contractStartDate;
+        private decimal hourlyWage;
+
 
         public DateTime ContractStartDate { get { return contractStartDate; } private set { contractStartDate = value; } }
         public int DepartmentId { get { return departmentId; } private set { departmentId = value; } }
@@ -79,8 +82,13 @@ namespace WindowsFormsApp1
             get { return accountType; }
             private set { accountType = value; }
         }
+        public decimal HourlyWage
+        {
+            get { return hourlyWage; }
+            private set { hourlyWage = value; }
+        }
 
-        public Person(int accountType,string username, string password,string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email,decimal hourlyWage, DateTime contractStartDate, int departmentId)
+        public Person( int accountType,string username, string password,string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email,decimal hourlyWage, DateTime contractStartDate, int departmentId)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -96,6 +104,8 @@ namespace WindowsFormsApp1
             this.accountType= accountType;
             this.departmentId = departmentId;
             this.contractStartDate = contractStartDate;
+            this.hourlyWage = hourlyWage;
+
         }
         public Person(string firstName, string lastName, DateTime dateOfBirth, long phoneNumber, string email)
         {
