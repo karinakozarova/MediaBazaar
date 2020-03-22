@@ -278,7 +278,7 @@ namespace WindowsFormsApp1
                         contactIdCmd.Parameters.AddWithValue("@userId", pc.GetIdByUsername(username));
                         contactIdCmd.Parameters.AddWithValue("@contactId", ContactId);
                         contactIdCmd.ExecuteNonQuery();
-
+                        MessageBox.Show("The contact has been added.");
                     }
                     else
                     {
@@ -372,7 +372,6 @@ namespace WindowsFormsApp1
                 {
                     tbFirstName.Text = "First Name";
                     tbLastName.Text = "Last Name";
-                    dtpBirthdate.Value = System.DateTime.Now;
                     tbStreet.Text = "street";
                     tbPostcode.Text = "postcode";
                     tbRegion.Text = "region";
