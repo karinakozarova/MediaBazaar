@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApp1.Properties {
+namespace MediaBazar.Properties {
     using System;
     
     

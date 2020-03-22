@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace MediaBazar
 {
     partial class MainForm
     {
