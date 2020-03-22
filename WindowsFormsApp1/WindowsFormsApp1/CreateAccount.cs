@@ -145,15 +145,17 @@ namespace WindowsFormsApp1
                             shiftsQueryCmd.ExecuteNonQuery();
                         }
                     }
+                    MessageBox.Show("The request has been sent to administrator.");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Invalid Data!Check person details.");
                 }
                 finally
                 {
                     conn.Close();
                 }
+              
             }
             else { MessageBox.Show("User with that username already exists."); }
         }
@@ -425,10 +427,11 @@ namespace WindowsFormsApp1
                             }
                         }
                     }
+                    MessageBox.Show("The account has been edited.");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Invalid Data!Check person details.");
                 }
                 finally
                 {

@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Invalid Data!Check person details.");
             }
            
         }
