@@ -35,6 +35,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.exportToExcelBttn = new System.Windows.Forms.Button();
+            this.exportToCsvBttn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // shelfRestockView
@@ -78,19 +79,31 @@
             // exportToExcelBttn
             // 
             this.exportToExcelBttn.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exportToExcelBttn.Location = new System.Drawing.Point(42, 490);
+            this.exportToExcelBttn.Location = new System.Drawing.Point(547, 490);
             this.exportToExcelBttn.Name = "exportToExcelBttn";
-            this.exportToExcelBttn.Size = new System.Drawing.Size(1128, 63);
+            this.exportToExcelBttn.Size = new System.Drawing.Size(623, 63);
             this.exportToExcelBttn.TabIndex = 1;
             this.exportToExcelBttn.Text = "[WIP] Export to Excel";
             this.exportToExcelBttn.UseVisualStyleBackColor = true;
             this.exportToExcelBttn.Click += new System.EventHandler(this.exportToExcelBttn_Click);
+            // 
+            // exportToCsvBttn
+            // 
+            this.exportToCsvBttn.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exportToCsvBttn.Location = new System.Drawing.Point(42, 490);
+            this.exportToCsvBttn.Name = "exportToCsvBttn";
+            this.exportToCsvBttn.Size = new System.Drawing.Size(455, 63);
+            this.exportToCsvBttn.TabIndex = 2;
+            this.exportToCsvBttn.Text = " Export to CSV";
+            this.exportToCsvBttn.UseVisualStyleBackColor = true;
+            this.exportToCsvBttn.Click += new System.EventHandler(this.exportToCsvBttn_Click);
             // 
             // ShelfRestockRequests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 593);
+            this.Controls.Add(this.exportToCsvBttn);
             this.Controls.Add(this.exportToExcelBttn);
             this.Controls.Add(this.shelfRestockView);
             this.Name = "ShelfRestockRequests";
@@ -107,5 +120,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button exportToExcelBttn;
+        private System.Windows.Forms.Button exportToCsvBttn;
     }
 }
