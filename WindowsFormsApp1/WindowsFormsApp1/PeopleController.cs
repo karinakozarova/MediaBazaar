@@ -42,6 +42,7 @@ namespace MediaBazar
         {
             Worker worker = new Worker(accountType, username, password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneNumber, email, hourlyWage, contractStartDate, departmentId);
         }
+
         public List<Person> GetOtherContacts()
         {
             MySqlConnection conn = Utils.GetConnection();
@@ -304,7 +305,35 @@ namespace MediaBazar
             }
             return contract_id;
         }
-        public void UpdateWorker(int userId, string password, string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email, decimal hourlyWage, DateTime contractStartDate)
+        public int GetAccountType(string username)
+        {
+            int accountType = 0;
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                
+                string accountTypeQuery = "SELECT account_type FROM user where username=@username;";
+                MySqlCommand accountTypeCmd = new MySqlCommand(accountTypeQuery, conn);
+                accountTypeCmd.Parameters.AddWithValue("@username", username);
+                conn.Open();
+                Object accountTypeResult = accountTypeCmd.ExecuteScalar();
+
+                if (accountTypeResult != null)
+                {
+                    accountType = Convert.ToInt32(accountTypeResult);
+                }
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return accountType;
+        }
+        public void UpdateWorker(int accountType, int userId, string password, string firstName, string lastName, DateTime dateOfBirth, string street, string postcode, string region, string country, long phoneNumber, string email)
         {
             MySqlConnection conn = Utils.GetConnection();
 
@@ -325,10 +354,11 @@ namespace MediaBazar
                 conn.Open();
                 personCmd.ExecuteNonQuery();
 
-                string userSql = "UPDATE user SET password=@password where account_id=@account_id;";
+                string userSql = "UPDATE user SET password=@password, account_type=@account_type where account_id=@account_id;";
                 MySqlCommand userCmd = new MySqlCommand(userSql, conn);
                 userCmd.Parameters.AddWithValue("@password", password);
                 userCmd.Parameters.AddWithValue("@account_id", userId);
+                userCmd.Parameters.AddWithValue("@account_type", accountType);
                 userCmd.ExecuteNonQuery();
 
             }
