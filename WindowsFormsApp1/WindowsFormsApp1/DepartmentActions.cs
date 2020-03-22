@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -14,13 +13,26 @@ namespace WindowsFormsApp1
         public DepartmentActions()
         {
             InitializeComponent();
-            PopulateDepartments(Department.GetAllDepartments());
+            LoadDepartments();
+            LoadPeople();
         }
 
-        private void PopulateDepartments(List<Department> departments)
+        private void LoadPeople()
+        {
+            List<Worker> people = Worker.GetAllEmployees();
+            PopulatePeople(people);
+        }
+
+        private void LoadDepartments()
+        {
+            PopulateDepartments(Department.GetAllDepartments(), departmentsCmbbxAddingStock);
+            PopulateDepartments(Department.GetAllDepartments(), departmentAvailableCmbbx);
+
+        }
+        private void PopulateDepartments(List<Department> departments, ComboBox combobox)
         {
             foreach (Department d in departments)
-                departmentsCmbbxAddingStock.Items.Add(new DepartmentComboBoxItem(d));
+                combobox.Items.Add(new DepartmentComboBoxItem(d));
         }
 
         private string GetDataForLabel(int having, int total)
@@ -47,6 +59,31 @@ namespace WindowsFormsApp1
                 flpDays.Controls.Add(day);
             }
             neededWorkersCount.Text = neededPeople.ToString();
+        }
+
+        private void departmentAvailableCmbbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int departmentId = ((DepartmentComboBoxItem)departmentAvailableCmbbx.SelectedItem).Id;
+            Department department = Department.GetDepartmentById(departmentId);
+            List<Worker> people = Worker.GetAllEmployeesFromDepartment(departmentId);
+            PopulatePeople(people);
+        }
+
+        private void PopulatePeople(List<Worker> people)
+        {
+            availablePanel.Controls.Clear();
+            foreach (Worker w in people)
+            {
+                List<EmployeeCosts> controls = new List<EmployeeCosts>();
+                controls.Clear();
+                controls.Add(new EmployeeCosts(w));
+
+                flpDays.Controls.Clear();
+                foreach (EmployeeCosts costs in controls)
+                {
+                    availablePanel.Controls.Add(costs);
+                }
+            }
         }
     }
 }

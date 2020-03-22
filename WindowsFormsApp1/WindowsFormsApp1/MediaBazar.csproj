@@ -127,6 +127,12 @@
       <DependentUpon>EditDepartmentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeCosts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmployeeCosts.Designer.cs">
+      <DependentUpon>EmployeeCosts.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeComboBoxItem.cs" />
     <Compile Include="FiringRequest.cs">
       <SubType>Form</SubType>
@@ -264,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditDepartmentForm.resx">
       <DependentUpon>EditDepartmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeCosts.resx">
+      <DependentUpon>EmployeeCosts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FiringRequest.resx">
       <DependentUpon>FiringRequest.cs</DependentUpon>

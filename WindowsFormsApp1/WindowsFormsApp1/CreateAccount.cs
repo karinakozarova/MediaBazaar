@@ -521,6 +521,7 @@ namespace WindowsFormsApp1
                                 shiftsQueryCmd.ExecuteNonQuery();
                             }
                         }
+                        MessageBox.Show("Account created successfully!");
                     }
                     catch (Exception ex)
                     {
