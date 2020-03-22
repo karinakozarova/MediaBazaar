@@ -292,7 +292,7 @@ namespace WindowsFormsApp1
                 }
                 conn.Close();
 
-                string GetinfoSql = "SELECT p.id, p.first_name, p.last_name, p.date_of_birth, p.street, p.postcode, p.region, p.country, p.phone_number, p.email , ed.hourly_wage , ed.department_id , c.contract_start FROM person AS p INNER JOIN employee_details AS ed ON p.id = ed.person_id INNER JOIN contract AS c ON ed.person_id = c.person_id";
+                string GetinfoSql = "SELECT p.id, p.first_name, p.last_name, p.date_of_birth, p.street, p.postcode, p.region, p.country, p.phone_number, p.email , ed.hourly_wage , ed.department_id , c.contract_start FROM person AS p INNER JOIN employee_details AS ed ON p.id = ed.person_id INNER JOIN contract AS c ON ed.person_id = c.person_id WHERE ed.is_approved = 2";
                 MySqlCommand cmd2 = new MySqlCommand(GetinfoSql, conn);
                 conn.Open();
                 MySqlDataReader row2 = cmd2.ExecuteReader();
@@ -353,7 +353,7 @@ namespace WindowsFormsApp1
                 }
                 conn.Close();
 
-                string GetinfoSql = "SELECT p.id, p.first_name, p.last_name, p.date_of_birth, p.street, p.postcode, p.region, p.country, p.phone_number, p.email , ed.hourly_wage , ed.department_id , c.contract_start FROM person AS p INNER JOIN employee_details AS ed ON p.id = ed.person_id INNER JOIN contract AS c ON ed.person_id = c.person_id";
+                string GetinfoSql = "SELECT p.id, p.first_name, p.last_name, p.date_of_birth, p.street, p.postcode, p.region, p.country, p.phone_number, p.email , ed.hourly_wage , ed.department_id , c.contract_start FROM person AS p INNER JOIN employee_details AS ed ON p.id = ed.person_id INNER JOIN contract AS c ON ed.person_id = c.person_id WHERE ed.is_approved = 2";
                 MySqlCommand cmd2 = new MySqlCommand(GetinfoSql, conn);
                 conn.Open();
                 MySqlDataReader row2 = cmd2.ExecuteReader();
@@ -394,6 +394,51 @@ namespace WindowsFormsApp1
 
 
             return Managers;
+        }
+
+        public static string Makequery(int weekday, string workshift)
+        {
+            string sql = "SELECT employee_id FROM employee_working_days WHERE ";
+
+            if (weekday != -1 && workshift != null)
+            {
+                sql += "week_day_id = " + weekday + " AND shift = '" + workshift + "'";
+            }
+            else if (weekday == -1 && workshift != null)
+            {
+                sql += "shift = '" + workshift + "'";
+            }
+            else if (weekday != -1 && workshift == null)
+            {
+                sql += "week_day_id = " + weekday;
+            }
+            return sql;
+        }
+
+        public static List<int> GetworkerIdPerWorkday(int weekday, string workshift)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            List<int> ids = new List<int>();
+            try
+            {
+
+                string sql = Makequery(weekday, workshift);
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+                MySqlDataReader row = cmd.ExecuteReader();
+                while (row.Read())
+                {
+                    int personid = Convert.ToInt32(row[0]);
+                    ids.Add(personid);
+                }
+            }
+            catch (Exception ex)
+            {
+                String e = ex.Message;
+            }
+            finally { conn.Close(); }
+
+            return ids;
         }
 
         public override string ToString()
