@@ -45,6 +45,7 @@ namespace WindowsFormsApp1
                 btnCreateAccount.Visible = false;
                 rbAdmin.Visible = false;
                 rbManager.Visible = false;
+                this.Text = "Hiring Request";
             }
         }
 

@@ -3,11 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp1
 {
     public class Manager 
     {
+        
+        public int ManagerId { get; private set; }
+        public string ManagerFirstName { get; private set; }
+        public string ManagerLastName { get; private set; }
+
+        public Manager(int managerId, string firstName, string lastName)
+        {
+            this.ManagerId = managerId;
+            this.ManagerFirstName = firstName;
+            this.ManagerLastName = lastName;
+        }
+
+        public static List<Manager> GetAllManagers()
+        {
+            MySqlConnection conn = Utils.GetConnection();
+
+            List<Manager> managers = new List<Manager>();
+            try
+            {
+                string sql = "SELECT p.id, p.first_name, p.last_name FROM person AS p INNER JOIN user AS u ON p.id = u.account_id WHERE u.account_type = 1";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+                MySqlDataReader row = cmd.ExecuteReader();
+
+                while (row.Read())
+                {
+                    managers.Add(new Manager(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString()));
+                }
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return managers;
+        }
         public override string ToString()
         {
             return "Manager";

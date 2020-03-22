@@ -14,14 +14,26 @@ namespace WindowsFormsApp1
     public partial class FiringRequest : Form
     {
         private int loggedUserId;
-        public FiringRequest(int user_id)
+        private int workerRole;
+        public FiringRequest(int user_id, int workerRole)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             tbxFirstName.Enabled = false;
             tbxLastName.Enabled = false;
             PopulateDepartments(Department.GetAllDepartments());
+            PopulateManagers(Manager.GetAllManagers());
             this.loggedUserId = user_id;
+            this.workerRole = workerRole;
+            if (workerRole == (int)ProfileRoles.ADMINISTRATOR)
+            {
+                btnSendFiringRequest.Visible = false;
+                this.Text = "Remove manager!";
+            }
+            else if (workerRole == (int)ProfileRoles.MANAGER)
+            {
+                btnRemoveManager.Visible = false;
+            }
         }
 
         public FiringRequest(bool flag, int departmentId, string username, string firstName, string lastName, string description)
@@ -43,14 +55,26 @@ namespace WindowsFormsApp1
                     {
                         cmbDepartment.Text = d.Name;
                     }
-                };
+                }
             }
         }
 
+        public DateTime GetDateTime()
+        {
+            DateTime date = DateTime.Now;
+            return date;
+        }
         private void PopulateDepartments(List<Department> departments)
         {
             foreach (Department d in departments)
                 cmbDepartment.Items.Add(new DepartmentComboBoxItem(d));
+        }
+        private void PopulateManagers(List<Manager> managers)
+        {
+            foreach(Manager m in managers)
+            {
+                cmbManagers.Items.Add(new ManagerComboBoxItems(m));
+            }
         }
 
         private void BtnSendFiringRequest_Click(object sender, EventArgs e)
@@ -143,6 +167,98 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Please select a department from the menu!");
             }
                 
+        }
+
+        private void BtnRemoveManager_Click(object sender, EventArgs e)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            string description = rtbReason.Text;
+            string username = tbxUsername.Text;
+            List<int> contactIds = new List<int>();
+            try
+            {
+                int managerId = ((ManagerComboBoxItems)cmbManagers.SelectedItem).Id;
+                if (cmbDepartment.Text == "Department" || cmbDepartment.Text == "")
+                {
+                    MessageBox.Show("Please select a department from the menu!");
+                }
+                else if (rtbReason.Text == "Reason for firing")
+                {
+                    MessageBox.Show("Please change the initial information in the fields!");
+                }
+                else if (cmbManagers.Text == "Managers" || cmbManagers.Text == "")
+                {
+                    MessageBox.Show("Please select a manager from the menu!");
+                }
+                else if (tbxUsername.Text == "" || rtbReason.Text == "")
+                {
+                    MessageBox.Show("Please fill in all the fields in the table!");
+                }
+                else
+                {
+                    try
+                    {
+                        string userRemoveQuery = "DELETE From user WHERE account_id = @manager_Id";
+                        MySqlCommand userRemoveCmd = new MySqlCommand(userRemoveQuery, conn);
+                        conn.Open();
+                        userRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                        userRemoveCmd.ExecuteNonQuery();
+
+                        string employeeRemoveQuery = "DELETE From employee_details WHERE person_id = @manager_Id";
+                        MySqlCommand employeeRemoveCmd = new MySqlCommand(employeeRemoveQuery, conn);
+                        employeeRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                        employeeRemoveCmd.ExecuteNonQuery();
+
+                        string employeeDaysRemoveQuery = "DELETE From employee_working_days WHERE employee_id = @manager_Id";
+                        MySqlCommand employeeDaysRemoveCmd = new MySqlCommand(employeeDaysRemoveQuery, conn);
+                        employeeDaysRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                        employeeDaysRemoveCmd.ExecuteNonQuery();
+
+                        string sql = "SELECT contact_person_id FROM contact_person WHERE employee_id = @manager_Id";
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@manager_Id", managerId);
+                        MySqlDataReader row = cmd.ExecuteReader();
+                        while (row.Read())
+                        {
+                            contactIds.Add(Convert.ToInt32(row[0]));
+                        }
+                        conn.Close();
+
+                        string employeeContactRemoveQuery = "DELETE From contact_person WHERE employee_id = @manager_Id";
+                        MySqlCommand employeeContactRemoveCmd = new MySqlCommand(employeeContactRemoveQuery, conn);
+                        conn.Open();
+                        employeeContactRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                        employeeContactRemoveCmd.ExecuteNonQuery();
+
+                        foreach (int id in contactIds)
+                        {
+                            string contactRemoveQuery = "DELETE FROM person WHERE id=@contact_Id";
+                            MySqlCommand contactRemoveCmd = new MySqlCommand(contactRemoveQuery, conn);
+                            contactRemoveCmd.Parameters.AddWithValue("@contact_id", id);
+                            contactRemoveCmd.ExecuteNonQuery();
+                        }
+
+                        string contractUpdateQuery = "UPDATE contract SET contract_end = @end_date, reason_for_leaving = @description WHERE person_id = @manager_Id";
+                        MySqlCommand contractUpdateCmd = new MySqlCommand(contractUpdateQuery, conn);
+                        contractUpdateCmd.Parameters.AddWithValue("@end_date", GetDateTime());
+                        contractUpdateCmd.Parameters.AddWithValue("@description", rtbReason.Text);
+                        contractUpdateCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                        contractUpdateCmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        string epra = ex.Message;
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Please select a department from the menu!");
+            }
         }
     }
 }
