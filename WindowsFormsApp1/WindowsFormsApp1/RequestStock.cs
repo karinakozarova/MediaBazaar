@@ -47,6 +47,7 @@ namespace MediaBazar
             int stock_id = ((StocksComboBoxItem)requestStockStocksCmbbx.SelectedItem).Id;
 
             StockRequest.CreateStockRequest(stock_id, quantity);
+            MessageBox.Show("Stock has been requested.");
             this.Hide();
         }
     }

@@ -34,11 +34,13 @@ namespace MediaBazar
         private void exportToExcelBttn_Click(object sender, EventArgs e)
         {
             Export.StockRequestsToExcel();
+            MessageBox.Show("Stock requests have been exported.");
         }
 
         private void exportToCsvBttn_Click(object sender, EventArgs e)
         {
             Export.StockRequestsToCSV();
+            MessageBox.Show("Stock requests have been exported.");
         }
     }
 }

@@ -55,6 +55,7 @@ namespace MediaBazar
                 int id = Convert.ToInt32(stocksViewLbx.SelectedItems[0].Text);
                 Stock.Remove(id);
                 RefreshStocks();
+                MessageBox.Show("Item has been removed.");
             }
             else
             {
