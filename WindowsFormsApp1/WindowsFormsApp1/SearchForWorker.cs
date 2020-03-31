@@ -149,7 +149,6 @@ namespace MediaBazar
                             lvWokerView.Items.Add(lvi);
                         }
                     }
-
                 }
             }
             else
@@ -278,6 +277,12 @@ namespace MediaBazar
                 PopulateManagers(Worker.GetAllManagers());
                 Populateemployees(Worker.GetAllEmployees());
             }
+            if (lvWokerView.Items.Count == 0)
+            {
+                MessageBox.Show("no worker found");
+            }
+            cbDepartment.Text = "Department";
+            cbDepartment.SelectedIndex = -1;
             tbLname.Clear();
             tbFname.Clear();
             rbMorningshift.Checked = false;

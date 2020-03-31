@@ -204,6 +204,7 @@ namespace MediaBazar
                         contractUpdateCmd.Parameters.AddWithValue("@description", rtbReason.Text);
                         contractUpdateCmd.Parameters.AddWithValue("@manager_Id", managerId);
                         contractUpdateCmd.ExecuteNonQuery();
+                        MessageBox.Show("Manager has been fired.");
                     }
                     catch (Exception ex)
                     {

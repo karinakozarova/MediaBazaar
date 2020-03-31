@@ -331,7 +331,7 @@ namespace MediaBazar
             else
             {
                 rbEmployee.Visible = false;
-                rbEmployee.Checked = false;
+                rbEmployee.Checked = true;
             }
             PopulateListBoxOtherContacts();
             try
@@ -394,7 +394,7 @@ namespace MediaBazar
                     dtbContractStartDate.Value = System.DateTime.Now;
                     rbAdmin.Checked = false;
                     rbManager.Checked = false;
-                    rbEmployee.Checked = false;
+                    //rbEmployee.Checked = false;
                     cbMorningShift.Checked = false;
                     cbAfternoonShift.Checked = false;
                     cbEveningShift.Checked = false;
@@ -635,9 +635,16 @@ namespace MediaBazar
         {
             try
             {
-                string a = lbContacts.SelectedItem.ToString();
-                int output = Convert.ToInt32(a.Split('[', ']')[1]);
-                pc.DeleteSelectedContact(output);
+                if (lbContacts.SelectedItem != null)
+                {
+                    string a = lbContacts.SelectedItem.ToString();
+                    int output = Convert.ToInt32(a.Split('[', ']')[1]);
+                    pc.DeleteSelectedContact(output);
+                }
+                else
+                {
+                    MessageBox.Show("Please, first select a contact");
+                }
             }
             catch (Exception ex)
             {
