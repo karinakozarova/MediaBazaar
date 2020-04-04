@@ -50,17 +50,20 @@ namespace MediaBazar
 
         private void removeStockBttn_Click(object sender, EventArgs e)
         {
-            if (stocksViewLbx.SelectedItems.Count != 0)
+            if (MessageBox.Show("Do you really want to remove this stock?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(stocksViewLbx.SelectedItems[0].Text);
-                Stock.Remove(id);
-                RefreshStocks();
-                MessageBox.Show("Item has been removed.");
-            }
-            else
-            {
-                MessageBox.Show("Please select a stock!");
-                return;
+                if (stocksViewLbx.SelectedItems.Count != 0)
+                {
+                    int id = Convert.ToInt32(stocksViewLbx.SelectedItems[0].Text);
+                    Stock.Remove(id);
+                    RefreshStocks();
+                    MessageBox.Show("Item has been removed.");
+                }
+                else
+                {
+                    MessageBox.Show("Please select a stock!");
+                    return;
+                }
             }
         }
 

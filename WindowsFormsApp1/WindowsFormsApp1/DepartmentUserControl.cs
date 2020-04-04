@@ -37,14 +37,17 @@ namespace MediaBazar
 
         private void deleteDepartmentBttn_Click(object sender, EventArgs e)
         {
-            foreach (Department dep in Department.GetAllDepartments())
+            if (MessageBox.Show("Do you really want to remove this department?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (dep.DepartmentId == depId)
+                foreach (Department dep in Department.GetAllDepartments())
                 {
-                    dep.RemoveDepartment();
+                    if (dep.DepartmentId == depId)
+                    {
+                        dep.RemoveDepartment();
+                    }
                 }
+                form.UpdateGUI();
             }
-            form.UpdateGUI();
         }
     }
 }

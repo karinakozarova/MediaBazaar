@@ -104,28 +104,31 @@ namespace MediaBazar
                 string employeeUsername = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).Username;
                 string employeeFirstName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).FirstName;
                 string employeeLastName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).LastName;
-                try
+                if (MessageBox.Show("Do you really want to send this firing request?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    FiringRequests fr = new FiringRequests(employeeId, this.loggedUserId, employeeUsername, description, employeeFirstName, employeeLastName, departmentId);
-                    FiringRequests fr1 = new FiringRequests(employeeId, this.loggedUserId, description);
-                    if (!fr1.FrExists)
+                    try
                     {
-                        MessageBox.Show("Firing request already exists!");
+                        FiringRequests fr = new FiringRequests(employeeId, this.loggedUserId, employeeUsername, description, employeeFirstName, employeeLastName, departmentId);
+                        FiringRequests fr1 = new FiringRequests(employeeId, this.loggedUserId, description);
+                        if (!fr1.FrExists)
+                        {
+                            MessageBox.Show("Firing request already exists!");
+                        }
+                        else
+                        {
+                            tbxFirstName.Text = employeeFirstName;
+                            tbxLastName.Text = employeeLastName;
+                            MessageBox.Show("Request sent successfully!");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        tbxFirstName.Text = employeeFirstName;
-                        tbxLastName.Text = employeeLastName;
-                        MessageBox.Show("Request sent successfully!");
+                        string epra = ex.Message;
                     }
-                }
-                catch (Exception ex)
-                {
-                    string epra = ex.Message;
-                }
-                finally
-                {
-                    conn.Close();
+                    finally
+                    {
+                        conn.Close();
+                    }
                 }
             }
 
@@ -156,63 +159,66 @@ namespace MediaBazar
                 }
                 else
                 {
-                    try
+                    if (MessageBox.Show("Do you really want to fire this manager?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        string userRemoveQuery = "DELETE From user WHERE account_id = @manager_Id";
-                        MySqlCommand userRemoveCmd = new MySqlCommand(userRemoveQuery, conn);
-                        conn.Open();
-                        userRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
-                        userRemoveCmd.ExecuteNonQuery();
-
-                        string employeeRemoveQuery = "DELETE From employee_details WHERE person_id = @manager_Id";
-                        MySqlCommand employeeRemoveCmd = new MySqlCommand(employeeRemoveQuery, conn);
-                        employeeRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
-                        employeeRemoveCmd.ExecuteNonQuery();
-
-                        string employeeDaysRemoveQuery = "DELETE From employee_working_days WHERE employee_id = @manager_Id";
-                        MySqlCommand employeeDaysRemoveCmd = new MySqlCommand(employeeDaysRemoveQuery, conn);
-                        employeeDaysRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
-                        employeeDaysRemoveCmd.ExecuteNonQuery();
-
-                        string sql = "SELECT contact_person_id FROM contact_person WHERE employee_id = @manager_Id";
-                        MySqlCommand cmd = new MySqlCommand(sql, conn);
-                        cmd.Parameters.AddWithValue("@manager_Id", managerId);
-                        MySqlDataReader row = cmd.ExecuteReader();
-                        while (row.Read())
+                        try
                         {
-                            contactIds.Add(Convert.ToInt32(row[0]));
+                            string userRemoveQuery = "DELETE From user WHERE account_id = @manager_Id";
+                            MySqlCommand userRemoveCmd = new MySqlCommand(userRemoveQuery, conn);
+                            conn.Open();
+                            userRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                            userRemoveCmd.ExecuteNonQuery();
+
+                            string employeeRemoveQuery = "DELETE From employee_details WHERE person_id = @manager_Id";
+                            MySqlCommand employeeRemoveCmd = new MySqlCommand(employeeRemoveQuery, conn);
+                            employeeRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                            employeeRemoveCmd.ExecuteNonQuery();
+
+                            string employeeDaysRemoveQuery = "DELETE From employee_working_days WHERE employee_id = @manager_Id";
+                            MySqlCommand employeeDaysRemoveCmd = new MySqlCommand(employeeDaysRemoveQuery, conn);
+                            employeeDaysRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                            employeeDaysRemoveCmd.ExecuteNonQuery();
+
+                            string sql = "SELECT contact_person_id FROM contact_person WHERE employee_id = @manager_Id";
+                            MySqlCommand cmd = new MySqlCommand(sql, conn);
+                            cmd.Parameters.AddWithValue("@manager_Id", managerId);
+                            MySqlDataReader row = cmd.ExecuteReader();
+                            while (row.Read())
+                            {
+                                contactIds.Add(Convert.ToInt32(row[0]));
+                            }
+                            conn.Close();
+
+                            string employeeContactRemoveQuery = "DELETE From contact_person WHERE employee_id = @manager_Id";
+                            MySqlCommand employeeContactRemoveCmd = new MySqlCommand(employeeContactRemoveQuery, conn);
+                            conn.Open();
+                            employeeContactRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                            employeeContactRemoveCmd.ExecuteNonQuery();
+
+                            foreach (int id in contactIds)
+                            {
+                                string contactRemoveQuery = "DELETE FROM person WHERE id=@contact_Id";
+                                MySqlCommand contactRemoveCmd = new MySqlCommand(contactRemoveQuery, conn);
+                                contactRemoveCmd.Parameters.AddWithValue("@contact_id", id);
+                                contactRemoveCmd.ExecuteNonQuery();
+                            }
+
+                            string contractUpdateQuery = "UPDATE contract SET contract_end = @end_date, reason_for_leaving = @description WHERE person_id = @manager_Id";
+                            MySqlCommand contractUpdateCmd = new MySqlCommand(contractUpdateQuery, conn);
+                            contractUpdateCmd.Parameters.AddWithValue("@end_date", Utils.GetDateTime());
+                            contractUpdateCmd.Parameters.AddWithValue("@description", rtbReason.Text);
+                            contractUpdateCmd.Parameters.AddWithValue("@manager_Id", managerId);
+                            contractUpdateCmd.ExecuteNonQuery();
+                            MessageBox.Show("Manager has been fired.");
                         }
-                        conn.Close();
-
-                        string employeeContactRemoveQuery = "DELETE From contact_person WHERE employee_id = @manager_Id";
-                        MySqlCommand employeeContactRemoveCmd = new MySqlCommand(employeeContactRemoveQuery, conn);
-                        conn.Open();
-                        employeeContactRemoveCmd.Parameters.AddWithValue("@manager_Id", managerId);
-                        employeeContactRemoveCmd.ExecuteNonQuery();
-
-                        foreach (int id in contactIds)
+                        catch (Exception ex)
                         {
-                            string contactRemoveQuery = "DELETE FROM person WHERE id=@contact_Id";
-                            MySqlCommand contactRemoveCmd = new MySqlCommand(contactRemoveQuery, conn);
-                            contactRemoveCmd.Parameters.AddWithValue("@contact_id", id);
-                            contactRemoveCmd.ExecuteNonQuery();
+                            string epra = ex.Message;
                         }
-
-                        string contractUpdateQuery = "UPDATE contract SET contract_end = @end_date, reason_for_leaving = @description WHERE person_id = @manager_Id";
-                        MySqlCommand contractUpdateCmd = new MySqlCommand(contractUpdateQuery, conn);
-                        contractUpdateCmd.Parameters.AddWithValue("@end_date", Utils.GetDateTime());
-                        contractUpdateCmd.Parameters.AddWithValue("@description", rtbReason.Text);
-                        contractUpdateCmd.Parameters.AddWithValue("@manager_Id", managerId);
-                        contractUpdateCmd.ExecuteNonQuery();
-                        MessageBox.Show("Manager has been fired.");
-                    }
-                    catch (Exception ex)
-                    {
-                        string epra = ex.Message;
-                    }
-                    finally
-                    {
-                        conn.Close();
+                        finally
+                        {
+                            conn.Close();
+                        }
                     }
                 }
             }

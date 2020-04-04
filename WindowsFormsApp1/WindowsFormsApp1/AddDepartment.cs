@@ -45,20 +45,22 @@ namespace MediaBazar
                 MessageBox.Show("Enter employees quantity");
                 return;
             }
-
-            int neededpeople = Convert.ToInt32(numPeople.Value);
-            string description = rtbDescription.Text;
-            if (String.IsNullOrWhiteSpace(description))
+            if (MessageBox.Show("Do you really want to create this department?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                department = new Department(tbxName.Text, null, neededpeople);
-                this.Hide();
+                int neededpeople = Convert.ToInt32(numPeople.Value);
+                string description = rtbDescription.Text;
+                if (String.IsNullOrWhiteSpace(description))
+                {
+                    department = new Department(tbxName.Text, null, neededpeople);
+                    this.Hide();
+                }
+                else
+                {
+                    department = new Department(tbxName.Text, description, neededpeople);
+                    this.Hide();
+                }
+                form.UpdateGUI();
             }
-            else
-            {
-                department = new Department(tbxName.Text, description, neededpeople);
-                this.Hide();
-            }
-            form.UpdateGUI();
         }
 
         private void tbxName_Enter(object sender, EventArgs e)

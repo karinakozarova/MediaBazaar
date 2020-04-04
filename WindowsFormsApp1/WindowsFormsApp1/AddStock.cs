@@ -57,16 +57,19 @@ namespace MediaBazar
                 MessageBox.Show("Input stock description");
                 return;
             }
+            if (MessageBox.Show("Do you really want to add that stock?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                string name = addStockNameTbx.Text;
+                string description = descriptionTbx.Text;
+                int inDepo = (int)indepoQuantityInput.Value;
+                int inStore = (int)inStoreQuantityInput.Value;
+                decimal price = pricePerItemTbx.Value;
 
-            string name = addStockNameTbx.Text;
-            string description = descriptionTbx.Text;
-            int inDepo = (int)indepoQuantityInput.Value;
-            int inStore = (int)inStoreQuantityInput.Value;
-            decimal price = pricePerItemTbx.Value;
-
-            int departmentId = ((DepartmentComboBoxItem)departmentsCmbbxAddingStock.SelectedItem).Id;
-            Stock stock = new Stock(name, description, inDepo, inStore, price, departmentId);
-            this.Hide();
+                int departmentId = ((DepartmentComboBoxItem)departmentsCmbbxAddingStock.SelectedItem).Id;
+                Stock stock = new Stock(name, description, inDepo, inStore, price, departmentId);
+                this.Hide();
+            }
+            
         }
 
         private void addStockNameTbx_Enter(object sender, EventArgs e)

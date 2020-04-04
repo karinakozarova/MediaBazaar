@@ -68,53 +68,59 @@ namespace MediaBazar
 
         private void btnApprove_Click_1(object sender, EventArgs e)
         {
-            if (this.email != null)
+            if (MessageBox.Show("Do you really want to approve this request?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                foreach (HiringRequests hr in HiringRequests.GetAllHiringRequests())
+                if (this.email != null)
                 {
-                    if (hr.PersonId == personId)
+                    foreach (HiringRequests hr in HiringRequests.GetAllHiringRequests())
                     {
-                        hr.ApproveHiringRequest();
+                        if (hr.PersonId == personId)
+                        {
+                            hr.ApproveHiringRequest();
+                        }
                     }
+                    form.UpdateGUI();
                 }
-                form.UpdateGUI();
-            }
-            else
-            {
-                foreach (FiringRequests fr in FiringRequests.GetAllFiringRequests())
+                else
                 {
-                    if (fr.PersonId == personId)
+                    foreach (FiringRequests fr in FiringRequests.GetAllFiringRequests())
                     {
-                        fr.ApproveFiringRequest();
+                        if (fr.PersonId == personId)
+                        {
+                            fr.ApproveFiringRequest();
+                        }
                     }
+                    form.UpdateGUI();
                 }
-                form.UpdateGUI();
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (this.email != null)
+            if (MessageBox.Show("Do you really want to reject this request?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                foreach (HiringRequests hr in HiringRequests.GetAllHiringRequests())
+                if (this.email != null)
                 {
-                    if (hr.PersonId == personId)
+                    foreach (HiringRequests hr in HiringRequests.GetAllHiringRequests())
                     {
-                        hr.DeclineHiringRequest();
+                        if (hr.PersonId == personId)
+                        {
+                            hr.DeclineHiringRequest();
+                        }
                     }
+                    form.UpdateGUI();
                 }
-                form.UpdateGUI();
-            }
-            else
-            {
-                foreach (FiringRequests fr in FiringRequests.GetAllFiringRequests())
+                else
                 {
-                    if (fr.PersonId == personId)
+                    foreach (FiringRequests fr in FiringRequests.GetAllFiringRequests())
                     {
-                        fr.DeclineFiringRequest();
+                        if (fr.PersonId == personId)
+                        {
+                            fr.DeclineFiringRequest();
+                        }
                     }
+                    form.UpdateGUI();
                 }
-                form.UpdateGUI();
             }
         }
     }
