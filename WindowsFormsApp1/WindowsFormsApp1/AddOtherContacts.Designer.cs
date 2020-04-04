@@ -45,7 +45,10 @@
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(283, 40);
             this.tbLastName.TabIndex = 92;
+            this.tbLastName.TabStop = false;
             this.tbLastName.Text = "Last name";
+            this.tbLastName.Enter += new System.EventHandler(this.tbLastName_Enter);
+            this.tbLastName.Leave += new System.EventHandler(this.tbLastName_Leave);
             // 
             // tbFirstName
             // 
@@ -55,7 +58,10 @@
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(283, 40);
             this.tbFirstName.TabIndex = 91;
+            this.tbFirstName.TabStop = false;
             this.tbFirstName.Text = "First name";
+            this.tbFirstName.Enter += new System.EventHandler(this.tbFirstName_Enter);
+            this.tbFirstName.Leave += new System.EventHandler(this.tbFirstName_Leave);
             // 
             // tbEmail
             // 
@@ -66,6 +72,8 @@
             this.tbEmail.Size = new System.Drawing.Size(283, 40);
             this.tbEmail.TabIndex = 99;
             this.tbEmail.Text = "Email address";
+            this.tbEmail.Enter += new System.EventHandler(this.tbEmail_Enter);
+            this.tbEmail.Leave += new System.EventHandler(this.tbEmail_Leave);
             // 
             // tbPhoneNumber
             // 
@@ -76,6 +84,8 @@
             this.tbPhoneNumber.Size = new System.Drawing.Size(283, 40);
             this.tbPhoneNumber.TabIndex = 98;
             this.tbPhoneNumber.Text = "Phone number";
+            this.tbPhoneNumber.Enter += new System.EventHandler(this.tbPhoneNumber_Enter);
+            this.tbPhoneNumber.Leave += new System.EventHandler(this.tbPhoneNumber_Leave);
             // 
             // dtpBirthdate
             // 

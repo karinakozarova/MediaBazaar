@@ -20,6 +20,16 @@ namespace MediaBazar
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
+            if(tbxName.Text == "Name" || tbxName.Text == "")
+            {
+                MessageBox.Show("Please, input name");
+                return;
+            }
+            if (rtbDescription.Text == "Description" || rtbDescription.Text == "")
+            {
+                MessageBox.Show("Please, input description");
+                return;
+            }
             string name = tbxName.Text;
             string description = rtbDescription.Text;
             int neededpeople = Convert.ToInt32(numPeople.Value);
@@ -32,6 +42,38 @@ namespace MediaBazar
             }
             this.Close();
             previousForm.UpdateGUI();
+        }
+
+        private void tbxName_Enter(object sender, EventArgs e)
+        {
+            if (tbxName.Text == "Name")
+            {
+                tbxName.Text = "";
+            }
+        }
+
+        private void tbxName_Leave(object sender, EventArgs e)
+        {
+            if (tbxName.Text == "")
+            {
+                tbxName.Text = "Name";
+            }
+        }
+
+        private void rtbDescription_Enter(object sender, EventArgs e)
+        {
+            if (rtbDescription.Text == "Description")
+            {
+                rtbDescription.Text = "";
+            }
+        }
+
+        private void rtbDescription_Leave(object sender, EventArgs e)
+        {
+            if (rtbDescription.Text == "")
+            {
+                rtbDescription.Text = "Description";
+            }
         }
     }
 }

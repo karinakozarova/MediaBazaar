@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
             this.editStockBttn = new System.Windows.Forms.Button();
             this.removeStockBttn = new System.Windows.Forms.Button();
             this.stockNameTbx = new System.Windows.Forms.TextBox();
@@ -49,7 +49,7 @@
             // 
             this.editStockBttn.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editStockBttn.Location = new System.Drawing.Point(20, 94);
-            this.editStockBttn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editStockBttn.Margin = new System.Windows.Forms.Padding(4);
             this.editStockBttn.Name = "editStockBttn";
             this.editStockBttn.Size = new System.Drawing.Size(213, 48);
             this.editStockBttn.TabIndex = 5;
@@ -61,7 +61,7 @@
             // 
             this.removeStockBttn.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeStockBttn.Location = new System.Drawing.Point(20, 39);
-            this.removeStockBttn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.removeStockBttn.Margin = new System.Windows.Forms.Padding(4);
             this.removeStockBttn.Name = "removeStockBttn";
             this.removeStockBttn.Size = new System.Drawing.Size(213, 46);
             this.removeStockBttn.TabIndex = 4;
@@ -73,18 +73,21 @@
             // 
             this.stockNameTbx.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stockNameTbx.Location = new System.Drawing.Point(755, 70);
-            this.stockNameTbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.stockNameTbx.Margin = new System.Windows.Forms.Padding(4);
             this.stockNameTbx.Name = "stockNameTbx";
             this.stockNameTbx.Size = new System.Drawing.Size(249, 39);
             this.stockNameTbx.TabIndex = 13;
+            this.stockNameTbx.TabStop = false;
             this.stockNameTbx.Text = "Stock name";
+            this.stockNameTbx.Enter += new System.EventHandler(this.stockNameTbx_Enter);
+            this.stockNameTbx.Leave += new System.EventHandler(this.stockNameTbx_Leave);
             // 
             // departmentsCmbbxStockView
             // 
             this.departmentsCmbbxStockView.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.departmentsCmbbxStockView.FormattingEnabled = true;
             this.departmentsCmbbxStockView.Location = new System.Drawing.Point(755, 14);
-            this.departmentsCmbbxStockView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.departmentsCmbbxStockView.Margin = new System.Windows.Forms.Padding(4);
             this.departmentsCmbbxStockView.Name = "departmentsCmbbxStockView";
             this.departmentsCmbbxStockView.Size = new System.Drawing.Size(249, 40);
             this.departmentsCmbbxStockView.TabIndex = 11;
@@ -96,9 +99,9 @@
             this.groupBox1.Controls.Add(this.removeStockBttn);
             this.groupBox1.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(755, 199);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(261, 155);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
@@ -117,7 +120,7 @@
             this.stocksViewLbx.FullRowSelect = true;
             this.stocksViewLbx.HideSelection = false;
             this.stocksViewLbx.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem4});
+            listViewItem3});
             this.stocksViewLbx.Location = new System.Drawing.Point(11, 14);
             this.stocksViewLbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.stocksViewLbx.MultiSelect = false;
@@ -167,7 +170,7 @@
             // 
             this.filterStocksBttn.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filterStocksBttn.Location = new System.Drawing.Point(774, 123);
-            this.filterStocksBttn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.filterStocksBttn.Margin = new System.Windows.Forms.Padding(4);
             this.filterStocksBttn.Name = "filterStocksBttn";
             this.filterStocksBttn.Size = new System.Drawing.Size(213, 44);
             this.filterStocksBttn.TabIndex = 6;
@@ -186,7 +189,7 @@
             this.Controls.Add(this.departmentsCmbbxStockView);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StockView";
             this.Text = "StockView";
             this.groupBox1.ResumeLayout(false);

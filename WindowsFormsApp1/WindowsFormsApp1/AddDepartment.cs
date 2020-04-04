@@ -26,7 +26,17 @@ namespace MediaBazar
         {
             if (String.IsNullOrWhiteSpace(tbxName.Text))
             {
-                MessageBox.Show("Enter Stock name");
+                MessageBox.Show("Enter department name");
+                return;
+            }
+            if(tbxName.Text == "Name")
+            {
+                MessageBox.Show("Enter department name");
+                return;
+            }
+            if (rtbDescription.Text == "Description" || rtbDescription.Text == "Description")
+            {
+                MessageBox.Show("Enter department description");
                 return;
             }
 
@@ -49,6 +59,38 @@ namespace MediaBazar
                 this.Hide();
             }
             form.UpdateGUI();
+        }
+
+        private void tbxName_Enter(object sender, EventArgs e)
+        {
+            if (tbxName.Text == "Name")
+            {
+                tbxName.Text = "";
+            }
+        }
+
+        private void tbxName_Leave(object sender, EventArgs e)
+        {
+            if (tbxName.Text == "")
+            {
+                tbxName.Text = "Name";
+            }
+        }
+
+        private void rtbDescription_Enter(object sender, EventArgs e)
+        {
+            if (rtbDescription.Text == "Description")
+            {
+                rtbDescription.Text = "";
+            }
+        }
+
+        private void rtbDescription_Leave(object sender, EventArgs e)
+        {
+            if (rtbDescription.Text == "")
+            {
+                rtbDescription.Text = "Description";
+            }
         }
     }
 }

@@ -42,6 +42,21 @@ namespace MediaBazar
                 MessageBox.Show("Enter store quantity");
                 return;
             }
+            if (departmentsCmbbxAddingStock.SelectedItem == null)
+            {
+                MessageBox.Show("Select a depratment");
+                return;
+            }
+            if (addStockNameTbx.Text == "Name" || addStockNameTbx.Text == "")
+            {
+                MessageBox.Show("Input stock name");
+                return;
+            }
+            if (descriptionTbx.Text == "Description" || descriptionTbx.Text == "")
+            {
+                MessageBox.Show("Input stock description");
+                return;
+            }
 
             string name = addStockNameTbx.Text;
             string description = descriptionTbx.Text;
@@ -52,6 +67,38 @@ namespace MediaBazar
             int departmentId = ((DepartmentComboBoxItem)departmentsCmbbxAddingStock.SelectedItem).Id;
             Stock stock = new Stock(name, description, inDepo, inStore, price, departmentId);
             this.Hide();
+        }
+
+        private void addStockNameTbx_Enter(object sender, EventArgs e)
+        {
+            if (addStockNameTbx.Text == "Name")
+            {
+                addStockNameTbx.Text = "";
+            }
+        }
+
+        private void addStockNameTbx_Leave(object sender, EventArgs e)
+        {
+            if (addStockNameTbx.Text == "")
+            {
+                addStockNameTbx.Text = "Name";
+            }
+        }
+
+        private void descriptionTbx_Enter(object sender, EventArgs e)
+        {
+            if (descriptionTbx.Text == "Description")
+            {
+                descriptionTbx.Text = "";
+            }
+        }
+
+        private void descriptionTbx_Leave(object sender, EventArgs e)
+        {
+            if (descriptionTbx.Text == "")
+            {
+                descriptionTbx.Text = "Description";
+            }
         }
     }
 }

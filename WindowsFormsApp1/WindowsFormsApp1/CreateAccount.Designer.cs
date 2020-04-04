@@ -109,22 +109,30 @@
             // tbFirstName
             // 
             this.tbFirstName.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbFirstName.ForeColor = System.Drawing.Color.Black;
             this.tbFirstName.Location = new System.Drawing.Point(26, 136);
             this.tbFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(283, 40);
             this.tbFirstName.TabIndex = 2;
+            this.tbFirstName.TabStop = false;
             this.tbFirstName.Text = "First name";
+            this.tbFirstName.Enter += new System.EventHandler(this.tbFirstName_Enter);
+            this.tbFirstName.Leave += new System.EventHandler(this.tbFirstName_Leave);
             // 
             // tbLastName
             // 
             this.tbLastName.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbLastName.ForeColor = System.Drawing.Color.Black;
             this.tbLastName.Location = new System.Drawing.Point(26, 201);
             this.tbLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(283, 40);
             this.tbLastName.TabIndex = 3;
+            this.tbLastName.TabStop = false;
             this.tbLastName.Text = "Last name";
+            this.tbLastName.Enter += new System.EventHandler(this.tbLastName_Enter);
+            this.tbLastName.Leave += new System.EventHandler(this.tbLastName_Leave);
             // 
             // dtpBirthdate
             // 
@@ -142,22 +150,28 @@
             // tbPhoneNumber
             // 
             this.tbPhoneNumber.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPhoneNumber.ForeColor = System.Drawing.Color.Black;
             this.tbPhoneNumber.Location = new System.Drawing.Point(24, 581);
             this.tbPhoneNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(283, 40);
             this.tbPhoneNumber.TabIndex = 7;
             this.tbPhoneNumber.Text = "Phone number";
+            this.tbPhoneNumber.Enter += new System.EventHandler(this.tbPhoneNumber_Enter);
+            this.tbPhoneNumber.Leave += new System.EventHandler(this.tbPhoneNumber_Leave);
             // 
             // tbEmail
             // 
             this.tbEmail.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbEmail.ForeColor = System.Drawing.Color.Black;
             this.tbEmail.Location = new System.Drawing.Point(24, 636);
             this.tbEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(283, 40);
             this.tbEmail.TabIndex = 8;
             this.tbEmail.Text = "Email address";
+            this.tbEmail.Enter += new System.EventHandler(this.tbEmail_Enter);
+            this.tbEmail.Leave += new System.EventHandler(this.tbEmail_Leave);
             // 
             // label4
             // 
@@ -420,53 +434,69 @@
             // tbUsername
             // 
             this.tbUsername.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUsername.ForeColor = System.Drawing.Color.Black;
             this.tbUsername.Location = new System.Drawing.Point(26, 72);
             this.tbUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(283, 40);
             this.tbUsername.TabIndex = 1;
+            this.tbUsername.TabStop = false;
             this.tbUsername.Text = "Username";
             this.tbUsername.TextChanged += new System.EventHandler(this.tbUsername_TextChanged);
+            this.tbUsername.Enter += new System.EventHandler(this.tbUsername_Enter);
+            this.tbUsername.Leave += new System.EventHandler(this.tbUsername_Leave);
             // 
             // tbStreet
             // 
             this.tbStreet.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbStreet.ForeColor = System.Drawing.Color.Black;
             this.tbStreet.Location = new System.Drawing.Point(26, 318);
             this.tbStreet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbStreet.Name = "tbStreet";
             this.tbStreet.Size = new System.Drawing.Size(283, 40);
             this.tbStreet.TabIndex = 5;
             this.tbStreet.Text = "street";
+            this.tbStreet.Enter += new System.EventHandler(this.tbStreet_Enter);
+            this.tbStreet.Leave += new System.EventHandler(this.tbStreet_Leave);
             // 
             // tbPostcode
             // 
             this.tbPostcode.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPostcode.ForeColor = System.Drawing.Color.Black;
             this.tbPostcode.Location = new System.Drawing.Point(26, 371);
             this.tbPostcode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPostcode.Name = "tbPostcode";
             this.tbPostcode.Size = new System.Drawing.Size(283, 40);
             this.tbPostcode.TabIndex = 88;
             this.tbPostcode.Text = "postcode";
+            this.tbPostcode.Enter += new System.EventHandler(this.tbPostcode_Enter);
+            this.tbPostcode.Leave += new System.EventHandler(this.tbPostcode_Leave);
             // 
             // tbRegion
             // 
             this.tbRegion.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbRegion.ForeColor = System.Drawing.Color.Black;
             this.tbRegion.Location = new System.Drawing.Point(25, 422);
             this.tbRegion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbRegion.Name = "tbRegion";
             this.tbRegion.Size = new System.Drawing.Size(283, 40);
             this.tbRegion.TabIndex = 5;
             this.tbRegion.Text = "region";
+            this.tbRegion.Enter += new System.EventHandler(this.tbRegion_Enter);
+            this.tbRegion.Leave += new System.EventHandler(this.tbRegion_Leave);
             // 
             // tbCountry
             // 
             this.tbCountry.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCountry.ForeColor = System.Drawing.Color.Black;
             this.tbCountry.Location = new System.Drawing.Point(24, 478);
             this.tbCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbCountry.Name = "tbCountry";
             this.tbCountry.Size = new System.Drawing.Size(283, 40);
             this.tbCountry.TabIndex = 6;
             this.tbCountry.Text = "Country";
+            this.tbCountry.Enter += new System.EventHandler(this.tbCountry_Enter);
+            this.tbCountry.Leave += new System.EventHandler(this.tbCountry_Leave);
             // 
             // btnAddOtherContact
             // 
@@ -507,12 +537,15 @@
             // tbPassword
             // 
             this.tbPassword.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPassword.ForeColor = System.Drawing.Color.Black;
             this.tbPassword.Location = new System.Drawing.Point(346, 636);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(283, 40);
             this.tbPassword.TabIndex = 14;
             this.tbPassword.Text = "Password";
+            this.tbPassword.Enter += new System.EventHandler(this.tbPassword_Enter);
+            this.tbPassword.Leave += new System.EventHandler(this.tbPassword_Leave);
             // 
             // label10
             // 

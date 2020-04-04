@@ -228,5 +228,21 @@ namespace MediaBazar
             PopulateManagers(Manager.GetAllManagersByDepartment(departmentId));
             PopulateEmployees(Employee.GetAllEmployeesByDepartment(departmentId));
         }
+
+        private void rtbReason_Enter(object sender, EventArgs e)
+        {
+            if (rtbReason.Text == "Reason for firing")
+            {
+                rtbReason.Text = "";
+            }
+        }
+
+        private void rtbReason_Leave(object sender, EventArgs e)
+        {
+            if (rtbReason.Text == "")
+            {
+                rtbReason.Text = "Reason for firing";
+            }
+        }
     }
 }

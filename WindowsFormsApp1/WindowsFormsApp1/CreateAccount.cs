@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace MediaBazar
@@ -380,8 +381,8 @@ namespace MediaBazar
                 }
                 else
                 {
-                    tbFirstName.Text = "First Name";
-                    tbLastName.Text = "Last Name";
+                    tbFirstName.Text = "First name";
+                    tbLastName.Text = "Last name";
                     tbStreet.Text = "street";
                     tbPostcode.Text = "postcode";
                     tbRegion.Text = "region";
@@ -457,8 +458,12 @@ namespace MediaBazar
         private void btnEdit_Click(object sender, EventArgs e)
         {
             decimal minHourlyWage = 7;
-           
-            if (tbUsername.Text == "" || tbFirstName.Text == "" || tbLastName.Text == "" || tbCountry.Text == "" || tbRegion.Text == "" || tbPostcode.Text == "" || tbStreet.Text == "" || tbPhoneNumber.Text == "" || tbPassword.Text == "" || tbEmail.Text == "")
+
+            if (tbUsername.Text == "Username" || tbFirstName.Text == "First name" || tbLastName.Text == "Last name" || tbCountry.Text == "Country" || tbRegion.Text == "region" || tbPostcode.Text == "postcode" || tbStreet.Text == "street" || tbPhoneNumber.Text == "Phone number" || tbPassword.Text == "Password")
+            {
+                MessageBox.Show("Please change the initial information in the fields!");
+            }
+            else if (tbUsername.Text == "" || tbFirstName.Text == "" || tbLastName.Text == "" || tbCountry.Text == "" || tbRegion.Text == "" || tbPostcode.Text == "" || tbStreet.Text == "" || tbPhoneNumber.Text == "" || tbPassword.Text == "" || tbEmail.Text == "")
             {
                 MessageBox.Show("Please fill in all the fields in the table!");
             }
@@ -834,6 +839,167 @@ namespace MediaBazar
             catch
             {
                 return false;
+            }
+        }
+
+        private void tbUsername_Enter(object sender, EventArgs e)
+        {
+            if(tbUsername.Text== "Username")
+            {
+                tbUsername.Text = "";
+            }
+        }
+
+        private void tbUsername_Leave(object sender, EventArgs e)
+        {
+            if (tbUsername.Text == "")
+            {
+                tbUsername.Text = "Username";
+            }
+        }
+
+        private void tbFirstName_Enter(object sender, EventArgs e)
+        {
+            if (tbFirstName.Text == "First name")
+            {
+                tbFirstName.Text = "";
+            }
+        }
+
+        private void tbFirstName_Leave(object sender, EventArgs e)
+        {
+            if (tbFirstName.Text == "")
+            {
+                tbFirstName.Text = "First name";
+            }
+        }
+
+        private void tbLastName_Enter(object sender, EventArgs e)
+        {
+            if (tbLastName.Text == "Last name")
+            {
+                tbLastName.Text = "";
+            }
+        }
+
+        private void tbLastName_Leave(object sender, EventArgs e)
+        {
+            if (tbLastName.Text == "")
+            {
+                tbLastName.Text = "Last name";
+            }
+        }
+
+        private void tbStreet_Enter(object sender, EventArgs e)
+        {
+            if (tbStreet.Text == "street")
+            {
+                tbStreet.Text = "";
+            }
+        }
+
+        private void tbStreet_Leave(object sender, EventArgs e)
+        {
+            if (tbStreet.Text == "")
+            {
+                tbStreet.Text = "street";
+            }
+        }
+
+        private void tbPostcode_Enter(object sender, EventArgs e)
+        {
+            if (tbPostcode.Text == "postcode")
+            {
+                tbPostcode.Text = "";
+            }
+        }
+
+        private void tbPostcode_Leave(object sender, EventArgs e)
+        {
+            if (tbPostcode.Text == "")
+            {
+                tbPostcode.Text = "postcode";
+                tbPostcode.ForeColor = Color.Gray;
+            }
+        }
+
+        private void tbRegion_Enter(object sender, EventArgs e)
+        {
+            if (tbRegion.Text == "region")
+            {
+                tbRegion.Text = "";
+            }
+        }
+
+        private void tbRegion_Leave(object sender, EventArgs e)
+        {
+            if (tbRegion.Text == "")
+            {
+                tbRegion.Text = "region";
+            }
+        }
+
+        private void tbCountry_Enter(object sender, EventArgs e)
+        {
+            if (tbCountry.Text == "Country")
+            {
+                tbCountry.Text = "";
+            }
+        }
+
+        private void tbCountry_Leave(object sender, EventArgs e)
+        {
+            if (tbCountry.Text == "")
+            {
+                tbCountry.Text = "Country";
+            }
+        }
+
+        private void tbPhoneNumber_Enter(object sender, EventArgs e)
+        {
+            if (tbPhoneNumber.Text == "Phone number")
+            {
+                tbPhoneNumber.Text = "";
+            }
+        }
+
+        private void tbPhoneNumber_Leave(object sender, EventArgs e)
+        {
+            if (tbPhoneNumber.Text == "")
+            {
+                tbPhoneNumber.Text = "Phone number";
+            }
+        }
+
+        private void tbEmail_Enter(object sender, EventArgs e)
+        {
+            if (tbEmail.Text == "Email address")
+            {
+                tbEmail.Text = "";
+            }
+        }
+
+        private void tbEmail_Leave(object sender, EventArgs e)
+        {
+            if (tbEmail.Text == "")
+            {
+                tbEmail.Text = "Email address";
+            }
+        }
+
+        private void tbPassword_Enter(object sender, EventArgs e)
+        {
+            if (tbPassword.Text == "Password")
+            {
+                tbPassword.Text = "";
+            }
+        }
+
+        private void tbPassword_Leave(object sender, EventArgs e)
+        {
+            if (tbPassword.Text == "")
+            {
+                tbPassword.Text = "Password";
             }
         }
     }
