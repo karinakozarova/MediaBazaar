@@ -63,5 +63,68 @@ namespace MediaBazar
             }
         }
 
+        private void tbFirstName_Enter(object sender, EventArgs e)
+        {
+            if (tbFirstName.Text == "First name")
+            {
+                tbFirstName.Text = "";
+            }
+        }
+
+        private void tbFirstName_Leave(object sender, EventArgs e)
+        {
+            if (tbFirstName.Text == "")
+            {
+                tbFirstName.Text = "First name";
+            }
+        }
+
+        private void tbLastName_Enter(object sender, EventArgs e)
+        {
+            if (tbLastName.Text == "Last name")
+            {
+                tbLastName.Text = "";
+            }
+        }
+
+        private void tbLastName_Leave(object sender, EventArgs e)
+        {
+            if (tbLastName.Text == "")
+            {
+                tbLastName.Text = "Last name";
+            }
+        }
+
+        private void tbPhoneNumber_Enter(object sender, EventArgs e)
+        {
+            if (tbPhoneNumber.Text == "Phone number")
+            {
+                tbPhoneNumber.Text = "";
+            }
+        }
+
+        private void tbPhoneNumber_Leave(object sender, EventArgs e)
+        {
+            if (tbPhoneNumber.Text == "")
+            {
+                tbPhoneNumber.Text = "Phone number";
+            }
+        }
+
+        private void tbEmail_Enter(object sender, EventArgs e)
+        {
+            if (tbEmail.Text == "Email address")
+            {
+                tbEmail.Text = "";
+            }
+        }
+
+        private void tbEmail_Leave(object sender, EventArgs e)
+        {
+            if (tbEmail.Text == "")
+            {
+                tbEmail.Text = "Email address";
+            }
+        }
     }
 }

@@ -123,7 +123,10 @@
             this.rtbReason.Name = "rtbReason";
             this.rtbReason.Size = new System.Drawing.Size(359, 240);
             this.rtbReason.TabIndex = 80;
+            this.rtbReason.TabStop = false;
             this.rtbReason.Text = "Reason for firing";
+            this.rtbReason.Enter += new System.EventHandler(this.rtbReason_Enter);
+            this.rtbReason.Leave += new System.EventHandler(this.rtbReason_Leave);
             // 
             // btnRemoveManager
             // 

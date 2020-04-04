@@ -39,9 +39,10 @@
             // addDepartmentbttn
             // 
             this.addDepartmentbttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addDepartmentbttn.Location = new System.Drawing.Point(27, 353);
+            this.addDepartmentbttn.Location = new System.Drawing.Point(24, 282);
+            this.addDepartmentbttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addDepartmentbttn.Name = "addDepartmentbttn";
-            this.addDepartmentbttn.Size = new System.Drawing.Size(444, 65);
+            this.addDepartmentbttn.Size = new System.Drawing.Size(395, 52);
             this.addDepartmentbttn.TabIndex = 9;
             this.addDepartmentbttn.Text = "Add Department";
             this.addDepartmentbttn.UseVisualStyleBackColor = true;
@@ -50,49 +51,57 @@
             // numPeople
             // 
             this.numPeople.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numPeople.Location = new System.Drawing.Point(313, 280);
+            this.numPeople.Location = new System.Drawing.Point(278, 224);
+            this.numPeople.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numPeople.Name = "numPeople";
-            this.numPeople.Size = new System.Drawing.Size(158, 47);
+            this.numPeople.Size = new System.Drawing.Size(140, 40);
             this.numPeople.TabIndex = 8;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 280);
+            this.label1.Location = new System.Drawing.Point(17, 224);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(273, 44);
+            this.label1.Size = new System.Drawing.Size(235, 33);
             this.label1.TabIndex = 7;
             this.label1.Text = "Needed people:";
             // 
             // rtbDescription
             // 
             this.rtbDescription.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbDescription.Location = new System.Drawing.Point(19, 102);
+            this.rtbDescription.Location = new System.Drawing.Point(17, 82);
+            this.rtbDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbDescription.Name = "rtbDescription";
-            this.rtbDescription.Size = new System.Drawing.Size(452, 153);
+            this.rtbDescription.Size = new System.Drawing.Size(402, 123);
             this.rtbDescription.TabIndex = 6;
             this.rtbDescription.Text = "Description";
+            this.rtbDescription.Enter += new System.EventHandler(this.rtbDescription_Enter);
+            this.rtbDescription.Leave += new System.EventHandler(this.rtbDescription_Leave);
             // 
             // tbxName
             // 
             this.tbxName.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxName.Location = new System.Drawing.Point(19, 29);
+            this.tbxName.Location = new System.Drawing.Point(17, 23);
+            this.tbxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxName.Name = "tbxName";
-            this.tbxName.Size = new System.Drawing.Size(452, 47);
+            this.tbxName.Size = new System.Drawing.Size(402, 40);
             this.tbxName.TabIndex = 5;
             this.tbxName.Text = "Name";
+            this.tbxName.Enter += new System.EventHandler(this.tbxName_Enter);
+            this.tbxName.Leave += new System.EventHandler(this.tbxName_Leave);
             // 
             // AddDepartment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 444);
+            this.ClientSize = new System.Drawing.Size(436, 355);
             this.Controls.Add(this.addDepartmentbttn);
             this.Controls.Add(this.numPeople);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rtbDescription);
             this.Controls.Add(this.tbxName);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddDepartment";
             this.Text = "Add Department";
             ((System.ComponentModel.ISupportInitialize)(this.numPeople)).EndInit();

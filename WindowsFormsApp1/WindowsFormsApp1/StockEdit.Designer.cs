@@ -48,10 +48,10 @@
             // editStockBttn
             // 
             this.editStockBttn.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editStockBttn.Location = new System.Drawing.Point(375, 203);
-            this.editStockBttn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.editStockBttn.Location = new System.Drawing.Point(333, 162);
+            this.editStockBttn.Margin = new System.Windows.Forms.Padding(4);
             this.editStockBttn.Name = "editStockBttn";
-            this.editStockBttn.Size = new System.Drawing.Size(166, 111);
+            this.editStockBttn.Size = new System.Drawing.Size(148, 89);
             this.editStockBttn.TabIndex = 30;
             this.editStockBttn.Text = "Edit";
             this.editStockBttn.UseVisualStyleBackColor = true;
@@ -60,39 +60,41 @@
             // depoQuantityStock
             // 
             this.depoQuantityStock.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.depoQuantityStock.Location = new System.Drawing.Point(208, 203);
-            this.depoQuantityStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.depoQuantityStock.Location = new System.Drawing.Point(185, 162);
+            this.depoQuantityStock.Margin = new System.Windows.Forms.Padding(4);
             this.depoQuantityStock.Name = "depoQuantityStock";
-            this.depoQuantityStock.Size = new System.Drawing.Size(154, 46);
+            this.depoQuantityStock.Size = new System.Drawing.Size(137, 39);
             this.depoQuantityStock.TabIndex = 29;
             // 
             // storeQuantityStock
             // 
             this.storeQuantityStock.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.storeQuantityStock.Location = new System.Drawing.Point(208, 263);
-            this.storeQuantityStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.storeQuantityStock.Location = new System.Drawing.Point(185, 210);
+            this.storeQuantityStock.Margin = new System.Windows.Forms.Padding(4);
             this.storeQuantityStock.Name = "storeQuantityStock";
-            this.storeQuantityStock.Size = new System.Drawing.Size(154, 46);
+            this.storeQuantityStock.Size = new System.Drawing.Size(137, 39);
             this.storeQuantityStock.TabIndex = 27;
             // 
             // stocksEditNameTbx
             // 
             this.stocksEditNameTbx.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stocksEditNameTbx.Location = new System.Drawing.Point(290, 14);
-            this.stocksEditNameTbx.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.stocksEditNameTbx.Location = new System.Drawing.Point(258, 11);
+            this.stocksEditNameTbx.Margin = new System.Windows.Forms.Padding(4);
             this.stocksEditNameTbx.Name = "stocksEditNameTbx";
-            this.stocksEditNameTbx.Size = new System.Drawing.Size(247, 46);
+            this.stocksEditNameTbx.Size = new System.Drawing.Size(220, 39);
             this.stocksEditNameTbx.TabIndex = 26;
             this.stocksEditNameTbx.Text = "Name";
+            this.stocksEditNameTbx.Enter += new System.EventHandler(this.stocksEditNameTbx_Enter);
+            this.stocksEditNameTbx.Leave += new System.EventHandler(this.stocksEditNameTbx_Leave);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(18, 266);
+            this.label8.Location = new System.Drawing.Point(16, 213);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(181, 44);
+            this.label8.Size = new System.Drawing.Size(155, 33);
             this.label8.TabIndex = 23;
             this.label8.Text = "Q in store:";
             // 
@@ -100,10 +102,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 206);
+            this.label7.Location = new System.Drawing.Point(16, 165);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(184, 44);
+            this.label7.Size = new System.Drawing.Size(155, 33);
             this.label7.TabIndex = 22;
             this.label7.Text = "Q in depo:";
             // 
@@ -111,10 +113,10 @@
             // 
             this.idLbl.AutoSize = true;
             this.idLbl.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idLbl.Location = new System.Drawing.Point(180, 14);
+            this.idLbl.Location = new System.Drawing.Point(160, 11);
             this.idLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.idLbl.Name = "idLbl";
-            this.idLbl.Size = new System.Drawing.Size(78, 44);
+            this.idLbl.Size = new System.Drawing.Size(62, 33);
             this.idLbl.TabIndex = 17;
             this.idLbl.Text = "(ID)";
             // 
@@ -122,34 +124,35 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 14);
+            this.label1.Location = new System.Drawing.Point(16, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 44);
+            this.label1.Size = new System.Drawing.Size(137, 33);
             this.label1.TabIndex = 16;
             this.label1.Text = "Stock ID:";
             // 
             // pricePerItemTbx
             // 
             this.pricePerItemTbx.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pricePerItemTbx.Location = new System.Drawing.Point(208, 145);
+            this.pricePerItemTbx.Location = new System.Drawing.Point(185, 116);
+            this.pricePerItemTbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pricePerItemTbx.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.pricePerItemTbx.Name = "pricePerItemTbx";
-            this.pricePerItemTbx.Size = new System.Drawing.Size(329, 47);
+            this.pricePerItemTbx.Size = new System.Drawing.Size(292, 40);
             this.pricePerItemTbx.TabIndex = 32;
             // 
             // DepartmentLbl
             // 
             this.DepartmentLbl.AutoSize = true;
             this.DepartmentLbl.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DepartmentLbl.Location = new System.Drawing.Point(282, 80);
+            this.DepartmentLbl.Location = new System.Drawing.Point(251, 64);
             this.DepartmentLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DepartmentLbl.Name = "DepartmentLbl";
-            this.DepartmentLbl.Size = new System.Drawing.Size(78, 44);
+            this.DepartmentLbl.Size = new System.Drawing.Size(62, 33);
             this.DepartmentLbl.TabIndex = 34;
             this.DepartmentLbl.Text = "(ID)";
             // 
@@ -157,10 +160,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(18, 80);
+            this.label3.Location = new System.Drawing.Point(16, 64);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(227, 44);
+            this.label3.Size = new System.Drawing.Size(189, 33);
             this.label3.TabIndex = 33;
             this.label3.Text = "Department:";
             // 
@@ -168,18 +171,18 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 147);
+            this.label2.Location = new System.Drawing.Point(17, 118);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 44);
+            this.label2.Size = new System.Drawing.Size(92, 33);
             this.label2.TabIndex = 35;
             this.label2.Text = "Price:";
             // 
             // StockEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 325);
+            this.ClientSize = new System.Drawing.Size(492, 260);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DepartmentLbl);
             this.Controls.Add(this.label3);
@@ -192,7 +195,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.idLbl);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StockEdit";
             this.Text = "StockEdit";
             ((System.ComponentModel.ISupportInitialize)(this.depoQuantityStock)).EndInit();

@@ -92,5 +92,21 @@ namespace MediaBazar
             List<Stock> stocks = Stock.FilterStocks(departmentId, productName);
             populateStocks(stocks);
         }
+
+        private void stockNameTbx_Enter(object sender, EventArgs e)
+        {
+            if (stockNameTbx.Text == "Stock name")
+            {
+                stockNameTbx.Text = "";
+            }
+        }
+
+        private void stockNameTbx_Leave(object sender, EventArgs e)
+        {
+            if (stockNameTbx.Text == "")
+            {
+                stockNameTbx.Text = "Stock name";
+            }
+        }
     }
 }

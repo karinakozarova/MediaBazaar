@@ -28,8 +28,39 @@ namespace MediaBazar
 
         private void editStockBttn_Click(object sender, EventArgs e)
         {
+            if(stocksEditNameTbx.Text == "Name" || stocksEditNameTbx.Text == "")
+            {
+                MessageBox.Show("Please enter a valid stock name");
+                return;
+            }
+            if (pricePerItemTbx.Value == 0)
+            {
+                MessageBox.Show("Please enter a valid stock price");
+                return;
+            }
+            if (storeQuantityStock.Value == 0 && depoQuantityStock.Value == 0)
+            {
+                MessageBox.Show("Please enter a valid stock quantity");
+                return;
+            }
             Stock.EditStock(this.id, stocksEditNameTbx.Text, pricePerItemTbx.Value, storeQuantityStock.Value, depoQuantityStock.Value);
             this.Hide();
+        }
+
+        private void stocksEditNameTbx_Enter(object sender, EventArgs e)
+        {
+            if (stocksEditNameTbx.Text == "Name")
+            {
+                stocksEditNameTbx.Text = "";
+            }
+        }
+
+        private void stocksEditNameTbx_Leave(object sender, EventArgs e)
+        {
+            if (stocksEditNameTbx.Text == "")
+            {
+                stocksEditNameTbx.Text = "Name";
+            }
         }
     }
 }

@@ -48,19 +48,22 @@
             // addStockNameTbx
             // 
             this.addStockNameTbx.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addStockNameTbx.Location = new System.Drawing.Point(40, 63);
+            this.addStockNameTbx.Location = new System.Drawing.Point(36, 50);
+            this.addStockNameTbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addStockNameTbx.Name = "addStockNameTbx";
-            this.addStockNameTbx.Size = new System.Drawing.Size(453, 47);
+            this.addStockNameTbx.Size = new System.Drawing.Size(403, 40);
             this.addStockNameTbx.TabIndex = 0;
             this.addStockNameTbx.Text = "Name";
+            this.addStockNameTbx.Enter += new System.EventHandler(this.addStockNameTbx_Enter);
+            this.addStockNameTbx.Leave += new System.EventHandler(this.addStockNameTbx_Leave);
             // 
             // StockQuantityLbl
             // 
             this.StockQuantityLbl.AutoSize = true;
             this.StockQuantityLbl.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StockQuantityLbl.Location = new System.Drawing.Point(32, 401);
+            this.StockQuantityLbl.Location = new System.Drawing.Point(28, 321);
             this.StockQuantityLbl.Name = "StockQuantityLbl";
-            this.StockQuantityLbl.Size = new System.Drawing.Size(150, 44);
+            this.StockQuantityLbl.Size = new System.Drawing.Size(126, 33);
             this.StockQuantityLbl.TabIndex = 2;
             this.StockQuantityLbl.Text = "In depo:";
             // 
@@ -68,22 +71,24 @@
             // 
             this.indepoQuantityInput.CausesValidation = false;
             this.indepoQuantityInput.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.indepoQuantityInput.Location = new System.Drawing.Point(40, 452);
+            this.indepoQuantityInput.Location = new System.Drawing.Point(36, 362);
+            this.indepoQuantityInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.indepoQuantityInput.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.indepoQuantityInput.Name = "indepoQuantityInput";
-            this.indepoQuantityInput.Size = new System.Drawing.Size(198, 47);
+            this.indepoQuantityInput.Size = new System.Drawing.Size(176, 40);
             this.indepoQuantityInput.TabIndex = 3;
             // 
             // addStockBttn
             // 
             this.addStockBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addStockBttn.Location = new System.Drawing.Point(40, 603);
+            this.addStockBttn.Location = new System.Drawing.Point(36, 482);
+            this.addStockBttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addStockBttn.Name = "addStockBttn";
-            this.addStockBttn.Size = new System.Drawing.Size(453, 65);
+            this.addStockBttn.Size = new System.Drawing.Size(403, 52);
             this.addStockBttn.TabIndex = 6;
             this.addStockBttn.Text = "Add Stock";
             this.addStockBttn.UseVisualStyleBackColor = true;
@@ -93,55 +98,58 @@
             // 
             this.departmentsCmbbxAddingStock.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.departmentsCmbbxAddingStock.FormattingEnabled = true;
-            this.departmentsCmbbxAddingStock.Location = new System.Drawing.Point(40, 530);
+            this.departmentsCmbbxAddingStock.Location = new System.Drawing.Point(36, 424);
+            this.departmentsCmbbxAddingStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.departmentsCmbbxAddingStock.Name = "departmentsCmbbxAddingStock";
-            this.departmentsCmbbxAddingStock.Size = new System.Drawing.Size(453, 52);
+            this.departmentsCmbbxAddingStock.Size = new System.Drawing.Size(403, 41);
             this.departmentsCmbbxAddingStock.TabIndex = 5;
             this.departmentsCmbbxAddingStock.Text = "Department";
             // 
             // inStoreQuantityInput
             // 
             this.inStoreQuantityInput.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inStoreQuantityInput.Location = new System.Drawing.Point(298, 453);
+            this.inStoreQuantityInput.Location = new System.Drawing.Point(265, 362);
+            this.inStoreQuantityInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.inStoreQuantityInput.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.inStoreQuantityInput.Name = "inStoreQuantityInput";
-            this.inStoreQuantityInput.Size = new System.Drawing.Size(195, 47);
+            this.inStoreQuantityInput.Size = new System.Drawing.Size(173, 40);
             this.inStoreQuantityInput.TabIndex = 4;
             // 
             // StoreStockQttyLbl
             // 
             this.StoreStockQttyLbl.AutoSize = true;
             this.StoreStockQttyLbl.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StoreStockQttyLbl.Location = new System.Drawing.Point(280, 401);
+            this.StoreStockQttyLbl.Location = new System.Drawing.Point(249, 321);
             this.StoreStockQttyLbl.Name = "StoreStockQttyLbl";
-            this.StoreStockQttyLbl.Size = new System.Drawing.Size(147, 44);
+            this.StoreStockQttyLbl.Size = new System.Drawing.Size(126, 33);
             this.StoreStockQttyLbl.TabIndex = 7;
             this.StoreStockQttyLbl.Text = "In store:";
             // 
             // pricePerItemTbx
             // 
             this.pricePerItemTbx.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pricePerItemTbx.Location = new System.Drawing.Point(40, 338);
+            this.pricePerItemTbx.Location = new System.Drawing.Point(36, 270);
+            this.pricePerItemTbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pricePerItemTbx.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.pricePerItemTbx.Name = "pricePerItemTbx";
-            this.pricePerItemTbx.Size = new System.Drawing.Size(453, 47);
+            this.pricePerItemTbx.Size = new System.Drawing.Size(403, 40);
             this.pricePerItemTbx.TabIndex = 2;
             // 
             // pricePerItemLbl
             // 
             this.pricePerItemLbl.AutoSize = true;
             this.pricePerItemLbl.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pricePerItemLbl.Location = new System.Drawing.Point(32, 291);
+            this.pricePerItemLbl.Location = new System.Drawing.Point(28, 233);
             this.pricePerItemLbl.Name = "pricePerItemLbl";
-            this.pricePerItemLbl.Size = new System.Drawing.Size(252, 44);
+            this.pricePerItemLbl.Size = new System.Drawing.Size(214, 33);
             this.pricePerItemLbl.TabIndex = 9;
             this.pricePerItemLbl.Text = "Price per item:";
             // 
@@ -149,36 +157,39 @@
             // 
             this.addStockNameLbl.AutoSize = true;
             this.addStockNameLbl.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addStockNameLbl.Location = new System.Drawing.Point(32, 16);
+            this.addStockNameLbl.Location = new System.Drawing.Point(28, 13);
             this.addStockNameLbl.Name = "addStockNameLbl";
-            this.addStockNameLbl.Size = new System.Drawing.Size(125, 44);
+            this.addStockNameLbl.Size = new System.Drawing.Size(106, 33);
             this.addStockNameLbl.TabIndex = 10;
             this.addStockNameLbl.Text = "Name:";
             // 
             // descriptionTbx
             // 
             this.descriptionTbx.Font = new System.Drawing.Font("Montserrat", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionTbx.Location = new System.Drawing.Point(40, 173);
+            this.descriptionTbx.Location = new System.Drawing.Point(36, 138);
+            this.descriptionTbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.descriptionTbx.Name = "descriptionTbx";
-            this.descriptionTbx.Size = new System.Drawing.Size(453, 107);
+            this.descriptionTbx.Size = new System.Drawing.Size(403, 86);
             this.descriptionTbx.TabIndex = 1;
-            this.descriptionTbx.Text = "";
+            this.descriptionTbx.Text = "Description";
+            this.descriptionTbx.Enter += new System.EventHandler(this.descriptionTbx_Enter);
+            this.descriptionTbx.Leave += new System.EventHandler(this.descriptionTbx_Leave);
             // 
             // addStockDescriptionLbl
             // 
             this.addStockDescriptionLbl.AutoSize = true;
             this.addStockDescriptionLbl.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addStockDescriptionLbl.Location = new System.Drawing.Point(32, 124);
+            this.addStockDescriptionLbl.Location = new System.Drawing.Point(28, 99);
             this.addStockDescriptionLbl.Name = "addStockDescriptionLbl";
-            this.addStockDescriptionLbl.Size = new System.Drawing.Size(214, 44);
+            this.addStockDescriptionLbl.Size = new System.Drawing.Size(180, 33);
             this.addStockDescriptionLbl.TabIndex = 12;
             this.addStockDescriptionLbl.Text = "Description:";
             // 
             // AddStock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 693);
+            this.ClientSize = new System.Drawing.Size(479, 554);
             this.Controls.Add(this.addStockDescriptionLbl);
             this.Controls.Add(this.descriptionTbx);
             this.Controls.Add(this.addStockNameLbl);
@@ -191,6 +202,7 @@
             this.Controls.Add(this.indepoQuantityInput);
             this.Controls.Add(this.StockQuantityLbl);
             this.Controls.Add(this.addStockNameTbx);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddStock";
             this.Text = "Add Stock";
             ((System.ComponentModel.ISupportInitialize)(this.indepoQuantityInput)).EndInit();
