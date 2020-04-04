@@ -31,24 +31,27 @@ namespace MediaBazar
 
         private void requestStockBttn_Click(object sender, EventArgs e)
         {
-            if (requestStockQtty.Value < 1)
+            if (MessageBox.Show("Do you really want to send this stock request?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                MessageBox.Show("Enter quantity");
-                return;
+                if (requestStockQtty.Value < 1)
+                {
+                    MessageBox.Show("Enter quantity");
+                    return;
+                }
+
+                if (requestStockStocksCmbbx.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Select stock");
+                    return;
+                }
+
+                int quantity = (int)requestStockQtty.Value;
+                int stock_id = ((StocksComboBoxItem)requestStockStocksCmbbx.SelectedItem).Id;
+
+                StockRequest.CreateStockRequest(stock_id, quantity);
+                MessageBox.Show("Stock has been requested.");
+                this.Hide();
             }
-
-            if (requestStockStocksCmbbx.SelectedIndex == -1)
-            {
-                MessageBox.Show("Select stock");
-                return;
-            }
-
-            int quantity = (int)requestStockQtty.Value;
-            int stock_id = ((StocksComboBoxItem)requestStockStocksCmbbx.SelectedItem).Id;
-
-            StockRequest.CreateStockRequest(stock_id, quantity);
-            MessageBox.Show("Stock has been requested.");
-            this.Hide();
         }
     }
 }

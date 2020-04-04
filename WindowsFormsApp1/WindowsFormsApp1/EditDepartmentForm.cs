@@ -30,18 +30,21 @@ namespace MediaBazar
                 MessageBox.Show("Please, input description");
                 return;
             }
-            string name = tbxName.Text;
-            string description = rtbDescription.Text;
-            int neededpeople = Convert.ToInt32(numPeople.Value);
-            foreach (Department dep in Department.GetAllDepartments())
+            if (MessageBox.Show("Do you really want to edit this department?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (dep.DepartmentId == depId)
+                string name = tbxName.Text;
+                string description = rtbDescription.Text;
+                int neededpeople = Convert.ToInt32(numPeople.Value);
+                foreach (Department dep in Department.GetAllDepartments())
                 {
-                    dep.EditDepartment(name, description, neededpeople);
+                    if (dep.DepartmentId == depId)
+                    {
+                        dep.EditDepartment(name, description, neededpeople);
+                    }
                 }
-            }
-            this.Close();
-            previousForm.UpdateGUI();
+                this.Close();
+                previousForm.UpdateGUI();
+            } 
         }
 
         private void tbxName_Enter(object sender, EventArgs e)

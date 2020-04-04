@@ -43,8 +43,11 @@ namespace MediaBazar
                 MessageBox.Show("Please enter a valid stock quantity");
                 return;
             }
-            Stock.EditStock(this.id, stocksEditNameTbx.Text, pricePerItemTbx.Value, storeQuantityStock.Value, depoQuantityStock.Value);
-            this.Hide();
+            if (MessageBox.Show("Do you really want to edit that stock?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Stock.EditStock(this.id, stocksEditNameTbx.Text, pricePerItemTbx.Value, storeQuantityStock.Value, depoQuantityStock.Value);
+                this.Hide();
+            }
         }
 
         private void stocksEditNameTbx_Enter(object sender, EventArgs e)

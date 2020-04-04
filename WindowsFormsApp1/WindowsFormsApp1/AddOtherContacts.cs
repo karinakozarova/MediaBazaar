@@ -44,21 +44,24 @@ namespace MediaBazar
             }
             else
             {
-                try
+                if (MessageBox.Show("Do you really want to add this contact?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    FirstName = tbFirstName.Text;
-                    LastName = tbLastName.Text;
-                    DateOfBirth = dtpBirthdate.Value;
-                    Email = tbEmail.Text;
-                    PhoneNumber = Convert.ToInt64(tbPhoneNumber.Text);
-                    p = new Person(FirstName, LastName, DateOfBirth, PhoneNumber, Email);
-                    sendContact = FirstName + " " + LastName + " date of birth: " + DateOfBirth + " tel: " + PhoneNumber + " email: " + Email.ToString();
-                    ca.ShowContact(sendContact);
-                    this.Hide();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Invalid Data!Check person details.");
+                    try
+                    {
+                        FirstName = tbFirstName.Text;
+                        LastName = tbLastName.Text;
+                        DateOfBirth = dtpBirthdate.Value;
+                        Email = tbEmail.Text;
+                        PhoneNumber = Convert.ToInt64(tbPhoneNumber.Text);
+                        p = new Person(FirstName, LastName, DateOfBirth, PhoneNumber, Email);
+                        sendContact = FirstName + " " + LastName + " date of birth: " + DateOfBirth + " tel: " + PhoneNumber + " email: " + Email.ToString();
+                        ca.ShowContact(sendContact);
+                        this.Hide();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Invalid Data!Check person details.");
+                    }
                 }
             }
         }
