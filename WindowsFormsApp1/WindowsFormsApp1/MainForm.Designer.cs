@@ -47,6 +47,7 @@
             this.addNewDepartmentBttn = new System.Windows.Forms.PictureBox();
             this.flpDepartments = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnChangeSchedule = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.employeesTab.SuspendLayout();
             this.stocksTab.SuspendLayout();
@@ -63,22 +64,23 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1287, 615);
+            this.tabControl1.Size = new System.Drawing.Size(1144, 492);
             this.tabControl1.TabIndex = 0;
             // 
             // employeesTab
             // 
+            this.employeesTab.Controls.Add(this.btnChangeSchedule);
             this.employeesTab.Controls.Add(this.btnViewRequests);
             this.employeesTab.Controls.Add(this.btnHireEmployeeRequest);
             this.employeesTab.Controls.Add(this.btnFireEmployeeRequest);
             this.employeesTab.Controls.Add(this.btnSearchEmployee);
             this.employeesTab.Controls.Add(this.btnFireManager);
             this.employeesTab.Controls.Add(this.btnCreateAdminManager);
-            this.employeesTab.Location = new System.Drawing.Point(4, 29);
+            this.employeesTab.Location = new System.Drawing.Point(4, 25);
             this.employeesTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.employeesTab.Name = "employeesTab";
             this.employeesTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.employeesTab.Size = new System.Drawing.Size(1276, 582);
+            this.employeesTab.Size = new System.Drawing.Size(1136, 463);
             this.employeesTab.TabIndex = 0;
             this.employeesTab.Text = "Employees";
             this.employeesTab.UseVisualStyleBackColor = true;
@@ -86,10 +88,10 @@
             // btnViewRequests
             // 
             this.btnViewRequests.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewRequests.Location = new System.Drawing.Point(38, 413);
+            this.btnViewRequests.Location = new System.Drawing.Point(34, 330);
             this.btnViewRequests.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewRequests.Name = "btnViewRequests";
-            this.btnViewRequests.Size = new System.Drawing.Size(1165, 80);
+            this.btnViewRequests.Size = new System.Drawing.Size(1036, 64);
             this.btnViewRequests.TabIndex = 33;
             this.btnViewRequests.Text = "View requests";
             this.btnViewRequests.UseVisualStyleBackColor = true;
@@ -98,10 +100,10 @@
             // btnHireEmployeeRequest
             // 
             this.btnHireEmployeeRequest.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHireEmployeeRequest.Location = new System.Drawing.Point(38, 26);
-            this.btnHireEmployeeRequest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHireEmployeeRequest.Location = new System.Drawing.Point(34, 21);
+            this.btnHireEmployeeRequest.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnHireEmployeeRequest.Name = "btnHireEmployeeRequest";
-            this.btnHireEmployeeRequest.Size = new System.Drawing.Size(1165, 81);
+            this.btnHireEmployeeRequest.Size = new System.Drawing.Size(1036, 65);
             this.btnHireEmployeeRequest.TabIndex = 32;
             this.btnHireEmployeeRequest.Text = "Hire employee request";
             this.btnHireEmployeeRequest.UseVisualStyleBackColor = true;
@@ -110,10 +112,10 @@
             // btnFireEmployeeRequest
             // 
             this.btnFireEmployeeRequest.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFireEmployeeRequest.Location = new System.Drawing.Point(38, 159);
-            this.btnFireEmployeeRequest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFireEmployeeRequest.Location = new System.Drawing.Point(34, 127);
+            this.btnFireEmployeeRequest.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnFireEmployeeRequest.Name = "btnFireEmployeeRequest";
-            this.btnFireEmployeeRequest.Size = new System.Drawing.Size(1165, 81);
+            this.btnFireEmployeeRequest.Size = new System.Drawing.Size(1036, 65);
             this.btnFireEmployeeRequest.TabIndex = 31;
             this.btnFireEmployeeRequest.Text = "Fire employee request";
             this.btnFireEmployeeRequest.UseVisualStyleBackColor = true;
@@ -122,10 +124,10 @@
             // btnSearchEmployee
             // 
             this.btnSearchEmployee.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchEmployee.Location = new System.Drawing.Point(38, 283);
+            this.btnSearchEmployee.Location = new System.Drawing.Point(34, 226);
             this.btnSearchEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearchEmployee.Name = "btnSearchEmployee";
-            this.btnSearchEmployee.Size = new System.Drawing.Size(1165, 80);
+            this.btnSearchEmployee.Size = new System.Drawing.Size(1036, 64);
             this.btnSearchEmployee.TabIndex = 30;
             this.btnSearchEmployee.Text = "Search for employee";
             this.btnSearchEmployee.UseVisualStyleBackColor = true;
@@ -134,10 +136,10 @@
             // btnFireManager
             // 
             this.btnFireManager.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFireManager.Location = new System.Drawing.Point(38, 159);
-            this.btnFireManager.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFireManager.Location = new System.Drawing.Point(34, 127);
+            this.btnFireManager.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnFireManager.Name = "btnFireManager";
-            this.btnFireManager.Size = new System.Drawing.Size(1165, 81);
+            this.btnFireManager.Size = new System.Drawing.Size(1036, 65);
             this.btnFireManager.TabIndex = 29;
             this.btnFireManager.Text = "Fire manager";
             this.btnFireManager.UseVisualStyleBackColor = true;
@@ -146,10 +148,10 @@
             // btnCreateAdminManager
             // 
             this.btnCreateAdminManager.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateAdminManager.Location = new System.Drawing.Point(38, 26);
+            this.btnCreateAdminManager.Location = new System.Drawing.Point(34, 21);
             this.btnCreateAdminManager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreateAdminManager.Name = "btnCreateAdminManager";
-            this.btnCreateAdminManager.Size = new System.Drawing.Size(1165, 81);
+            this.btnCreateAdminManager.Size = new System.Drawing.Size(1036, 65);
             this.btnCreateAdminManager.TabIndex = 27;
             this.btnCreateAdminManager.Text = "Create admin/manager";
             this.btnCreateAdminManager.UseVisualStyleBackColor = true;
@@ -161,11 +163,11 @@
             this.stocksTab.Controls.Add(this.viewStocksBttn);
             this.stocksTab.Controls.Add(this.viewUpcomingShelfRestocksBttn);
             this.stocksTab.Controls.Add(this.createStockBttn);
-            this.stocksTab.Location = new System.Drawing.Point(4, 29);
+            this.stocksTab.Location = new System.Drawing.Point(4, 25);
             this.stocksTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.stocksTab.Name = "stocksTab";
             this.stocksTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.stocksTab.Size = new System.Drawing.Size(1279, 582);
+            this.stocksTab.Size = new System.Drawing.Size(1136, 463);
             this.stocksTab.TabIndex = 1;
             this.stocksTab.Text = "Stocks";
             this.stocksTab.UseVisualStyleBackColor = true;
@@ -173,10 +175,10 @@
             // requestStockBttn
             // 
             this.requestStockBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.requestStockBttn.Location = new System.Drawing.Point(32, 320);
+            this.requestStockBttn.Location = new System.Drawing.Point(28, 256);
             this.requestStockBttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.requestStockBttn.Name = "requestStockBttn";
-            this.requestStockBttn.Size = new System.Drawing.Size(1186, 85);
+            this.requestStockBttn.Size = new System.Drawing.Size(1054, 68);
             this.requestStockBttn.TabIndex = 30;
             this.requestStockBttn.Text = "Request Stock";
             this.requestStockBttn.UseVisualStyleBackColor = true;
@@ -185,10 +187,10 @@
             // viewStocksBttn
             // 
             this.viewStocksBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewStocksBttn.Location = new System.Drawing.Point(32, 183);
+            this.viewStocksBttn.Location = new System.Drawing.Point(28, 146);
             this.viewStocksBttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.viewStocksBttn.Name = "viewStocksBttn";
-            this.viewStocksBttn.Size = new System.Drawing.Size(1186, 82);
+            this.viewStocksBttn.Size = new System.Drawing.Size(1054, 66);
             this.viewStocksBttn.TabIndex = 29;
             this.viewStocksBttn.Text = "View Stocks";
             this.viewStocksBttn.UseVisualStyleBackColor = true;
@@ -197,10 +199,10 @@
             // viewUpcomingShelfRestocksBttn
             // 
             this.viewUpcomingShelfRestocksBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewUpcomingShelfRestocksBttn.Location = new System.Drawing.Point(32, 42);
+            this.viewUpcomingShelfRestocksBttn.Location = new System.Drawing.Point(28, 34);
             this.viewUpcomingShelfRestocksBttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.viewUpcomingShelfRestocksBttn.Name = "viewUpcomingShelfRestocksBttn";
-            this.viewUpcomingShelfRestocksBttn.Size = new System.Drawing.Size(1186, 87);
+            this.viewUpcomingShelfRestocksBttn.Size = new System.Drawing.Size(1054, 70);
             this.viewUpcomingShelfRestocksBttn.TabIndex = 28;
             this.viewUpcomingShelfRestocksBttn.Text = "View upcoming shelf requests";
             this.viewUpcomingShelfRestocksBttn.UseVisualStyleBackColor = true;
@@ -209,10 +211,10 @@
             // createStockBttn
             // 
             this.createStockBttn.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createStockBttn.Location = new System.Drawing.Point(32, 457);
+            this.createStockBttn.Location = new System.Drawing.Point(28, 366);
             this.createStockBttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.createStockBttn.Name = "createStockBttn";
-            this.createStockBttn.Size = new System.Drawing.Size(1186, 88);
+            this.createStockBttn.Size = new System.Drawing.Size(1054, 70);
             this.createStockBttn.TabIndex = 27;
             this.createStockBttn.Text = "Create stock";
             this.createStockBttn.UseVisualStyleBackColor = true;
@@ -224,10 +226,10 @@
             this.departmentsTab.Controls.Add(this.addNewDepartmentBttn);
             this.departmentsTab.Controls.Add(this.flpDepartments);
             this.departmentsTab.Controls.Add(this.label4);
-            this.departmentsTab.Location = new System.Drawing.Point(4, 29);
+            this.departmentsTab.Location = new System.Drawing.Point(4, 25);
             this.departmentsTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.departmentsTab.Name = "departmentsTab";
-            this.departmentsTab.Size = new System.Drawing.Size(1279, 582);
+            this.departmentsTab.Size = new System.Drawing.Size(1136, 463);
             this.departmentsTab.TabIndex = 2;
             this.departmentsTab.Text = "Departments";
             this.departmentsTab.UseVisualStyleBackColor = true;
@@ -235,10 +237,10 @@
             // additionalDepartmentActionsBttn
             // 
             this.additionalDepartmentActionsBttn.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.additionalDepartmentActionsBttn.Location = new System.Drawing.Point(809, 48);
-            this.additionalDepartmentActionsBttn.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
+            this.additionalDepartmentActionsBttn.Location = new System.Drawing.Point(719, 38);
+            this.additionalDepartmentActionsBttn.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.additionalDepartmentActionsBttn.Name = "additionalDepartmentActionsBttn";
-            this.additionalDepartmentActionsBttn.Size = new System.Drawing.Size(327, 65);
+            this.additionalDepartmentActionsBttn.Size = new System.Drawing.Size(291, 52);
             this.additionalDepartmentActionsBttn.TabIndex = 19;
             this.additionalDepartmentActionsBttn.Text = "Additional Actions";
             this.additionalDepartmentActionsBttn.UseVisualStyleBackColor = true;
@@ -247,10 +249,10 @@
             // addNewDepartmentBttn
             // 
             this.addNewDepartmentBttn.Image = ((System.Drawing.Image)(resources.GetObject("addNewDepartmentBttn.Image")));
-            this.addNewDepartmentBttn.Location = new System.Drawing.Point(1154, 48);
+            this.addNewDepartmentBttn.Location = new System.Drawing.Point(1026, 38);
             this.addNewDepartmentBttn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addNewDepartmentBttn.Name = "addNewDepartmentBttn";
-            this.addNewDepartmentBttn.Size = new System.Drawing.Size(65, 61);
+            this.addNewDepartmentBttn.Size = new System.Drawing.Size(58, 49);
             this.addNewDepartmentBttn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.addNewDepartmentBttn.TabIndex = 17;
             this.addNewDepartmentBttn.TabStop = false;
@@ -260,27 +262,39 @@
             // 
             this.flpDepartments.AutoScroll = true;
             this.flpDepartments.Font = new System.Drawing.Font("Montserrat", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flpDepartments.Location = new System.Drawing.Point(45, 132);
-            this.flpDepartments.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
+            this.flpDepartments.Location = new System.Drawing.Point(40, 106);
+            this.flpDepartments.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.flpDepartments.Name = "flpDepartments";
-            this.flpDepartments.Size = new System.Drawing.Size(1206, 435);
+            this.flpDepartments.Size = new System.Drawing.Size(1072, 348);
             this.flpDepartments.TabIndex = 13;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(43, 56);
+            this.label4.Location = new System.Drawing.Point(38, 45);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(251, 44);
+            this.label4.Size = new System.Drawing.Size(205, 33);
             this.label4.TabIndex = 12;
             this.label4.Text = "Departments:";
             // 
+            // btnChangeSchedule
+            // 
+            this.btnChangeSchedule.Font = new System.Drawing.Font("Montserrat", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeSchedule.Location = new System.Drawing.Point(34, 330);
+            this.btnChangeSchedule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnChangeSchedule.Name = "btnChangeSchedule";
+            this.btnChangeSchedule.Size = new System.Drawing.Size(1036, 64);
+            this.btnChangeSchedule.TabIndex = 34;
+            this.btnChangeSchedule.Text = "Change employee\'s schedule";
+            this.btnChangeSchedule.UseVisualStyleBackColor = true;
+            this.btnChangeSchedule.Click += new System.EventHandler(this.BtnChangeSchedule_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1286, 626);
+            this.ClientSize = new System.Drawing.Size(1143, 501);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
@@ -320,5 +334,6 @@
         private System.Windows.Forms.PictureBox addNewDepartmentBttn;
         private System.Windows.Forms.Button btnViewRequests;
         private System.Windows.Forms.Button additionalDepartmentActionsBttn;
+        private System.Windows.Forms.Button btnChangeSchedule;
     }
 }

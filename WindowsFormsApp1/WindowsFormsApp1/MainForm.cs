@@ -26,6 +26,7 @@ namespace MediaBazar
             {
                 btnFireEmployeeRequest.Visible = false;
                 btnHireEmployeeRequest.Visible = false;
+                btnChangeSchedule.Visible = false;
             }
             else if (workerRole == (int)ProfileRoles.MANAGER)
             {
@@ -121,6 +122,11 @@ namespace MediaBazar
         private void btnSearchEmployee_Click(object sender, EventArgs e)
         {
             (new SearchForEmployee()).Show();
+        }
+
+        private void BtnChangeSchedule_Click(object sender, EventArgs e)
+        {
+            (new ChangeSchedule(this.user_id)).Show();
         }
     }
 }

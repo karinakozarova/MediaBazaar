@@ -150,6 +150,12 @@
     <Compile Include="ApproveManagerRequests.Designer.cs">
       <DependentUpon>ApproveManagerRequests.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangeSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeSchedule.Designer.cs">
+      <DependentUpon>ChangeSchedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -309,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ApproveManagerRequests.resx">
       <DependentUpon>ApproveManagerRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeSchedule.resx">
+      <DependentUpon>ChangeSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
