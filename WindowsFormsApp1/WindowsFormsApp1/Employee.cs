@@ -78,5 +78,98 @@ namespace MediaBazar
             }
             return employees;
         }
+
+        public static List<int> GetEmployeeWorkingDays(int id)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+
+            List<int> workingDays = new List<int>();
+            try
+            {
+                string sql = "SELECT week_day_id FROM employee_working_days WHERE employee_id=@employee_id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@employee_id", id);
+                conn.Open();
+                MySqlDataReader row = cmd.ExecuteReader();
+
+                while (row.Read())
+                {
+                    workingDays.Add(Convert.ToInt32(row[0]));
+                }
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return workingDays;
+        }
+        public static List<string> GetEmployeeWorkingShifts(int id)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+
+            List<string> workingShifts = new List<string>();
+            try
+            {
+                string sql = "SELECT shift FROM employee_working_days WHERE employee_id=@employee_id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@employee_id", id);
+                conn.Open();
+                MySqlDataReader row = cmd.ExecuteReader();
+
+                while (row.Read())
+                {
+                    workingShifts.Add(row[0].ToString());
+                }
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return workingShifts;
+        }
+
+        public static void ChangeEmployeeShift(int employeeId, List<int> workingDays, List<int> workingShifts)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                string sqlDeleteSchedule = "DELETE FROM employee_working_days WHERE employee_id=@employee_id";
+                MySqlCommand cmdDeleteSchedule = new MySqlCommand(sqlDeleteSchedule, conn);
+                cmdDeleteSchedule.Parameters.AddWithValue("@employee_id", employeeId);
+                conn.Open();
+                cmdDeleteSchedule.ExecuteNonQuery();
+
+
+                foreach (int shift in workingShifts)
+                {
+                    foreach (int day in workingDays)
+                    {
+                        string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift) VALUE(@userId,@week_day_id, @shift)";
+                        MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
+                        shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
+                        shiftsQueryCmd.Parameters.AddWithValue("@userId", employeeId);
+                        shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
+                        shiftsQueryCmd.ExecuteNonQuery();
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }
