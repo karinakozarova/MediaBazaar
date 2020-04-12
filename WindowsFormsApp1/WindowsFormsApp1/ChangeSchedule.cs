@@ -24,8 +24,8 @@ namespace MediaBazar
             workshifts = new List<int>();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.userId = id;
-            groupBox1.Enabled = false;
-            groupBox2.Enabled = false;
+            gbShifts.Enabled = false;
+            gbWorkDays.Enabled = false;
         }
 
         private void PopulateEmployees(List<Employee> employees)
@@ -100,10 +100,12 @@ namespace MediaBazar
 
         private void CbEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
-            groupBox1.Enabled = true;
-            groupBox2.Enabled = true;
+            gbShifts.Enabled = true;
+            gbWorkDays.Enabled = true;
             int employeeId = ((EmployeeComboBoxItem)cbEmployee.SelectedItem).Id;
-            PopulateSchedule(Employee.GetEmployeeWorkingDays(employeeId), Employee.GetEmployeeWorkingShifts(employeeId));
+            List<int> workDays = Employee.GetEmployeeWorkingDays(employeeId);
+            List<string> workShifts = Employee.GetEmployeeWorkingShifts(employeeId);
+            PopulateSchedule(workDays, workShifts);
         }
 
         private void BtnSaveChanges_Click(object sender, EventArgs e)
@@ -176,7 +178,7 @@ namespace MediaBazar
                     }
                     catch(Exception)
                     {
-
+                        // TODO: add it to error log in the future
                     }
                     finally
                     {
@@ -195,6 +197,8 @@ namespace MediaBazar
                     cbSunday.Checked = false;
                     cbWednesday.Checked = false;
                     cbFriday.Checked = false;
+                    gbShifts.Enabled = false;
+                    gbWorkDays.Enabled = false;
                 }
             }
             

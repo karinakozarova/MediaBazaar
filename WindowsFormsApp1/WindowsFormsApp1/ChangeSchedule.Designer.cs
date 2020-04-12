@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gbShifts = new System.Windows.Forms.GroupBox();
+            this.gbWorkDays = new System.Windows.Forms.GroupBox();
             this.cbEmployee = new System.Windows.Forms.ComboBox();
             this.rtbMessage = new System.Windows.Forms.RichTextBox();
             this.btnSaveChanges = new System.Windows.Forms.Button();
@@ -43,43 +43,43 @@
             this.cbFriday = new System.Windows.Forms.CheckBox();
             this.cbSaturday = new System.Windows.Forms.CheckBox();
             this.cbSunday = new System.Windows.Forms.CheckBox();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gbShifts.SuspendLayout();
+            this.gbWorkDays.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // gbShifts
             // 
-            this.groupBox1.Controls.Add(this.cbEveningShift);
-            this.groupBox1.Controls.Add(this.cbAfternoonShift);
-            this.groupBox1.Controls.Add(this.cbMorningShift);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(13, 79);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(470, 81);
-            this.groupBox1.TabIndex = 83;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Workshifts";
+            this.gbShifts.Controls.Add(this.cbEveningShift);
+            this.gbShifts.Controls.Add(this.cbAfternoonShift);
+            this.gbShifts.Controls.Add(this.cbMorningShift);
+            this.gbShifts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbShifts.Location = new System.Drawing.Point(13, 79);
+            this.gbShifts.Margin = new System.Windows.Forms.Padding(4);
+            this.gbShifts.Name = "gbShifts";
+            this.gbShifts.Padding = new System.Windows.Forms.Padding(4);
+            this.gbShifts.Size = new System.Drawing.Size(470, 81);
+            this.gbShifts.TabIndex = 83;
+            this.gbShifts.TabStop = false;
+            this.gbShifts.Text = "Workshifts";
             // 
-            // groupBox2
+            // gbWorkDays
             // 
-            this.groupBox2.Controls.Add(this.cbSunday);
-            this.groupBox2.Controls.Add(this.cbSaturday);
-            this.groupBox2.Controls.Add(this.cbFriday);
-            this.groupBox2.Controls.Add(this.cbThursday);
-            this.groupBox2.Controls.Add(this.cbWednesday);
-            this.groupBox2.Controls.Add(this.cbTuesday);
-            this.groupBox2.Controls.Add(this.cbMonday);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(13, 168);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(470, 129);
-            this.groupBox2.TabIndex = 84;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Available days";
+            this.gbWorkDays.Controls.Add(this.cbSunday);
+            this.gbWorkDays.Controls.Add(this.cbSaturday);
+            this.gbWorkDays.Controls.Add(this.cbFriday);
+            this.gbWorkDays.Controls.Add(this.cbThursday);
+            this.gbWorkDays.Controls.Add(this.cbWednesday);
+            this.gbWorkDays.Controls.Add(this.cbTuesday);
+            this.gbWorkDays.Controls.Add(this.cbMonday);
+            this.gbWorkDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbWorkDays.Location = new System.Drawing.Point(13, 168);
+            this.gbWorkDays.Margin = new System.Windows.Forms.Padding(4);
+            this.gbWorkDays.Name = "gbWorkDays";
+            this.gbWorkDays.Padding = new System.Windows.Forms.Padding(4);
+            this.gbWorkDays.Size = new System.Drawing.Size(470, 129);
+            this.gbWorkDays.TabIndex = 84;
+            this.gbWorkDays.TabStop = false;
+            this.gbWorkDays.Text = "Available days";
             // 
             // cbEmployee
             // 
@@ -234,22 +234,22 @@
             this.Controls.Add(this.btnSaveChanges);
             this.Controls.Add(this.rtbMessage);
             this.Controls.Add(this.cbEmployee);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbWorkDays);
+            this.Controls.Add(this.gbShifts);
             this.Name = "ChangeSchedule";
             this.Text = "ChangeSchedule";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gbShifts.ResumeLayout(false);
+            this.gbShifts.PerformLayout();
+            this.gbWorkDays.ResumeLayout(false);
+            this.gbWorkDays.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbShifts;
+        private System.Windows.Forms.GroupBox gbWorkDays;
         private System.Windows.Forms.ComboBox cbEmployee;
         private System.Windows.Forms.RichTextBox rtbMessage;
         private System.Windows.Forms.Button btnSaveChanges;
