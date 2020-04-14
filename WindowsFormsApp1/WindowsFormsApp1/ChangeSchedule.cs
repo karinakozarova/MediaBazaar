@@ -13,6 +13,7 @@ namespace MediaBazar
 {
     public partial class ChangeSchedule : Form
     {
+        private const string Status = "unread";
         private int userId;
         List<int> workdays;
         List<int> workshifts;
@@ -164,16 +165,19 @@ namespace MediaBazar
                     }
                     int employeeId = ((EmployeeComboBoxItem)cbEmployee.SelectedItem).Id;
                     Employee.ChangeEmployeeShift(employeeId, this.workdays, this.workshifts);
-
+                    DateTime today = DateTime.Now;
+                    
                     MySqlConnection conn = Utils.GetConnection();
                     try
                     {
-                        string sendNotification = "INSERT INTO notifications (employee_id, created_by_id, message) VALUE(@employee_id, @user_id, @message)";
+                        string sendNotification = "INSERT INTO notifications (employee_id, created_by_id, message, datetime, status) VALUE(@employee_id, @user_id, @message, @datetime, @status)";
                         MySqlCommand notificationQuery = new MySqlCommand(sendNotification, conn);
                         conn.Open();
                         notificationQuery.Parameters.AddWithValue("@employee_id", employeeId);
                         notificationQuery.Parameters.AddWithValue("@user_id", this.userId);
                         notificationQuery.Parameters.AddWithValue("@message", message);
+                        notificationQuery.Parameters.AddWithValue("@datetime", today);
+                        notificationQuery.Parameters.AddWithValue("@status", Status);
                         notificationQuery.ExecuteNonQuery();
                     }
                     catch(Exception)
