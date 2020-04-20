@@ -15,6 +15,7 @@ namespace MediaBazar
         List<RequestControl> controls;
         List<FiringRequests> firingRequests;
         List<HiringRequests> hiringRequests;
+        List<PromotionRequests> promotionrequests;
         public ApproveManagerRequests()
         {
             InitializeComponent();
@@ -29,10 +30,15 @@ namespace MediaBazar
             flpRequests.Controls.Clear();
             firingRequests = FiringRequests.GetAllFiringRequests();
             hiringRequests = HiringRequests.GetAllHiringRequests();
-
+            promotionrequests = PromotionRequests.GetAllPromotionRequests();
             foreach (FiringRequests fr in firingRequests)
             {
                 controls.Add(new RequestControl(fr.PersonId, fr.CreatedById, fr.DepartmentId, fr.Description, fr.FirstName, fr.LastName, fr.Username, this));
+            }
+
+            foreach(PromotionRequests pr in promotionrequests)
+            {
+                controls.Add(new RequestControl(pr.PersonId, pr.CreatedById, pr.Username, pr.FirstName, pr.LastName, pr.HourlyWage, pr.DepartmentId, this));
             }
 
             foreach(HiringRequests hr in hiringRequests)

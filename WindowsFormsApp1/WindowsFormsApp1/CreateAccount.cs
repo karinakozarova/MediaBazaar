@@ -135,7 +135,7 @@ namespace MediaBazar
                             int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
                             pc.CreateWorker(accountType, username, password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneN, email, hourlyWage, contractStartDate, departmentId);//adds worker to person table
 
-                            string contractQuery = "INSERT into contract (person_id, contract_start) VALUES (@person_id, @contract_start);";
+                            string contractQuery = "INSERT into contract (person_id, contract_start,contract_status) VALUES (@person_id, @contract_start,0);";
                             MySqlCommand contractCmd = new MySqlCommand(contractQuery, conn);
                             contractCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
                             contractCmd.Parameters.AddWithValue("@contract_start", contractStartDate);

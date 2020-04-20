@@ -27,6 +27,7 @@ namespace MediaBazar
                 btnFireEmployeeRequest.Visible = false;
                 btnHireEmployeeRequest.Visible = false;
                 btnChangeSchedule.Visible = false;
+                btnPromoteEmployee.Visible = false;
             }
             else if (workerRole == (int)ProfileRoles.MANAGER)
             {
@@ -41,6 +42,7 @@ namespace MediaBazar
                 tabControl1.TabPages.Remove(departmentsTab);
                 requestStockBttn.Visible = false;
                 createStockBttn.Visible = false;
+                btnPromoteEmployee.Visible = false;
             }
         }
 
@@ -127,6 +129,11 @@ namespace MediaBazar
         private void BtnChangeSchedule_Click(object sender, EventArgs e)
         {
             (new ChangeSchedule(this.user_id)).Show();
+        }
+
+        private void btnPromoteEmployee_Click(object sender, EventArgs e)
+        {
+            (new PromotionRequest(this.user_id)).Show();
         }
     }
 }
