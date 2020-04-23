@@ -1,6 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MediaBazar
 {
@@ -84,9 +87,20 @@ namespace MediaBazar
             MySqlConnection conn = Utils.GetConnection();
 
             List<int> workingDays = new List<int>();
+
+            DateTime startOfWeek = DateTime.Today.AddDays(
+            (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
+            (int)DateTime.Today.DayOfWeek);
+
+            string result = string.Join("," + Environment.NewLine, Enumerable
+              .Range(0, 7)
+              .Select(i => startOfWeek
+                 .AddDays(i)
+                 .ToString("yyyy/MMMM/dd")));
+            var arrayCurrentWeek = result.Split(',');
             try
             {
-                string sql = "SELECT week_day_id FROM employee_working_days WHERE employee_id=@employee_id";
+                string sql = "SELECT week_day_id, assigned_date FROM employee_working_days WHERE employee_id=@employee_id";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@employee_id", id);
                 conn.Open();
@@ -94,7 +108,20 @@ namespace MediaBazar
 
                 while (row.Read())
                 {
-                    workingDays.Add(Convert.ToInt32(row[0]));
+                    DateTime date = (DateTime)row[1];
+                    string returnedDate = date.ToString("yyyy/MMMM/dd");
+                    foreach (string s in arrayCurrentWeek)
+                    {
+                        string trimmedDate = s;
+                        if (s.Contains("\r\n"))
+                        {
+                            trimmedDate = s.Replace("\r\n", "");
+                        }
+                        if(returnedDate == trimmedDate)
+                        {
+                            workingDays.Add(Convert.ToInt32(row[0]));
+                        }
+                    }
                 }
             }
             catch (Exception)
@@ -112,9 +139,20 @@ namespace MediaBazar
             MySqlConnection conn = Utils.GetConnection();
 
             List<string> workingShifts = new List<string>();
+
+            DateTime startOfWeek = DateTime.Today.AddDays(
+            (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
+            (int)DateTime.Today.DayOfWeek);
+
+            string result = string.Join("," + Environment.NewLine, Enumerable
+              .Range(0, 7)
+              .Select(i => startOfWeek
+                 .AddDays(i)
+                 .ToString("yyyy/MMMM/dd")));
+            var arrayCurrentWeek = result.Split(',');
             try
             {
-                string sql = "SELECT shift FROM employee_working_days WHERE employee_id=@employee_id";
+                string sql = "SELECT shift, assigned_date FROM employee_working_days WHERE employee_id=@employee_id";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@employee_id", id);
                 conn.Open();
@@ -122,7 +160,20 @@ namespace MediaBazar
 
                 while (row.Read())
                 {
-                    workingShifts.Add(row[0].ToString());
+                    DateTime date = (DateTime)row[1];
+                    string returnedDate = date.ToString("yyyy/MMMM/dd");
+                    foreach(string s in arrayCurrentWeek)
+                    {
+                        string trimmedDate = s;
+                        if (s.Contains("\r\n"))
+                        {
+                            trimmedDate = s.Replace("\r\n", "");
+                        }
+                        if (returnedDate == trimmedDate)
+                        {
+                            workingShifts.Add(row[0].ToString());
+                        }
+                    }
                 }
             }
             catch (Exception)

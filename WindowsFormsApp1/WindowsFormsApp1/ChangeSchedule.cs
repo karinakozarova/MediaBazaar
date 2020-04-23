@@ -15,14 +15,14 @@ namespace MediaBazar
     {
         private const string Status = "unread";
         private int userId;
-        List<int> workdays;
-        List<int> workshifts;
+        List<int> workingDays;
+        List<int> workingShifts;
         public ChangeSchedule(int id)
         {
             InitializeComponent();
             PopulateEmployees(Employee.GetAllEmployees());
-            workdays = new List<int>();
-            workshifts = new List<int>();
+            workingDays = new List<int>();
+            workingShifts = new List<int>();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.userId = id;
             gbShifts.Enabled = false;
@@ -125,46 +125,46 @@ namespace MediaBazar
                 {
                     if (cbMonday.Checked)
                     {
-                        this.workdays.Add(0);
+                        this.workingDays.Add(0);
                     }
                     if (cbTuesday.Checked)
                     {
-                        this.workdays.Add(1);
+                        this.workingDays.Add(1);
                     }
                     if (cbWednesday.Checked)
                     {
-                        this.workdays.Add(2);
+                        this.workingDays.Add(2);
                     }
                     if (cbThursday.Checked)
                     {
-                        this.workdays.Add(3);
+                        this.workingDays.Add(3);
                     }
                     if (cbFriday.Checked)
                     {
-                        this.workdays.Add(4);
+                        this.workingDays.Add(4);
                     }
                     if (cbSaturday.Checked)
                     {
-                        this.workdays.Add(5);
+                        this.workingDays.Add(5);
                     }
                     if (cbSunday.Checked)
                     {
-                        this.workdays.Add(6);
+                        this.workingDays.Add(6);
                     }
                     if (cbMorningShift.Checked)
                     {
-                        this.workshifts.Add(1);
+                        this.workingShifts.Add(1);
                     }
                     if (cbAfternoonShift.Checked)
                     {
-                        this.workshifts.Add(2);
+                        this.workingShifts.Add(2);
                     }
                     if (cbEveningShift.Checked)
                     {
-                        this.workshifts.Add(3);
+                        this.workingShifts.Add(3);
                     }
                     int employeeId = ((EmployeeComboBoxItem)cbEmployee.SelectedItem).Id;
-                    Employee.ChangeEmployeeShift(employeeId, this.workdays, this.workshifts);
+                    Employee.ChangeEmployeeShift(employeeId, this.workingDays, this.workingShifts);
                     DateTime today = DateTime.Now;
                     
                     MySqlConnection conn = Utils.GetConnection();
