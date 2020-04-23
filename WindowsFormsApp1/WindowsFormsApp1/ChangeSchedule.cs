@@ -17,6 +17,7 @@ namespace MediaBazar
     {
         private const string Status = "unread";
         private int userId;
+        private const int SmtpServerPort = 587;
         List<int> workdays;
         List<int> workshifts;
         public ChangeSchedule(int id)
@@ -168,7 +169,6 @@ namespace MediaBazar
                     int employeeId = ((EmployeeComboBoxItem)cbEmployee.SelectedItem).Id;
                     Employee.ChangeEmployeeShift(employeeId, this.workdays, this.workshifts);
                     DateTime today = DateTime.Now;
-                    string employeeEmail = "";
                     
                     MySqlConnection conn = Utils.GetConnection();
                     try
@@ -186,23 +186,19 @@ namespace MediaBazar
                         string getEmployeeEmail = "SELECT email FROM person WHERE id=@employee_id";
                         MySqlCommand getEmployeeEmailQuery = new MySqlCommand(getEmployeeEmail, conn);
                         getEmployeeEmailQuery.Parameters.AddWithValue("@employee_id", employeeId);
-                        Object emailResult = getEmployeeEmailQuery.ExecuteScalar();
+                        string emailResult = getEmployeeEmailQuery.ExecuteScalar().ToString();
 
-                        if (emailResult != null)
-                        {
-                            employeeEmail = emailResult.ToString();
-                        }
                         try
                         {
                             MailMessage mail = new MailMessage();
                             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
                             mail.From = new MailAddress("mediabazaartest@gmail.com");
-                            mail.To.Add(employeeEmail);
+                            mail.To.Add(emailResult);
                             mail.Subject = "New notification!";
                             mail.Body = "Hey you have a new notification on the website! Go and check it out: <link here>.";
 
-                            SmtpServer.Port = 587;
+                            SmtpServer.Port = SmtpServerPort;
                             SmtpServer.Credentials = new System.Net.NetworkCredential("MediaBazaarTest@gmail.com", "MediaBazaar!Test123");
                             SmtpServer.EnableSsl = true;
 
