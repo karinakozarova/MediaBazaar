@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Net.Mail;
+using System.Net;
 
 namespace MediaBazar
 {
@@ -15,6 +17,7 @@ namespace MediaBazar
     {
         private const string Status = "unread";
         private int userId;
+        private const int SmtpServerPort = 587;
         List<int> workdays;
         List<int> workshifts;
         public ChangeSchedule(int id)
@@ -179,6 +182,33 @@ namespace MediaBazar
                         notificationQuery.Parameters.AddWithValue("@datetime", today);
                         notificationQuery.Parameters.AddWithValue("@status", Status);
                         notificationQuery.ExecuteNonQuery();
+
+                        string getEmployeeEmail = "SELECT email FROM person WHERE id=@employee_id";
+                        MySqlCommand getEmployeeEmailQuery = new MySqlCommand(getEmployeeEmail, conn);
+                        getEmployeeEmailQuery.Parameters.AddWithValue("@employee_id", employeeId);
+                        string emailResult = getEmployeeEmailQuery.ExecuteScalar().ToString();
+
+                        try
+                        {
+                            MailMessage mail = new MailMessage();
+                            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                            mail.From = new MailAddress("mediabazaartest@gmail.com");
+                            mail.To.Add(emailResult);
+                            mail.Subject = "New notification!";
+                            mail.Body = "Hey you have a new notification on the website! Go and check it out: <link here>.";
+
+                            SmtpServer.Port = SmtpServerPort;
+                            SmtpServer.Credentials = new System.Net.NetworkCredential("MediaBazaarTest@gmail.com", "MediaBazaar!Test123");
+                            SmtpServer.EnableSsl = true;
+
+                            SmtpServer.Send(mail);
+                            MessageBox.Show("Mail sent!");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                        }
                     }
                     catch(Exception)
                     {
