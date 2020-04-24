@@ -185,9 +185,10 @@ namespace MediaBazar
                 contractUpdateCmd.Parameters.AddWithValue("@person_id", PersonId);
                 contractUpdateCmd.ExecuteNonQuery();
 
-                string createNewContractQuery = "INSERT INTO contract (person_id, contract_start,contract_status) VALUES (@person_id, @contract_start,0)";
+                string createNewContractQuery = "INSERT INTO contract (person_id, contract_start,contract_status,contract_hourlywage) VALUES (@person_id, @contract_start,0,@hourlywage)";
                 MySqlCommand createNewContractCmd = new MySqlCommand(createNewContractQuery, conn);
                 createNewContractCmd.Parameters.AddWithValue("@person_id",PersonId);
+                createNewContractCmd.Parameters.AddWithValue("@hourlywage", HourlyWage);
                 createNewContractCmd.Parameters.AddWithValue("@contract_start", GetDateTime());
                 createNewContractCmd.ExecuteNonQuery();
 

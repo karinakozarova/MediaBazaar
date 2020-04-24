@@ -433,6 +433,28 @@ namespace MediaBazar
             return ids;
         }
 
+        public static decimal GetworkerCurrentWage(int id)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            decimal wage = 0;
+            try
+            {
+                string sql = "SELECT hourly_wage FROM employee_details WHERE person_id = @person_id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@person_id", id);
+                conn.Open();
+                Object currentWage = cmd.ExecuteScalar();
+                wage = Convert.ToDecimal(currentWage);
+            }
+            catch (Exception ex)
+            {
+                String e = ex.Message;
+            }
+            finally { conn.Close(); }
+
+            return wage;
+        }
+
         public override string ToString()
         {
             return "Worker";

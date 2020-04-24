@@ -35,6 +35,8 @@
             this.btnSendPromotionRequest = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.numericHourlywage = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblCurrentWage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericHourlywage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +54,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 67);
+            this.label2.Location = new System.Drawing.Point(12, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(148, 22);
             this.label2.TabIndex = 1;
@@ -62,7 +64,7 @@
             // 
             this.cmbDepartment.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDepartment.FormattingEnabled = true;
-            this.cmbDepartment.Location = new System.Drawing.Point(16, 34);
+            this.cmbDepartment.Location = new System.Drawing.Point(184, 6);
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(145, 30);
             this.cmbDepartment.TabIndex = 2;
@@ -72,15 +74,16 @@
             // 
             this.cmbEmployee.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmployee.FormattingEnabled = true;
-            this.cmbEmployee.Location = new System.Drawing.Point(16, 92);
+            this.cmbEmployee.Location = new System.Drawing.Point(184, 50);
             this.cmbEmployee.Name = "cmbEmployee";
             this.cmbEmployee.Size = new System.Drawing.Size(145, 30);
             this.cmbEmployee.TabIndex = 3;
+            this.cmbEmployee.SelectedIndexChanged += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
             // btnSendPromotionRequest
             // 
             this.btnSendPromotionRequest.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendPromotionRequest.Location = new System.Drawing.Point(16, 183);
+            this.btnSendPromotionRequest.Location = new System.Drawing.Point(95, 174);
             this.btnSendPromotionRequest.Name = "btnSendPromotionRequest";
             this.btnSendPromotionRequest.Size = new System.Drawing.Size(145, 35);
             this.btnSendPromotionRequest.TabIndex = 4;
@@ -92,7 +95,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 125);
+            this.label3.Location = new System.Drawing.Point(12, 139);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 22);
             this.label3.TabIndex = 5;
@@ -101,7 +104,7 @@
             // numericHourlywage
             // 
             this.numericHourlywage.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericHourlywage.Location = new System.Drawing.Point(16, 150);
+            this.numericHourlywage.Location = new System.Drawing.Point(184, 137);
             this.numericHourlywage.Maximum = new decimal(new int[] {
             999,
             0,
@@ -111,11 +114,33 @@
             this.numericHourlywage.Size = new System.Drawing.Size(145, 27);
             this.numericHourlywage.TabIndex = 6;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(175, 22);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Current hourlywage:";
+            // 
+            // lblCurrentWage
+            // 
+            this.lblCurrentWage.AutoSize = true;
+            this.lblCurrentWage.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentWage.Location = new System.Drawing.Point(209, 97);
+            this.lblCurrentWage.Name = "lblCurrentWage";
+            this.lblCurrentWage.Size = new System.Drawing.Size(16, 22);
+            this.lblCurrentWage.TabIndex = 8;
+            this.lblCurrentWage.Text = "-";
+            // 
             // PromotionRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(184, 234);
+            this.ClientSize = new System.Drawing.Size(339, 221);
+            this.Controls.Add(this.lblCurrentWage);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.numericHourlywage);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSendPromotionRequest);
@@ -140,5 +165,7 @@
         private System.Windows.Forms.Button btnSendPromotionRequest;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numericHourlywage;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblCurrentWage;
     }
 }

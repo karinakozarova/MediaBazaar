@@ -19,12 +19,13 @@ namespace MediaBazar
             PopulateEmployees(Employee.GetAllEmployees());
         }
 
-        public PromotionRequest(bool flag,int departmentId,string firstName,string lastName,decimal hourlyWage)
+        public PromotionRequest(bool flag,int departmentId,string firstName,string lastName,decimal hourlyWage,decimal previousHourlyWage)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             numericHourlywage.Value = hourlyWage;
             cmbEmployee.Text = firstName + " " + lastName;
+            lblCurrentWage.Text = previousHourlyWage.ToString() + "$/Hourly";
             if (flag)
             {
                 this.Enabled = false;
@@ -107,6 +108,13 @@ namespace MediaBazar
         {
             int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
             PopulateEmployees(Employee.GetAllEmployeesByDepartment(departmentId));
+        }
+
+        private void cmbEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int employeeid = ((EmployeeComboBoxItem)cmbEmployee.SelectedItem).Id;
+            decimal CurrentWage = Worker.GetworkerCurrentWage(employeeid);
+            lblCurrentWage.Text = CurrentWage.ToString() + "$/Hourly";
         }
     }
 }

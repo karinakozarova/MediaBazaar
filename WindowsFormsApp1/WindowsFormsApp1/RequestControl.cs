@@ -13,6 +13,7 @@ namespace MediaBazar
         private string lastName;
         private string description;
         private decimal hourlyWage;
+        private decimal previousHourlyWage;
         private DateTime contractStartDate;
         private long phoneNumber;
         private string email = null;
@@ -64,6 +65,7 @@ namespace MediaBazar
             this.lastName = lastName;
             this.hourlyWage = hourlyWage;
             this.form = form;
+            this.previousHourlyWage = Worker.GetworkerCurrentWage(personId);
         }
 
         private void BtnDetails_Click(object sender, EventArgs e)
@@ -81,7 +83,7 @@ namespace MediaBazar
             }
             else if(lblRequest.Text.Contains("Promotion"))
             {
-                PromotionRequest prForm = new PromotionRequest(flag,this.departmentId,this.firstName,this.lastName,this.hourlyWage);
+                PromotionRequest prForm = new PromotionRequest(flag,this.departmentId,this.firstName,this.lastName,this.hourlyWage,this.previousHourlyWage);
                 prForm.Show();
             }
         }
