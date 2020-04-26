@@ -197,7 +197,7 @@ namespace MediaBazar
                 employeeContactRemoveCmd.Parameters.AddWithValue("@person_Id", PersonId);
                 employeeContactRemoveCmd.ExecuteNonQuery();
 
-                string contractUpdateQuery = "UPDATE contract SET contract_end = @end_date, reason_for_leaving = @description WHERE person_id = @person_id";
+                string contractUpdateQuery = "UPDATE contract SET contract_end = @end_date, contract_status = 2,reason_for_leaving = @description WHERE person_id = @person_id";
                 MySqlCommand contractUpdateCmd = new MySqlCommand(contractUpdateQuery, conn);
                 contractUpdateCmd.Parameters.AddWithValue("@end_date", GetDateTime());
                 contractUpdateCmd.Parameters.AddWithValue("@description", Description);

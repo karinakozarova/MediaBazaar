@@ -13,6 +13,7 @@ namespace MediaBazar
         private string lastName;
         private string description;
         private decimal hourlyWage;
+        private decimal previousHourlyWage;
         private DateTime contractStartDate;
         private long phoneNumber;
         private string email = null;
@@ -51,18 +52,39 @@ namespace MediaBazar
             this.form = form;
         }
 
+        public RequestControl(int personId, int createdById, string username, string firstName, string lastName, decimal hourlyWage, int departmentId, ApproveManagerRequests form = null)
+        {
+            InitializeComponent();
+            lblRequest.Text = $"Promotion!";
+            lblRequestDescription.Text = $"Promoting {firstName} {lastName}!";
+            this.personId = personId;
+            this.createdById = createdById;
+            this.departmentId = departmentId;
+            this.username = username;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.hourlyWage = hourlyWage;
+            this.form = form;
+            this.previousHourlyWage = Worker.GetworkerCurrentWage(personId);
+        }
+
         private void BtnDetails_Click(object sender, EventArgs e)
         {
             bool flag = true;
-            if (this.email != null)
+            if (lblRequest.Text.Contains("Hiring"))
             {
                 HiringRequest hrForm = new HiringRequest(this.username, this.firstName, this.lastName, this.hourlyWage, this.departmentId, this.contractStartDate, this.phoneNumber, this.email);
                 hrForm.Show();
             }
-            else
+            else if(lblRequest.Text.Contains("firing"))
             {
                 FiringRequest frForm = new FiringRequest(flag, this.departmentId, this.username, this.firstName, this.lastName, this.description);
                 frForm.Show();
+            }
+            else if(lblRequest.Text.Contains("Promotion"))
+            {
+                PromotionRequest prForm = new PromotionRequest(flag,this.departmentId,this.firstName,this.lastName,this.hourlyWage,this.previousHourlyWage);
+                prForm.Show();
             }
         }
 
@@ -70,7 +92,7 @@ namespace MediaBazar
         {
             if (MessageBox.Show("Do you really want to approve this request?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (this.email != null)
+                if (lblRequest.Text.Contains("Hiring"))
                 {
                     foreach (HiringRequests hr in HiringRequests.GetAllHiringRequests())
                     {
@@ -81,13 +103,24 @@ namespace MediaBazar
                     }
                     form.UpdateGUI();
                 }
-                else
+                else if (lblRequest.Text.Contains("firing"))
                 {
                     foreach (FiringRequests fr in FiringRequests.GetAllFiringRequests())
                     {
                         if (fr.PersonId == personId)
                         {
                             fr.ApproveFiringRequest();
+                        }
+                    }
+                    form.UpdateGUI();
+                }
+                else if (lblRequest.Text.Contains("Promotion"))
+                {
+                    foreach (PromotionRequests pr in PromotionRequests.GetAllPromotionRequests())
+                    {
+                        if (pr.PersonId == personId)
+                        {
+                            pr.ApprovePromotionRequest();
                         }
                     }
                     form.UpdateGUI();
@@ -99,7 +132,7 @@ namespace MediaBazar
         {
             if (MessageBox.Show("Do you really want to reject this request?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (this.email != null)
+                if (lblRequest.Text.Contains("Hiring"))
                 {
                     foreach (HiringRequests hr in HiringRequests.GetAllHiringRequests())
                     {
@@ -110,13 +143,24 @@ namespace MediaBazar
                     }
                     form.UpdateGUI();
                 }
-                else
+                else if (lblRequest.Text.Contains("firing"))
                 {
                     foreach (FiringRequests fr in FiringRequests.GetAllFiringRequests())
                     {
                         if (fr.PersonId == personId)
                         {
                             fr.DeclineFiringRequest();
+                        }
+                    }
+                    form.UpdateGUI();
+                }
+                else if (lblRequest.Text.Contains("Promotion"))
+                {
+                    foreach (PromotionRequests pr in PromotionRequests.GetAllPromotionRequests())
+                    {
+                        if (pr.PersonId == personId)
+                        {
+                            pr.DeclinePromotionRequest();
                         }
                     }
                     form.UpdateGUI();
