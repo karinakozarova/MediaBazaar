@@ -169,6 +169,8 @@ namespace MediaBazar
 
         public void ApprovePromotionRequest()
         {
+
+            DateTime contractStartDate = DateTime.Now.AddDays(1);
             MySqlConnection conn = Utils.GetConnection();
             try
             {
@@ -189,7 +191,7 @@ namespace MediaBazar
                 MySqlCommand createNewContractCmd = new MySqlCommand(createNewContractQuery, conn);
                 createNewContractCmd.Parameters.AddWithValue("@person_id",PersonId);
                 createNewContractCmd.Parameters.AddWithValue("@hourlywage", HourlyWage);
-                createNewContractCmd.Parameters.AddWithValue("@contract_start", GetDateTime());
+                createNewContractCmd.Parameters.AddWithValue("@contract_start", contractStartDate);
                 createNewContractCmd.ExecuteNonQuery();
 
                 string getContractIdQuery = "SELECT id FROM contract WHERE person_id = @person_id AND contract_status = 0";
