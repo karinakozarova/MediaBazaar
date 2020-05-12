@@ -18,14 +18,14 @@ namespace MediaBazar
         private const string Status = "unread";
         private int userId;
         private const int SmtpServerPort = 587;
-        List<int> workdays;
-        List<int> workshifts;
+        List<int> workingDays;
+        List<int> workingShifts;
         public ChangeSchedule(int id)
         {
             InitializeComponent();
             PopulateEmployees(Employee.GetAllEmployees());
-            workdays = new List<int>();
-            workshifts = new List<int>();
+            workingDays = new List<int>();
+            workingShifts = new List<int>();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.userId = id;
             gbShifts.Enabled = false;
@@ -122,54 +122,63 @@ namespace MediaBazar
             {
                 MessageBox.Show("Please write a message to the employee!");
             }
+            else if (cbMorningShift.Checked == false && cbEveningShift.Checked == false && cbAfternoonShift.Checked == false)
+            {
+                MessageBox.Show("Please select a shift for the employee!");
+            }else if (cbMonday.Checked == false && cbTuesday.Checked == false && cbWednesday.Checked == false && cbThursday.Checked == false && cbFriday.Checked == false && cbSaturday.Checked == false && cbSunday.Checked == false)
+            {
+                MessageBox.Show("Please select a working day for the employee!");
+            }
             else
             {
                 if (MessageBox.Show("Do you really want to change this schedule?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    this.workingDays.Clear();
+                    this.workingShifts.Clear();
                     if (cbMonday.Checked)
                     {
-                        this.workdays.Add(0);
+                        this.workingDays.Add(0);
                     }
                     if (cbTuesday.Checked)
                     {
-                        this.workdays.Add(1);
+                        this.workingDays.Add(1);
                     }
                     if (cbWednesday.Checked)
                     {
-                        this.workdays.Add(2);
+                        this.workingDays.Add(2);
                     }
                     if (cbThursday.Checked)
                     {
-                        this.workdays.Add(3);
+                        this.workingDays.Add(3);
                     }
                     if (cbFriday.Checked)
                     {
-                        this.workdays.Add(4);
+                        this.workingDays.Add(4);
                     }
                     if (cbSaturday.Checked)
                     {
-                        this.workdays.Add(5);
+                        this.workingDays.Add(5);
                     }
                     if (cbSunday.Checked)
                     {
-                        this.workdays.Add(6);
+                        this.workingDays.Add(6);
                     }
                     if (cbMorningShift.Checked)
                     {
-                        this.workshifts.Add(1);
+                        this.workingShifts.Add(1);
                     }
                     if (cbAfternoonShift.Checked)
                     {
-                        this.workshifts.Add(2);
+                        this.workingShifts.Add(2);
                     }
                     if (cbEveningShift.Checked)
                     {
-                        this.workshifts.Add(3);
+                        this.workingShifts.Add(3);
                     }
                     int employeeId = ((EmployeeComboBoxItem)cbEmployee.SelectedItem).Id;
-                    Employee.ChangeEmployeeShift(employeeId, this.workdays, this.workshifts);
+                    Employee.ChangeEmployeeShift(employeeId, this.workingDays, this.workingShifts);
                     DateTime today = DateTime.Now;
-                    
+
                     MySqlConnection conn = Utils.GetConnection();
                     try
                     {
@@ -210,7 +219,7 @@ namespace MediaBazar
                             MessageBox.Show(ex.ToString());
                         }
                     }
-                    catch(Exception)
+                    catch (Exception)
                     {
                         // TODO: add it to error log in the future
                     }
