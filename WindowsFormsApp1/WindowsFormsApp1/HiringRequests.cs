@@ -167,6 +167,12 @@ namespace MediaBazar
                 conn.Open();
                 updateIsApprovedCmd.ExecuteNonQuery();
 
+                string updateContractStatusQuery = "UPDATE contract SET contract_status=@contract_status WHERE person_id=@person_id";
+                MySqlCommand updateContractStatusCmd = new MySqlCommand(updateContractStatusQuery, conn);
+                updateContractStatusCmd.Parameters.AddWithValue("@person_id", PersonId);
+                updateContractStatusCmd.Parameters.AddWithValue("@contract_status", 0);
+                updateContractStatusCmd.ExecuteNonQuery();
+
                 string sql = "DELETE From hiring_requests WHERE person_id = @person_Id";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@person_Id", PersonId);
