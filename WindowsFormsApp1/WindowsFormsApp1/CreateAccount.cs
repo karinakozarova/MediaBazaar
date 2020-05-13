@@ -138,10 +138,11 @@ namespace MediaBazar
                             int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
                             pc.CreateWorker(accountType, username, password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneN, email, hourlyWage, contractStartDate, departmentId);//adds worker to person table
 
-                            string contractQuery = "INSERT into contract (person_id, contract_start,contract_status) VALUES (@person_id, @contract_start,0);";
+                            string contractQuery = "INSERT into contract (person_id, contract_start, contract_hourlywage) VALUES (@person_id, @contract_start, @contract_hourlywage);";
                             MySqlCommand contractCmd = new MySqlCommand(contractQuery, conn);
                             contractCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
                             contractCmd.Parameters.AddWithValue("@contract_start", contractStartDate);
+                            contractCmd.Parameters.AddWithValue("@contract_hourlywage", hourlyWage);
                             conn.Open();
                             contractCmd.ExecuteNonQuery();
 
@@ -550,10 +551,11 @@ namespace MediaBazar
                             int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
                             pc.UpdateWorker(accountType, pc.GetIdByUsername(username), password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneN, email);
 
-                            string contractQuery = "UPDATE contract SET contract_start=@contract_start where person_id=@person_id;";
+                            string contractQuery = "UPDATE contract SET contract_start=@contract_start, contract_hourlywage=@contract_hourlywage where person_id=@person_id;";
                             MySqlCommand contractCmd = new MySqlCommand(contractQuery, conn);
                             contractCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
                             contractCmd.Parameters.AddWithValue("@contract_start", contractStartDate);
+                            contractCmd.Parameters.AddWithValue("@contract_hourlywage", hourlyWage);
                             conn.Open();
                             contractCmd.ExecuteNonQuery();
 
@@ -772,10 +774,12 @@ namespace MediaBazar
                             int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
                             pc.CreateWorker(accountType, username, password, firstName, lastName, dateOfBirth, street, postcode, region, country, phoneN, email, hourlyWage, contractStartDate, departmentId);//adds worker to person table
 
-                            string contractQuery = "INSERT into contract (person_id, contract_start) VALUES (@person_id, @contract_start);";
+                            string contractQuery = "INSERT into contract (person_id, contract_start, contract_status, contract_hourlywage) VALUES (@person_id, @contract_start, @contract_status, @contract_hourlywage);";
                             MySqlCommand contractCmd = new MySqlCommand(contractQuery, conn);
                             contractCmd.Parameters.AddWithValue("@person_id", pc.GetIdByUsername(username));
                             contractCmd.Parameters.AddWithValue("@contract_start", contractStartDate);
+                            contractCmd.Parameters.AddWithValue("@contract_status", 0);
+                            contractCmd.Parameters.AddWithValue("@contract_hourlywage", hourlyWage);
                             conn.Open();
                             contractCmd.ExecuteNonQuery();
 
