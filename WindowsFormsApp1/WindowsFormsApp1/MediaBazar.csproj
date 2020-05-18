@@ -273,6 +273,13 @@
     <Compile Include="RequestStock.Designer.cs">
       <DependentUpon>RequestStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rules.cs" />
+    <Compile Include="RulesEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RulesEditor.Designer.cs">
+      <DependentUpon>RulesEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchForWorker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -380,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RemoveManager.resx">
       <DependentUpon>RemoveManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RulesEditor.resx">
+      <DependentUpon>RulesEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchForWorker.resx">
       <DependentUpon>SearchForWorker.cs</DependentUpon>
