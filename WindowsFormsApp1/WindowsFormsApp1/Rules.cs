@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 
-
 namespace MediaBazar
 {
     class Rules
@@ -37,10 +36,7 @@ namespace MediaBazar
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception)
-            {
-
-            }
+            catch (Exception) {}
             finally
             {
                 conn.Close();
@@ -58,10 +54,7 @@ namespace MediaBazar
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception)
-            {
- 
-            }
+            catch (Exception) {}
             finally
             {
                 conn.Close();
@@ -71,31 +64,28 @@ namespace MediaBazar
         public static List<Rules> GetAllRules()
         {
             MySqlConnection conn = Utils.GetConnection();
-            List<Rules> ruleList = new List<Rules>();
+            List<Rules> rules = new List<Rules>();
             try
             {
-                string GetList = "SELECT id, created_by, description FROM rules";
-                MySqlCommand cmd = new MySqlCommand(GetList, conn);
+                string getList = "SELECT id, created_by, description FROM rules";
+                MySqlCommand cmd = new MySqlCommand(getList, conn);
                 conn.Open();
                 MySqlDataReader row = cmd.ExecuteReader();
                 while (row.Read())
                 {
-                    int ID = Convert.ToInt32(row[0]);
-                    int CreatedById = Convert.ToInt32(row[1]);
+                    int id = Convert.ToInt32(row[0]);
+                    int createdByid = Convert.ToInt32(row[1]);
                     string ruleDesc = row[2].ToString();
 
-                    Rules rule = new Rules(ID, ruleDesc, CreatedById);
+                    Rules rule = new Rules(id, ruleDesc, createdByid);
 
-                    ruleList.Add(rule);
+                    rules.Add(rule);
                 }
             }
-            catch (Exception)
-            {
-
-            }
+            catch (Exception) {}
             finally { conn.Close(); }
 
-            return ruleList;
+            return rules;
         }
 
     }
