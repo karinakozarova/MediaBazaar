@@ -22,19 +22,17 @@ namespace MediaBazar
         }
         private void UpdateForm()
         {
-            rulesLv.Items.Clear();
-            tbDeleteId.Clear();
+            lbRuleList.Items.Clear();
             tbDescription.Clear();
             foreach (Rules r in Rules.GetAllRules())
             {
-                ListViewItem item = new ListViewItem(new[] { r.id.ToString(), r.description });
-                rulesLv.Items.Add(item);
+                lbRuleList.Items.Add(r.id.ToString() + "  -  " + r.description);
             }
         }
 
         private void AddRulebtn_Click(object sender, EventArgs e)
         {
-            if (tbDescription.Text == "")
+            if (string.IsNullOrEmpty(tbDescription.Text))
             {
                 MessageBox.Show("Description is empty");
             }
@@ -47,33 +45,19 @@ namespace MediaBazar
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if (tbDeleteId.Text == "")
+            if (lbRuleList.SelectedIndex == -1)
             {
-                MessageBox.Show("Fill in the ID");
+                MessageBox.Show("Select a rule");
             }
             else
             {
-                int RuleRemoveid = Convert.ToInt32(tbDeleteId.Text);
-                int counter = 0;
-                foreach (Rules r in Rules.GetAllRules())
+                string ruleText = lbRuleList.SelectedItem.ToString();
+                string idSubstring = ruleText.Substring(0, ruleText.IndexOf("-"));
+                if (MessageBox.Show("Do you really want to delete this rule?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (r.id == RuleRemoveid)
-                    {
-                        counter = 1;
-                    }
-                }
-                if (counter == 0)
-                {
-                    MessageBox.Show("Id does not exist");
-                }
-                else
-                {
-                    Rules.RemoveRule(RuleRemoveid);
+                    Rules.RemoveRule(Convert.ToInt32(idSubstring));
                     UpdateForm();
                 }
-
-
-
             }
         }
     }

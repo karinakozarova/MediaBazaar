@@ -11,14 +11,13 @@ namespace MediaBazar
         private int createdById;
         public string description;
 
-
-
         public Rules(string description, int createdById)
         {
             this.description = description;
             this.createdById = createdById;
             AddRule();
         }
+
         public Rules(int id, string description, int createdById)
         {
             this.description = description;
@@ -36,12 +35,12 @@ namespace MediaBazar
                 cmd.Parameters.AddWithValue("@Description", description);
                 cmd.Parameters.AddWithValue("@Created_By", createdById);
                 conn.Open();
-                int effectedRows = cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
 
             }
             catch (Exception ex)
             {
-                string epra = ex.Message;
+
             }
             finally
             {
@@ -58,11 +57,11 @@ namespace MediaBazar
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@ruleId", id);
                 conn.Open();
-                int effectedRows = cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                string epra = ex.Message;
+ 
             }
             finally
             {
@@ -77,7 +76,6 @@ namespace MediaBazar
 
             try
             {
-
                 string GetList = "SELECT id, created_by, description FROM rules";
                 MySqlCommand cmd = new MySqlCommand(GetList, conn);
                 conn.Open();
@@ -96,7 +94,7 @@ namespace MediaBazar
             }
             catch (Exception ex)
             {
-                String e = ex.Message;
+
             }
             finally { conn.Close(); }
 
