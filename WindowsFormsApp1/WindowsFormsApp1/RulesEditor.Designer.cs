@@ -80,6 +80,7 @@
             // 
             this.lbRuleList.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRuleList.FormattingEnabled = true;
+            this.lbRuleList.HorizontalScrollbar = true;
             this.lbRuleList.ItemHeight = 22;
             this.lbRuleList.Location = new System.Drawing.Point(12, 12);
             this.lbRuleList.Name = "lbRuleList";
