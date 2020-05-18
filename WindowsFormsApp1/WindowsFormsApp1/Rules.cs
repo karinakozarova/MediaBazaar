@@ -36,9 +36,8 @@ namespace MediaBazar
                 cmd.Parameters.AddWithValue("@Created_By", createdById);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -59,7 +58,7 @@ namespace MediaBazar
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
  
             }
@@ -73,7 +72,6 @@ namespace MediaBazar
         {
             MySqlConnection conn = Utils.GetConnection();
             List<Rules> ruleList = new List<Rules>();
-
             try
             {
                 string GetList = "SELECT id, created_by, description FROM rules";
@@ -89,10 +87,9 @@ namespace MediaBazar
                     Rules rule = new Rules(ID, ruleDesc, CreatedById);
 
                     ruleList.Add(rule);
-
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
