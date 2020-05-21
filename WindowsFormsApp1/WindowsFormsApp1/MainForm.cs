@@ -8,6 +8,8 @@ namespace MediaBazar
     {
         List<DepartmentUserControl> controls;
         List<Department> departments;
+        List<Report> reports;
+        List<ReportControl> reportControls;
 
         int workerRole;
 
@@ -17,6 +19,7 @@ namespace MediaBazar
         {
             InitializeComponent();
             controls = new List<DepartmentUserControl>();
+            reportControls = new List<ReportControl>();
             UpdateGUI();
             this.user_id = user_id;
             this.username = username;
@@ -40,6 +43,7 @@ namespace MediaBazar
             {
                 tabControl1.TabPages.Remove(employeesTab);
                 tabControl1.TabPages.Remove(departmentsTab);
+                tabControl1.TabPages.Remove(reportsTab);
                 requestStockBttn.Visible = false;
                 createStockBttn.Visible = false;
                 btnPromoteEmployee.Visible = false;
@@ -50,8 +54,11 @@ namespace MediaBazar
         {
             departments = null;
             controls.Clear();
+            reportControls.Clear();
+            flpReports.Controls.Clear();
             flpDepartments.Controls.Clear();
             departments = Department.GetAllDepartments();
+            reports = Report.GetAllReports();
 
             foreach (Department d in departments)
             {
@@ -61,6 +68,19 @@ namespace MediaBazar
             foreach (DepartmentUserControl department in controls)
             {
                 flpDepartments.Controls.Add(department);
+            }
+
+            foreach (Report r in reports)
+            {
+                if(r.ReportStatus == "unread")
+                {
+                    reportControls.Add(new ReportControl(r.ReportId, r.ReportSubject, r.ReportMessage, r.ReportStatus, this));
+                }
+            }
+
+            foreach (ReportControl report in reportControls)
+            {
+                flpReports.Controls.Add(report);
             }
         }
 
