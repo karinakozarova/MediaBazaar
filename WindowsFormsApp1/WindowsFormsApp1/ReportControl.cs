@@ -33,14 +33,17 @@ namespace MediaBazar
 
         private void BtnMarkAsRead_Click(object sender, EventArgs e)
         {
-            foreach (Report r in Report.GetAllReports())
+            if (MessageBox.Show("Do you really want to mark as read this report?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (r.ReportId == this.reportId)
+                foreach (Report r in Report.GetAllReports())
                 {
-                    r.MarkAsRead(this.reportId);
+                    if (r.ReportId == this.reportId)
+                    {
+                        r.MarkAsRead(this.reportId);
+                    }
                 }
+                form.UpdateGUI();
             }
-            form.UpdateGUI();
         }
     }
 }
