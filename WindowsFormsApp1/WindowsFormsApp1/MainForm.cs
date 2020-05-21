@@ -135,5 +135,10 @@ namespace MediaBazar
         {
             (new PromotionRequest(this.user_id)).Show();
         }
+
+        private void RuleseditBtn_Click(object sender, EventArgs e)
+        {
+            (new RulesEditor(this.user_id)).Show();
+        }
     }
 }
