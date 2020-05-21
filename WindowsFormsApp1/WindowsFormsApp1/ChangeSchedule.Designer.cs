@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.gbShifts = new System.Windows.Forms.GroupBox();
+            this.cbEveningShift = new System.Windows.Forms.CheckBox();
+            this.cbAfternoonShift = new System.Windows.Forms.CheckBox();
+            this.cbMorningShift = new System.Windows.Forms.CheckBox();
             this.gbWorkDays = new System.Windows.Forms.GroupBox();
+            this.cbSunday = new System.Windows.Forms.CheckBox();
+            this.cbSaturday = new System.Windows.Forms.CheckBox();
+            this.cbFriday = new System.Windows.Forms.CheckBox();
+            this.cbThursday = new System.Windows.Forms.CheckBox();
+            this.cbWednesday = new System.Windows.Forms.CheckBox();
+            this.cbTuesday = new System.Windows.Forms.CheckBox();
+            this.cbMonday = new System.Windows.Forms.CheckBox();
             this.cbEmployee = new System.Windows.Forms.ComboBox();
             this.rtbMessage = new System.Windows.Forms.RichTextBox();
             this.btnSaveChanges = new System.Windows.Forms.Button();
-            this.cbMorningShift = new System.Windows.Forms.CheckBox();
-            this.cbAfternoonShift = new System.Windows.Forms.CheckBox();
-            this.cbEveningShift = new System.Windows.Forms.CheckBox();
-            this.cbMonday = new System.Windows.Forms.CheckBox();
-            this.cbTuesday = new System.Windows.Forms.CheckBox();
-            this.cbWednesday = new System.Windows.Forms.CheckBox();
-            this.cbThursday = new System.Windows.Forms.CheckBox();
-            this.cbFriday = new System.Windows.Forms.CheckBox();
-            this.cbSaturday = new System.Windows.Forms.CheckBox();
-            this.cbSunday = new System.Windows.Forms.CheckBox();
             this.gbShifts.SuspendLayout();
             this.gbWorkDays.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +62,39 @@
             this.gbShifts.TabStop = false;
             this.gbShifts.Text = "Workshifts";
             // 
+            // cbEveningShift
+            // 
+            this.cbEveningShift.AutoSize = true;
+            this.cbEveningShift.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEveningShift.Location = new System.Drawing.Point(302, 33);
+            this.cbEveningShift.Name = "cbEveningShift";
+            this.cbEveningShift.Size = new System.Drawing.Size(114, 28);
+            this.cbEveningShift.TabIndex = 5;
+            this.cbEveningShift.Text = "Evening";
+            this.cbEveningShift.UseVisualStyleBackColor = true;
+            // 
+            // cbAfternoonShift
+            // 
+            this.cbAfternoonShift.AutoSize = true;
+            this.cbAfternoonShift.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAfternoonShift.Location = new System.Drawing.Point(155, 33);
+            this.cbAfternoonShift.Name = "cbAfternoonShift";
+            this.cbAfternoonShift.Size = new System.Drawing.Size(136, 28);
+            this.cbAfternoonShift.TabIndex = 4;
+            this.cbAfternoonShift.Text = "Afternoon";
+            this.cbAfternoonShift.UseVisualStyleBackColor = true;
+            // 
+            // cbMorningShift
+            // 
+            this.cbMorningShift.AutoSize = true;
+            this.cbMorningShift.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMorningShift.Location = new System.Drawing.Point(10, 33);
+            this.cbMorningShift.Name = "cbMorningShift";
+            this.cbMorningShift.Size = new System.Drawing.Size(117, 28);
+            this.cbMorningShift.TabIndex = 3;
+            this.cbMorningShift.Text = "Morning";
+            this.cbMorningShift.UseVisualStyleBackColor = true;
+            // 
             // gbWorkDays
             // 
             this.gbWorkDays.Controls.Add(this.cbSunday);
@@ -80,6 +113,84 @@
             this.gbWorkDays.TabIndex = 84;
             this.gbWorkDays.TabStop = false;
             this.gbWorkDays.Text = "Available days";
+            // 
+            // cbSunday
+            // 
+            this.cbSunday.AutoSize = true;
+            this.cbSunday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSunday.Location = new System.Drawing.Point(10, 98);
+            this.cbSunday.Name = "cbSunday";
+            this.cbSunday.Size = new System.Drawing.Size(108, 28);
+            this.cbSunday.TabIndex = 10;
+            this.cbSunday.Text = "Sunday";
+            this.cbSunday.UseVisualStyleBackColor = true;
+            // 
+            // cbSaturday
+            // 
+            this.cbSaturday.AutoSize = true;
+            this.cbSaturday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSaturday.Location = new System.Drawing.Point(302, 64);
+            this.cbSaturday.Name = "cbSaturday";
+            this.cbSaturday.Size = new System.Drawing.Size(124, 28);
+            this.cbSaturday.TabIndex = 9;
+            this.cbSaturday.Text = "Saturday";
+            this.cbSaturday.UseVisualStyleBackColor = true;
+            // 
+            // cbFriday
+            // 
+            this.cbFriday.AutoSize = true;
+            this.cbFriday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFriday.Location = new System.Drawing.Point(155, 64);
+            this.cbFriday.Name = "cbFriday";
+            this.cbFriday.Size = new System.Drawing.Size(95, 28);
+            this.cbFriday.TabIndex = 8;
+            this.cbFriday.Text = "Friday";
+            this.cbFriday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cbFriday.UseVisualStyleBackColor = true;
+            // 
+            // cbThursday
+            // 
+            this.cbThursday.AutoSize = true;
+            this.cbThursday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbThursday.Location = new System.Drawing.Point(10, 64);
+            this.cbThursday.Name = "cbThursday";
+            this.cbThursday.Size = new System.Drawing.Size(125, 28);
+            this.cbThursday.TabIndex = 7;
+            this.cbThursday.Text = "Thursday";
+            this.cbThursday.UseVisualStyleBackColor = true;
+            // 
+            // cbWednesday
+            // 
+            this.cbWednesday.AutoSize = true;
+            this.cbWednesday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbWednesday.Location = new System.Drawing.Point(302, 30);
+            this.cbWednesday.Name = "cbWednesday";
+            this.cbWednesday.Size = new System.Drawing.Size(149, 28);
+            this.cbWednesday.TabIndex = 6;
+            this.cbWednesday.Text = "Wednesday";
+            this.cbWednesday.UseVisualStyleBackColor = true;
+            // 
+            // cbTuesday
+            // 
+            this.cbTuesday.AutoSize = true;
+            this.cbTuesday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTuesday.Location = new System.Drawing.Point(155, 30);
+            this.cbTuesday.Name = "cbTuesday";
+            this.cbTuesday.Size = new System.Drawing.Size(115, 28);
+            this.cbTuesday.TabIndex = 5;
+            this.cbTuesday.Text = "Tuesday";
+            this.cbTuesday.UseVisualStyleBackColor = true;
+            // 
+            // cbMonday
+            // 
+            this.cbMonday.AutoSize = true;
+            this.cbMonday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMonday.Location = new System.Drawing.Point(10, 30);
+            this.cbMonday.Name = "cbMonday";
+            this.cbMonday.Size = new System.Drawing.Size(114, 28);
+            this.cbMonday.TabIndex = 4;
+            this.cbMonday.Text = "Monday";
+            this.cbMonday.UseVisualStyleBackColor = true;
             // 
             // cbEmployee
             // 
@@ -115,122 +226,11 @@
             this.btnSaveChanges.UseVisualStyleBackColor = true;
             this.btnSaveChanges.Click += new System.EventHandler(this.BtnSaveChanges_Click);
             // 
-            // cbMorningShift
-            // 
-            this.cbMorningShift.AutoSize = true;
-            this.cbMorningShift.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMorningShift.Location = new System.Drawing.Point(10, 33);
-            this.cbMorningShift.Name = "cbMorningShift";
-            this.cbMorningShift.Size = new System.Drawing.Size(117, 28);
-            this.cbMorningShift.TabIndex = 3;
-            this.cbMorningShift.Text = "Morning";
-            this.cbMorningShift.UseVisualStyleBackColor = true;
-            // 
-            // cbAfternoonShift
-            // 
-            this.cbAfternoonShift.AutoSize = true;
-            this.cbAfternoonShift.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbAfternoonShift.Location = new System.Drawing.Point(155, 33);
-            this.cbAfternoonShift.Name = "cbAfternoonShift";
-            this.cbAfternoonShift.Size = new System.Drawing.Size(136, 28);
-            this.cbAfternoonShift.TabIndex = 4;
-            this.cbAfternoonShift.Text = "Afternoon";
-            this.cbAfternoonShift.UseVisualStyleBackColor = true;
-            // 
-            // cbEveningShift
-            // 
-            this.cbEveningShift.AutoSize = true;
-            this.cbEveningShift.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbEveningShift.Location = new System.Drawing.Point(302, 33);
-            this.cbEveningShift.Name = "cbEveningShift";
-            this.cbEveningShift.Size = new System.Drawing.Size(114, 28);
-            this.cbEveningShift.TabIndex = 5;
-            this.cbEveningShift.Text = "Evening";
-            this.cbEveningShift.UseVisualStyleBackColor = true;
-            // 
-            // cbMonday
-            // 
-            this.cbMonday.AutoSize = true;
-            this.cbMonday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMonday.Location = new System.Drawing.Point(10, 30);
-            this.cbMonday.Name = "cbMonday";
-            this.cbMonday.Size = new System.Drawing.Size(114, 28);
-            this.cbMonday.TabIndex = 4;
-            this.cbMonday.Text = "Monday";
-            this.cbMonday.UseVisualStyleBackColor = true;
-            // 
-            // cbTuesday
-            // 
-            this.cbTuesday.AutoSize = true;
-            this.cbTuesday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbTuesday.Location = new System.Drawing.Point(155, 30);
-            this.cbTuesday.Name = "cbTuesday";
-            this.cbTuesday.Size = new System.Drawing.Size(115, 28);
-            this.cbTuesday.TabIndex = 5;
-            this.cbTuesday.Text = "Tuesday";
-            this.cbTuesday.UseVisualStyleBackColor = true;
-            // 
-            // cbWednesday
-            // 
-            this.cbWednesday.AutoSize = true;
-            this.cbWednesday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbWednesday.Location = new System.Drawing.Point(302, 30);
-            this.cbWednesday.Name = "cbWednesday";
-            this.cbWednesday.Size = new System.Drawing.Size(149, 28);
-            this.cbWednesday.TabIndex = 6;
-            this.cbWednesday.Text = "Wednesday";
-            this.cbWednesday.UseVisualStyleBackColor = true;
-            // 
-            // cbThursday
-            // 
-            this.cbThursday.AutoSize = true;
-            this.cbThursday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbThursday.Location = new System.Drawing.Point(10, 64);
-            this.cbThursday.Name = "cbThursday";
-            this.cbThursday.Size = new System.Drawing.Size(125, 28);
-            this.cbThursday.TabIndex = 7;
-            this.cbThursday.Text = "Thursday";
-            this.cbThursday.UseVisualStyleBackColor = true;
-            // 
-            // cbFriday
-            // 
-            this.cbFriday.AutoSize = true;
-            this.cbFriday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbFriday.Location = new System.Drawing.Point(155, 64);
-            this.cbFriday.Name = "cbFriday";
-            this.cbFriday.Size = new System.Drawing.Size(95, 28);
-            this.cbFriday.TabIndex = 8;
-            this.cbFriday.Text = "Friday";
-            this.cbFriday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.cbFriday.UseVisualStyleBackColor = true;
-            // 
-            // cbSaturday
-            // 
-            this.cbSaturday.AutoSize = true;
-            this.cbSaturday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSaturday.Location = new System.Drawing.Point(302, 64);
-            this.cbSaturday.Name = "cbSaturday";
-            this.cbSaturday.Size = new System.Drawing.Size(124, 28);
-            this.cbSaturday.TabIndex = 9;
-            this.cbSaturday.Text = "Saturday";
-            this.cbSaturday.UseVisualStyleBackColor = true;
-            // 
-            // cbSunday
-            // 
-            this.cbSunday.AutoSize = true;
-            this.cbSunday.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSunday.Location = new System.Drawing.Point(10, 98);
-            this.cbSunday.Name = "cbSunday";
-            this.cbSunday.Size = new System.Drawing.Size(108, 28);
-            this.cbSunday.TabIndex = 10;
-            this.cbSunday.Text = "Sunday";
-            this.cbSunday.UseVisualStyleBackColor = true;
-            // 
             // ChangeSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(865, 356);
+            this.ClientSize = new System.Drawing.Size(857, 365);
             this.Controls.Add(this.btnSaveChanges);
             this.Controls.Add(this.rtbMessage);
             this.Controls.Add(this.cbEmployee);
