@@ -190,6 +190,9 @@ namespace MediaBazar
         {
             MySqlConnection conn = Utils.GetConnection();
 
+            int shift = 0;
+            int day = 0;
+
             DateTime startOfWeek = DateTime.Today.AddDays(
             (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
             (int)DateTime.Today.DayOfWeek);
@@ -213,11 +216,14 @@ namespace MediaBazar
 
                 for (int i = 0; i < workDays.Count; i++)
                 {
+                    shift = workShifts[i];
+                    day = workDays[i];
+
                     string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift, assigned_date) VALUE(@userId,@week_day_id, @shift, @assigned_date)";
                     MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
-                    shiftsQueryCmd.Parameters.AddWithValue("@shift", workShifts[i]);
+                    shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
                     shiftsQueryCmd.Parameters.AddWithValue("@userId", employeeId);
-                    shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", workDays[i]);
+                    shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
                     shiftsQueryCmd.Parameters.AddWithValue("@assigned_date", currentMonday);
                     shiftsQueryCmd.ExecuteNonQuery();
                 }

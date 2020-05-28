@@ -215,13 +215,16 @@ namespace MediaBazar
             if (cbEmployee.Text == "Employee" || cbEmployee.Text == "")
             {
                 MessageBox.Show("Please select an employee!");
-            }else if (rtbMessage.Text == "Message" || rtbMessage.Text == "")
+            }
+            else if (rtbMessage.Text == "Message" || rtbMessage.Text == "")
             {
                 MessageBox.Show("Please write a message to the employee!");
-            }else if (cbMonday.Checked == false && cbTuesday.Checked == false && cbWednesday.Checked == false && cbThursday.Checked == false && cbFriday.Checked == false && cbSaturday.Checked == false && cbSunday.Checked == false)
+            }
+            else if (cbMonday.Checked == false && cbTuesday.Checked == false && cbWednesday.Checked == false && cbThursday.Checked == false && cbFriday.Checked == false && cbSaturday.Checked == false && cbSunday.Checked == false)
             {
                 MessageBox.Show("Please select a working day for the employee!");
-            }else if (cbMondayMorning.Checked == false && cbMondayAfternoon.Checked == false && cbMondayEvening.Checked == false && cbTuesdayMorning.Checked == false && cbTuesdayAfternoon.Checked == false && cbTuesdayEvening.Checked == false && cbWednesdayMorning.Checked == false && cbWednesdayAfternoon.Checked == false && cbWednesdayEvening.Checked == false && cbThursdayMorning.Checked == false && cbThursdayAfternoon.Checked == false && cbThursdayEvening.Checked == false && cbFridayMorning.Checked == false && cbFridayAfternoon.Checked == false && cbFridayEvening.Checked == false && cbSaturdayMorning.Checked == false && cbSaturdayAfternoon.Checked == false && cbSaturdayEvening.Checked == false && cbSundayMorning.Checked == false && cbSundayAfternoon.Checked == false && cbSundayEvening.Checked == false)
+            }
+            else if (cbMondayMorning.Checked == false && cbMondayAfternoon.Checked == false && cbMondayEvening.Checked == false && cbTuesdayMorning.Checked == false && cbTuesdayAfternoon.Checked == false && cbTuesdayEvening.Checked == false && cbWednesdayMorning.Checked == false && cbWednesdayAfternoon.Checked == false && cbWednesdayEvening.Checked == false && cbThursdayMorning.Checked == false && cbThursdayAfternoon.Checked == false && cbThursdayEvening.Checked == false && cbFridayMorning.Checked == false && cbFridayAfternoon.Checked == false && cbFridayEvening.Checked == false && cbSaturdayMorning.Checked == false && cbSaturdayAfternoon.Checked == false && cbSaturdayEvening.Checked == false && cbSundayMorning.Checked == false && cbSundayAfternoon.Checked == false && cbSundayEvening.Checked == false)
             {
                 MessageBox.Show("Please select a working shift for the employee!");
             }
