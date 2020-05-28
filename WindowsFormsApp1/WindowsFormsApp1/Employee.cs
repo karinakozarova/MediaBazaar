@@ -190,6 +190,9 @@ namespace MediaBazar
         {
             MySqlConnection conn = Utils.GetConnection();
 
+            int shift = 0;
+            int day = 0;
+
             DateTime startOfWeek = DateTime.Today.AddDays(
             (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
             (int)DateTime.Today.DayOfWeek);
@@ -211,21 +214,19 @@ namespace MediaBazar
                 conn.Open();
                 cmdDeleteSchedule.ExecuteNonQuery();
 
-
-                foreach (int shift in workShifts)
+                for (int i = 0; i < workDays.Count; i++)
                 {
-                    foreach (int day in workDays)
-                    {
-                        string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift, assigned_date) VALUE(@userId,@week_day_id, @shift, @assigned_date)";
-                        MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
-                        shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
-                        shiftsQueryCmd.Parameters.AddWithValue("@userId", employeeId);
-                        shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
-                        shiftsQueryCmd.Parameters.AddWithValue("@assigned_date", currentMonday);
-                        shiftsQueryCmd.ExecuteNonQuery();
-                    }
-                }
+                    shift = workShifts[i];
+                    day = workDays[i];
 
+                    string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift, assigned_date) VALUE(@userId,@week_day_id, @shift, @assigned_date)";
+                    MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
+                    shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
+                    shiftsQueryCmd.Parameters.AddWithValue("@userId", employeeId);
+                    shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
+                    shiftsQueryCmd.Parameters.AddWithValue("@assigned_date", currentMonday);
+                    shiftsQueryCmd.ExecuteNonQuery();
+                }
             }
             catch (Exception)
             {

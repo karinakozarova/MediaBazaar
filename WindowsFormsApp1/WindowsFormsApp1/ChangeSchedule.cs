@@ -28,8 +28,13 @@ namespace MediaBazar
             workingShifts = new List<int>();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.userId = id;
-            gbShifts.Enabled = false;
-            gbWorkDays.Enabled = false;
+            gbMondayShift.Enabled = false;
+            gbFridayShift.Enabled = false;
+            gbTuesdayShift.Enabled = false;
+            gbWednesdayShift.Enabled = false;
+            gbThursdayShift.Enabled = false;
+            gbSundayShift.Enabled = false;
+            gbSaturdayShift.Enabled = false;
         }
 
         private void PopulateEmployees(List<Employee> employees)
@@ -43,9 +48,6 @@ namespace MediaBazar
 
         private void PopulateSchedule(List<int> workingDays, List<string> workingShifts)
         {
-            cbAfternoonShift.Checked = false;
-            cbEveningShift.Checked = false;
-            cbMorningShift.Checked = false;
             cbMonday.Checked = false;
             cbTuesday.Checked = false;
             cbWednesday.Checked = false;
@@ -53,59 +55,154 @@ namespace MediaBazar
             cbFriday.Checked = false;
             cbSaturday.Checked = false;
             cbSunday.Checked = false;
+            cbMondayMorning.Checked = false;
+            cbMondayAfternoon.Checked = false;
+            cbMondayEvening.Checked = false;
+            cbTuesdayMorning.Checked = false;
+            cbTuesdayAfternoon.Checked = false;
+            cbTuesdayEvening.Checked = false;
+            cbWednesdayMorning.Checked = false;
+            cbWednesdayEvening.Checked = false;
+            cbWednesdayAfternoon.Checked = false;
+            cbThursdayMorning.Checked = false;
+            cbThursdayEvening.Checked = false;
+            cbThursdayAfternoon.Checked = false;
+            cbFridayMorning.Checked = false;
+            cbFridayEvening.Checked = false;
+            cbFridayAfternoon.Checked = false;
+            cbSaturdayMorning.Checked = false;
+            cbSaturdayAfternoon.Checked = false;
+            cbSaturdayEvening.Checked = false;
+            cbSundayAfternoon.Checked = false;
+            cbSundayEvening.Checked = false;
+            cbSundayMorning.Checked = false;
 
-            foreach(int day in workingDays)
+            for (int i = 0; i < workingDays.Count; i++)
             {
-                if(day == 0)
+                if(workingDays[i] == 0)
                 {
                     cbMonday.Checked = true;
+                    if(workingShifts[i] == "morning")
+                    {
+                        cbMondayMorning.Checked = true;
+                    }
+                    if (workingShifts[i] == "afternoon")
+                    {
+                        cbMondayAfternoon.Checked = true;
+                    }
+                    if (workingShifts[i] == "evening")
+                    {
+                        cbMondayEvening.Checked = true;
+                    }
                 }
-                if (day == 1)
+                if (workingDays[i] == 1)
                 {
                     cbTuesday.Checked = true;
+                    if (workingShifts[i] == "morning")
+                    {
+                        cbTuesdayMorning.Checked = true;
+                    }
+                    if (workingShifts[i] == "afternoon")
+                    {
+                        cbTuesdayAfternoon.Checked = true;
+                    }
+                    if (workingShifts[i] == "evening")
+                    {
+                        cbTuesdayEvening.Checked = true;
+                    }
                 }
-                if (day == 2)
+                if (workingDays[i] == 2)
                 {
                     cbWednesday.Checked = true;
+                    if (workingShifts[i] == "morning")
+                    {
+                        cbWednesdayMorning.Checked = true;
+                    }
+                    if (workingShifts[i] == "afternoon")
+                    {
+                        cbWednesdayAfternoon.Checked = true;
+                    }
+                    if (workingShifts[i] == "evening")
+                    {
+                        cbWednesdayEvening.Checked = true;
+                    }
                 }
-                if (day == 3)
+                if (workingDays[i] == 3)
                 {
                     cbThursday.Checked = true;
+                    if (workingShifts[i] == "morning")
+                    {
+                        cbThursdayMorning.Checked = true;
+                    }
+                    if (workingShifts[i] == "afternoon")
+                    {
+                        cbThursdayAfternoon.Checked = true;
+                    }
+                    if (workingShifts[i] == "evening")
+                    {
+                        cbThursdayEvening.Checked = true;
+                    }
                 }
-                if (day == 4)
+                if (workingDays[i] == 4)
                 {
                     cbFriday.Checked = true;
+                    if (workingShifts[i] == "morning")
+                    {
+                        cbFridayMorning.Checked = true;
+                    }
+                    if (workingShifts[i] == "afternoon")
+                    {
+                        cbFridayAfternoon.Checked = true;
+                    }
+                    if (workingShifts[i] == "evening")
+                    {
+                        cbFridayEvening.Checked = true;
+                    }
                 }
-                if (day == 5)
+                if (workingDays[i] == 5)
                 {
                     cbSaturday.Checked = true;
+                    if (workingShifts[i] == "morning")
+                    {
+                        cbSaturdayMorning.Checked = true;
+                    }
+                    if (workingShifts[i] == "afternoon")
+                    {
+                        cbSaturdayAfternoon.Checked = true;
+                    }
+                    if (workingShifts[i] == "evening")
+                    {
+                        cbSaturdayEvening.Checked = true;
+                    }
                 }
-                if (day == 6)
+                if (workingDays[i] == 6)
                 {
                     cbSunday.Checked = true;
-                }
-            }
-            foreach(string shift in workingShifts)
-            {
-                if(shift == "morning")
-                {
-                    cbMorningShift.Checked = true;
-                }
-                if (shift == "afternoon")
-                {
-                    cbAfternoonShift.Checked = true;
-                }
-                if (shift == "evening")
-                {
-                    cbEveningShift.Checked = true;
+                    if (workingShifts[i] == "morning")
+                    {
+                        cbSundayMorning.Checked = true;
+                    }
+                    if (workingShifts[i] == "afternoon")
+                    {
+                        cbSundayAfternoon.Checked = true;
+                    }
+                    if (workingShifts[i] == "evening")
+                    {
+                        cbSundayEvening.Checked = true;
+                    }
                 }
             }
         }
 
         private void CbEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
-            gbShifts.Enabled = true;
-            gbWorkDays.Enabled = true;
+            gbMondayShift.Enabled = true;
+            gbFridayShift.Enabled = true;
+            gbTuesdayShift.Enabled = true;
+            gbWednesdayShift.Enabled = true;
+            gbThursdayShift.Enabled = true;
+            gbSundayShift.Enabled = true;
+            gbSaturdayShift.Enabled = true;
             int employeeId = ((EmployeeComboBoxItem)cbEmployee.SelectedItem).Id;
             List<int> workDays = Employee.GetEmployeeWorkingDays(employeeId);
             List<string> workShifts = Employee.GetEmployeeWorkingShifts(employeeId);
@@ -118,16 +215,18 @@ namespace MediaBazar
             if (cbEmployee.Text == "Employee" || cbEmployee.Text == "")
             {
                 MessageBox.Show("Please select an employee!");
-            }else if (rtbMessage.Text == "Message" || rtbMessage.Text == "")
+            }
+            else if (rtbMessage.Text == "Message" || rtbMessage.Text == "")
             {
                 MessageBox.Show("Please write a message to the employee!");
             }
-            else if (cbMorningShift.Checked == false && cbEveningShift.Checked == false && cbAfternoonShift.Checked == false)
-            {
-                MessageBox.Show("Please select a shift for the employee!");
-            }else if (cbMonday.Checked == false && cbTuesday.Checked == false && cbWednesday.Checked == false && cbThursday.Checked == false && cbFriday.Checked == false && cbSaturday.Checked == false && cbSunday.Checked == false)
+            else if (cbMonday.Checked == false && cbTuesday.Checked == false && cbWednesday.Checked == false && cbThursday.Checked == false && cbFriday.Checked == false && cbSaturday.Checked == false && cbSunday.Checked == false)
             {
                 MessageBox.Show("Please select a working day for the employee!");
+            }
+            else if (cbMondayMorning.Checked == false && cbMondayAfternoon.Checked == false && cbMondayEvening.Checked == false && cbTuesdayMorning.Checked == false && cbTuesdayAfternoon.Checked == false && cbTuesdayEvening.Checked == false && cbWednesdayMorning.Checked == false && cbWednesdayAfternoon.Checked == false && cbWednesdayEvening.Checked == false && cbThursdayMorning.Checked == false && cbThursdayAfternoon.Checked == false && cbThursdayEvening.Checked == false && cbFridayMorning.Checked == false && cbFridayAfternoon.Checked == false && cbFridayEvening.Checked == false && cbSaturdayMorning.Checked == false && cbSaturdayAfternoon.Checked == false && cbSaturdayEvening.Checked == false && cbSundayMorning.Checked == false && cbSundayAfternoon.Checked == false && cbSundayEvening.Checked == false)
+            {
+                MessageBox.Show("Please select a working shift for the employee!");
             }
             else
             {
@@ -137,43 +236,129 @@ namespace MediaBazar
                     this.workingShifts.Clear();
                     if (cbMonday.Checked)
                     {
-                        this.workingDays.Add(0);
+                        if (cbMondayMorning.Checked)
+                        {
+                            this.workingDays.Add(0);
+                            this.workingShifts.Add(1);
+                        }
+                        if (cbMondayAfternoon.Checked)
+                        {
+                            this.workingDays.Add(0);
+                            this.workingShifts.Add(2);
+                        }
+                        if (cbMondayEvening.Checked)
+                        {
+                            this.workingDays.Add(0);
+                            this.workingShifts.Add(3);
+                        }
                     }
                     if (cbTuesday.Checked)
                     {
-                        this.workingDays.Add(1);
+                        if (cbTuesdayMorning.Checked)
+                        {
+                            this.workingDays.Add(1);
+                            this.workingShifts.Add(1);
+                        }
+                        if (cbTuesdayAfternoon.Checked)
+                        {
+                            this.workingDays.Add(1);
+                            this.workingShifts.Add(2);
+                        }
+                        if (cbTuesdayEvening.Checked)
+                        {
+                            this.workingDays.Add(1);
+                            this.workingShifts.Add(3);
+                        }
                     }
                     if (cbWednesday.Checked)
                     {
-                        this.workingDays.Add(2);
+                        if (cbWednesdayMorning.Checked)
+                        {
+                            this.workingDays.Add(2);
+                            this.workingShifts.Add(1);
+                        }
+                        if (cbWednesdayAfternoon.Checked)
+                        {
+                            this.workingDays.Add(2);
+                            this.workingShifts.Add(2);
+                        }
+                        if (cbWednesdayEvening.Checked)
+                        {
+                            this.workingDays.Add(2);
+                            this.workingShifts.Add(3);
+                        }
                     }
                     if (cbThursday.Checked)
                     {
-                        this.workingDays.Add(3);
+                        if (cbThursdayMorning.Checked)
+                        {
+                            this.workingDays.Add(3);
+                            this.workingShifts.Add(1);
+                        }
+                        if (cbThursdayAfternoon.Checked)
+                        {
+                            this.workingDays.Add(3);
+                            this.workingShifts.Add(2);
+                        }
+                        if (cbThursdayEvening.Checked)
+                        {
+                            this.workingDays.Add(3);
+                            this.workingShifts.Add(3);
+                        }
                     }
                     if (cbFriday.Checked)
                     {
-                        this.workingDays.Add(4);
+                        if (cbFridayMorning.Checked)
+                        {
+                            this.workingDays.Add(4);
+                            this.workingShifts.Add(1);
+                        }
+                        if (cbFridayAfternoon.Checked)
+                        {
+                            this.workingDays.Add(4);
+                            this.workingShifts.Add(2);
+                        }
+                        if (cbFridayEvening.Checked)
+                        {
+                            this.workingDays.Add(4);
+                            this.workingShifts.Add(3);
+                        }
                     }
                     if (cbSaturday.Checked)
                     {
-                        this.workingDays.Add(5);
+                        if (cbSaturdayMorning.Checked)
+                        {
+                            this.workingDays.Add(5);
+                            this.workingShifts.Add(1);
+                        }
+                        if (cbSaturdayAfternoon.Checked)
+                        {
+                            this.workingDays.Add(5);
+                            this.workingShifts.Add(2);
+                        }
+                        if (cbSaturdayEvening.Checked)
+                        {
+                            this.workingDays.Add(5);
+                            this.workingShifts.Add(3);
+                        }
                     }
                     if (cbSunday.Checked)
                     {
-                        this.workingDays.Add(6);
-                    }
-                    if (cbMorningShift.Checked)
-                    {
-                        this.workingShifts.Add(1);
-                    }
-                    if (cbAfternoonShift.Checked)
-                    {
-                        this.workingShifts.Add(2);
-                    }
-                    if (cbEveningShift.Checked)
-                    {
-                        this.workingShifts.Add(3);
+                        if (cbSundayMorning.Checked)
+                        {
+                            this.workingDays.Add(6);
+                            this.workingShifts.Add(1);
+                        }
+                        if (cbSundayAfternoon.Checked)
+                        {
+                            this.workingDays.Add(6);
+                            this.workingShifts.Add(2);
+                        }
+                        if (cbSundayEvening.Checked)
+                        {
+                            this.workingDays.Add(6);
+                            this.workingShifts.Add(3);
+                        }
                     }
                     int employeeId = ((EmployeeComboBoxItem)cbEmployee.SelectedItem).Id;
                     Employee.ChangeEmployeeShift(employeeId, this.workingDays, this.workingShifts);
@@ -230,9 +415,6 @@ namespace MediaBazar
 
                     rtbMessage.Text = "";
                     cbEmployee.Text = "Employee";
-                    cbAfternoonShift.Checked = false;
-                    cbEveningShift.Checked = false;
-                    cbMorningShift.Checked = false;
                     cbMonday.Checked = false;
                     cbThursday.Checked = false;
                     cbTuesday.Checked = false;
@@ -240,8 +422,36 @@ namespace MediaBazar
                     cbSunday.Checked = false;
                     cbWednesday.Checked = false;
                     cbFriday.Checked = false;
-                    gbShifts.Enabled = false;
-                    gbWorkDays.Enabled = false;
+
+                    cbMondayMorning.Checked = false;
+                    cbMondayAfternoon.Checked = false;
+                    cbMondayEvening.Checked = false;
+                    cbTuesdayMorning.Checked = false;
+                    cbTuesdayAfternoon.Checked = false;
+                    cbTuesdayEvening.Checked = false;
+                    cbWednesdayMorning.Checked = false;
+                    cbWednesdayEvening.Checked = false;
+                    cbWednesdayAfternoon.Checked = false;
+                    cbThursdayMorning.Checked = false;
+                    cbThursdayEvening.Checked = false;
+                    cbThursdayAfternoon.Checked = false;
+                    cbFridayMorning.Checked = false;
+                    cbFridayEvening.Checked = false;
+                    cbFridayAfternoon.Checked = false;
+                    cbSaturdayMorning.Checked = false;
+                    cbSaturdayAfternoon.Checked = false;
+                    cbSaturdayEvening.Checked = false;
+                    cbSundayAfternoon.Checked = false;
+                    cbSundayEvening.Checked = false;
+                    cbSundayMorning.Checked = false;
+
+                    gbMondayShift.Enabled = false;
+                    gbFridayShift.Enabled = false;
+                    gbTuesdayShift.Enabled = false;
+                    gbWednesdayShift.Enabled = false;
+                    gbThursdayShift.Enabled = false;
+                    gbSundayShift.Enabled = false;
+                    gbSaturdayShift.Enabled = false;
                 }
             }
             
