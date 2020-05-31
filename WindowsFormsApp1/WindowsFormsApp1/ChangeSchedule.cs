@@ -28,6 +28,7 @@ namespace MediaBazar
             workingShifts = new List<int>();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.userId = id;
+            rtbMessage.MaxLength = 500;
             gbMondayShift.Enabled = false;
             gbFridayShift.Enabled = false;
             gbTuesdayShift.Enabled = false;

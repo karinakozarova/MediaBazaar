@@ -15,11 +15,14 @@ namespace MediaBazar
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             tbxFirstName.Enabled = false;
             tbxLastName.Enabled = false;
+            cmbEmployees.Enabled = false;
+            cmbManagers.Enabled = false;
             PopulateDepartments(Department.GetAllDepartments());
             PopulateManagers(Manager.GetAllManagers());
             PopulateEmployees(Employee.GetAllEmployees());
             this.loggedUserId = user_id;
             this.workerRole = workerRole;
+            rtbReason.MaxLength = 400;
             if (workerRole == (int)ProfileRoles.ADMINISTRATOR)
             {
                 btnSendFiringRequest.Visible = false;
@@ -116,8 +119,6 @@ namespace MediaBazar
                         }
                         else
                         {
-                            tbxFirstName.Text = employeeFirstName;
-                            tbxLastName.Text = employeeLastName;
                             MessageBox.Show("Request sent successfully!");
                         }
                     }
@@ -128,6 +129,11 @@ namespace MediaBazar
                     finally
                     {
                         conn.Close();
+                        cmbEmployees.Enabled = false;
+                        cmbEmployees.Text = "Employees";
+                        cmbDepartment.Text = "Department";
+                        tbxFirstName.Text = "First name";
+                        tbxLastName.Text = "Last name";
                     }
                 }
             }
@@ -218,6 +224,11 @@ namespace MediaBazar
                         finally
                         {
                             conn.Close();
+                            cmbManagers.Enabled = false;
+                            cmbManagers.Text = "Managers";
+                            cmbDepartment.Text = "Department";
+                            tbxFirstName.Text = "First name";
+                            tbxLastName.Text = "Last name";
                         }
                     }
                 }
@@ -231,6 +242,12 @@ namespace MediaBazar
         private void CmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
             int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
+            cmbEmployees.Enabled = true;
+            cmbManagers.Enabled = true;
+            cmbEmployees.Text = "Employees";
+            cmbManagers.Text = "Managers";
+            tbxFirstName.Text = "First name";
+            tbxLastName.Text = "Last name";
             PopulateManagers(Manager.GetAllManagersByDepartment(departmentId));
             PopulateEmployees(Employee.GetAllEmployeesByDepartment(departmentId));
         }
@@ -249,6 +266,22 @@ namespace MediaBazar
             {
                 rtbReason.Text = "Reason for firing";
             }
+        }
+
+        private void CmbEmployees_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string employeeFirstName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).FirstName;
+            string employeeLastName = ((EmployeeComboBoxItem)cmbEmployees.SelectedItem).LastName;
+            tbxFirstName.Text = employeeFirstName;
+            tbxLastName.Text = employeeLastName;
+        }
+
+        private void CmbManagers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string managerFirstName = ((ManagerComboBoxItems)cmbManagers.SelectedItem).FirstName;
+            string managerLastName = ((ManagerComboBoxItems)cmbManagers.SelectedItem).LastName;
+            tbxFirstName.Text = managerFirstName;
+            tbxLastName.Text = managerLastName;
         }
     }
 }

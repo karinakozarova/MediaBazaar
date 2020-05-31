@@ -8,29 +8,21 @@ namespace MediaBazar
 {
     class ManagerComboBoxItems
     {
-        private string firstName;
-        private string lastName;
-        private int id;
-
         public ManagerComboBoxItems(Manager m)
         {
-            this.id = m.ManagerId;
-            this.firstName = m.ManagerFirstName;
-            this.lastName = m.ManagerLastName;
+            this.Id = m.ManagerId;
+            this.FirstName = m.ManagerFirstName;
+            this.LastName = m.ManagerLastName;
         }
 
-        public int Id
-        {
-            get
-            {
-                return id;
-            }
-        }
+        public int Id { get; }
+        public string FirstName { get; }
+        public string LastName { get; }
 
         //Override ToString method
         public override string ToString()
         {
-            return $"{firstName} {lastName}";
+            return $"{FirstName} {LastName}";
         }
     }
 }
