@@ -7,6 +7,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Net.Mail;
 
 namespace MediaBazar
 {
@@ -14,6 +15,7 @@ namespace MediaBazar
     {
         Rules rule;
         private int createdBy;
+        private const int SmtpServerPort = 587;
 
         public RulesEditor(int userId)
         {
@@ -41,6 +43,32 @@ namespace MediaBazar
             else
             {
                 Rules newRule = new Rules(tbDescription.Text, createdBy);
+
+                try
+                {
+                    foreach (Worker w in Worker.GetAllEmployees())
+                    {
+                        MailMessage mail = new MailMessage();
+                        SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                        mail.From = new MailAddress("mediabazaartest@gmail.com");
+                        mail.To.Add(w.Email);
+                        mail.Subject = "Rule Changed!";
+                        mail.Body = "Hey there is a new rule added to the list! Go and check it out: <link here>.";
+
+                        SmtpServer.Port = SmtpServerPort;
+                        SmtpServer.Credentials = new System.Net.NetworkCredential("MediaBazaarTest@gmail.com", "MediaBazaar!Test123");
+                        SmtpServer.EnableSsl = true;
+
+                        SmtpServer.Send(mail);
+                    }
+                    MessageBox.Show("Rules updated and mail sent!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                
                 UpdateForm();
             }
         }
@@ -58,6 +86,30 @@ namespace MediaBazar
                     string ruleText = lbRuleList.SelectedItem.ToString();
                     string ruleId = ruleText.Substring(0, ruleText.IndexOf("-"));
                     Rules.RemoveRule(Convert.ToInt32(ruleId));
+                    try
+                    {
+                        foreach (Worker w in Worker.GetAllEmployees())
+                        {
+                            MailMessage mail = new MailMessage();
+                            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                            mail.From = new MailAddress("mediabazaartest@gmail.com");
+                            mail.To.Add(w.Email);
+                            mail.Subject = "Rule Changed!";
+                            mail.Body = "Hey a rule was deleted from the list! Go and check it out: <link here>.";
+
+                            SmtpServer.Port = SmtpServerPort;
+                            SmtpServer.Credentials = new System.Net.NetworkCredential("MediaBazaarTest@gmail.com", "MediaBazaar!Test123");
+                            SmtpServer.EnableSsl = true;
+
+                            SmtpServer.Send(mail);
+                        }
+                        MessageBox.Show("Rules updated and mail sent!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
                     UpdateForm();
                 }
             }

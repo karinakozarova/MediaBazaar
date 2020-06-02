@@ -70,35 +70,44 @@ namespace MediaBazar
             }
             else
             {
-                int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
-                int employeeId = ((EmployeeComboBoxItem)cmbEmployee.SelectedItem).Id;
-                string employeeUsername = ((EmployeeComboBoxItem)cmbEmployee.SelectedItem).Username;
-                string employeeFirstName = ((EmployeeComboBoxItem)cmbEmployee.SelectedItem).FirstName;
-                string employeeLastName = ((EmployeeComboBoxItem)cmbEmployee.SelectedItem).LastName;
+                int employeeid = ((EmployeeComboBoxItem)cmbEmployee.SelectedItem).Id;
+                decimal CurrentWage = Worker.GetworkerCurrentWage(employeeid);
                 decimal employeeHourlyWage = numericHourlywage.Value;
-                if (MessageBox.Show("Do you really want to send this Promotion request?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (CurrentWage >= employeeHourlyWage)
                 {
-                    try
+                    MessageBox.Show("The new wage can not be lower than the worker's current wage!");
+                }
+                else
+                {
+                    int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
+                    int employeeId = ((EmployeeComboBoxItem)cmbEmployee.SelectedItem).Id;
+                    string employeeUsername = ((EmployeeComboBoxItem)cmbEmployee.SelectedItem).Username;
+                    string employeeFirstName = ((EmployeeComboBoxItem)cmbEmployee.SelectedItem).FirstName;
+                    string employeeLastName = ((EmployeeComboBoxItem)cmbEmployee.SelectedItem).LastName;
+                    if (MessageBox.Show("Do you really want to send this Promotion request?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        PromotionRequests pr = new PromotionRequests(employeeId, this.loggedUserId, employeeUsername, employeeFirstName, employeeLastName, departmentId, employeeHourlyWage);
-                        PromotionRequests pr1 = new PromotionRequests(employeeId, this.loggedUserId, employeeHourlyWage);
-                        if (!pr1.PrExists)
+                        try
                         {
-                            MessageBox.Show("Promotion request already exists!");
+                            PromotionRequests pr = new PromotionRequests(employeeId, this.loggedUserId, employeeUsername, employeeFirstName, employeeLastName, departmentId, employeeHourlyWage);
+                            PromotionRequests pr1 = new PromotionRequests(employeeId, this.loggedUserId, employeeHourlyWage);
+                            if (!pr1.PrExists)
+                            {
+                                MessageBox.Show("Promotion request already exists!");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Request sent successfully!");
+                                this.Close();
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            MessageBox.Show("Request sent successfully!");
-                            this.Close();
+                            string epra = ex.Message;
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        string epra = ex.Message;
-                    }
-                    finally
-                    {
-                        conn.Close();
+                        finally
+                        {
+                            conn.Close();
+                        }
                     }
                 }
             }
@@ -108,6 +117,7 @@ namespace MediaBazar
         {
             int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
             PopulateEmployees(Employee.GetAllEmployeesByDepartment(departmentId));
+            cmbEmployee.Enabled = true;
         }
 
         private void cmbEmployee_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,6 +125,8 @@ namespace MediaBazar
             int employeeid = ((EmployeeComboBoxItem)cmbEmployee.SelectedItem).Id;
             decimal CurrentWage = Worker.GetworkerCurrentWage(employeeid);
             lblCurrentWage.Text = CurrentWage.ToString() + "$/Hourly";
+            numericHourlywage.Enabled = true;
+            numericHourlywage.Value = CurrentWage;
         }
     }
 }
