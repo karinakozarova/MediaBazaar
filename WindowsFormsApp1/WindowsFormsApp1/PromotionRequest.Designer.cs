@@ -72,6 +72,7 @@
             // 
             // cmbEmployee
             // 
+            this.cmbEmployee.Enabled = false;
             this.cmbEmployee.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmployee.FormattingEnabled = true;
             this.cmbEmployee.Location = new System.Drawing.Point(184, 50);
@@ -103,6 +104,8 @@
             // 
             // numericHourlywage
             // 
+            this.numericHourlywage.DecimalPlaces = 1;
+            this.numericHourlywage.Enabled = false;
             this.numericHourlywage.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericHourlywage.Location = new System.Drawing.Point(184, 137);
             this.numericHourlywage.Maximum = new decimal(new int[] {

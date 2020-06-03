@@ -49,6 +49,7 @@
             // 
             this.tbDescription.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDescription.Location = new System.Drawing.Point(12, 239);
+            this.tbDescription.MaxLength = 255;
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Size = new System.Drawing.Size(547, 64);
