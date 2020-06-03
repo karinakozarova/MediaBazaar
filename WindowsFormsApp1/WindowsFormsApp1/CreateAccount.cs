@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Linq;
+using WindowsFormsApp1;
 
 namespace MediaBazar
 {
@@ -13,6 +14,7 @@ namespace MediaBazar
     {
         AddOtherContacts aoc;
         PeopleController pc;
+        AssignShifts assignShifts;
         string username;
         decimal hourlyWage;
         int workerRole;
@@ -53,13 +55,16 @@ namespace MediaBazar
             else if (workerRole == (int)ProfileRoles.MANAGER)
             {
                 btnEdit.Visible = false;
-                btnChangeShifts.Visible = false;
                 btnCreateAccount.Visible = false;
                 rbAdmin.Visible = false;
                 rbManager.Visible = false;
                 rbEmployee.Checked = true;
                 rbEmployee.Enabled = false;
                 this.Text = "Hiring Request";
+            }
+            if(tbUsername.Text == "" || tbUsername.Text == "Username")
+            {
+                btnAssignShifts.Enabled = false;
             }
         }
 
@@ -76,14 +81,6 @@ namespace MediaBazar
             {
                 MessageBox.Show("Please fill in all the fields in the table!");
             }
-            else if (!cbMonday.Checked && !cbTuesday.Checked && !cbWednesday.Checked && !cbThursday.Checked && !cbFriday.Checked && !cbSaturday.Checked && !cbSunday.Checked)
-            {
-                MessageBox.Show("Please select available working days!");
-            }
-            else if (!cbMorningShift.Checked && !cbAfternoonShift.Checked && !cbEveningShift.Checked)
-            {
-                MessageBox.Show("Please select a prefered workshift!");
-            }
             else if (nHourlyWage.Value < minHourlyWage)
             {
                 MessageBox.Show("Employee hourly wage must be above the minimum!");
@@ -95,6 +92,10 @@ namespace MediaBazar
             else if (!IsValidEmail(tbEmail.Text))
             {
                 MessageBox.Show("Please enter a valid email address!");
+            }
+            else if (workdays.Count == 0)
+            {
+                MessageBox.Show("Please, assign shifts to the person!");
             }
             else
             {
@@ -156,73 +157,8 @@ namespace MediaBazar
                             employeDetailsCmd.Parameters.AddWithValue("@is_approved", 1);
                             employeDetailsCmd.ExecuteNonQuery();
 
-                            if (cbMonday.Checked)
-                            {
-                                workdays.Add(0);
-                            }
-                            if (cbTuesday.Checked)
-                            {
-                                workdays.Add(1);
-                            }
-                            if (cbWednesday.Checked)
-                            {
-                                workdays.Add(2);
-                            }
-                            if (cbThursday.Checked)
-                            {
-                                workdays.Add(3);
-                            }
-                            if (cbFriday.Checked)
-                            {
-                                workdays.Add(4);
-                            }
-                            if (cbSaturday.Checked)
-                            {
-                                workdays.Add(5);
-                            }
-                            if (cbSunday.Checked)
-                            {
-                                workdays.Add(6);
-                            }
+                            AssignEmployeeShift();
 
-                            if (cbMorningShift.Checked)
-                            {
-                                workshifts.Add(1);
-                            }
-                            if (cbAfternoonShift.Checked)
-                            {
-                                workshifts.Add(2);
-                            }
-                            if (cbEveningShift.Checked)
-                            {
-                                workshifts.Add(3);
-                            }
-
-                            DateTime startOfWeek = DateTime.Today.AddDays(
-                          (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
-                          (int)DateTime.Today.DayOfWeek);
-
-                            string result = string.Join("," + Environment.NewLine, Enumerable
-                              .Range(0, 7)
-                              .Select(i => startOfWeek
-                                 .AddDays(i)
-                                 .ToString("yyyy-MM-dd")));
-                            var arrayCurrentWeek = result.Split(',');
-                            string currentMonday = arrayCurrentWeek[0];
-
-                            foreach (int shift in workshifts)
-                            {
-                                foreach (int day in workdays)
-                                {
-                                    string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift, assigned_date) VALUE(@userId,@week_day_id, @shift, @assigned_date)";
-                                    MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
-                                    shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
-                                    shiftsQueryCmd.Parameters.AddWithValue("@userId", pc.GetIdByUsername(username));
-                                    shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
-                                    shiftsQueryCmd.Parameters.AddWithValue("@assigned_date", currentMonday);
-                                    shiftsQueryCmd.ExecuteNonQuery();
-                                }
-                            }
                             HiringRequests hr = new HiringRequests(pc.GetIdByUsername(username), loggedInUser, this.username, firstName, lastName, this.hourlyWage, departmentId, contractStartDate, phoneN, email);
                             HiringRequests hr1 = new HiringRequests(pc.GetIdByUsername(username), loggedInUser);
                             if (!hr1.FrExists)
@@ -359,6 +295,7 @@ namespace MediaBazar
             {
                 if (pc.GetIdByUsername(username) != 0)
                 {
+                    btnAssignShifts.Enabled = false;
                     tbFirstName.Text = pc.PopulateFields(pc.GetIdByUsername(username)).FirstName;
                     tbLastName.Text = pc.PopulateFields(pc.GetIdByUsername(username)).LastName;
                     dtpBirthdate.Value = pc.PopulateFields(pc.GetIdByUsername(username)).DateOFBirth;
@@ -383,12 +320,6 @@ namespace MediaBazar
                     else if (pc.PopulateFields(pc.GetIdByUsername(username)).AccountType == 2)
                     {
                         rbEmployee.Checked = true;
-                    }
-                    foreach (string s in pc.PopulateShifts(pc.GetIdByUsername(username)))
-                    {
-                        if (s == "morning") { cbMorningShift.Checked = true; }
-                        else if (s == "afternoon") { cbAfternoonShift.Checked = true; }
-                        else if (s == "evening") { cbEveningShift.Checked = true; }
                     }
 
                     addContact = true;
@@ -415,17 +346,8 @@ namespace MediaBazar
                     dtbContractStartDate.Value = System.DateTime.Now;
                     rbAdmin.Checked = false;
                     rbManager.Checked = false;
-                    //rbEmployee.Checked = false;
-                    cbMorningShift.Checked = false;
-                    cbAfternoonShift.Checked = false;
-                    cbEveningShift.Checked = false;
-                    cbMonday.Checked = false;
-                    cbTuesday.Checked = false;
-                    cbWednesday.Checked = false;
-                    cbThursday.Checked = false;
-                    cbFriday.Checked = false;
-                    cbSaturday.Checked = false;
-                    cbSunday.Checked = false;
+                    btnAssignShifts.Enabled = true;
+                    rbEmployee.Checked = false;
                     addContact = false;
                     if (!addContact)
                     {
@@ -490,14 +412,6 @@ namespace MediaBazar
             else if (!rbAdmin.Checked && !rbManager.Checked)
             {
                 MessageBox.Show("Please select an account type!");
-            }
-            else if (!cbMonday.Checked && !cbTuesday.Checked && !cbWednesday.Checked && !cbThursday.Checked && !cbFriday.Checked && !cbSaturday.Checked && !cbSunday.Checked)
-            {
-                MessageBox.Show("Please select available working days!");
-            }
-            else if (!cbMorningShift.Checked && !cbAfternoonShift.Checked && !cbEveningShift.Checked)
-            {
-                MessageBox.Show("Please select a prefered workshift!");
             }
             else if (nHourlyWage.Value < minHourlyWage)
             {
@@ -566,77 +480,6 @@ namespace MediaBazar
                             employeDetailsCmd.Parameters.AddWithValue("@department_id", departmentId);
                             employeDetailsCmd.ExecuteNonQuery();
 
-                            if (state == true)
-                            {
-                                pc.DeleteShifts();
-                                if (cbMonday.Checked)
-                                {
-                                    workdays.Add(0);
-                                }
-                                if (cbTuesday.Checked)
-                                {
-                                    workdays.Add(1);
-                                }
-                                if (cbWednesday.Checked)
-                                {
-                                    workdays.Add(2);
-                                }
-                                if (cbThursday.Checked)
-                                {
-                                    workdays.Add(3);
-                                }
-                                if (cbFriday.Checked)
-                                {
-                                    workdays.Add(4);
-                                }
-                                if (cbSaturday.Checked)
-                                {
-                                    workdays.Add(5);
-                                }
-                                if (cbSunday.Checked)
-                                {
-                                    workdays.Add(6);
-                                }
-
-                                if (cbMorningShift.Checked)
-                                {
-                                    workshifts.Add(1);
-                                }
-                                if (cbAfternoonShift.Checked)
-                                {
-                                    workshifts.Add(2);
-                                }
-                                if (cbEveningShift.Checked)
-                                {
-                                    workshifts.Add(3);
-                                }
-
-                                DateTime startOfWeek = DateTime.Today.AddDays(
-                           (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
-                           (int)DateTime.Today.DayOfWeek);
-
-                                string result = string.Join("," + Environment.NewLine, Enumerable
-                                  .Range(0, 7)
-                                  .Select(i => startOfWeek
-                                     .AddDays(i)
-                                     .ToString("yyyy-MM-dd")));
-                                var arrayCurrentWeek = result.Split(',');
-                                string currentMonday = arrayCurrentWeek[0];
-
-                                foreach (int shift in workshifts)
-                                {
-                                    foreach (int day in workdays)
-                                    {
-                                        string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift, assigned_date) VALUE(@userId,@week_day_id, @shift, @assigned_date)";
-                                        MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
-                                        shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
-                                        shiftsQueryCmd.Parameters.AddWithValue("@userId", pc.GetIdByUsername(username));
-                                        shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
-                                        shiftsQueryCmd.Parameters.AddWithValue("@assigned_date", currentMonday);
-                                        shiftsQueryCmd.ExecuteNonQuery();
-                                    }
-                                }
-                            }
                             MessageBox.Show("The account has been edited.");
                         }
                         catch (Exception)
@@ -657,20 +500,6 @@ namespace MediaBazar
         {
             string username = tbUsername.Text;
             return username;
-        }
-        private void btnChangeShifts_Click(object sender, EventArgs e)
-        {
-            state = true;
-            cbMonday.Checked = false;
-            cbTuesday.Checked = false;
-            cbWednesday.Checked = false;
-            cbThursday.Checked = false;
-            cbFriday.Checked = false;
-            cbSaturday.Checked = false;
-            cbSunday.Checked = false;
-            cbMorningShift.Checked = false;
-            cbAfternoonShift.Checked = false;
-            cbEveningShift.Checked = false;
         }
 
         private void btnDeleteContact_Click(object sender, EventArgs e)
@@ -713,14 +542,6 @@ namespace MediaBazar
             {
                 MessageBox.Show("Please select an account type!");
             }
-            else if (!cbMonday.Checked && !cbTuesday.Checked && !cbWednesday.Checked && !cbThursday.Checked && !cbFriday.Checked && !cbSaturday.Checked && !cbSunday.Checked)
-            {
-                MessageBox.Show("Please select available working days!");
-            }
-            else if (!cbMorningShift.Checked && !cbAfternoonShift.Checked && !cbEveningShift.Checked)
-            {
-                MessageBox.Show("Please select a prefered workshift!");
-            }
             else if (nHourlyWage.Value < minHourlyWage)
             {
                 MessageBox.Show("Employee hourly wage must be above the minimum!");
@@ -732,6 +553,10 @@ namespace MediaBazar
             else if (!IsValidEmail(tbEmail.Text))
             {
                 MessageBox.Show("Please enter a valid email address!");
+            }
+            else if (workdays.Count == 0)
+            {
+                MessageBox.Show("Please, assign shifts to the person!");
             }
             else
             {
@@ -793,73 +618,7 @@ namespace MediaBazar
                             employeDetailsCmd.Parameters.AddWithValue("@is_approved", 2);
                             employeDetailsCmd.ExecuteNonQuery();
 
-                            if (cbMonday.Checked)
-                            {
-                                workdays.Add(0);
-                            }
-                            if (cbTuesday.Checked)
-                            {
-                                workdays.Add(1);
-                            }
-                            if (cbWednesday.Checked)
-                            {
-                                workdays.Add(2);
-                            }
-                            if (cbThursday.Checked)
-                            {
-                                workdays.Add(3);
-                            }
-                            if (cbFriday.Checked)
-                            {
-                                workdays.Add(4);
-                            }
-                            if (cbSaturday.Checked)
-                            {
-                                workdays.Add(5);
-                            }
-                            if (cbSunday.Checked)
-                            {
-                                workdays.Add(6);
-                            }
-
-                            if (cbMorningShift.Checked)
-                            {
-                                workshifts.Add(1);
-                            }
-                            if (cbAfternoonShift.Checked)
-                            {
-                                workshifts.Add(2);
-                            }
-                            if (cbEveningShift.Checked)
-                            {
-                                workshifts.Add(3);
-                            }
-
-                            DateTime startOfWeek = DateTime.Today.AddDays(
-                            (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
-                            (int)DateTime.Today.DayOfWeek);
-
-                            string result = string.Join("," + Environment.NewLine, Enumerable
-                              .Range(0, 7)
-                              .Select(i => startOfWeek
-                                 .AddDays(i)
-                                 .ToString("yyyy-MM-dd")));
-                            var arrayCurrentWeek = result.Split(',');
-                            string currentMonday = arrayCurrentWeek[0];
-
-                            foreach (int shift in workshifts)
-                            {
-                                foreach (int day in workdays)
-                                {
-                                    string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift, assigned_date) VALUE(@userId,@week_day_id, @shift, @assigned_date)";
-                                    MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
-                                    shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
-                                    shiftsQueryCmd.Parameters.AddWithValue("@userId", pc.GetIdByUsername(username));
-                                    shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
-                                    shiftsQueryCmd.Parameters.AddWithValue("@assigned_date", currentMonday);
-                                    shiftsQueryCmd.ExecuteNonQuery();
-                                }
-                            }
+                            AssignEmployeeShift();
 
                             MessageBox.Show("The account has been created.");
                             addContact = true;
@@ -1060,6 +819,63 @@ namespace MediaBazar
             }
         }
 
+        private void btnAssignShifts_Click(object sender, EventArgs e)
+        {
+            assignShifts = new AssignShifts(this, workdays, workshifts);
+            assignShifts.Show();
+        }
+
+        public void AddEmployeeShifts(List<int> workDays, List<int> workShifts)
+        {
+            this.workdays = workDays;
+            this.workshifts = workShifts;
+        }
+
+        public void AssignEmployeeShift()
+        {
+            string username = tbUsername.Text;
+            int shift = 0;
+            int day = 0;
+
+            DateTime startOfWeek = DateTime.Today.AddDays(
+            (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
+            (int)DateTime.Today.DayOfWeek);
+
+            string result = string.Join("," + Environment.NewLine, Enumerable
+              .Range(0, 7)
+              .Select(i => startOfWeek
+                 .AddDays(i)
+                 .ToString("yyyy-MM-dd")));
+            var arrayCurrentWeek = result.Split(',');
+            string currentMonday = arrayCurrentWeek[0];
+
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                conn.Open();
+                for (int i = 0; i < workdays.Count; i++)
+                {
+                    shift = workshifts[i];
+                    day = workdays[i];
+
+                    string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift, assigned_date) VALUE(@userId,@week_day_id, @shift, @assigned_date)";
+                    MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
+                    shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
+                    shiftsQueryCmd.Parameters.AddWithValue("@userId", pc.GetIdByUsername(username));
+                    shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
+                    shiftsQueryCmd.Parameters.AddWithValue("@assigned_date", currentMonday);
+                    shiftsQueryCmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }
 
