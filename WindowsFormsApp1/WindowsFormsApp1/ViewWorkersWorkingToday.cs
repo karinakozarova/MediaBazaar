@@ -22,8 +22,8 @@ namespace MediaBazar
             controls = new List<CurrentWorkingWorkerControl>();
             PopulateDepartments(Department.GetAllDepartments());
             cmbShifts.Items.Add("morning");
-            cmbShifts.Items.Add("evening");
             cmbShifts.Items.Add("afternoon");
+            cmbShifts.Items.Add("evening");
         }
 
         private void PopulateDepartments(List<Department> departments)
@@ -54,6 +54,7 @@ namespace MediaBazar
 
         private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cmbShifts.Text = "";
             cmbShifts.Enabled = true;
         }
 
