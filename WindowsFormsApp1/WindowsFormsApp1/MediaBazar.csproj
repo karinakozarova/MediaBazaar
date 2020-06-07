@@ -168,6 +168,12 @@
     <Compile Include="CreateAccount.Designer.cs">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="CurrentWorkingWorkerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CurrentWorkingWorkerControl.Designer.cs">
+      <DependentUpon>CurrentWorkingWorkerControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Department.cs" />
     <Compile Include="DepartmentActions.cs">
       <SubType>Form</SubType>
@@ -308,6 +314,12 @@
     <Compile Include="Stock.cs" />
     <Compile Include="StockRequest.cs" />
     <Compile Include="StocksComboBoxItem.cs" />
+    <Compile Include="ViewWorkersWorkingToday.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewWorkersWorkingToday.Designer.cs">
+      <DependentUpon>ViewWorkersWorkingToday.cs</DependentUpon>
+    </Compile>
     <Compile Include="WordaysControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -351,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrentWorkingWorkerControl.resx">
+      <DependentUpon>CurrentWorkingWorkerControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DepartmentActions.resx">
       <DependentUpon>DepartmentActions.cs</DependentUpon>
@@ -426,6 +441,9 @@
       <Link>.editorconfig</Link>
     </None>
     <None Include="ClassDiagram1.cd" />
+    <EmbeddedResource Include="ViewWorkersWorkingToday.resx">
+      <DependentUpon>ViewWorkersWorkingToday.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WordaysControl.resx">
       <DependentUpon>WordaysControl.cs</DependentUpon>
     </EmbeddedResource>
