@@ -162,6 +162,12 @@
     <Compile Include="CreateAccount.Designer.cs">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="CurrentWorkingWorkerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CurrentWorkingWorkerControl.Designer.cs">
+      <DependentUpon>CurrentWorkingWorkerControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Department.cs" />
     <Compile Include="DepartmentActions.cs">
       <SubType>Form</SubType>
@@ -348,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrentWorkingWorkerControl.resx">
+      <DependentUpon>CurrentWorkingWorkerControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DepartmentActions.resx">
       <DependentUpon>DepartmentActions.cs</DependentUpon>

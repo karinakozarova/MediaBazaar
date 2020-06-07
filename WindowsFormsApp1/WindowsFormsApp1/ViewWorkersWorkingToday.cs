@@ -15,10 +15,15 @@ namespace MediaBazar
     public partial class ViewWorkersWorkingToday : Form
     {
 
+        List<CurrentWorkingWorkerControl> controls;
         public ViewWorkersWorkingToday()
         {
             InitializeComponent();
+            controls = new List<CurrentWorkingWorkerControl>();
             PopulateDepartments(Department.GetAllDepartments());
+            cmbShifts.Items.Add("morning");
+            cmbShifts.Items.Add("evening");
+            cmbShifts.Items.Add("afternoon");
         }
 
         private void PopulateDepartments(List<Department> departments)
@@ -31,27 +36,32 @@ namespace MediaBazar
 
         private void PopulateEmployees()
         {
-            DayOfWeek todayWeekday = DateTime.Today.DayOfWeek;
             int departmentId = ((DepartmentComboBoxItem)cmbDepartment.SelectedItem).Id;
-            foreach (Worker e in Worker.GettAllWorkers(departmentId, "morning"))
+            string shift = cmbShifts.SelectedItem.ToString();
+            foreach (Worker w in Worker.GettAllWorkers(departmentId, shift,0))
             {
-                lbWorkers.Items.Add(e.Id + " - " + e.FirstName + " " + e.LastName + " - " + "SHIFT : MORNINIG");
+                controls.Add(new CurrentWorkingWorkerControl(w.Id, w.FirstName, w.LastName,0));
             }
-            foreach (Worker e in Worker.GettAllWorkers(departmentId, "afternoon"))
+            foreach (Worker w in Worker.GettAllWorkers(departmentId, shift, 1))
             {
-                lbWorkers.Items.Add(e.Id + " - " + e.FirstName + " " + e.LastName + " - " + "SHIFT : AFTERNOON");
+                controls.Add(new CurrentWorkingWorkerControl(w.Id, w.FirstName, w.LastName,1));
             }
-            foreach (Worker e in Worker.GettAllWorkers(departmentId, "evening"))
+            foreach (CurrentWorkingWorkerControl control in controls)
             {
-                lbWorkers.Items.Add(e.Id + " - " + e.FirstName + " " + e.LastName + " - " + "SHIFT : EVENING");
+                flpControl.Controls.Add(control);
             }
         }
 
         private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lbWorkers.Items.Clear();
-            PopulateEmployees();
+            cmbShifts.Enabled = true;
         }
 
+        private void cmbShifts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            flpControl.Controls.Clear();
+            controls.Clear();
+            PopulateEmployees();
+        }
     }
 }

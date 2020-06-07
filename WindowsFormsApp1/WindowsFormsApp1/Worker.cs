@@ -10,6 +10,7 @@ namespace MediaBazar
     {
         CreateAccount ca;
         private decimal hourlyWage = 0;
+        private int present;
 
         public bool IsLoggedIn
         {
@@ -298,7 +299,7 @@ namespace MediaBazar
             return startWeek.ToString("yyyy-MM-dd");
         }
 
-        public static List<Worker> GettAllWorkers(int departmentId, string shift)
+        public static List<Worker> GettAllWorkers(int departmentId, string shift, int attended)
         {
             MySqlConnection conn = Utils.GetConnection();
             List<Worker> workingTodayWorker = new List<Worker>();
@@ -312,14 +313,15 @@ namespace MediaBazar
                 conn.Open();
                 Object WeekDayIdResult = cmd1.ExecuteScalar();
 
-                string GetinfoSql = "SELECT p.id, p.first_name, p.last_name, p.date_of_birth, p.street, p.postcode, p.region, p.country, p.phone_number, p.email , ed.hourly_wage , ed.department_id , c.contract_start  " +
+                string GetinfoSql = "SELECT p.id, p.first_name, p.last_name, p.date_of_birth, p.street, p.postcode, p.region, p.country, p.phone_number, p.email , ed.hourly_wage , ed.department_id , c.contract_start , ew.attended " +
                     "FROM person AS p  INNER JOIN employee_details AS ed  ON p.id = ed.person_id  INNER JOIN contract AS c  ON ed.person_id = c.person_id  INNER JOIN employee_working_days AS ew ON p.id = ew.employee_id " +
-                    "WHERE ed.is_approved = 2 AND c.contract_status = 0 AND ew.week_day_id = @currentWeekDay AND ew.shift = @shift AND ew.assigned_date = @CurrentMondaySchedule AND ed.department_id = @departmentId";
+                    "WHERE ed.is_approved = 2 AND c.contract_status = 0 AND ew.week_day_id = @currentWeekDay AND ew.shift = @shift AND ew.assigned_date = @CurrentMondaySchedule AND ed.department_id = @departmentId AND ew.attended = @attended";
                 MySqlCommand cmd2 = new MySqlCommand(GetinfoSql, conn);
                 cmd2.Parameters.AddWithValue("@departmentId", Convert.ToInt32(departmentId));
                 cmd2.Parameters.AddWithValue("@currentWeekDay", Convert.ToInt32(WeekDayIdResult));
                 cmd2.Parameters.AddWithValue("@CurrentMondaySchedule", GetThisWeeksMonday());
                 cmd2.Parameters.AddWithValue("@shift", shift);
+                cmd2.Parameters.AddWithValue("@attended", attended);
                 MySqlDataReader row2 = cmd2.ExecuteReader();
                 while (row2.Read())
                 {
@@ -337,6 +339,7 @@ namespace MediaBazar
                     decimal hourly_wage = Convert.ToDecimal(row2[10]);
                     int departmentid = Convert.ToInt32(row2[11]);
                     DateTime ContractDate = Convert.ToDateTime(row2[12]);
+                    
                     Worker worker = new Worker(personid, null, null, firstname, lastname, dateOfBirth, street, postcode, region, country, phonenumber, email, hourly_wage, ContractDate, departmentid, false);
                     worker.Id = personid;
                     workingTodayWorker.Add(worker);
