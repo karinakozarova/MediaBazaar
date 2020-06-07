@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
 namespace MediaBazar
 {
@@ -262,6 +264,91 @@ namespace MediaBazar
             finally { conn.Close(); }
 
             return emlpoyees;
+        }
+
+        private static string GetThisWeeksMonday()
+        {
+            string dayOfWeek = DateTime.Today.DayOfWeek.ToString().ToLower();
+            int offSet = 0;
+            switch (dayOfWeek)
+            {
+                case "sunday":
+                    offSet = 6;
+                    break;
+                case "monday":
+                    offSet = 0;
+                    break;
+                case "tuesday":
+                    offSet = 1;
+                    break;
+                case "wednesday":
+                    offSet = 2;
+                    break;
+                case "thursday":
+                    offSet = 3;
+                    break;
+                case "friday":
+                    offSet = 4;
+                    break;
+                case "saturday":
+                    offSet = 5;
+                    break;
+            }
+            DateTime startWeek = DateTime.Now.AddDays(-offSet);
+            return startWeek.ToString("yyyy-MM-dd");
+        }
+
+        public static List<Worker> GettAllWorkers(int departmentId, string shift)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+            List<Worker> workingTodayWorker = new List<Worker>();
+            DayOfWeek todayWeekday = DateTime.Today.DayOfWeek;
+
+            try
+            {
+                string getWeekDayId = "SELECT id FROM week_days WHERE day_name = @weekDayString";
+                MySqlCommand cmd1 = new MySqlCommand(getWeekDayId, conn);
+                cmd1.Parameters.AddWithValue("@weekDayString", Convert.ToString(todayWeekday));
+                conn.Open();
+                Object WeekDayIdResult = cmd1.ExecuteScalar();
+
+                string GetinfoSql = "SELECT p.id, p.first_name, p.last_name, p.date_of_birth, p.street, p.postcode, p.region, p.country, p.phone_number, p.email , ed.hourly_wage , ed.department_id , c.contract_start  " +
+                    "FROM person AS p  INNER JOIN employee_details AS ed  ON p.id = ed.person_id  INNER JOIN contract AS c  ON ed.person_id = c.person_id  INNER JOIN employee_working_days AS ew ON p.id = ew.employee_id " +
+                    "WHERE ed.is_approved = 2 AND c.contract_status = 0 AND ew.week_day_id = @currentWeekDay AND ew.shift = @shift AND ew.assigned_date = @CurrentMondaySchedule AND ed.department_id = @departmentId";
+                MySqlCommand cmd2 = new MySqlCommand(GetinfoSql, conn);
+                cmd2.Parameters.AddWithValue("@departmentId", Convert.ToInt32(departmentId));
+                cmd2.Parameters.AddWithValue("@currentWeekDay", Convert.ToInt32(WeekDayIdResult));
+                cmd2.Parameters.AddWithValue("@CurrentMondaySchedule", GetThisWeeksMonday());
+                cmd2.Parameters.AddWithValue("@shift", shift);
+                MySqlDataReader row2 = cmd2.ExecuteReader();
+                while (row2.Read())
+                {
+                    int personid = Convert.ToInt32(row2[0]);
+                    string firstname = row2[1].ToString();
+                    string lastname = row2[2].ToString();
+
+                    DateTime dateOfBirth = Convert.ToDateTime(row2[3]);
+                    string street = row2[4].ToString();
+                    string postcode = row2[5].ToString();
+                    string region = row2[6].ToString();
+                    string country = row2[7].ToString();
+                    int phonenumber = 0;
+                    string email = row2[9].ToString();
+                    decimal hourly_wage = Convert.ToDecimal(row2[10]);
+                    int departmentid = Convert.ToInt32(row2[11]);
+                    DateTime ContractDate = Convert.ToDateTime(row2[12]);
+                    Worker worker = new Worker(personid, null, null, firstname, lastname, dateOfBirth, street, postcode, region, country, phonenumber, email, hourly_wage, ContractDate, departmentid, false);
+                    worker.Id = personid;
+                    workingTodayWorker.Add(worker);
+                } 
+            }
+            catch (Exception)
+            {
+                // TODO: add to error log in the future
+            }
+            finally { conn.Close(); }
+
+            return workingTodayWorker;
         }
 
         public static List<Worker> GetAllEmployees()

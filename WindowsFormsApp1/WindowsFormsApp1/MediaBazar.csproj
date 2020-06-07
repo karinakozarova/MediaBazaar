@@ -302,6 +302,12 @@
     <Compile Include="Stock.cs" />
     <Compile Include="StockRequest.cs" />
     <Compile Include="StocksComboBoxItem.cs" />
+    <Compile Include="ViewWorkersWorkingToday.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewWorkersWorkingToday.Designer.cs">
+      <DependentUpon>ViewWorkersWorkingToday.cs</DependentUpon>
+    </Compile>
     <Compile Include="WordaysControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -417,6 +423,9 @@
       <Link>.editorconfig</Link>
     </None>
     <None Include="ClassDiagram1.cd" />
+    <EmbeddedResource Include="ViewWorkersWorkingToday.resx">
+      <DependentUpon>ViewWorkersWorkingToday.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WordaysControl.resx">
       <DependentUpon>WordaysControl.cs</DependentUpon>
     </EmbeddedResource>

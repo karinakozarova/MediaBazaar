@@ -160,5 +160,10 @@ namespace MediaBazar
         {
             (new RulesEditor(this.user_id)).Show();
         }
+
+        private void workersWorkingTodayBttn_Click(object sender, EventArgs e)
+        {
+            (new ViewWorkersWorkingToday()).Show();
+        }
     }
 }
