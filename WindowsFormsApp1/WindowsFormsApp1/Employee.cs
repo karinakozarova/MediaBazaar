@@ -239,5 +239,50 @@ namespace MediaBazar
                 conn.Close();
             }
         }
+
+        public static void AssignEmployeeShift(int employeeId, List<int> workdays, List<int> workshifts)
+        {
+            int shift = 0;
+            int day = 0;
+
+            DateTime startOfWeek = DateTime.Today.AddDays(
+            (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
+            (int)DateTime.Today.DayOfWeek);
+
+            string result = string.Join("," + Environment.NewLine, Enumerable
+              .Range(0, 7)
+              .Select(i => startOfWeek
+                 .AddDays(i)
+                 .ToString("yyyy-MM-dd")));
+            var arrayCurrentWeek = result.Split(',');
+            string currentMonday = arrayCurrentWeek[0];
+
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                conn.Open();
+                for (int i = 0; i < workdays.Count; i++)
+                {
+                    shift = workshifts[i];
+                    day = workdays[i];
+
+                    string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift, assigned_date) VALUE(@userId,@week_day_id, @shift, @assigned_date)";
+                    MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
+                    shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
+                    shiftsQueryCmd.Parameters.AddWithValue("@userId", employeeId);
+                    shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
+                    shiftsQueryCmd.Parameters.AddWithValue("@assigned_date", currentMonday);
+                    shiftsQueryCmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

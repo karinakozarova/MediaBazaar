@@ -40,11 +40,11 @@ namespace MediaBazar
             string shift = cmbShifts.SelectedItem.ToString();
             foreach (Worker w in Worker.GettAllWorkers(departmentId, shift,0))
             {
-                controls.Add(new CurrentWorkingWorkerControl(w.Id, w.FirstName, w.LastName,0));
+                controls.Add(new CurrentWorkingWorkerControl(w.Id, w.FirstName, w.LastName,0, shift, this));
             }
             foreach (Worker w in Worker.GettAllWorkers(departmentId, shift, 1))
             {
-                controls.Add(new CurrentWorkingWorkerControl(w.Id, w.FirstName, w.LastName,1));
+                controls.Add(new CurrentWorkingWorkerControl(w.Id, w.FirstName, w.LastName,1, shift, this));
             }
             foreach (CurrentWorkingWorkerControl control in controls)
             {
@@ -59,6 +59,13 @@ namespace MediaBazar
         }
 
         private void cmbShifts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            flpControl.Controls.Clear();
+            controls.Clear();
+            PopulateEmployees();
+        }
+
+        public void UpdateEmployees()
         {
             flpControl.Controls.Clear();
             controls.Clear();
