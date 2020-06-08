@@ -354,6 +354,39 @@ namespace MediaBazar
             return workingTodayWorker;
         }
 
+        public static void EmployeeAttend(int workerId, string shift)
+        {
+            DayOfWeek todayWeekday = DateTime.Today.DayOfWeek;
+            int attended = 1;
+
+            MySqlConnection conn = Utils.GetConnection();
+            try
+            {
+                string getWeekDayId = "SELECT id FROM week_days WHERE day_name = @weekDayString";
+                MySqlCommand cmd1 = new MySqlCommand(getWeekDayId, conn);
+                cmd1.Parameters.AddWithValue("@weekDayString", Convert.ToString(todayWeekday));
+                conn.Open();
+                Object WeekDayIdResult = cmd1.ExecuteScalar();
+
+                string shiftsQuery = "UPDATE employee_working_days SET attended = @attended WHERE employee_id=@employee_id AND assigned_date=@assigned_date AND week_day_id=@week_day_id AND shift=@shift";
+                MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
+                shiftsQueryCmd.Parameters.AddWithValue("@attended", attended);
+                shiftsQueryCmd.Parameters.AddWithValue("@employee_id", workerId);
+                shiftsQueryCmd.Parameters.AddWithValue("@assigned_date", GetThisWeeksMonday());
+                shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", WeekDayIdResult);
+                shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
+                shiftsQueryCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static List<Worker> GetAllEmployees()
         {
             MySqlConnection conn = Utils.GetConnection();
