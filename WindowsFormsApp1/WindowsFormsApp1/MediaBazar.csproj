@@ -162,6 +162,8 @@
     <Compile Include="ChangeSchedule.Designer.cs">
       <DependentUpon>ChangeSchedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckIn.cs" />
+    <Compile Include="CheckInService.cs" />
     <Compile Include="CreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>

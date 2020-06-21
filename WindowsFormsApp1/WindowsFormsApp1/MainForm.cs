@@ -15,11 +15,18 @@ namespace MediaBazar
 
         private string username;
         private int user_id;
+
+        CheckInService checkInService;
+        CheckIn checkIn;
+
         public MainForm(string username, int workerRole, int user_id)
         {
             InitializeComponent();
             controls = new List<DepartmentUserControl>();
             reportControls = new List<ReportControl>();
+            checkInService = new CheckInService();
+            checkIn = new CheckIn();
+            checkIn.CheckInEvent += checkInService.OnCheckIn;
             UpdateGUI();
             this.user_id = user_id;
             this.username = username;
@@ -27,6 +34,7 @@ namespace MediaBazar
 
             if (workerRole == (int)ProfileRoles.ADMINISTRATOR)
             {
+                tabControl1.TabPages.Remove(checkInTab);
                 btnFireEmployeeRequest.Visible = false;
                 btnHireEmployeeRequest.Visible = false;
                 btnChangeSchedule.Visible = false;
@@ -34,6 +42,7 @@ namespace MediaBazar
             }
             else if (workerRole == (int)ProfileRoles.MANAGER)
             {
+                tabControl1.TabPages.Remove(checkInTab);
                 btnFireManager.Visible = false;
                 btnCreateAdminManager.Visible = false;
                 addNewDepartmentBttn.Visible = false;
@@ -47,6 +56,7 @@ namespace MediaBazar
                 requestStockBttn.Visible = false;
                 createStockBttn.Visible = false;
                 btnPromoteEmployee.Visible = false;
+                btnCheckOut.Visible = false;
             }
         }
 
@@ -164,6 +174,21 @@ namespace MediaBazar
         private void workersWorkingTodayBttn_Click(object sender, EventArgs e)
         {
             (new ViewWorkersWorkingToday()).Show();
+        }
+
+        private void BtnCheckIn_Click(object sender, EventArgs e)
+        {
+            checkIn.CheckInEmployee(user_id);
+            btnCheckIn.Visible = false;
+            btnCheckOut.Visible = true;
+            checkIn.CheckInEvent -= checkInService.OnCheckIn;
+        }
+
+        private void BtnCheckOut_Click(object sender, EventArgs e)
+        {
+            btnCheckIn.Visible = true;
+            btnCheckOut.Visible = false;
+            checkIn.CheckInEvent += checkInService.OnCheckIn;
         }
     }
 }
