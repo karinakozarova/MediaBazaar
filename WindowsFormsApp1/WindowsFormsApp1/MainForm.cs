@@ -10,6 +10,7 @@ namespace MediaBazar
         List<Department> departments;
         List<Report> reports;
         List<ReportControl> reportControls;
+        List<string> workingShifts;
 
         int workerRole;
 
@@ -178,10 +179,18 @@ namespace MediaBazar
 
         private void BtnCheckIn_Click(object sender, EventArgs e)
         {
-            checkIn.CheckInEmployee(user_id);
-            btnCheckIn.Visible = false;
-            btnCheckOut.Visible = true;
-            checkIn.CheckInEvent -= checkInService.OnCheckIn;
+            workingShifts = Employee.GetEmployeeCurrentWorkingShifts(user_id);
+            if (workingShifts.Count == 0)
+            {
+                MessageBox.Show("You can't check in today because you don't have any assigned shifts!");
+            }
+            else
+            {
+                checkIn.CheckInEmployee(user_id);
+                btnCheckIn.Visible = false;
+                btnCheckOut.Visible = true;
+                checkIn.CheckInEvent -= checkInService.OnCheckIn;
+            }
         }
 
         private void BtnCheckOut_Click(object sender, EventArgs e)

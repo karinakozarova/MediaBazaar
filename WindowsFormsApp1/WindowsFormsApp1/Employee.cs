@@ -186,6 +186,86 @@ namespace MediaBazar
             return workingShifts;
         }
 
+        public static List<string> GetEmployeeCurrentWorkingShifts(int id)
+        {
+            MySqlConnection conn = Utils.GetConnection();
+
+            List<string> workingShifts = new List<string>();
+
+            int today = (int)DateTime.Today.DayOfWeek;
+            int currentDay = 0;
+
+            if (today == 0)
+            {
+                currentDay = 6;
+            }
+            else if (today == 1)
+            {
+                currentDay = 0;
+            }
+            else if (today == 2)
+            {
+                currentDay = 1;
+            }
+            else if (today == 3)
+            {
+                currentDay = 2;
+            }
+            else if (today == 4)
+            {
+                currentDay = 3;
+            }
+            else if (today == 5)
+            {
+                currentDay = 4;
+            }
+            else if (today == 6)
+            {
+                currentDay = 5;
+            }
+
+            DateTime startOfWeek = DateTime.Today.AddDays(
+            (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
+            (int)DateTime.Today.DayOfWeek);
+
+            string result = string.Join("," + Environment.NewLine, Enumerable
+              .Range(0, 7)
+              .Select(i => startOfWeek
+                 .AddDays(i)
+                 .ToString("yyyy-MM-dd")));
+            var arrayCurrentWeek = result.Split(',');
+            string currentMonday = arrayCurrentWeek[0];
+
+            try
+            {
+                string sql = "SELECT shift, week_day_id FROM employee_working_days WHERE employee_id=@employee_id AND assigned_date=@currentMonday AND attended=0";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@employee_id", id);
+                cmd.Parameters.AddWithValue("@currentMonday", currentMonday);
+                conn.Open();
+                MySqlDataReader row = cmd.ExecuteReader();
+
+                while (row.Read())
+                {
+                    int workingDay = Convert.ToInt32(row[1]);
+
+                    if (workingDay == currentDay)
+                    {
+                        workingShifts.Add(row[0].ToString());
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // TODO: add it to error log in the future
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return workingShifts;
+        }
+
         public static void ChangeEmployeeShift(int employeeId, List<int> workDays, List<int> workShifts)
         {
             MySqlConnection conn = Utils.GetConnection();
@@ -193,6 +273,38 @@ namespace MediaBazar
             int shift = 0;
             int day = 0;
             int isAttended = 0;
+
+            int today = (int)DateTime.Today.DayOfWeek;
+            int currentDay = 0;
+
+            if (today == 0)
+            {
+                currentDay = 6;
+            }
+            else if (today == 1)
+            {
+                currentDay = 0;
+            }
+            else if (today == 2)
+            {
+                currentDay = 1;
+            }
+            else if (today == 3)
+            {
+                currentDay = 2;
+            }
+            else if (today == 4)
+            {
+                currentDay = 3;
+            }
+            else if (today == 5)
+            {
+                currentDay = 4;
+            }
+            else if (today == 6)
+            {
+                currentDay = 5;
+            }
 
             DateTime startOfWeek = DateTime.Today.AddDays(
             (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
@@ -220,14 +332,32 @@ namespace MediaBazar
                     shift = workShifts[i];
                     day = workDays[i];
 
-                    string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift, assigned_date, attended) VALUE(@userId,@week_day_id, @shift, @assigned_date, @attended)";
-                    MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
-                    shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
-                    shiftsQueryCmd.Parameters.AddWithValue("@userId", employeeId);
-                    shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
-                    shiftsQueryCmd.Parameters.AddWithValue("@assigned_date", currentMonday);
-                    shiftsQueryCmd.Parameters.AddWithValue("@attended", isAttended);
-                    shiftsQueryCmd.ExecuteNonQuery();
+                    if(day < currentDay)
+                    {
+                        isAttended = 1;
+
+                        string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift, assigned_date, attended) VALUE(@userId,@week_day_id, @shift, @assigned_date, @attended)";
+                        MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
+                        shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
+                        shiftsQueryCmd.Parameters.AddWithValue("@userId", employeeId);
+                        shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
+                        shiftsQueryCmd.Parameters.AddWithValue("@assigned_date", currentMonday);
+                        shiftsQueryCmd.Parameters.AddWithValue("@attended", isAttended);
+                        shiftsQueryCmd.ExecuteNonQuery();
+                    }else
+                    {
+                        isAttended = 0;
+
+                        string shiftsQuery = "INSERT into employee_working_days (employee_id,week_day_id, shift, assigned_date, attended) VALUE(@userId,@week_day_id, @shift, @assigned_date, @attended)";
+                        MySqlCommand shiftsQueryCmd = new MySqlCommand(shiftsQuery, conn);
+                        shiftsQueryCmd.Parameters.AddWithValue("@shift", shift);
+                        shiftsQueryCmd.Parameters.AddWithValue("@userId", employeeId);
+                        shiftsQueryCmd.Parameters.AddWithValue("@week_day_id", day);
+                        shiftsQueryCmd.Parameters.AddWithValue("@assigned_date", currentMonday);
+                        shiftsQueryCmd.Parameters.AddWithValue("@attended", isAttended);
+                        shiftsQueryCmd.ExecuteNonQuery();
+                    }
+                    
                 }
             }
             catch (Exception)

@@ -39,7 +39,7 @@ namespace MediaBazar
                 currentDay = 5;
             }
 
-            List<string> workingShifts = new List<string>(); 
+            List<string> workingShifts = Employee.GetEmployeeCurrentWorkingShifts(userId); 
 
             DateTime startOfWeek = DateTime.Today.AddDays(
             (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
@@ -55,24 +55,6 @@ namespace MediaBazar
 
             try
             {
-                string sql = "SELECT shift, week_day_id FROM employee_working_days WHERE employee_id=@employee_id AND assigned_date=@currentMonday AND attended=0";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@employee_id", userId);
-                cmd.Parameters.AddWithValue("@currentMonday", currentMonday);
-                conn.Open();
-                MySqlDataReader row = cmd.ExecuteReader();
-
-                while (row.Read())
-                {
-                    int workingDay = Convert.ToInt32(row[1]);
-
-                    if(workingDay == currentDay)
-                    {
-                        workingShifts.Add(row[0].ToString());
-                    }
-                }
-                conn.Close();
-
                 if (workingShifts.Count != 0)
                 {
                     string updateShiftAttendance = "UPDATE employee_working_days SET attended = 1 WHERE employee_id=@employee_id AND week_day_id=@today AND assigned_date=@currentMonday";
@@ -84,9 +66,9 @@ namespace MediaBazar
                     updateShiftAttendanceCmd.ExecuteNonQuery();
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                string exception = ex.ToString();
+                // TODO: add it to error log in the future
             }
             finally
             {
