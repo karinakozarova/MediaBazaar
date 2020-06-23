@@ -19,22 +19,28 @@ namespace MediaBazar
             if (today == 0)
             {
                 currentDay = 6;
-            } else if (today == 1)
+            }
+            else if (today == 1)
             {
                 currentDay = 0;
-            }else if(today == 2)
+            }
+            else if (today == 2)
             {
                 currentDay = 1;
-            }else if(today == 3)
+            }
+            else if (today == 3)
             {
                 currentDay = 2;
-            }else if(today == 4)
+            }
+            else if (today == 4)
             {
                 currentDay = 3;
-            }else if(today == 5)
+            }
+            else if (today == 5)
             {
                 currentDay = 4;
-            }else if(today == 6)
+            }
+            else if (today == 6)
             {
                 currentDay = 5;
             }

@@ -98,7 +98,7 @@ namespace MediaBazar
               .Select(i => startOfWeek
                  .AddDays(i)
                  .ToString("yyyy/MMMM/dd")));
-            var arrayCurrentWeek = result.Split(',');
+            string[] arrayCurrentWeek = result.Split(',');
 
             try
             {
@@ -149,7 +149,7 @@ namespace MediaBazar
               .Select(i => startOfWeek
                  .AddDays(i)
                  .ToString("yyyy/MMMM/dd")));
-            var arrayCurrentWeek = result.Split(',');
+            string[] arrayCurrentWeek = result.Split(',');
 
             try
             {
@@ -233,7 +233,7 @@ namespace MediaBazar
               .Select(i => startOfWeek
                  .AddDays(i)
                  .ToString("yyyy-MM-dd")));
-            var arrayCurrentWeek = result.Split(',');
+            string[] arrayCurrentWeek = result.Split(',');
             string currentMonday = arrayCurrentWeek[0];
 
             try
@@ -315,7 +315,7 @@ namespace MediaBazar
               .Select(i => startOfWeek
                  .AddDays(i)
                  .ToString("yyyy-MM-dd")));
-            var arrayCurrentWeek = result.Split(',');
+            string[] arrayCurrentWeek = result.Split(',');
             string currentMonday = arrayCurrentWeek[0];
 
             try
@@ -332,7 +332,7 @@ namespace MediaBazar
                     shift = workShifts[i];
                     day = workDays[i];
 
-                    if(day < currentDay)
+                    if (day < currentDay)
                     {
                         isAttended = 1;
 
@@ -344,7 +344,8 @@ namespace MediaBazar
                         shiftsQueryCmd.Parameters.AddWithValue("@assigned_date", currentMonday);
                         shiftsQueryCmd.Parameters.AddWithValue("@attended", isAttended);
                         shiftsQueryCmd.ExecuteNonQuery();
-                    }else
+                    }
+                    else
                     {
                         isAttended = 0;
 
@@ -357,7 +358,6 @@ namespace MediaBazar
                         shiftsQueryCmd.Parameters.AddWithValue("@attended", isAttended);
                         shiftsQueryCmd.ExecuteNonQuery();
                     }
-                    
                 }
             }
             catch (Exception)
@@ -385,7 +385,7 @@ namespace MediaBazar
               .Select(i => startOfWeek
                  .AddDays(i)
                  .ToString("yyyy-MM-dd")));
-            var arrayCurrentWeek = result.Split(',');
+            string[] arrayCurrentWeek = result.Split(',');
             string currentMonday = arrayCurrentWeek[0];
 
             MySqlConnection conn = Utils.GetConnection();

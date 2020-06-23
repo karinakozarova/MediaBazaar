@@ -15,6 +15,7 @@ namespace MediaBazar
         {
             OnCheckIn(userId);
         }
+
         protected virtual void OnCheckIn(int userId)
         {
             if (CheckInEvent != null)
@@ -23,6 +24,4 @@ namespace MediaBazar
             }
         }
     }
-
-    
 }
