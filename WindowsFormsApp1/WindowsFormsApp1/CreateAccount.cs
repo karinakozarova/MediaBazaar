@@ -59,6 +59,7 @@ namespace MediaBazar
                 rbAdmin.Visible = false;
                 rbManager.Visible = false;
                 rbEmployee.Checked = true;
+                rbEmployee.Visible = true;
                 rbEmployee.Enabled = false;
                 this.Text = "Hiring Request";
             }
@@ -106,12 +107,10 @@ namespace MediaBazar
                         MySqlConnection conn = Utils.GetConnection();
                         try
                         {
-                            int accountType = 0;
+                            int accountType = 2;
                             if (rbAdmin.Checked)
                             {
-
                                 accountType = (int)ProfileRoles.ADMINISTRATOR;
-
                             }
                             else if (rbManager.Checked)
                             {
@@ -437,9 +436,7 @@ namespace MediaBazar
                             int accountType = 0;
                             if (rbAdmin.Checked)
                             {
-
                                 accountType = (int)ProfileRoles.ADMINISTRATOR;
-
                             }
                             else if (rbManager.Checked)
                             {
@@ -570,9 +567,7 @@ namespace MediaBazar
                             int accountType = 0;
                             if (rbAdmin.Checked)
                             {
-
                                 accountType = (int)ProfileRoles.ADMINISTRATOR;
-
                             }
                             else if (rbManager.Checked)
                             {
