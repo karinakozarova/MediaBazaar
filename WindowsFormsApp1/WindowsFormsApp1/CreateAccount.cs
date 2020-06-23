@@ -25,6 +25,7 @@ namespace MediaBazar
         int loggedInUser;
         int contactCounter;
         bool addContact = false;
+        int accountType = 0;
 
         public CreateAccount(int user_id, int workerRole)
         {
@@ -59,7 +60,9 @@ namespace MediaBazar
                 rbAdmin.Visible = false;
                 rbManager.Visible = false;
                 rbEmployee.Checked = true;
+                rbEmployee.Visible = true;
                 rbEmployee.Enabled = false;
+                accountType = 2;
                 this.Text = "Hiring Request";
             }
             if(tbUsername.Text == "" || tbUsername.Text == "Username")
@@ -106,10 +109,9 @@ namespace MediaBazar
                         MySqlConnection conn = Utils.GetConnection();
                         try
                         {
-                            int accountType = 0;
+                            
                             if (rbAdmin.Checked)
                             {
-
                                 accountType = (int)ProfileRoles.ADMINISTRATOR;
 
                             }
